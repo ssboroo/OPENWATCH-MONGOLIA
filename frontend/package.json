@@ -1,0 +1,22 @@
+{
+  "name": "openwatch-mongolia",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build && node -e \"require('fs').cpSync('.next/static','.next/standalone/.next/static',{recursive:true})\"",
+    "start": "node .next/standalone/server.js"
+  },
+  "dependencies": {
+    "lucide-react": "0.468.0",
+    "next": "16.4.2",
+    "react": "19.1.2",
+    "react-dom": "19.1.2"
+  },
+  "devDependencies": {
+    "@types/node": "22.15.3",
+    "@types/react": "19.1.2",
+    "@types/react-dom": "19.1.2",
+    "typescript": "5.8.3"
+  }
+}

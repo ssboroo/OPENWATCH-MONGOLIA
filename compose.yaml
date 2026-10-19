@@ -1,0 +1,102 @@
+name: openwatch
+x-backend: &backend
+  build: ./backend
+  restart: unless-stopped
+  environment: &env
+    DATABASE_URL: postgresql+psycopg://openwatch:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}@db/openwatch
+    ADMIN_TOKEN: ${ADMIN_TOKEN:?Set ADMIN_TOKEN}
+    ALLOWED_HOSTS: ${ALLOWED_HOSTS:-}
+    COLLECTION_INTERVAL: ${COLLECTION_INTERVAL:-900}
+  networks: [internal, egress]
+  mem_limit: 768m
+  security_opt: [no-new-privileges:true]
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: openwatch
+      POSTGRES_DB: openwatch
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}
+    volumes: [postgres:/var/lib/postgresql/data]
+    networks: [internal]
+    mem_limit: 1g
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U openwatch -d openwatch]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+  migrate:
+    <<: *backend
+    restart: 'no'
+    command: [alembic, upgrade, head]
+    depends_on:
+      db: {condition: service_healthy}
+  backend:
+    <<: *backend
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+  worker:
+    <<: *backend
+    command: [python, -m, app.worker]
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+    healthcheck:
+      test: [CMD, python, -c, "import os; os.kill(1, 0)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+  frontend:
+    build: ./frontend
+    restart: unless-stopped
+    depends_on:
+      backend: {condition: service_healthy}
+    networks: [internal]
+    mem_limit: 512m
+    security_opt: [no-new-privileges:true]
+    healthcheck:
+      test: [CMD, node, -e, "fetch('http://127.0.0.1:3000').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+  proxy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    environment:
+      SITE_ADDRESS: ${SITE_ADDRESS:-:80}
+    ports: ['80:80', '443:443', '443:443/udp']
+    volumes: [./ops/Caddyfile:/etc/caddy/Caddyfile:ro, caddy_data:/data, caddy_config:/config]
+    networks: [internal, egress]
+    mem_limit: 256m
+    depends_on:
+      frontend: {condition: service_healthy}
+    healthcheck:
+      test: [CMD, caddy, validate, --config, /etc/caddy/Caddyfile]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+  ollama:
+    image: ollama/ollama:latest
+    profiles: [ai]
+    restart: unless-stopped
+    volumes: [ollama:/root/.ollama]
+    networks: [internal, egress]
+    mem_limit: 6g
+    healthcheck:
+      test: [CMD, ollama, list]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+networks:
+  internal: {internal: true}
+  egress: {}
+volumes:
+  postgres:
+  caddy_data:
+  caddy_config:
+  ollama:

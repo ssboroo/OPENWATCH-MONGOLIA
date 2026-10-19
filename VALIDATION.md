@@ -107,3 +107,6 @@ Railway production дээр нийтэд нээлттэй 23 RSS endpoint-ийг
 ## 500 хаягийн сэргээж үргэлжлүүлэх commissioning
 
 HTML headline-only адаптер, publisher-declared news sitemap title, 12 хүртэл зэрэгцээ deadline-тай scan, DB progress/resume, advisory lock, supervised daily scan болон эх сурвалж тус бүрийн хязгаартай зэрэгцээ collector нэмсэн. Навигаци/өөр домэйн/duplicate link-ийг news болгон авахгүй гэсэн кейсүүд, мэдээний provenance, scan resume, нэг host-ийн алдаа бусдыг зогсоохгүй гэсэн кейсүүд нэмэгдсэн. 75 тест passed, 2 native PostgreSQL skipped. 500 хаягийн live scan-ийн тоо нь `/media` ба `/system/status`-ийн бодит progress; код deploy хийсэн нь 500 сайт бүгд ажилласан гэсэн баталгаа биш.
+
+
+Adapter v2: plain publisher article-ID links (including iKon `/n/...`) нэмсэн. Бодит татсан iKon homepage-оос гарчиг задлах шалгалт амжилттай; өмнөх `no_public_stream` төлөвтэй хаягуудыг шинэ адаптераар нэг удаа дахин шалгана, ажилласан урсгалыг зогсоохгүй. Backend 76 passed, 2 skipped; Next.js build амжилттай. Нийтэлсэн огноо тодорхойгүй гарчгийн цагийг `Илрүүлсэн` гэж ялгаж харуулна.

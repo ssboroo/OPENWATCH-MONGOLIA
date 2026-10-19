@@ -56,7 +56,13 @@ def parse_headlines(raw, endpoint):
     host=(urlsplit(endpoint).hostname or '').removeprefix('www.')
     rows=[];seen=set()
     selectors='article a[href],h1 a[href],h2 a[href],h3 a[href],a[href]:has(h2),a[href]:has(h3),a[class*="title"][href],a[class*="headline"][href]'
-    for tag in soup.select(selectors):
+    selected=list(soup.select(selectors))
+    # Some publishers (e.g. iKon) use plain anchors, with article IDs in the URL.
+    for tag in soup.select('a[href]'):
+        path=urlsplit(urljoin(endpoint,tag['href'])).path
+        if re.search(r'^/(?:n|r|lr|z|news|article|articles|post|posts)/[^/]+|^/\d{3,}/?$',path,re.I):
+            selected.append(tag)
+    for tag in selected:
         heading=tag.find(['h1','h2','h3'])
         title=clean((heading or tag).get_text(' ',strip=True))
         if len(title)<24 or len(title)>500 or len(title.split())<3:continue

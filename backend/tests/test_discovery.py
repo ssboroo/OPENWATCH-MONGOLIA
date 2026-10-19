@@ -52,3 +52,8 @@ def test_scan_resumes_and_one_bad_host_does_not_abort(db,monkeypatch):
     states=list(db.scalars(select(SystemState).where(SystemState.name.like('discovery:%'))))
     assert len(states)==3 and sum(s.value['status']=='unavailable' for s in states)==1
     assert db.get(SystemState,'catalog_discovery').value['status']=='completed'
+
+def test_plain_article_id_links_without_headings():
+    html=b'<main><a href="/n/abcd">Plain publisher headline with an article identifier</a><a href="/n/efgh">Another public headline with no heading markup</a><a href="/n/ijkl">Third real article link from a publisher homepage</a><a href="/category/politics">Navigation category must never enter the archive</a></main>'
+    rows=parse_source(html,'html','https://ikon.mn/')
+    assert len(rows)==3 and all('/n/' in r['url'] for r in rows)

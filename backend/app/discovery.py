@@ -18,12 +18,13 @@ from .importers import parse_source
 from .collector import ingest
 
 PREFIX='discovery:'
+ADAPTER_VERSION=2
 def key(domain):return PREFIX+hashlib.sha256(domain.encode()).hexdigest()[:24]
 def save_status(domain,value):
     with Session() as db:
         state=db.get(SystemState,key(domain))
         if state is None:state=SystemState(name=key(domain));db.add(state)
-        state.value={'domain':domain,**value};state.updated_at=now();db.commit()
+        state.value={'domain':domain,'adapter_version':ADAPTER_VERSION,**value};state.updated_at=now();db.commit()
 
 def register(site,endpoint,kind,rows):
     if not rows:raise ValueError('Empty stream')
@@ -93,7 +94,7 @@ async def commission():
         try:
             probes=probe_results();cutoff=now()-timedelta(hours=24)
             with Session() as db:
-                done={s.value.get('domain') for s in db.scalars(select(SystemState).where(SystemState.name.like(PREFIX+'%'))) if utc(s.updated_at)>cutoff}
+                done={s.value.get('domain') for s in db.scalars(select(SystemState).where(SystemState.name.like(PREFIX+'%'))) if utc(s.updated_at)>cutoff and (s.value.get('status')!='no_public_stream' or s.value.get('adapter_version',1)>=ADAPTER_VERSION)}
             sem=asyncio.Semaphore(max(1,min(settings.catalog_concurrency,12)))
             processed=len(done)
             def progress(status):

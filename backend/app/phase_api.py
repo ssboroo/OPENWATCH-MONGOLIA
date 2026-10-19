@@ -1,6 +1,6 @@
 """Evidence, human review, corrections, graph, local semantic search and operations."""
 import asyncio
-from datetime import timedelta
+from datetime import timedelta, date
 from typing import Literal
 import shutil
 from urllib.parse import urlsplit
@@ -133,15 +133,16 @@ def install_routes(app, admin, tasks):
         return {'status':'accepted','status_url':'/api/v1/system/status'}
 
     @router.get('/semantic-search')
-    async def semantic_search(q:str=Query(...,min_length=1,max_length=200),domain:str=Query('',max_length=253),offset:int=Query(0,ge=0,le=1000),limit:int=Query(20,ge=1,le=100),db:DB=Depends(get_db)):
+    async def semantic_search(q:str=Query(...,min_length=1,max_length=200),domain:str=Query('',max_length=253),source_id:int|None=Query(None,gt=0),date_from:date|None=None,date_to:date|None=None,date_field:str=Query('published',pattern='^(published|discovered)$'),category:str=Query('',pattern='^(|news|regional|business|broadcast|official)$'),offset:int=Query(0,ge=0),limit:int=Query(20,ge=1,le=100),db:DB=Depends(get_db)):
         if not q.strip():raise HTTPException(422,'Query is required')
-        if domain and domain not in BY_DOMAIN:raise HTTPException(422,'Unknown media domain')
-        ids=[s.id for s in db.scalars(select(Source)) if domain_of(s.endpoint)==domain] if domain else None
+        from .search_filters import scope
+        # Validate even when the local AI is unavailable.
+        scope(select(Article),db,domain,source_id,date_from,date_to,date_field,category)
         try:
             if not settings.ai_enabled:raise InferenceFailure('Local AI is disabled')
             vector=await Ollama().embed(q)
             stmt=select(ArticleEmbedding,Article).join(Article,Article.id==ArticleEmbedding.article_id).where(ArticleEmbedding.model==settings.embedding_model,ArticleEmbedding.text_hash==Article.text_hash)
-            if ids is not None:stmt=stmt.where(Article.source_id.in_(ids))
+            stmt=scope(stmt,db,domain,source_id,date_from,date_to,date_field,category)
             if db.bind.dialect.name=='postgresql':
                 distance=ArticleEmbedding.vector.cosine_distance(vector)
                 stmt=stmt.where(distance<.6).order_by(distance).limit(1100)
@@ -149,12 +150,12 @@ def install_routes(app, admin, tasks):
             ranked=sorted([(cosine(e.vector,vector),a) for e,a in db.execute(stmt)],key=lambda pair:pair[0],reverse=True)
             ranked=[(score,a) for score,a in ranked if score>=.4]
             from .serialization import article_data
-            return {'mode':'semantic','model':settings.embedding_model,'items':[{**article_data(a),'similarity':round(score,4)} for score,a in ranked[offset:offset+limit]],'total':len(ranked),'offset':offset,'limit':limit,'limitation':'Утгын ойролцоо байдал нь үнэн зөвийн оноо биш. Нийтэд татагдсан, embedding үүссэн нийтлэлээр хязгаарлана.'}
+            return {'mode':'semantic','model':settings.embedding_model,'items':[{**article_data(a),'similarity':round(score,4)} for score,a in ranked[offset:offset+limit]],'total':len(ranked),'offset':offset,'limit':limit,'candidate_limit':1100 if db.bind.dialect.name=='postgresql' else 2000,'limitation':'Тоо нь хязгаарласан нэр дэвшигчдийн хүрээний тоо. Утгын ойролцоо байдал нь үнэн зөвийн оноо биш. Нийтэд татагдсан, embedding үүссэн нийтлэлээр хязгаарлана.'}
         except InferenceFailure:
             # Preserve usable search while explicitly labeling the lexical fallback.
             escaped=q.replace('\\','\\\\').replace('%','\\%').replace('_','\\_')
             stmt=select(Article).where(or_(Article.title.ilike('%'+escaped+'%',escape='\\'),Article.excerpt.ilike('%'+escaped+'%',escape='\\')))
-            if ids is not None:stmt=stmt.where(Article.source_id.in_(ids))
+            stmt=scope(stmt,db,domain,source_id,date_from,date_to,date_field,category)
             total=db.scalar(select(func.count()).select_from(stmt.subquery()))
             from .serialization import article_data
             return {'mode':'lexical_fallback','items':[article_data(a) for a in db.scalars(stmt.order_by(Article.id.desc()).offset(offset).limit(limit))],'total':total,'offset':offset,'limit':limit,'limitation':'Локал AI байхгүй эсвэл алдаатай тул үгийн хайлт ашиглав.'}

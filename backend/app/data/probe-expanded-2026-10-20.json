@@ -1,0 +1,5323 @@
+[
+  {
+    "domain": "111.nema.gov.mn",
+    "checked_at": "2026-10-19T17:57:49.732884+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "115.nema.gov.mn",
+    "checked_at": "2026-10-19T17:57:50.233751+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "24barimt.mn",
+    "checked_at": "2026-10-19T17:56:25.436670+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://24barimt.mn/feed"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://24barimt.mn/",
+    "homepage_title": "24barimt.mn - Бичих эрхийн индэр",
+    "icon_url": "https://24barimt.mn/wp-content/uploads/2019/04/24barimt_icon.jpg"
+  },
+  {
+    "domain": "24news.mn",
+    "checked_at": "2026-10-19T17:57:08.942205+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "24tsag.mn",
+    "checked_at": "2026-10-19T17:56:02.988524+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://www.24tsag.mn/",
+    "homepage_title": "24 цаг холбоотой байя"
+  },
+  {
+    "domain": "252bi.da.gov.mn",
+    "checked_at": "2026-10-19T17:57:50.549820+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://252bi.da.gov.mn/",
+    "homepage_title": "Удирдлага мониторингийн дашбоард систем",
+    "icon_url": "https://252bi.da.gov.mn/favicon.ico"
+  },
+  {
+    "domain": "abcnews.mn",
+    "checked_at": "2026-10-19T17:56:34.634673+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "afccp.gov.mn",
+    "checked_at": "2026-10-19T17:57:15.827860+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "ags.gov.mn",
+    "checked_at": "2026-10-19T17:57:15.828673+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://ags.gov.mn/",
+    "homepage_title": "Засгийн газрын Хяналт хэрэгжүүлэх газар",
+    "icon_url": "https://ags.gov.mn/wp-content/uploads/fav-1.png"
+  },
+  {
+    "domain": "altaicity.mn",
+    "checked_at": "2026-10-19T17:57:01.762229+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "amjilt.news",
+    "checked_at": "2026-10-19T17:56:16.311188+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://amjilt.news/feed.xml",
+      "https://amjilt.news/atom.xml"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://amjilt.news/",
+    "homepage_title": "Amjilt News - Workplace culture, founders, careers, the economics of work",
+    "icon_url": "https://amjilt.news/favicon.ico"
+  },
+  {
+    "domain": "amlalt.mn",
+    "checked_at": "2026-10-19T17:56:22.352306+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://amlalt.mn/",
+    "homepage_title": "Амлалт",
+    "icon_url": "https://amlalt.mn/thumb/icon/AM_16x16.png"
+  },
+  {
+    "domain": "analiz.mn",
+    "checked_at": "2026-10-19T17:56:57.006465+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "http://www.analiz.mn/",
+    "homepage_title": "Analiz.mn - Бодит эх сурвалж"
+  },
+  {
+    "domain": "anews.mn",
+    "checked_at": "2026-10-19T17:57:08.953631+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "ar.nema.gov.mn",
+    "checked_at": "2026-10-19T17:57:51.415565+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "arainfo.mn",
+    "checked_at": "2026-10-19T17:56:58.843181+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "aranshin.mn",
+    "checked_at": "2026-10-19T17:57:07.904430+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "arbis.mn",
+    "checked_at": "2026-10-19T17:56:24.112614+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://arbis.mn/",
+    "homepage_title": "arbis.mn"
+  },
+  {
+    "domain": "archives.gov.mn",
+    "checked_at": "2026-10-19T17:57:15.946456+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "ardchilal.mn",
+    "checked_at": "2026-10-19T17:56:52.430892+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "ardiinelch.mn",
+    "checked_at": "2026-10-19T17:56:45.903055+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "ardnews.mn",
+    "checked_at": "2026-10-19T17:57:06.122825+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "arkhangai.gov.mn",
+    "checked_at": "2026-10-19T17:57:15.958317+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://arkhangai.gov.mn/feed/"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://arkhangai.gov.mn/",
+    "homepage_title": "Архангай аймаг",
+    "icon_url": "https://arkhangai.gov.mn/wp-content/uploads/2023/06/cropped-w-logo-blue-2-32x32.png"
+  },
+  {
+    "domain": "arkhangai.mn",
+    "checked_at": "2026-10-19T17:56:23.903471+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://arkhangai.mn/",
+    "homepage_title": "Өдөр тутмын мэдээ мэдээллийн вэб сайт",
+    "icon_url": "https://arkhangai.mn/templates/asset/images/favicon.ico"
+  },
+  {
+    "domain": "asiamining.mn",
+    "checked_at": "2026-10-19T17:56:54.460721+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "assa.mn",
+    "checked_at": "2026-10-19T17:56:26.114793+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://www.assa.mn/",
+    "homepage_title": "ASSA"
+  },
+  {
+    "domain": "asu.mn",
+    "checked_at": "2026-10-19T17:56:15.824708+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://asu.mn/",
+    "homepage_title": "ASU.MN — Монголын дараа үеийн мэдээллийн платформ",
+    "icon_url": "https://asu.mn/img/favicon.ico"
+  },
+  {
+    "domain": "asuudal.mn",
+    "checked_at": "2026-10-19T17:56:57.746113+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://asuudal.mn/",
+    "homepage_title": "Asuudal.mn",
+    "icon_url": "https://asuudal.mn/images/icon_32.png"
+  },
+  {
+    "domain": "avragch.nema.gov.mn",
+    "checked_at": "2026-10-19T17:57:51.975772+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "baabar.mn",
+    "checked_at": "2026-10-19T17:56:17.360667+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://www.baabar.mn/",
+    "homepage_title": "baabar.mn | Шилдэг нийтлэлчдийн клуб",
+    "icon_url": "https://www.baabar.mn/favicon.ico?favicon.0x3dzn~oxb6tn.ico?dpl=dpl_GLshDoGrfFQyPJ16BhtZiTDNDnki"
+  },
+  {
+    "domain": "bagakhangai.nutag.mn",
+    "checked_at": "2026-10-19T17:56:43.061529+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "baganuur.nutag.mn",
+    "checked_at": "2026-10-19T17:56:42.842198+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "barimt.com",
+    "checked_at": "2026-10-19T17:56:50.125036+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://barimt.com/feed"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://barimt.com/",
+    "homepage_title": "www.barimt.com",
+    "icon_url": "https://barimt.com/wp-content/uploads/2019/11/cropped-favi-32x32.png"
+  },
+  {
+    "domain": "barimt.mn",
+    "checked_at": "2026-10-19T17:56:21.303510+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://barimt.mn/",
+    "homepage_title": "Баримт",
+    "icon_url": "https://barimt.mn/images/www/favicon.ico"
+  },
+  {
+    "domain": "bataar.mn",
+    "checked_at": "2026-10-19T17:57:08.307855+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "battsengel.ar.gov.mn",
+    "checked_at": "2026-10-19T17:57:52.508548+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "TimeoutError: The read operation timed out"
+  },
+  {
+    "domain": "bayan-olgii.gov.mn",
+    "checked_at": "2026-10-19T17:57:16.411660+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "TimeoutError: The read operation timed out"
+  },
+  {
+    "domain": "bayan-ulgii.nutag.mn",
+    "checked_at": "2026-10-19T17:56:37.865179+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "bayangol.mn",
+    "checked_at": "2026-10-19T17:57:05.548013+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "bayangol.nutag.mn",
+    "checked_at": "2026-10-19T17:56:43.182715+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "bayankhongor.gov.mn",
+    "checked_at": "2026-10-19T17:57:16.730071+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "bayankhongor.nutag.mn",
+    "checked_at": "2026-10-19T17:56:38.447670+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "bayanzurkh.nutag.mn",
+    "checked_at": "2026-10-19T17:56:43.190469+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "bestnews.mn",
+    "checked_at": "2026-10-19T17:56:24.688293+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://bestnews.mn/",
+    "homepage_title": "Тэргүүлэх мэдээллийн сүлжээ сайт bestnews.mn",
+    "icon_url": "https://bestnews.mn/images/favicon.png"
+  },
+  {
+    "domain": "bgd.nema.gov.mn",
+    "checked_at": "2026-10-19T17:57:53.053960+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "bhd.nema.gov.mn",
+    "checked_at": "2026-10-19T17:57:53.779336+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "bkh.nema.gov.mn",
+    "checked_at": "2026-10-19T17:57:53.779979+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "bloombergtv.mn",
+    "checked_at": "2026-10-19T17:56:02.986915+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://bloombergtv.mn/",
+    "homepage_title": "Bloomberg TV Mongolia",
+    "icon_url": "https://bloombergtv.mn/logo.png"
+  },
+  {
+    "domain": "bnd.nema.gov.mn",
+    "checked_at": "2026-10-19T17:57:53.924114+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "boa.nema.gov.mn",
+    "checked_at": "2026-10-19T17:57:54.835538+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "boaj.da.gov.mn",
+    "checked_at": "2026-10-19T17:57:55.461205+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "TimeoutError: The read operation timed out"
+  },
+  {
+    "domain": "bolloo.mn",
+    "checked_at": "2026-10-19T17:56:24.596628+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://bolloo.mn/?feed=rss2"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://bolloo.mn/",
+    "homepage_title": "BOLLOO.MN"
+  },
+  {
+    "domain": "bolod.mn",
+    "checked_at": "2026-10-19T17:56:08.956597+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://bolod.mn/engine/rss.php"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://bolod.mn/",
+    "homepage_title": "Bolod.mn"
+  },
+  {
+    "domain": "boob.mn",
+    "checked_at": "2026-10-19T17:57:06.177069+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "bpo.gov.mn",
+    "checked_at": "2026-10-19T17:57:16.903780+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://bpo.gov.mn/",
+    "homepage_title": "Хил хамгаалах ерөнхий газар..."
+  },
+  {
+    "domain": "breakingnews.mn",
+    "checked_at": "2026-10-19T17:56:33.639887+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "bua.nema.gov.mn",
+    "checked_at": "2026-10-19T17:57:55.934570+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "bulgan.ar.gov.mn",
+    "checked_at": "2026-10-19T17:57:56.486222+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "TimeoutError: The read operation timed out"
+  },
+  {
+    "domain": "bulgan.gov.mn",
+    "checked_at": "2026-10-19T17:57:16.918327+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://bulgan.gov.mn/",
+    "homepage_title": "БУЛГАН АЙМГИЙН ЗДТГ"
+  },
+  {
+    "domain": "bulgan.nutag.mn",
+    "checked_at": "2026-10-19T17:56:39.337200+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "bulganinfo.mn",
+    "checked_at": "2026-10-19T17:56:58.479592+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "burtgel.gov.mn",
+    "checked_at": "2026-10-19T17:57:16.930303+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://burtgel.gov.mn/feed"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://burtgel.gov.mn/",
+    "homepage_title": "Улсын бүртгэлийн ерөнхий газар",
+    "icon_url": "https://burtgel.gov.mn/uploads/site/788/site_config/favicon/af7fa740f106a8053beb62258080233e1b6116c9.png"
+  },
+  {
+    "domain": "business.mn",
+    "checked_at": "2026-10-19T17:56:26.889304+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://business.mn/",
+    "homepage_title": "Нүүр - BUSINESS.MN",
+    "icon_url": "https://business.mn/wp-content/uploads/2022/01/cropped-android-chrome-512x512-1-1-32x32.png"
+  },
+  {
+    "domain": "bzd.nema.gov.mn",
+    "checked_at": "2026-10-19T17:57:58.513955+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "bzg.da.gov.mn",
+    "checked_at": "2026-10-19T17:57:59.840793+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://bzg.da.gov.mn/",
+    "homepage_title": "",
+    "icon_url": "https://bzg.da.gov.mn/ios/32.png"
+  },
+  {
+    "domain": "caak.mn",
+    "checked_at": "2026-10-19T17:56:18.005761+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://www.caak.mn/",
+    "homepage_title": "Caak.mn | Бусдаас өөр мэдрэмж!"
+  },
+  {
+    "domain": "cabinet.gov.mn",
+    "checked_at": "2026-10-19T17:57:17.026276+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://cabinet.gov.mn/feed"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://cabinet.gov.mn/",
+    "homepage_title": "cabinet.gov.mn – Монгол Улсын Засгийн газрын Хэрэг Эрхлэх Газар",
+    "icon_url": "https://cabinet.gov.mn/wp-content/uploads/favicon-1.png"
+  },
+  {
+    "domain": "cd.ar.gov.mn",
+    "checked_at": "2026-10-19T17:58:00.311256+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "TimeoutError: The read operation timed out"
+  },
+  {
+    "domain": "cd.gov.mn",
+    "checked_at": "2026-10-19T17:57:17.026969+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://cd.gov.mn/",
+    "homepage_title": "1Шүүхийн шийдвэр гүйцэтгэх ерөнхий газар",
+    "icon_url": "https://cd.gov.mn/assets/logo.png.ico"
+  },
+  {
+    "domain": "cfga.gov.mn",
+    "checked_at": "2026-10-19T17:57:17.908286+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "TimeoutError: The read operation timed out"
+  },
+  {
+    "domain": "chd.nema.gov.mn",
+    "checked_at": "2026-10-19T17:58:00.882773+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "check.mn",
+    "checked_at": "2026-10-19T17:56:30.381211+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://check.mn/",
+    "homepage_title": "Site is created successfully!"
+  },
+  {
+    "domain": "chingeltei.gov.mn",
+    "checked_at": "2026-10-19T17:57:18.227646+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "http://www.chingeltei.gov.mn/",
+    "homepage_title": "Нийслэлийн Чингэлтэй дүүрэг"
+  },
+  {
+    "domain": "chingeltei.nutag.mn",
+    "checked_at": "2026-10-19T17:56:44.500404+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "chinggisinfo.mn",
+    "checked_at": "2026-10-19T17:57:01.936447+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "chinggisinstitute.gov.mn",
+    "checked_at": "2026-10-19T17:57:18.310942+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://chinggisinstitute.gov.mn/mn",
+    "homepage_title": "Чингис хааны өв соёлын хүрээлэн - Нүүр хуудаc",
+    "icon_url": "https://chinggisinstitute.gov.mn/favicon/apple-icon-57x57.png"
+  },
+  {
+    "domain": "choibalsan.mn",
+    "checked_at": "2026-10-19T17:56:40.761704+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "TimeoutError: The read operation timed out"
+  },
+  {
+    "domain": "chuham.mn",
+    "checked_at": "2026-10-19T17:56:45.143587+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://chuham.mn/",
+    "homepage_title": "Chuham.mn - Chuham MN",
+    "icon_url": "https://chuham.mn/wp-content/uploads/2026/07/cropped-favicon-512x512-1-32x32.png"
+  },
+  {
+    "domain": "chuluut.ar.gov.mn",
+    "checked_at": "2026-10-19T17:58:01.035530+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "TimeoutError: The read operation timed out"
+  },
+  {
+    "domain": "chuulgan.mn",
+    "checked_at": "2026-10-19T17:56:59.128902+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "domain": "comment.mn",
+    "checked_at": "2026-10-19T17:56:13.594926+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://www.comment.mn/",
+    "homepage_title": "Comment.mn – Монгол комментод нэгдэцгээе"
+  },
+  {
+    "domain": "control.mn",
+    "checked_at": "2026-10-19T17:56:54.480802+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "crc.gov.mn",
+    "checked_at": "2026-10-19T17:57:18.738158+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://crc.gov.mn/",
+    "homepage_title": "Харилцан холбооны зохицуулах хороо",
+    "icon_url": "https://crc.gov.mn/storage/placeholders/favicon.png"
+  },
+  {
+    "domain": "csc.gov.mn",
+    "checked_at": "2026-10-19T17:57:19.058194+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://csc.gov.mn/",
+    "homepage_title": "Монгол улсын төрийн албаны зөвлөл"
+  },
+  {
+    "domain": "culture.gov.mn",
+    "checked_at": "2026-10-19T17:57:19.639346+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://culture.gov.mn/",
+    "homepage_title": "Соёл урлагийн газар",
+    "icon_url": "https://culture.gov.mn/icon.png"
+  },
+  {
+    "domain": "customs.gov.mn",
+    "checked_at": "2026-10-19T17:57:19.642286+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "da.nema.gov.mn",
+    "checked_at": "2026-10-19T17:58:26.968954+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "dailynews.mn",
+    "checked_at": "2026-10-19T17:56:19.991129+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://dailynews.mn/feed"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://dailynews.mn/",
+    "homepage_title": "DailyNews.MN – Өдөр тутмын мэдээлэл",
+    "icon_url": "https://dailynews.mn/wp-content/uploads/2021/05/cropped-favi-32x32.png?v=1626415645"
+  },
+  {
+    "domain": "dandaa.mn",
+    "checked_at": "2026-10-19T17:56:27.612467+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "dardas.mn",
+    "checked_at": "2026-10-19T17:56:29.266761+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "TimeoutError: The read operation timed out"
+  },
+  {
+    "domain": "darkhan.da.gov.mn",
+    "checked_at": "2026-10-19T17:58:26.970325+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://darkhan.da.gov.mn/",
+    "homepage_title": "",
+    "icon_url": "https://darkhan.da.gov.mn/ios/32.png"
+  },
+  {
+    "domain": "darkhan.gov.mn",
+    "checked_at": "2026-10-19T17:57:19.719674+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://darkhan.gov.mn/feed/"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://darkhan.gov.mn/",
+    "homepage_title": "Дархан-уул аймгийн засаг даргын тамгын газар",
+    "icon_url": "https://darkhan.gov.mn/wp-content/uploads/2024/07/Vector.svg"
+  },
+  {
+    "domain": "darkhan.today",
+    "checked_at": "2026-10-19T17:57:15.720190+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "darkhaninfo.mn",
+    "checked_at": "2026-10-19T17:56:58.622995+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "darkhannews.mn",
+    "checked_at": "2026-10-19T17:56:39.984993+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "datacenter.gov.mn",
+    "checked_at": "2026-10-19T17:57:20.388760+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://datacenter.gov.mn/mn",
+    "homepage_title": "Нүүр хуудас",
+    "icon_url": "https://datacenter.gov.mn/assets/images/favicomatic/apple-touch-icon-57x57.png"
+  },
+  {
+    "domain": "dayarmongol.mn",
+    "checked_at": "2026-10-19T17:56:22.410304+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://dayarmongol.mn/engine/rss.php"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://dayarmongol.mn/",
+    "homepage_title": "- Dayarmongol.mn -",
+    "icon_url": "https://dayarmongol.mn/uploads/fav.png"
+  },
+  {
+    "domain": "deed.mn",
+    "checked_at": "2026-10-19T17:56:34.979889+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "http://www.deed.mn/",
+    "homepage_title": "Deed.mn"
+  },
+  {
+    "domain": "dg.nema.gov.mn",
+    "checked_at": "2026-10-19T17:58:26.970921+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "dmedee.mn",
+    "checked_at": "2026-10-19T17:56:56.652186+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "dnn.mn",
+    "checked_at": "2026-10-19T17:56:02.973875+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://dnn.mn/",
+    "homepage_title": "Өдрийн сонин | DNN.mn",
+    "icon_url": "https://dnn.mn/favicon.ico?favicon.0-d0zai08.1el.ico"
+  },
+  {
+    "domain": "do.nema.gov.mn",
+    "checked_at": "2026-10-19T17:58:26.971530+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "dorgio.mn",
+    "checked_at": "2026-10-19T17:56:08.669749+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://dorgio.mn/",
+    "homepage_title": "Information Guide · Dorgio.mn"
+  },
+  {
+    "domain": "dornod.gov.mn",
+    "checked_at": "2026-10-19T17:57:20.481248+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://dornod.gov.mn/",
+    "homepage_title": "Дорнод аймаг",
+    "icon_url": "https://dornod.gov.mn/favicon.ico"
+  },
+  {
+    "domain": "dornodinfo.mn",
+    "checked_at": "2026-10-19T17:56:59.451562+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "dornogovi.gov.mn",
+    "checked_at": "2026-10-19T17:57:20.491805+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://dornogovi.gov.mn/",
+    "homepage_title": ""
+  },
+  {
+    "domain": "dornogovi.mn",
+    "checked_at": "2026-10-19T17:56:40.281942+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "dornogovinews.mn",
+    "checked_at": "2026-10-19T17:57:02.442624+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "dornogovipost.mn",
+    "checked_at": "2026-10-19T17:57:03.696988+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "du.nema.gov.mn",
+    "checked_at": "2026-10-19T17:58:26.972601+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "dundgovi.gov.mn",
+    "checked_at": "2026-10-19T17:57:20.565634+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://dundgovi.gov.mn/",
+    "homepage_title": "Index of /"
+  },
+  {
+    "domain": "dundgovi.mn",
+    "checked_at": "2026-10-19T17:56:40.792923+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "dundgovinews.mn",
+    "checked_at": "2026-10-19T17:57:02.556915+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "dursamj.mn",
+    "checked_at": "2026-10-19T17:56:23.064023+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://dursamj.mn/engine/rss.php"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://dursamj.mn/",
+    "homepage_title": "Dursamj.mn",
+    "icon_url": "https://dursamj.mn/templates/d_1/images/fav.png"
+  },
+  {
+    "domain": "dzinfo.mn",
+    "checked_at": "2026-10-19T17:57:02.557646+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "eagle.mn",
+    "checked_at": "2026-10-19T17:56:02.986406+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://eagle.mn/",
+    "homepage_title": "EAGLE.mn",
+    "icon_url": "https://eagle.mn/images/fav/apple-icon-57x57.png"
+  },
+  {
+    "domain": "ec.gov.mn",
+    "checked_at": "2026-10-19T17:57:20.774344+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://ec.gov.mn/",
+    "homepage_title": "Ёс зүйн хороо",
+    "icon_url": "https://ec.gov.mn/uploads/site/1626/site_config/favicon/740045586b61dbf78060d4b95bcd86378d1e9d30.png"
+  },
+  {
+    "domain": "ecc.gov.mn",
+    "checked_at": "2026-10-19T17:57:20.980846+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "TimeoutError: The read operation timed out"
+  },
+  {
+    "domain": "edu.bu.gov.mn",
+    "checked_at": "2026-10-19T17:58:26.974617+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://edu.bu.gov.mn/",
+    "homepage_title": "LINESLOT88 # Daftar Situs Online Terpercaya Pasti Gacor Winrate Tertinggi"
+  },
+  {
+    "domain": "egazar.gov.mn",
+    "checked_at": "2026-10-19T17:57:21.207036+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://egazar.gov.mn/",
+    "homepage_title": "Газар зохион байгуулалт, геодези, зураг зүйн ерөнхий газар",
+    "icon_url": "https://egazar.gov.mn/main-icon.ico"
+  },
+  {
+    "domain": "egel.mn",
+    "checked_at": "2026-10-19T17:56:31.359602+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://egel.mn/",
+    "homepage_title": "Эгэл монгол Контент",
+    "icon_url": "https://egel.mn/images/favicon.png"
+  },
+  {
+    "domain": "eguur.mn",
+    "checked_at": "2026-10-19T17:56:02.977987+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://eguur.mn/feed/"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://eguur.mn/",
+    "homepage_title": "Баримттай Мэдээлнэ - Eguur.MN",
+    "icon_url": "https://eguur.mn/wp-content/uploads/2023/03/cropped-main-logo-round-32x32.png"
+  },
+  {
+    "domain": "ejob.gov.mn",
+    "checked_at": "2026-10-19T17:57:21.287326+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "ekhoron21.mn",
+    "checked_at": "2026-10-19T17:57:07.363834+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "ekhsurvalj.mn",
+    "checked_at": "2026-10-19T17:56:52.268319+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "ekon.mn",
+    "checked_at": "2026-10-19T17:56:20.220099+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://ekon.mn/",
+    "homepage_title": "Ekon - сониуц мэдээ",
+    "icon_url": "https://ekon.mn/assets/theme/img/favicon.svg"
+  },
+  {
+    "domain": "ema.gov.mn",
+    "checked_at": "2026-10-19T17:57:22.194223+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://ema.gov.mn/feed"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://ema.gov.mn/",
+    "homepage_title": "И-Монгол Академи · E-Mongolia Academy",
+    "icon_url": "https://ema.gov.mn/wp-content/uploads/2022/10/cropped-logo-small-32x32.jpg"
+  },
+  {
+    "domain": "emd.gov.mn",
+    "checked_at": "2026-10-19T17:57:22.850312+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://emd.gov.mn/",
+    "homepage_title": "Эрүүл Мэндийн даатгал | Эрүүл Мэндийн даатгал",
+    "icon_url": "https://emd.gov.mn/assets/imgs/theme/favicon.ico"
+  },
+  {
+    "domain": "en.nema.gov.mn",
+    "checked_at": "2026-10-19T17:58:26.975530+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://en.nema.gov.mn/",
+    "homepage_title": "Home - NATIONAL EMERGENCY MANAGEMENT AGENCY",
+    "icon_url": "https://en.nema.gov.mn/uploads/site/1547/site_config/favicon/4ff41f8c32d9e633df6c4699d75e01ff0affebfd.png"
+  },
+  {
+    "domain": "ene.mn",
+    "checked_at": "2026-10-19T17:56:14.199276+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://ene.mn/",
+    "homepage_title": "ene.mn — эндээс мэд",
+    "icon_url": "https://ene.mn/icon.png?icon.00upi3kfbcrb6.png"
+  },
+  {
+    "domain": "energy.gov.mn",
+    "checked_at": "2026-10-19T17:57:23.382214+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "enter.mn",
+    "checked_at": "2026-10-19T17:57:05.315712+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "erdenebulgan.ar.gov.mn",
+    "checked_at": "2026-10-19T17:58:26.976343+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://erdenebulgan.ar.gov.mn/",
+    "homepage_title": "Index of /"
+  },
+  {
+    "domain": "erdenemandal.ar.gov.mn",
+    "checked_at": "2026-10-19T17:58:26.976790+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "TimeoutError: The read operation timed out"
+  },
+  {
+    "domain": "erdenetinfo.mn",
+    "checked_at": "2026-10-19T17:56:28.332289+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "erdenetkhot.mn",
+    "checked_at": "2026-10-19T17:56:20.293174+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://erdenetkhot.mn/",
+    "homepage_title": "erdenetkhot.mn"
+  },
+  {
+    "domain": "erdenetlife.mn",
+    "checked_at": "2026-10-19T17:56:17.091821+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://erdenetlife.mn/rss"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://erdenetlife.mn/",
+    "homepage_title": "ErdenetLife.mn | Erdenet Life",
+    "icon_url": "https://erdenetlife.mn/static/assets/imgs/favicon.ico"
+  },
+  {
+    "domain": "erdenetmedee.mn",
+    "checked_at": "2026-10-19T17:56:40.981094+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "erdenetnews.mn",
+    "checked_at": "2026-10-19T17:56:16.526355+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://erdenetnews.mn/rss"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://erdenetnews.mn/",
+    "homepage_title": "ErdenetNews.MN| Эрдэнэт хотын мэдээллийн төв",
+    "icon_url": "https://erdenetnews.mn/media/logo/favicon.ico"
+  },
+  {
+    "domain": "erdenetpost.mn",
+    "checked_at": "2026-10-19T17:56:27.250167+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "erennews.mn",
+    "checked_at": "2026-10-19T17:56:27.158742+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://erennews.mn/",
+    "homepage_title": "ErenNews.MN",
+    "icon_url": "https://erennews.mn/assets/images/favicon.ico"
+  },
+  {
+    "domain": "essa.mn",
+    "checked_at": "2026-10-19T17:57:05.133928+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "estandard.gov.mn",
+    "checked_at": "2026-10-19T17:57:23.442494+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://estandard.gov.mn/website/home.aspx",
+    "homepage_title": "Стандарт, хэмжил зүйн газар - Цахим үйлчилгээний систем",
+    "icon_url": "https://estandard.gov.mn/images/favoicon/favicon.ico"
+  },
+  {
+    "domain": "etcity.mn",
+    "checked_at": "2026-10-19T17:56:35.784099+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "etimes.mn",
+    "checked_at": "2026-10-19T17:56:53.149093+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://etimes.mn/rss"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://etimes.mn/",
+    "homepage_title": "eTimes.mn | Эрдэнэт хотын мэдээлэл",
+    "icon_url": "https://etimes.mn/media/logo/favicon_E0oeULe.png"
+  },
+  {
+    "domain": "etoim.mn",
+    "checked_at": "2026-10-19T17:56:56.380672+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "etv.mn",
+    "checked_at": "2026-10-19T17:56:14.386365+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://www.etv.mn/?feed=rss2",
+      "https://www.etv.mn/?feed=comments-rss2"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://www.etv.mn/",
+    "homepage_title": "ETV - Тод харуулна",
+    "icon_url": "https://www.etv.mn/wp-content/uploads/2018/09/logo-new-year_00000-150x150.png"
+  },
+  {
+    "domain": "etzone.mn",
+    "checked_at": "2026-10-19T17:56:27.301222+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://etzone.mn/",
+    "homepage_title": "ETzone.mn - Цаг хугацааны хөтөч",
+    "icon_url": "https://etzone.mn/assets/img/favicon.ico"
+  },
+  {
+    "domain": "fact.mn",
+    "checked_at": "2026-10-19T17:56:09.196707+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://fact.mn/",
+    "homepage_title": "FACT.MN - ЧУХЛЫГ ОНЦЛОВ",
+    "icon_url": "https://fact.mn/img/favicon.ico"
+  },
+  {
+    "domain": "factnews.mn",
+    "checked_at": "2026-10-19T17:56:33.900338+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://factnews.mn/",
+    "homepage_title": "Site Unavailable"
+  },
+  {
+    "domain": "fbnews.mn",
+    "checked_at": "2026-10-19T17:56:49.462240+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "filmmongolia.gov.mn",
+    "checked_at": "2026-10-19T17:57:23.875989+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "forest.gov.mn",
+    "checked_at": "2026-10-19T17:57:24.509275+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://forest.gov.mn/website/home.aspx",
+    "homepage_title": "Ойн газар | Засгийн газрын хэрэгжүүлэгч агентлаг",
+    "icon_url": "https://forest.gov.mn/images/favoicon/apple-icon-57x57.png"
+  },
+  {
+    "domain": "freedom.mn",
+    "checked_at": "2026-10-19T17:56:58.334338+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://freedom.mn/",
+    "homepage_title": "Freedom.mn Эрх чөлөөний дуу хоолой"
+  },
+  {
+    "domain": "ga.nema.gov.mn",
+    "checked_at": "2026-10-19T17:58:26.977282+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "gadpwd.gov.mn",
+    "checked_at": "2026-10-19T17:57:25.073456+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "gamshgiinsurgalt.nema.gov.mn",
+    "checked_at": "2026-10-19T17:58:26.978738+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "gazar.gov.mn",
+    "checked_at": "2026-10-19T17:57:25.444237+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://gazar.gov.mn/",
+    "homepage_title": "ГЗБГЗЗЕГ - Цахим хуудас"
+  },
+  {
+    "domain": "gereg.mn",
+    "checked_at": "2026-10-19T17:56:09.063145+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://gereg.mn/feed"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://gereg.mn/",
+    "homepage_title": "gereg.mn"
+  },
+  {
+    "domain": "geregtv.mn",
+    "checked_at": "2026-10-19T17:56:29.383025+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "ghsss.gov.mn",
+    "checked_at": "2026-10-19T17:57:25.679349+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://ghsss.gov.mn/",
+    "homepage_title": "Төрийн тусгай албан хаагчдын нэгдсэн эмнэлэг",
+    "icon_url": "https://ghsss.gov.mn/intro/img/favicon.png"
+  },
+  {
+    "domain": "gia.gov.mn",
+    "checked_at": "2026-10-19T17:57:25.755200+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "go.nema.gov.mn",
+    "checked_at": "2026-10-19T17:58:26.979873+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "gobimedia.mn",
+    "checked_at": "2026-10-19T17:57:05.277785+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://gobimedia.mn/engine/rss.php"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://gobimedia.mn/",
+    "homepage_title": "Gobimedia.mn",
+    "icon_url": "https://gobimedia.mn/uploads/fav.png"
+  },
+  {
+    "domain": "gogo.mn",
+    "checked_at": "2026-10-19T17:56:02.961965+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://gogo.mn/",
+    "homepage_title": "GoGo",
+    "icon_url": "https://gogo.mn/icons/favicon-16x16.png"
+  },
+  {
+    "domain": "governor.da.gov.mn",
+    "checked_at": "2026-10-19T17:58:26.984685+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://governor.da.gov.mn/",
+    "homepage_title": "ДАРХАН-УУЛ АЙМГИЙН ЗАХИРАГЧИЙН АЖЛЫН АЛБА",
+    "icon_url": "https://governor.da.gov.mn/static/images/favicon.png"
+  },
+  {
+    "domain": "govi-altai.gov.mn",
+    "checked_at": "2026-10-19T17:57:25.784998+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://govi-altai.gov.mn/",
+    "homepage_title": "Говь-Алтай аймаг",
+    "icon_url": "https://govi-altai.gov.mn/assets/client/img/favicon.ico"
+  },
+  {
+    "domain": "govialtai.mn",
+    "checked_at": "2026-10-19T17:56:39.587441+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "govimedia.mn",
+    "checked_at": "2026-10-19T17:56:53.537101+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "govisumber.gov.mn",
+    "checked_at": "2026-10-19T17:57:25.952904+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://govisumber.gov.mn/?feed=rss2",
+      "https://govisumber.gov.mn/?feed=comments-rss2"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://govisumber.gov.mn/",
+    "homepage_title": "Үндсэн нүүр - Говьсүмбэр аймаг",
+    "icon_url": "https://govisumber.gov.mn/wp-content/uploads/2022/05/cropped-favicon-32x32.png"
+  },
+  {
+    "domain": "govisumbernews.mn",
+    "checked_at": "2026-10-19T17:56:39.717499+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "goymedee.mn",
+    "checked_at": "2026-10-19T17:56:50.390107+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "grandnews.mn",
+    "checked_at": "2026-10-19T17:56:21.278597+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://grandnews.mn/",
+    "homepage_title": "GRAND NEWS - Шүүлтүүргүй, Шуурхай Хиймэл Оюунт Хэвлэл Мэдээлэл",
+    "icon_url": "https://grandnews.mn/favicon.ico"
+  },
+  {
+    "domain": "gsmaf.gov.mn",
+    "checked_at": "2026-10-19T17:57:26.240118+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://gsmaf.gov.mn/",
+    "homepage_title": "Зэвсэгт хүчний Жанжин штаб",
+    "icon_url": "https://gsmaf.gov.mn/public/design/gsmaf.ico"
+  },
+  {
+    "domain": "guren.mn",
+    "checked_at": "2026-10-19T17:56:14.259583+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://guren.mn/engine/rss.php"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://guren.mn/",
+    "homepage_title": "Guren.mn"
+  },
+  {
+    "domain": "habemt.gov.mn",
+    "checked_at": "2026-10-19T17:57:26.285958+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 404: Not Found"
+  },
+  {
+    "domain": "hadaas.mn",
+    "checked_at": "2026-10-19T17:56:23.281642+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://hadaas.mn/",
+    "homepage_title": "Hadaas.mn",
+    "icon_url": "https://hadaas.mn/images/favicon.png"
+  },
+  {
+    "domain": "hardnews.mn",
+    "checked_at": "2026-10-19T17:57:14.371543+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "hud.nema.gov.mn",
+    "checked_at": "2026-10-19T17:58:26.985714+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "hudulmur-halamj.gov.mn",
+    "checked_at": "2026-10-19T17:57:26.514424+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "hunnu.mn",
+    "checked_at": "2026-10-19T17:56:37.765301+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 500: Internal Server Error"
+  },
+  {
+    "domain": "hunnunews.mn",
+    "checked_at": "2026-10-19T17:56:58.640927+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "huvisal.mn",
+    "checked_at": "2026-10-19T17:57:05.486077+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "ibook.mn",
+    "checked_at": "2026-10-19T17:57:11.219413+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "ikhtamir.ar.gov.mn",
+    "checked_at": "2026-10-19T17:58:26.987763+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "TimeoutError: The read operation timed out"
+  },
+  {
+    "domain": "ikon.mn",
+    "checked_at": "2026-10-19T17:56:02.960970+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://ikon.mn/",
+    "homepage_title": "iKon.MN : Next Horizon"
+  },
+  {
+    "domain": "ikonnews.net",
+    "checked_at": "2026-10-19T17:56:50.603267+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "immigration.gov.mn",
+    "checked_at": "2026-10-19T17:57:26.725709+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://immigration.gov.mn/mn/",
+    "homepage_title": "Эхлэл"
+  },
+  {
+    "domain": "inder.mn",
+    "checked_at": "2026-10-19T17:56:46.609917+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://inder.mn/",
+    "homepage_title": "INDER.MN | Мэдээллийн Индэр",
+    "icon_url": "https://inder.mn/img/favicon.ico"
+  },
+  {
+    "domain": "info.mn",
+    "checked_at": "2026-10-19T17:57:06.556679+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "info5.mn",
+    "checked_at": "2026-10-19T17:57:04.847233+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "infocenter.nema.gov.mn",
+    "checked_at": "2026-10-19T17:58:26.992668+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "inspection.gov.mn",
+    "checked_at": "2026-10-19T17:57:27.222428+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://inspection.gov.mn/",
+    "homepage_title": "Index of /"
+  },
+  {
+    "domain": "institute.gov.mn",
+    "checked_at": "2026-10-19T17:57:27.282730+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://institute.gov.mn/",
+    "homepage_title": "Хөдөлмөр, нийгмийн хамгааллын сургалт, үнэлгээ, судалгааны институт",
+    "icon_url": "https://institute.gov.mn/assets/logo-tS2wk-9C.svg"
+  },
+  {
+    "domain": "internews.mn",
+    "checked_at": "2026-10-19T17:56:59.738146+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "investmongolia.gov.mn",
+    "checked_at": "2026-10-19T17:57:27.564574+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://www.investmongolia.gov.mn/en/?feed=rss2",
+      "https://www.investmongolia.gov.mn/en/?feed=comments-rss2"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://www.investmongolia.gov.mn/en/",
+    "homepage_title": "Invest Mongolia | Investment and Trade Agency of Mongolia",
+    "icon_url": "https://www.investmongolia.gov.mn/en/wp-content/uploads/2023/11/cropped-light_im_logo-2-32x32.png"
+  },
+  {
+    "domain": "ipom.gov.mn",
+    "checked_at": "2026-10-19T17:57:27.634353+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://ipom.gov.mn/mn.php",
+    "homepage_title": "Оюуны Өмчийн Газар",
+    "icon_url": "https://ipom.gov.mn/images/tlogo.png"
+  },
+  {
+    "domain": "ipost.mn",
+    "checked_at": "2026-10-19T17:56:58.085664+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://www.ipost.mn/",
+    "homepage_title": "",
+    "icon_url": "https://www.ipost.mn/favicon.ico"
+  },
+  {
+    "domain": "isee.mn",
+    "checked_at": "2026-10-19T17:56:02.979006+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://isee.mn/",
+    "homepage_title": "iSee.mn",
+    "icon_url": "https://isee.mn/images/fav_icon.png"
+  },
+  {
+    "domain": "itoim.mn",
+    "checked_at": "2026-10-19T17:56:02.978473+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://itoim.mn/rss.xml"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://itoim.mn/",
+    "homepage_title": "iToim.mn",
+    "icon_url": "https://itoim.mn/favicon.ico"
+  },
+  {
+    "domain": "jaran.mn",
+    "checked_at": "2026-10-19T17:56:53.936812+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "jargalant.ar.gov.mn",
+    "checked_at": "2026-10-19T17:58:26.995859+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "TimeoutError: The read operation timed out"
+  },
+  {
+    "domain": "jim.mn",
+    "checked_at": "2026-10-19T17:57:03.773689+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://jim.mn/",
+    "homepage_title": "Жинтэй мэдээллийг жимээс - Jim.mn",
+    "icon_url": "https://jim.mn/assets/img/favicons/favicon.png"
+  },
+  {
+    "domain": "jirgee.mn",
+    "checked_at": "2026-10-19T17:56:56.590999+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "kaznews.mn",
+    "checked_at": "2026-10-19T17:56:28.729063+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "domain": "khairkhan.ar.gov.mn",
+    "checked_at": "2026-10-19T17:58:26.997131+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 500: Internal Server Error"
+  },
+  {
+    "domain": "khangai.ar.gov.mn",
+    "checked_at": "2026-10-19T17:58:26.997417+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "TimeoutError: The read operation timed out"
+  },
+  {
+    "domain": "khanlig.info",
+    "checked_at": "2026-10-19T17:56:32.112179+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "khanuul.nutag.mn",
+    "checked_at": "2026-10-19T17:56:44.476760+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "khashaat.ar.gov.mn",
+    "checked_at": "2026-10-19T17:58:26.997906+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "TimeoutError: The read operation timed out"
+  },
+  {
+    "domain": "khe.nema.gov.mn",
+    "checked_at": "2026-10-19T17:58:26.998188+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "khentii.gov.mn",
+    "checked_at": "2026-10-19T17:57:28.151772+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://khentii.mn/",
+    "homepage_title": "Хэнтий аймаг"
+  },
+  {
+    "domain": "khentiid.mn",
+    "checked_at": "2026-10-19T17:56:42.387012+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "khentiinews.mn",
+    "checked_at": "2026-10-19T17:57:09.722115+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "khoa.nema.gov.mn",
+    "checked_at": "2026-10-19T17:58:26.999208+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "khongor.da.gov.mn",
+    "checked_at": "2026-10-19T17:58:26.999491+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://khongor.da.gov.mn/",
+    "homepage_title": "Хонгор сум - Нүүр хуудас",
+    "icon_url": "https://khongor.da.gov.mn/assets/images/favicon.ico"
+  },
+  {
+    "domain": "khongorinfo.mn",
+    "checked_at": "2026-10-19T17:57:03.723910+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "khotont.ar.gov.mn",
+    "checked_at": "2026-10-19T17:58:26.999937+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "khovd.nutag.mn",
+    "checked_at": "2026-10-19T17:56:42.106670+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "khovdinfo.mn",
+    "checked_at": "2026-10-19T17:56:59.575089+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "khovdnews.mn",
+    "checked_at": "2026-10-19T17:57:13.923329+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "khovdtimes.mn",
+    "checked_at": "2026-10-19T17:57:14.503065+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "khovsgol.gov.mn",
+    "checked_at": "2026-10-19T17:57:28.812062+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://khovsgol.gov.mn/",
+    "homepage_title": "ХӨВСГӨЛ АЙМГИЙН ЗАСАГ ДАРГЫН ТАМГЫН ГАЗАР",
+    "icon_url": "https://khovsgol.gov.mn/assets/client/img/favicon.png"
+  },
+  {
+    "domain": "khu.nema.gov.mn",
+    "checked_at": "2026-10-19T17:58:31.177731+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "khugjil.mn",
+    "checked_at": "2026-10-19T17:57:04.567700+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://khugjil.mn/",
+    "homepage_title": "Khugjil.MN - Хөгжилд хурд нэмнэ",
+    "icon_url": "https://khugjil.mn/assets/images/logo.jpg"
+  },
+  {
+    "domain": "khurdan.gov.mn",
+    "checked_at": "2026-10-19T17:57:28.897280+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://khurdan.gov.mn/feed"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://khurdan.gov.mn/",
+    "homepage_title": "Төрийн цахим үйлчилгээний зохицуулалтын газар – ТЦҮЗГ",
+    "icon_url": "https://khurdan.gov.mn/wp-content/uploads/2023/01/cropped-ТҮЗГ-site-logo-32x32.png"
+  },
+  {
+    "domain": "khuvsgul.nutag.mn",
+    "checked_at": "2026-10-19T17:56:42.262810+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "khuvsguliinungu.mn",
+    "checked_at": "2026-10-19T17:56:47.824926+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://khuvsguliinungu.mn/",
+    "homepage_title": "Хөвсгөл аймгийн мэдээллийн өдөр тутмын мэдээллийн сайт",
+    "icon_url": "https://khuvsguliinungu.mn/images/favicon.png"
+  },
+  {
+    "domain": "khuvsgulinfo.mn",
+    "checked_at": "2026-10-19T17:57:02.580786+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "kingnews.mn",
+    "checked_at": "2026-10-19T17:56:46.306253+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "lac.gov.mn",
+    "checked_at": "2026-10-19T17:57:29.129896+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "leader.mn",
+    "checked_at": "2026-10-19T17:56:23.646289+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://leader.mn/",
+    "homepage_title": "Мэдээллийн сайт  - Лидер медиа",
+    "icon_url": "https://leader.mn/uploads/logo/favicon_694ab18af004a0-43986541.png"
+  },
+  {
+    "domain": "lemonpress.mn",
+    "checked_at": "2026-10-19T17:56:08.404374+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://lemonpress.mn/",
+    "homepage_title": "LemonPress",
+    "icon_url": "https://lemonpress.mn/fav/apple-icon-180x180.png"
+  },
+  {
+    "domain": "lives.mn",
+    "checked_at": "2026-10-19T17:56:56.419655+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "livetv.mn",
+    "checked_at": "2026-10-19T17:56:02.987744+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://www.livetv.mn/",
+    "homepage_title": "LiveTV.mn - Watch Different",
+    "icon_url": "https://www.livetv.mn/media/site/favicon/favicon_9P98dO7.ico"
+  },
+  {
+    "domain": "lnews.mn",
+    "checked_at": "2026-10-19T17:56:53.685834+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "lolo.mn",
+    "checked_at": "2026-10-19T17:57:07.319913+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "lpost.mn",
+    "checked_at": "2026-10-19T17:56:55.154180+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "mand.mn",
+    "checked_at": "2026-10-19T17:56:54.243530+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://mand.mn/feed/",
+      "https://mand.mn/home/feed/"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://mand.mn/",
+    "homepage_title": "Home",
+    "icon_url": "https://mand.mn/wp-content/uploads/2020/07/cropped-mand-logo-hd-1-32x32.jpg"
+  },
+  {
+    "domain": "masm.gov.mn",
+    "checked_at": "2026-10-19T17:57:29.146439+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://masm.gov.mn/",
+    "homepage_title": "Стандарт хэмжил зүйн газар",
+    "icon_url": "https://masm.gov.mn/images/favoicon/apple-icon-57x57.png"
+  },
+  {
+    "domain": "mass.mn",
+    "checked_at": "2026-10-19T17:56:02.985838+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://mass.mn/",
+    "homepage_title": "MASS.mn - Түрүүлж мэдээлнэ",
+    "icon_url": "https://mass.mn/img/fav.png"
+  },
+  {
+    "domain": "mcaa.gov.mn",
+    "checked_at": "2026-10-19T17:57:29.486314+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://mcaa.gov.mn/",
+    "homepage_title": "Welcome to MCAA Portal",
+    "icon_url": "https://mcaa.gov.mn/logo2.png"
+  },
+  {
+    "domain": "mcud.gov.mn",
+    "checked_at": "2026-10-19T17:57:29.671432+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://mcud.gov.mn/",
+    "homepage_title": "ХОТ БАЙГУУЛАЛТ,БАРИЛГА,ОРОН СУУЦЖУУЛАЛТЫН ЯАМ",
+    "icon_url": "https://mcud.gov.mn/resource/mcud/favicon/favicon.ico"
+  },
+  {
+    "domain": "mddc.gov.mn",
+    "checked_at": "2026-10-19T17:57:30.154142+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "mddic.gov.mn",
+    "checked_at": "2026-10-19T17:57:30.321730+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://mddic.gov.mn/mn/feed/"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://mddic.gov.mn/mn/",
+    "homepage_title": "ЦХИХХЯ - Цахим хөгжил, инновац, харилцаа холбооны яам"
+  },
+  {
+    "domain": "mecc.gov.mn",
+    "checked_at": "2026-10-19T17:57:30.676697+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://mecc.gov.mn/",
+    "homepage_title": "Байгаль орчин, уур амьсгалын өөрчлөлтийн яам | MECC",
+    "icon_url": "https://mecc.gov.mn/imgs/favicon.png"
+  },
+  {
+    "domain": "med.gov.mn",
+    "checked_at": "2026-10-19T17:57:30.873681+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://med.gov.mn/feed"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://med.gov.mn/",
+    "homepage_title": "Эдийн засаг, xөгжлийн яам | Ministry of Economy and Development"
+  },
+  {
+    "domain": "medee.mn",
+    "checked_at": "2026-10-19T17:56:02.975870+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "IncompleteRead: IncompleteRead(114688 bytes read)"
+  },
+  {
+    "domain": "medeelne.mn",
+    "checked_at": "2026-10-19T17:56:30.930812+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "meds.gov.mn",
+    "checked_at": "2026-10-19T17:57:31.149207+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "met.gov.mn",
+    "checked_at": "2026-10-19T17:57:31.752979+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "mfa.gov.mn",
+    "checked_at": "2026-10-19T17:57:32.315220+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://mfa.gov.mn/",
+    "homepage_title": ""
+  },
+  {
+    "domain": "mgltv.mn",
+    "checked_at": "2026-10-19T17:57:05.866971+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "mimr.gov.mn",
+    "checked_at": "2026-10-19T17:57:32.926105+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://www.mimr.gov.mn/feed/"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://www.mimr.gov.mn/",
+    "homepage_title": "Аж үйлдвэр, эрдэс баялгийн яам – Аж үйлдвэр, эрдэс баялгийн яам",
+    "icon_url": "https://www.mimr.gov.mn/wp-content/uploads/2021/06/favicon.ico"
+  },
+  {
+    "domain": "miss.mn",
+    "checked_at": "2026-10-19T17:56:45.202842+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://miss.mn/",
+    "homepage_title": "Site Unavailable"
+  },
+  {
+    "domain": "mlife.mn",
+    "checked_at": "2026-10-19T17:56:21.807081+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://mlife.mn/feed"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://mlife.mn/",
+    "homepage_title": "mlife.mn",
+    "icon_url": "https://mlife.mn/wp-content/uploads/2023/10/fav.jpeg"
+  },
+  {
+    "domain": "mlsp.gov.mn",
+    "checked_at": "2026-10-19T17:57:33.021525+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://mlsp.gov.mn/",
+    "homepage_title": "Нүүр хуудас",
+    "icon_url": "https://mlsp.gov.mn/assets/images/favicon.ico"
+  },
+  {
+    "domain": "mmhi.gov.mn",
+    "checked_at": "2026-10-19T17:57:33.033452+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://www.mimr.gov.mn/",
+    "homepage_title": "Аж үйлдвэр, эрдэс баялгийн яам – Аж үйлдвэр, эрдэс баялгийн яам"
+  },
+  {
+    "domain": "mmnews.mn",
+    "checked_at": "2026-10-19T17:56:22.147540+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://mmnews.mn/",
+    "homepage_title": "Дэлхийн монголчуудын цахим элч www.mmnews.mn",
+    "icon_url": "https://mmnews.mn/icon.png"
+  },
+  {
+    "domain": "mmra.gov.mn",
+    "checked_at": "2026-10-19T17:57:33.426124+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://mmra.gov.mn/default.html",
+    "homepage_title": "ЭЭХХЗГ - Засгийн газрын хэрэгжүүлэгч агентлаг",
+    "icon_url": "https://mmra.gov.mn/style/images/favicon.png"
+  },
+  {
+    "domain": "mnb.mn",
+    "checked_at": "2026-10-19T17:56:02.967607+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://mnb.mn/",
+    "homepage_title": ""
+  },
+  {
+    "domain": "mndu.gov.mn",
+    "checked_at": "2026-10-19T17:57:33.904047+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://mndu.gov.mn/",
+    "homepage_title": "Үндэсний Батлан Хамгаалахын Их Сургууль — ҮБХИС",
+    "icon_url": "https://mndu.gov.mn/favicon.ico"
+  },
+  {
+    "domain": "mng.nema.gov.mn",
+    "checked_at": "2026-10-19T17:58:31.178497+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://mng.nema.gov.mn/",
+    "homepage_title": "ᠮᠣᠩᠭᠣᠯ"
+  },
+  {
+    "domain": "moc.gov.mn",
+    "checked_at": "2026-10-19T17:57:34.056690+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://mocsty.gov.mn/",
+    "homepage_title": "Соёл, спорт, аялал жуулчлал, залуучуудын яам | Соёл, спорт, аялал жуулчлал, залуучуудын яам"
+  },
+  {
+    "domain": "mocsty.gov.mn",
+    "checked_at": "2026-10-19T17:57:34.544708+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://mocsty.gov.mn/",
+    "homepage_title": "Соёл, спорт, аялал жуулчлал, залуучуудын яам | Соёл, спорт, аялал жуулчлал, залуучуудын яам",
+    "icon_url": "https://mocsty.gov.mn/zasgiin-gazar.png"
+  },
+  {
+    "domain": "mod.gov.mn",
+    "checked_at": "2026-10-19T17:57:34.988125+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://mod.gov.mn/?feed=rss2",
+      "https://mod.gov.mn/?feed=comments-rss2"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://mod.gov.mn/",
+    "homepage_title": "Монгол Улсын Батлан хамгаалах яам | Монгол улсын төлөө зүтгэе",
+    "icon_url": "https://mod.gov.mn/wp-content/uploads/2020/10/mn-logo-square.svg"
+  },
+  {
+    "domain": "moe.gov.mn",
+    "checked_at": "2026-10-19T17:57:35.000634+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://moe.gov.mn/feed"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://moe.gov.mn/",
+    "homepage_title": "Боловсролын яам"
+  },
+  {
+    "domain": "mof.gov.mn",
+    "checked_at": "2026-10-19T17:57:35.081862+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "TimeoutError: The read operation timed out"
+  },
+  {
+    "domain": "mofa.da.gov.mn",
+    "checked_at": "2026-10-19T17:58:31.385592+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://mofa.da.gov.mn/",
+    "homepage_title": "Дархан-Уул аймгийн Хүнс, хөдөө аж ахуйн газар",
+    "icon_url": "https://mofa.da.gov.mn/css/index-logo.png"
+  },
+  {
+    "domain": "mofa.gov.mn",
+    "checked_at": "2026-10-19T17:57:35.256446+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://mofa.gov.mn/",
+    "homepage_title": "Хүнс, хөдөө аж ахуй, хөнгөн үйлдвэрийн яам",
+    "icon_url": "https://mofa.gov.mn/images/logo/favicon.ico"
+  },
+  {
+    "domain": "moh.gov.mn",
+    "checked_at": "2026-10-19T17:57:35.694530+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://moh.gov.mn/",
+    "homepage_title": "Эрүүл мэндийн яам"
+  },
+  {
+    "domain": "mojha.gov.mn",
+    "checked_at": "2026-10-19T17:57:35.819501+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "moment.mn",
+    "checked_at": "2026-10-19T17:56:52.841100+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://moment.mn/",
+    "homepage_title": "Хором бүрийг мэдэр!",
+    "icon_url": "https://moment.mn/images/favicon.png"
+  },
+  {
+    "domain": "mongolcom.mn",
+    "checked_at": "2026-10-19T17:56:51.578749+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "mongolcomment.mn",
+    "checked_at": "2026-10-19T17:56:44.998598+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://mongolcomment.mn/",
+    "homepage_title": "Монгол Коммент | Мэдээ мэдээллийн веб хуудас"
+  },
+  {
+    "domain": "mongolia.gov.mn",
+    "checked_at": "2026-10-19T17:57:35.993002+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://mongolia.gov.mn/",
+    "homepage_title": "МОНГОЛ УЛСЫН ЗАСГИЙН ГАЗАР"
+  },
+  {
+    "domain": "mongolianminingjournal.com",
+    "checked_at": "2026-10-19T17:56:26.785477+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://www.mongolianminingjournal.com/",
+    "homepage_title": "The Mongolian Mining Journal"
+  },
+  {
+    "domain": "mongolmedia.mn",
+    "checked_at": "2026-10-19T17:57:01.440694+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "mongolpress.mn",
+    "checked_at": "2026-10-19T17:57:02.101860+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "mongoltur.mn",
+    "checked_at": "2026-10-19T17:56:48.572356+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://mongoltur.mn/feed"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://mongoltur.mn/",
+    "homepage_title": "mongoltur.mn - Монгол түмний төлөө",
+    "icon_url": "https://mongoltur.mn/wp-content/uploads/2025/10/cropped-logo-32x32.png"
+  },
+  {
+    "domain": "mongoltv.mn",
+    "checked_at": "2026-10-19T17:56:18.113330+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://mongoltv.mn/feed"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://mongoltv.mn/",
+    "homepage_title": "Монгол ТВ"
+  },
+  {
+    "domain": "montoim.mn",
+    "checked_at": "2026-10-19T17:56:49.710124+00:00",
+    "homepage_status": "blocked_or_placeholder",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://montoim.mn/cgi-sys/suspendedpage.cgi",
+    "homepage_title": "Account Suspended"
+  },
+  {
+    "domain": "montsame.mn",
+    "checked_at": "2026-10-19T17:56:02.963200+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "TimeoutError: The read operation timed out"
+  },
+  {
+    "domain": "mpa.gov.mn",
+    "checked_at": "2026-10-19T17:57:36.194921+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://mpa.gov.mn/",
+    "homepage_title": "Монгол улсын тусгай хамгаалалттай газар",
+    "icon_url": "https://mpa.gov.mn/web-assets/images/favicon.ico"
+  },
+  {
+    "domain": "mpr.gov.mn",
+    "checked_at": "2026-10-19T17:57:36.412569+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://mpr.gov.mn/",
+    "homepage_title": "Барьцааны Мэдэгдэл Бүртгэх Цахим Мэдээллийн Сан",
+    "icon_url": "https://mpr.gov.mn/favicon.ico"
+  },
+  {
+    "domain": "mpress.mn",
+    "checked_at": "2026-10-19T17:56:19.797742+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://mpress.mn/",
+    "homepage_title": "Тэгш эрхийн төлөө | mPress.mn",
+    "icon_url": "https://mpress.mn/thumb/timthumb.php?src=storage/assets/icon.png&w=152&h=152"
+  },
+  {
+    "domain": "mrpam.gov.mn",
+    "checked_at": "2026-10-19T17:57:36.451440+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://mrpam.gov.mn/rss"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://mrpam.gov.mn/",
+    "homepage_title": "Ашигт Mалтмал, Газрын Тосны Газар",
+    "icon_url": "https://mrpam.gov.mn/public/settings/favico.ico"
+  },
+  {
+    "domain": "mrt.gov.mn",
+    "checked_at": "2026-10-19T17:57:36.786195+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://mrt.gov.mn/",
+    "homepage_title": "Зам, тээврийн яам"
+  },
+  {
+    "domain": "mrtd.gov.mn",
+    "checked_at": "2026-10-19T17:57:36.801973+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://mrt.gov.mn/",
+    "homepage_title": "Зам, тээврийн яам"
+  },
+  {
+    "domain": "msocial.mn",
+    "checked_at": "2026-10-19T17:57:10.017638+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "mta.gov.mn",
+    "checked_at": "2026-10-19T17:57:36.951741+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://mta.gov.mn/home",
+    "homepage_title": "Татварын Ерөнхий Газар",
+    "icon_url": "https://mta.gov.mn/static/assets/favicon.png"
+  },
+  {
+    "domain": "murdugch.mn",
+    "checked_at": "2026-10-19T17:57:14.566761+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "myarkhangai.mn",
+    "checked_at": "2026-10-19T17:57:09.912912+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "naa-105.nema.gov.mn",
+    "checked_at": "2026-10-19T17:58:31.490869+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "nalaikh.nutag.mn",
+    "checked_at": "2026-10-19T17:56:43.435879+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "namem.gov.mn",
+    "checked_at": "2026-10-19T17:57:38.683850+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://namem.gov.mn/",
+    "homepage_title": "Цаг уур, орчны шинжилгээний газар",
+    "icon_url": "https://namem.gov.mn/favicon.ico"
+  },
+  {
+    "domain": "naog.gov.mn",
+    "checked_at": "2026-10-19T17:57:38.746369+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://naog.gov.mn/",
+    "homepage_title": "Удирдлагын Академи",
+    "icon_url": "https://naog.gov.mn/naog-32.png"
+  },
+  {
+    "domain": "nature.bu.gov.mn",
+    "checked_at": "2026-10-19T17:58:32.260022+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://nature.bu.gov.mn/",
+    "homepage_title": "Булган аймгийн Байгаль орчны газар",
+    "icon_url": "https://nature.bu.gov.mn/images/favicon.ico"
+  },
+  {
+    "domain": "ncch.gov.mn",
+    "checked_at": "2026-10-19T17:57:39.175759+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://ncch.gov.mn/",
+    "homepage_title": "Нүүр хуудас - Соёлын өвийн үндэсний төв",
+    "icon_url": "https://ncch.gov.mn/images/favicon.ico?v=1"
+  },
+  {
+    "domain": "ncge.gov.mn",
+    "checked_at": "2026-10-19T17:57:39.666015+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://www.ncge.gov.mn/feed"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://www.ncge.gov.mn/",
+    "homepage_title": "Жендэрийн үндэсний хороо",
+    "icon_url": "https://www.ncge.gov.mn/wp-content/themes/ncge/images/fav.png"
+  },
+  {
+    "domain": "ncoe.gov.mn",
+    "checked_at": "2026-10-19T17:57:39.872733+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://ncoe.gov.mn/",
+    "homepage_title": "ЗАСГИЙН ГАЗРЫН ХЯНАЛТ, ҮНЭЛГЭЭНИЙ  ҮНДЭСНИЙ ХОРОО",
+    "icon_url": "https://ncoe.gov.mn/wp-content/uploads/fav-1.png"
+  },
+  {
+    "domain": "nd.nema.gov.mn",
+    "checked_at": "2026-10-19T17:58:32.505939+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "nda.gov.mn",
+    "checked_at": "2026-10-19T17:57:40.183373+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "ndaatgal.ar.gov.mn",
+    "checked_at": "2026-10-19T17:58:32.544572+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://ndaatgal.ar.gov.mn/",
+    "homepage_title": "Архангай аймгийн Нийгмийн даатгалын газар",
+    "icon_url": "https://ndaatgal.ar.gov.mn/img/favicon.ico"
+  },
+  {
+    "domain": "neelttei.com",
+    "checked_at": "2026-10-19T17:56:36.326135+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://neelttei.com/",
+    "homepage_title": "neelttei.com: Худалдааны платформ",
+    "icon_url": "https://neelttei.com/favicon.ico"
+  },
+  {
+    "domain": "neguun.mn",
+    "checked_at": "2026-10-19T17:56:26.684907+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://neguun.mn/rss.xml"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://neguun.mn/",
+    "homepage_title": "НЭГҮҮН — Мэдээллийн сайт | НЭГҮҮН",
+    "icon_url": "https://neguun.mn/favicon.ico"
+  },
+  {
+    "domain": "nema.gov.mn",
+    "checked_at": "2026-10-19T17:57:40.615104+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://nema.gov.mn/",
+    "homepage_title": "Онцгой байдлын ерөнхий газар - Монгол улсын засгийн газрын тохируулагч агент",
+    "icon_url": "https://nema.gov.mn/uploads/site/1533/site_config/favicon/4ff41f8c32d9e633df6c4699d75e01ff0affebfd.png"
+  },
+  {
+    "domain": "newkhovd.mn",
+    "checked_at": "2026-10-19T17:57:06.842992+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "news.khentiinews.mn",
+    "checked_at": "2026-10-19T17:56:30.347592+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "news.mn",
+    "checked_at": "2026-10-19T17:56:02.962654+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://news.mn/",
+    "homepage_title": "News.MN - Мэдээллийн эх сурвалж",
+    "icon_url": "https://news.mn/wp-content/themes/newsmn/assets/images/favicon.png"
+  },
+  {
+    "domain": "newslife.mn",
+    "checked_at": "2026-10-19T17:56:09.431970+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://newslife.mn/feed"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://newslife.mn/",
+    "homepage_title": "newslife.mn",
+    "icon_url": "https://newslife.mn/wp-content/themes/newslife/images/fav.png"
+  },
+  {
+    "domain": "newslive.mn",
+    "checked_at": "2026-10-19T17:56:47.042175+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "newsmall.mn",
+    "checked_at": "2026-10-19T17:57:04.570838+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://newsmall.mn/?feed=rss2",
+      "https://newsmall.mn/?feed=comments-rss2"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://newsmall.mn/",
+    "homepage_title": "Newsmall.mn – Улс төр мэдээллийн сайт",
+    "icon_url": "https://newsmall.mn/wp-content/uploads/2025/09/cropped-cropped-newsbreeze-Imag-adver-3-32x32.webp"
+  },
+  {
+    "domain": "newsmongolia.mn",
+    "checked_at": "2026-10-19T17:56:12.820061+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://newsmongolia.mn/",
+    "homepage_title": "newsmongolia",
+    "icon_url": "https://newsmongolia.mn/storage/thumbnails/favicon_16_16.png"
+  },
+  {
+    "domain": "newspress.mn",
+    "checked_at": "2026-10-19T17:56:48.197831+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://newspress.mn/",
+    "homepage_title": "NewsPress",
+    "icon_url": "https://newspress.mn/assets/favicon/apple-icon-57x57.png"
+  },
+  {
+    "domain": "newswall.mn",
+    "checked_at": "2026-10-19T17:56:09.062164+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://newswall.mn/?feed=rss2",
+      "https://newswall.mn/?feed=comments-rss2"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://newswall.mn/",
+    "homepage_title": "NewsWall",
+    "icon_url": "https://newswall.mn/wp-content/uploads/2020/05/cropped-logo-color-1-32x32.jpg"
+  },
+  {
+    "domain": "newsweek.mn",
+    "checked_at": "2026-10-19T17:57:00.197002+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "newsworld.mn",
+    "checked_at": "2026-10-19T17:56:46.532170+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "nfa.gov.mn",
+    "checked_at": "2026-10-19T17:57:40.651281+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://nfa.gov.mn/",
+    "homepage_title": "ШҮҮХ ШИНЖИЛГЭЭНИЙ ЕРӨНХИЙ ГАЗАР",
+    "icon_url": "https://nfa.gov.mn/more/site/img/logo/logo-light2.png"
+  },
+  {
+    "domain": "ngs.gov.mn",
+    "checked_at": "2026-10-19T17:57:41.015034+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://ngs.gov.mn/feed/"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://ngs.gov.mn/",
+    "homepage_title": "Нүүр - Үндэсний геологийн алба",
+    "icon_url": "https://ngs.gov.mn/wp-content/uploads/2022/12/cropped-logo-32x32.png"
+  },
+  {
+    "domain": "nhm.gov.mn",
+    "checked_at": "2026-10-19T17:57:41.076607+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "nidr.nema.gov.mn",
+    "checked_at": "2026-10-19T17:58:32.554025+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "niigem.mn",
+    "checked_at": "2026-10-19T17:56:23.752868+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://niigem.mn/",
+    "homepage_title": "Niigem.mn - Мэдээний портал",
+    "icon_url": "https://niigem.mn/favicon.png?v=2"
+  },
+  {
+    "domain": "niigmiintoli.mn",
+    "checked_at": "2026-10-19T17:56:57.386911+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "niislelinfo.mn",
+    "checked_at": "2026-10-19T17:57:02.690777+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "niisleltimes.mn",
+    "checked_at": "2026-10-19T17:56:21.039933+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://niisleltimes.mn/feed"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://niisleltimes.mn/",
+    "homepage_title": "Нүүр - Niislel Times",
+    "icon_url": "https://niisleltimes.mn/wp-content/uploads/2023/02/cropped-niislel-times-32x32.png"
+  },
+  {
+    "domain": "nio.mn",
+    "checked_at": "2026-10-19T17:56:18.280867+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://nio.mn/feed/"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://nio.mn/",
+    "homepage_title": "NIO.mn – Мэргэжлийн, мэдрэмжтэй",
+    "icon_url": "https://nio.mn/wp-content/uploads/2025/09/cropped-nio-favicon.webp"
+  },
+  {
+    "domain": "nli.gov.mn",
+    "checked_at": "2026-10-19T17:57:41.093230+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://nli.gov.mn/feed/"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://nli.gov.mn/",
+    "homepage_title": "Нүүр хуудас - Хууль зүйн үндэсний хүрээлэн",
+    "icon_url": "https://nli.gov.mn/wp-content/themes/nli2020/favicon.ico"
+  },
+  {
+    "domain": "noorog.mn",
+    "checked_at": "2026-10-19T17:56:26.459349+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://www.noorog.mn/",
+    "homepage_title": "Noorog"
+  },
+  {
+    "domain": "nsc.gov.mn",
+    "checked_at": "2026-10-19T17:57:41.232995+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://nsc.gov.mn/mn",
+    "homepage_title": "Монгол Улсын Үндэсний аюулгүй байдлын зөвлөл"
+  },
+  {
+    "domain": "nutag.mn",
+    "checked_at": "2026-10-19T17:56:44.645776+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://nutag.mn/engine/rss.php"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://nutag.mn/",
+    "homepage_title": "Nutag.mn",
+    "icon_url": "https://nutag.mn/templates/nutag/images/fav.png"
+  },
+  {
+    "domain": "nuuts.mn",
+    "checked_at": "2026-10-19T17:56:44.673457+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://www.nuuts.mn/",
+    "homepage_title": "НУУЦ МАТЕРИАЛУУД | Эрэн сурвалжлах нэвтрүүлэг"
+  },
+  {
+    "domain": "och.mn",
+    "checked_at": "2026-10-19T17:56:51.109087+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "offshore.mn",
+    "checked_at": "2026-10-19T17:57:08.712228+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "olloo.mn",
+    "checked_at": "2026-10-19T17:56:08.498880+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "domain": "omnogovi.gov.mn",
+    "checked_at": "2026-10-19T17:57:41.251974+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "onlinetv.mn",
+    "checked_at": "2026-10-19T17:57:13.851172+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://onlinetv.mn/",
+    "homepage_title": "onlinetvmn.com",
+    "icon_url": "https://onlinetv.mn/favicon.ico"
+  },
+  {
+    "domain": "ontsgoi.gov.mn",
+    "checked_at": "2026-10-19T17:57:41.414374+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "ontslokh.mn",
+    "checked_at": "2026-10-19T17:56:48.012358+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://www.ontslokh.mn/feed",
+      "https://www.ontslokh.mn/sample-page/feed"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://www.ontslokh.mn/",
+    "homepage_title": "ontslokh.mn | Уншихад урамтай",
+    "icon_url": "https://www.ontslokh.mn/wp-content/themes/twentytwelve/ace.png"
+  },
+  {
+    "domain": "opendata.gov.mn",
+    "checked_at": "2026-10-19T17:57:41.984959+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://opendata.gov.mn/",
+    "homepage_title": "OpenData MN",
+    "icon_url": "https://opendata.gov.mn/favicon.ico"
+  },
+  {
+    "domain": "opennews.mn",
+    "checked_at": "2026-10-19T17:56:46.805716+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "ord.mn",
+    "checked_at": "2026-10-19T17:56:14.259768+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://www.ord.mn/engine/rss.php"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://ord.mn/",
+    "homepage_title": "Ord.mn | Mongolian Mining",
+    "icon_url": "https://ord.mn/templates/ordmn/images/favicon.ico"
+  },
+  {
+    "domain": "orkhonvalley.gov.mn",
+    "checked_at": "2026-10-19T17:57:42.710634+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://orkhonvalley.gov.mn/",
+    "homepage_title": "Дэлхийн өв - Орхоны хөндийн соёлын дурсгалт газар",
+    "icon_url": "https://orkhonvalley.gov.mn/images/favicon.ico?v=1"
+  },
+  {
+    "domain": "otoch.mn",
+    "checked_at": "2026-10-19T17:56:14.291495+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://otoch.mn/engine/rss.php"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://otoch.mn/",
+    "homepage_title": "Otoch.mn"
+  },
+  {
+    "domain": "paparazzi.mn",
+    "checked_at": "2026-10-19T17:56:11.252160+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://paparazzi.mn/",
+    "homepage_title": "Папарацци.мн",
+    "icon_url": "https://paparazzi.mn/images/www/icons/apple-touch-icon-ipad-retina-152x152-precomposed.png"
+  },
+  {
+    "domain": "pcsp.gov.mn",
+    "checked_at": "2026-10-19T17:57:42.815590+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://pcsp.gov.mn/?feed=rss2",
+      "https://pcsp.gov.mn/?feed=comments-rss2"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://pcsp.gov.mn/",
+    "homepage_title": "Төрийн өмчийн бодлого зохицуулалтын газар – Төрийн өмчийн бодлого зохицуулалтын газар",
+    "icon_url": "https://pcsp.gov.mn/wp-content/uploads/2022/02/cropped-sojombo11-32x32.jpg"
+  },
+  {
+    "domain": "peak.mn",
+    "checked_at": "2026-10-19T17:56:08.436502+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://peak.mn/",
+    "homepage_title": "Өргөн өнцгөөр | Peak News",
+    "icon_url": "https://peak.mn/apple-touch-icon.png"
+  },
+  {
+    "domain": "peoplenews.mn",
+    "checked_at": "2026-10-19T17:56:36.599422+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "police.gov.mn",
+    "checked_at": "2026-10-19T17:57:43.592140+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://police.gov.mn/",
+    "homepage_title": "Цагдаагийн ерөнхий газар",
+    "icon_url": "https://police.gov.mn/resource/policenew/favicon/favicon.ico"
+  },
+  {
+    "domain": "politic.mn",
+    "checked_at": "2026-10-19T17:56:28.232116+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://politic.mn/",
+    "homepage_title": "Улс төрийн суваг - POLITIC.mn",
+    "icon_url": "https://politic.mn/favicon.png"
+  },
+  {
+    "domain": "populist.mn",
+    "checked_at": "2026-10-19T17:57:15.315735+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "posted.mn",
+    "checked_at": "2026-10-19T17:56:08.031360+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://www.posted.mn/",
+    "homepage_title": "Posted | Залуусын орон зай",
+    "icon_url": "https://www.posted.mn/favicon.ico"
+  },
+  {
+    "domain": "power.mn",
+    "checked_at": "2026-10-19T17:57:02.594036+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "problem.mn",
+    "checked_at": "2026-10-19T17:57:05.713127+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://problem.mn/index.php?mod=rss",
+      "https://problem.mn/index.php?mod=rss&rssmode=turbo",
+      "https://problem.mn/index.php?mod=rss&rssmode=dzen"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://problem.mn/",
+    "homepage_title": "Problem.mn",
+    "icon_url": "https://problem.mn/uploads/favicon.png"
+  },
+  {
+    "domain": "publicinvestment.gov.mn",
+    "checked_at": "2026-10-19T17:57:43.884936+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "rtbn.gov.mn",
+    "checked_at": "2026-10-19T17:57:44.197764+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://rtbn.gov.mn/",
+    "homepage_title": "Радио Телевизийн Үндэсний Сүлжээ",
+    "icon_url": "https://rtbn.gov.mn/wp-content/uploads/2023/09/cropped-favicon-32x32.png"
+  },
+  {
+    "domain": "said.mn",
+    "checked_at": "2026-10-19T17:56:48.509205+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "saihan.mn",
+    "checked_at": "2026-10-19T17:56:57.228982+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "sayannews.mn",
+    "checked_at": "2026-10-19T17:56:53.043065+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "sbd.nutag.mn",
+    "checked_at": "2026-10-19T17:56:44.169676+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "sbinfo.mn",
+    "checked_at": "2026-10-19T17:56:48.777629+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "scandal.mn",
+    "checked_at": "2026-10-19T17:56:45.266258+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://scandal.mn/engine/rss.php"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://scandal.mn/",
+    "homepage_title": "Scandal.mn - Мэдээллийн нэгдсэн сан",
+    "icon_url": "https://scandal.mn/templates/scandalv2/images/fav.png"
+  },
+  {
+    "domain": "sdg.gov.mn",
+    "checked_at": "2026-10-19T17:57:44.793902+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "sedev.mn",
+    "checked_at": "2026-10-19T17:57:13.564724+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "see.mn",
+    "checked_at": "2026-10-19T17:56:25.953907+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://see.mn/feed"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://see.mn/",
+    "homepage_title": "Home - www.see.mn",
+    "icon_url": "https://see.mn/wp-content/uploads/2017/11/cropped-newsfeed-80x80-150x150.png"
+  },
+  {
+    "domain": "seen.mn",
+    "checked_at": "2026-10-19T17:56:15.182374+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://seen.mn/",
+    "homepage_title": "Seen.mn — Харах өнцөг – Өөрөөр харах эхлэл"
+  },
+  {
+    "domain": "selenge.gov.mn",
+    "checked_at": "2026-10-19T17:57:44.925461+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "selengeinfo.mn",
+    "checked_at": "2026-10-19T17:57:00.012890+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "selengenutag.mn",
+    "checked_at": "2026-10-19T17:56:41.505879+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "sensatsi.mn",
+    "checked_at": "2026-10-19T17:56:33.863784+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://sensatsi.mn/",
+    "homepage_title": "Сенсаци.мн",
+    "icon_url": "https://sensatsi.mn/images/favicon.png"
+  },
+  {
+    "domain": "ser.mn",
+    "checked_at": "2026-10-19T17:57:13.680165+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "setguul.mn",
+    "checked_at": "2026-10-19T17:57:05.961935+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "shagai.mn",
+    "checked_at": "2026-10-19T17:56:32.747823+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "sharmedee.mn",
+    "checked_at": "2026-10-19T17:57:10.018227+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "shilen.gov.mn",
+    "checked_at": "2026-10-19T17:57:44.954934+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://shilen.gov.mn/",
+    "homepage_title": "Шил ажиллагаа",
+    "icon_url": "https://shilen.gov.mn/images/logo/favicon.ico"
+  },
+  {
+    "domain": "shilen.mn",
+    "checked_at": "2026-10-19T17:56:30.988808+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "shilendans.gov.mn",
+    "checked_at": "2026-10-19T17:57:45.107465+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://shilendans.gov.mn/",
+    "homepage_title": "ШИЛЭН ДАНС",
+    "icon_url": "https://shilendans.gov.mn/suld.svg"
+  },
+  {
+    "domain": "shilenkhyanalt.gov.mn",
+    "checked_at": "2026-10-19T17:57:45.238567+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "shinesuvag.mn",
+    "checked_at": "2026-10-19T17:57:06.671696+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "shudarga.mn",
+    "checked_at": "2026-10-19T17:56:14.319457+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://shudarga.mn/",
+    "homepage_title": "Шударга мэдээ, мэдээллийн портал"
+  },
+  {
+    "domain": "shuud.mn",
+    "checked_at": "2026-10-19T17:56:02.985084+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://www.shuud.mn/",
+    "homepage_title": "Shuud.mn - Өнөөдрөөс сайхан маргааш",
+    "icon_url": "https://www.shuud.mn/static/webs/shuud_v2/assets/fav2.png"
+  },
+  {
+    "domain": "shuum.mn",
+    "checked_at": "2026-10-19T17:56:28.211523+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://shuum.mn/",
+    "homepage_title": "Шуум | Мэдээ, мэдээлэл",
+    "icon_url": "https://shuum.mn/images/fav.png"
+  },
+  {
+    "domain": "shuur.gov.mn",
+    "checked_at": "2026-10-19T17:57:45.238807+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "shuur.mn",
+    "checked_at": "2026-10-19T17:56:37.341976+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "shuurhai.mn",
+    "checked_at": "2026-10-19T17:56:09.577741+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://shuurhai.mn/",
+    "homepage_title": "Шуурхай.мн",
+    "icon_url": "https://shuurhai.mn/thumb/icon/favicon_16x16.png"
+  },
+  {
+    "domain": "shuurhaimedee.mn",
+    "checked_at": "2026-10-19T17:57:09.895940+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "skhd.nutag.mn",
+    "checked_at": "2026-10-19T17:56:43.845988+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "sme.gov.mn",
+    "checked_at": "2026-10-19T17:57:45.253011+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://sme.gov.mn/",
+    "homepage_title": "Жижиг, дунд үйлдвэрийн газар",
+    "icon_url": "https://sme.gov.mn/images/favicon.png"
+  },
+  {
+    "domain": "snews.mn",
+    "checked_at": "2026-10-19T17:57:08.820058+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "socialmedee.mn",
+    "checked_at": "2026-10-19T17:56:49.724155+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "sonin.mn",
+    "checked_at": "2026-10-19T17:56:02.984486+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://sonin.mn/",
+    "homepage_title": "Монголын анхны мэдээллийн сайт | Sonin.MN",
+    "icon_url": "https://sonin.mn/favicon-32x32.png"
+  },
+  {
+    "domain": "sonirholtoi.com",
+    "checked_at": "2026-10-19T17:56:53.151953+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "sonornews.com",
+    "checked_at": "2026-10-19T17:56:50.272274+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "sor.mn",
+    "checked_at": "2026-10-19T17:56:35.477072+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 500: Internal Server Error"
+  },
+  {
+    "domain": "spa.gov.mn",
+    "checked_at": "2026-10-19T17:57:45.734360+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 500: Internal Server Error"
+  },
+  {
+    "domain": "sport.gov.mn",
+    "checked_at": "2026-10-19T17:57:46.127585+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://sport.gov.mn/",
+    "homepage_title": "Нүүр хуудас",
+    "icon_url": "https://sport.gov.mn/themes/main/images/favicon.png"
+  },
+  {
+    "domain": "sspa.gov.mn",
+    "checked_at": "2026-10-19T17:57:46.201790+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://sspa.gov.mn/mn",
+    "homepage_title": "Нүүр хуудас | \tТТХГ",
+    "icon_url": "https://sspa.gov.mn/img/site/icon/favicon.ico"
+  },
+  {
+    "domain": "stf.gov.mn",
+    "checked_at": "2026-10-19T17:57:46.207852+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://stf.gov.mn/",
+    "homepage_title": "ҮШУТСан"
+  },
+  {
+    "domain": "sudalgaa.gov.mn",
+    "checked_at": "2026-10-19T17:57:46.217326+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://sudalgaa.gov.mn/",
+    "homepage_title": "Судалгаа - Судалгааны ажлын сан",
+    "icon_url": "https://sudalgaa.gov.mn/favicon.png"
+  },
+  {
+    "domain": "sukhbaatar.gov.mn",
+    "checked_at": "2026-10-19T17:57:46.846837+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "sukhbaatar.nutag.mn",
+    "checked_at": "2026-10-19T17:56:41.396977+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "sukhbaatarinfo.mn",
+    "checked_at": "2026-10-19T17:57:03.380346+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "surug.mn",
+    "checked_at": "2026-10-19T17:57:01.877605+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "suvag.mn",
+    "checked_at": "2026-10-19T17:56:35.764992+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "http://www.suvag.mn/",
+    "homepage_title": "Suvag.mn - Асуудлын гүнд"
+  },
+  {
+    "domain": "tac.mn",
+    "checked_at": "2026-10-19T17:56:34.036704+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://tac.mn/",
+    "homepage_title": "Site Unavailable"
+  },
+  {
+    "domain": "tashuur.mn",
+    "checked_at": "2026-10-19T17:56:52.413302+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://tashuur.mn/",
+    "homepage_title": "tashuur.mn"
+  },
+  {
+    "domain": "teeverchid.mn",
+    "checked_at": "2026-10-19T17:56:46.078339+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "tender.gov.mn",
+    "checked_at": "2026-10-19T17:57:47.056361+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "domain": "time.mn",
+    "checked_at": "2026-10-19T17:56:02.984051+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://time.mn/",
+    "homepage_title": "Time.mn - РўР° РёСӮРіСҚР¶ РұРҫР»РҪРҫ",
+    "icon_url": "https://time.mn/favicon.png"
+  },
+  {
+    "domain": "times.mn",
+    "checked_at": "2026-10-19T17:56:29.691177+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "todaynews.mn",
+    "checked_at": "2026-10-19T17:56:37.787083+00:00",
+    "homepage_status": "blocked_or_placeholder",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://todaynews.mn/",
+    "homepage_title": "Account Suspended"
+  },
+  {
+    "domain": "todmedee.mn",
+    "checked_at": "2026-10-19T17:56:14.524918+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 525: Unknown"
+  },
+  {
+    "domain": "todnews.mn",
+    "checked_at": "2026-10-19T17:56:15.974568+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://todnews.mn/",
+    "homepage_title": "Амьдралын тод хөтөч",
+    "icon_url": "https://todnews.mn/storage/rvY1kdyzEmPR8nj0D8cdrVtGC0s33Y4zO6ow7Gl9.png"
+  },
+  {
+    "domain": "todotgol.mn",
+    "checked_at": "2026-10-19T17:56:15.626619+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://todotgol.mn/",
+    "homepage_title": "Тодорхойгүй мэдээллийг тодотгоно",
+    "icon_url": "https://todotgol.mn/images/logos/favicon.png"
+  },
+  {
+    "domain": "toim.mn",
+    "checked_at": "2026-10-19T17:56:33.190793+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "toimmedee.mn",
+    "checked_at": "2026-10-19T17:57:08.821114+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "toirog.mn",
+    "checked_at": "2026-10-19T17:57:05.687491+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "tonshuul.mn",
+    "checked_at": "2026-10-19T17:56:24.694942+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://tonshuul.mn/index.php?mod=rss",
+      "https://tonshuul.mn/index.php?mod=rss&rssmode=turbo",
+      "https://tonshuul.mn/index.php?mod=rss&rssmode=dzen"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://tonshuul.mn/",
+    "homepage_title": "Tonshuul.mn",
+    "icon_url": "https://tonshuul.mn/templates/tonshuul/images/favicon.png"
+  },
+  {
+    "domain": "top.mn",
+    "checked_at": "2026-10-19T17:57:06.329997+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "topmedee.mn",
+    "checked_at": "2026-10-19T17:56:37.344023+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://topmedee.mn/",
+    "homepage_title": "TopMedee.mn",
+    "icon_url": "https://topmedee.mn/img/favicon.png"
+  },
+  {
+    "domain": "tov.gov.mn",
+    "checked_at": "2026-10-19T17:57:47.266592+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://tov.gov.mn/",
+    "homepage_title": "ТӨВ АЙМАГ ЗДТГ | 2021 он",
+    "icon_url": "https://tov.gov.mn/image/favicon.png"
+  },
+  {
+    "domain": "tovch.mn",
+    "checked_at": "2026-10-19T17:56:12.723717+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://tovch.mn/",
+    "homepage_title": "Товч.мн — Товч мэдээлнэ",
+    "icon_url": "https://tovch.mn/favicon.ico"
+  },
+  {
+    "domain": "tsag.mn",
+    "checked_at": "2026-10-19T17:56:09.700842+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://tsag.mn/",
+    "homepage_title": "Цаг үе, үйл явдал"
+  },
+  {
+    "domain": "tsahimtv.mn",
+    "checked_at": "2026-10-19T17:56:29.923013+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://www.tsahimtv.mn/?feed=rss2",
+      "https://www.tsahimtv.mn/?feed=comments-rss2"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://www.tsahimtv.mn/",
+    "homepage_title": "ЦахимTV",
+    "icon_url": "https://www.tsahimtv.mn/wp-content/uploads/2026/03/fav-120x120.png"
+  },
+  {
+    "domain": "tsahiur.mn",
+    "checked_at": "2026-10-19T17:56:18.556794+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://tsahiur.mn/",
+    "homepage_title": "Tsahiur.mn - Мэдэх эрхийн төлөө",
+    "icon_url": "https://tsahiur.mn/assets/img/favicon.ico"
+  },
+  {
+    "domain": "tsegts.mn",
+    "checked_at": "2026-10-19T17:57:09.403751+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "tseneg.mn",
+    "checked_at": "2026-10-19T17:56:23.551131+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://tseneg.mn/",
+    "homepage_title": "Оюуны цэнэг | Tseneg.mn",
+    "icon_url": "https://tseneg.mn/icon.png"
+  },
+  {
+    "domain": "tsenzuur.mn",
+    "checked_at": "2026-10-19T17:56:14.561110+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://tsenzuur.mn/feed"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://tsenzuur.mn/",
+    "homepage_title": "tsenzuur.mn",
+    "icon_url": "https://tsenzuur.mn/wp-content/themes/tsenzuur/images/fav.png"
+  },
+  {
+    "domain": "tug.mn",
+    "checked_at": "2026-10-19T17:56:15.867002+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://tug.mn/",
+    "homepage_title": "tug.mn - Мэдэх эрх эн тэргүүнд"
+  },
+  {
+    "domain": "tumen.mn",
+    "checked_at": "2026-10-19T17:56:10.586106+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://tumen.mn/",
+    "homepage_title": "Tumen.mn"
+  },
+  {
+    "domain": "turleg.mn",
+    "checked_at": "2026-10-19T17:56:32.475426+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "http://www.turleg.mn/",
+    "homepage_title": "turleg.mn - Бид эв хүчээ нэгтгэвэл мэдэхгүй чадахгүй зүйлгүй"
+  },
+  {
+    "domain": "tusgaar.mn",
+    "checked_at": "2026-10-19T17:57:07.556737+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "tuuver.mn",
+    "checked_at": "2026-10-19T17:56:33.963969+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "tuv.nutag.mn",
+    "checked_at": "2026-10-19T17:56:41.639754+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "tuvinfo.mn",
+    "checked_at": "2026-10-19T17:57:00.348314+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "tvmon.mn",
+    "checked_at": "2026-10-19T17:56:57.744413+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "tvmongolia.mn",
+    "checked_at": "2026-10-19T17:56:37.180488+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "ubinfo.mn",
+    "checked_at": "2026-10-19T17:56:21.748939+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://ubinfo.mn/",
+    "homepage_title": "UB Info - утсандаа суулгаарай"
+  },
+  {
+    "domain": "ublife.mn",
+    "checked_at": "2026-10-19T17:56:08.488856+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://ublife.mn/",
+    "homepage_title": "Ublife.mn",
+    "icon_url": "https://ublife.mn/templates/ublife/images/fav.png"
+  },
+  {
+    "domain": "ubline.mn",
+    "checked_at": "2026-10-19T17:56:34.738258+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "ubmedia.mn",
+    "checked_at": "2026-10-19T17:57:01.231768+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "ubn.mn",
+    "checked_at": "2026-10-19T17:56:02.987228+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://ubn.mn/",
+    "homepage_title": "Улаанбаатар ньюс",
+    "icon_url": "https://ubn.mn/favicon.ico"
+  },
+  {
+    "domain": "ubpost.mn",
+    "checked_at": "2026-10-19T17:56:26.943917+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://www.ubpost.mn/",
+    "homepage_title": "www.ubPost.mn"
+  },
+  {
+    "domain": "ubstv.mn",
+    "checked_at": "2026-10-19T17:56:53.723012+00:00",
+    "homepage_status": "non_html",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://ubstv.mn/"
+  },
+  {
+    "domain": "ugluu.mn",
+    "checked_at": "2026-10-19T17:56:14.160198+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://ugluu.mn/feed"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://ugluu.mn/",
+    "homepage_title": "Өглөө.мн – Шинэ өглөө, Шинэ мэдээлэл",
+    "icon_url": "https://ugluu.mn/wp-content/uploads/2023/12/371847648_852952589736715_570182819383653967_n.jpg"
+  },
+  {
+    "domain": "ulaanbaatarnews.mn",
+    "checked_at": "2026-10-19T17:56:58.529231+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "uls.mn",
+    "checked_at": "2026-10-19T17:56:33.227115+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://uls.mn/cgi-sys/suspendedpage.cgi",
+    "homepage_title": "Вэб хостын үйлчилгээг түр зогсоов"
+  },
+  {
+    "domain": "ulstor.mn",
+    "checked_at": "2026-10-19T17:56:36.067049+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "ulstur.com",
+    "checked_at": "2026-10-19T17:56:49.951191+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://ulstur.com/feed",
+      "https://ulstur.com/home/feed"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://ulstur.com/",
+    "homepage_title": "www.ulstur.com",
+    "icon_url": "https://ulstur.com/wp-content/uploads/2020/03/cropped-exe-2-32x32.png"
+  },
+  {
+    "domain": "ulsturch.mn",
+    "checked_at": "2026-10-19T17:56:12.652822+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://www.ulsturch.mn/",
+    "homepage_title": "УЛСТӨРЧ.мн",
+    "icon_url": "https://www.ulsturch.mn/static/webs/ulsturch/assets/favicon.ico"
+  },
+  {
+    "domain": "umch.gov.mn",
+    "checked_at": "2026-10-19T17:57:47.958579+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://umch.gov.mn/",
+    "homepage_title": "Төрийн болон орон нутгийн өмчийн нэгдсэн цахим систем",
+    "icon_url": "https://umch.gov.mn/images/logo/favicon.ico"
+  },
+  {
+    "domain": "umnugovi.nutag.mn",
+    "checked_at": "2026-10-19T17:56:41.166210+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "umnugovinews.mn",
+    "checked_at": "2026-10-19T17:56:56.281901+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "umonday.com",
+    "checked_at": "2026-10-19T17:57:14.855604+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "undesten.mn",
+    "checked_at": "2026-10-19T17:56:31.505524+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "undurkhaantv.com",
+    "checked_at": "2026-10-19T17:56:54.162304+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "unen.mn",
+    "checked_at": "2026-10-19T17:56:35.202640+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "unennews.mn",
+    "checked_at": "2026-10-19T17:56:59.481279+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "unread.today",
+    "checked_at": "2026-10-19T17:56:02.989089+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://unread.today/",
+    "homepage_title": "Нүүр | Unread Today",
+    "icon_url": "https://unread.today/img/favicon-32x32.png"
+  },
+  {
+    "domain": "untsug.mn",
+    "checked_at": "2026-10-19T17:56:47.652730+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://untsug.mn/feed"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://untsug.mn/",
+    "homepage_title": "untsug.mn",
+    "icon_url": "https://untsug.mn/wp-content/themes/tsenzuur/images/fav.png"
+  },
+  {
+    "domain": "unuudur.mn",
+    "checked_at": "2026-10-19T17:56:02.968820+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://www.unuudur.mn/",
+    "homepage_title": "Өнөөдөр – Монголын үндэсний өдөр тутмын сонин – Хэн сэтгэж байна түүнд зориулав"
+  },
+  {
+    "domain": "updown.mn",
+    "checked_at": "2026-10-19T17:56:47.481230+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://updown.mn/feed"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://updown.mn/",
+    "homepage_title": "updown.mn – ÐĒŅÐ―ŅÐēŅŅŅŅÐđ ÐžŅÐīŅŅÐŧÐ―Ņ",
+    "icon_url": "https://updown.mn/wp-content/uploads/2025/09/cropped-No_backgroup-32x32.png"
+  },
+  {
+    "domain": "urlag.mn",
+    "checked_at": "2026-10-19T17:56:21.133174+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://urlag.mn/feed"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://urlag.mn/",
+    "homepage_title": "Урлаг.мн – Таныг урлагийн тэнгэр ивээг",
+    "icon_url": "https://urlag.mn/wp-content/uploads/2026/05/cropped-logo-32x32.png"
+  },
+  {
+    "domain": "urtuu.mn",
+    "checked_at": "2026-10-19T17:56:30.210891+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "urug.mn",
+    "checked_at": "2026-10-19T17:56:02.988055+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://urug.mn/feed/"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://urug.mn/",
+    "homepage_title": "Нүүр хуудас - Өрөг.МН - Монголын хараат бус хэвлэл мэдээллийн хэрэгсэл",
+    "icon_url": "https://urug.mn/wp-content/uploads/2023/12/urug-favicon.png"
+  },
+  {
+    "domain": "usof.gov.mn",
+    "checked_at": "2026-10-19T17:57:48.299521+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "uvinfo.mn",
+    "checked_at": "2026-10-19T17:57:03.451515+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "uvlive.mn",
+    "checked_at": "2026-10-19T17:56:33.347943+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "uvnews.mn",
+    "checked_at": "2026-10-19T17:57:11.209978+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "uvs.gov.mn",
+    "checked_at": "2026-10-19T17:57:48.472560+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://uvs.gov.mn/",
+    "homepage_title": "Увс аймаг",
+    "icon_url": "https://uvs.gov.mn/assets/theme/uvs/img/favicon.png"
+  },
+  {
+    "domain": "uvsinfo.mn",
+    "checked_at": "2026-10-19T17:57:01.425520+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "uvsnutag.mn",
+    "checked_at": "2026-10-19T17:56:42.030683+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "uvurkhangai.nutag.mn",
+    "checked_at": "2026-10-19T17:56:41.165345+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "vet.gov.mn",
+    "checked_at": "2026-10-19T17:57:48.611071+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "vip76.mn",
+    "checked_at": "2026-10-19T17:56:09.011155+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://vip76.mn/",
+    "homepage_title": "VIP76.mn | Монголын төрийн албан хаагчдын мэдээллийн портал"
+  },
+  {
+    "domain": "water.gov.mn",
+    "checked_at": "2026-10-19T17:57:48.934575+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://water.gov.mn/",
+    "homepage_title": "Цаг үеийн мэдээ, хөтөлбөр арга хэмжээ",
+    "icon_url": "https://water.gov.mn/images/assets/icon.ico"
+  },
+  {
+    "domain": "weather.gov.mn",
+    "checked_at": "2026-10-19T17:57:49.106308+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://weather.gov.mn/",
+    "homepage_title": "Ус, цаг агаар, орчны мэдээ мэдээлэл",
+    "icon_url": "https://weather.gov.mn/icon.ico?3d130e9d3d8a6e1a"
+  },
+  {
+    "domain": "wikimon.mn",
+    "checked_at": "2026-10-19T17:56:57.502098+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "window.mn",
+    "checked_at": "2026-10-19T17:56:45.723522+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "word.mn",
+    "checked_at": "2026-10-19T17:56:48.389273+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 404: Not Found"
+  },
+  {
+    "domain": "wwwcolornews.mn",
+    "checked_at": "2026-10-19T17:56:49.276244+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "xaxa.mn",
+    "checked_at": "2026-10-19T17:56:45.425104+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "xot.mn",
+    "checked_at": "2026-10-19T17:56:21.659771+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://xot.mn/",
+    "homepage_title": "XOT.mn | New Normal City",
+    "icon_url": "https://xot.mn/favicon.ico"
+  },
+  {
+    "domain": "yazguur.mn",
+    "checked_at": "2026-10-19T17:56:44.827246+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "zaluu.mn",
+    "checked_at": "2026-10-19T17:56:35.818148+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "zaluucom.mn",
+    "checked_at": "2026-10-19T17:56:36.449815+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://www.zaluucom.mn/feed/"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://www.zaluucom.mn/",
+    "homepage_title": "Zaluucom - Шинэ Эрин: Дэлхий 24/7",
+    "icon_url": "https://www.zaluucom.mn/wp-content/uploads/2025/01/cropped-Zaluucom-3-32x32.png"
+  },
+  {
+    "domain": "zarig.mn",
+    "checked_at": "2026-10-19T17:56:02.982460+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://zarig.mn/",
+    "homepage_title": "Зариг.мн",
+    "icon_url": "https://zarig.mn/images/www/favicon.ico"
+  },
+  {
+    "domain": "zarmedee.mn",
+    "checked_at": "2026-10-19T17:56:57.747526+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://zarmedee.mn/",
+    "homepage_title": ""
+  },
+  {
+    "domain": "zasgiinmedee.mn",
+    "checked_at": "2026-10-19T17:57:07.495078+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "zavkhan.gov.mn",
+    "checked_at": "2026-10-19T17:57:49.209865+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "http://zavkhan.gov.mn/",
+    "homepage_title": "ЗАВХАН АЙМАГ | ЗАВХАН | ZAVKHAN | ZAVKHAN AIMAG"
+  },
+  {
+    "domain": "zavkhan.nutag.mn",
+    "checked_at": "2026-10-19T17:56:40.954653+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "zavkhaninfo.mn",
+    "checked_at": "2026-10-19T17:57:03.581566+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "zgm.mn",
+    "checked_at": "2026-10-19T17:56:55.741300+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://zgm.mn/",
+    "homepage_title": "Мостбет ᐉ Mostbet обзор, бонусы и вход в онлайн казино",
+    "icon_url": "https://zgm.mn/assets/img/favicon.svg"
+  },
+  {
+    "domain": "zindaa.mn",
+    "checked_at": "2026-10-19T17:56:02.983574+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://news.zindaa.mn/",
+    "homepage_title": "ЗИНДАА - Таныг тодорхойлно!"
+  },
+  {
+    "domain": "zogii.mn",
+    "checked_at": "2026-10-19T17:56:51.604872+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://zogii.mn/",
+    "homepage_title": "Zogii.mn | Зөвд бал бурууд хатгуур",
+    "icon_url": "https://zogii.mn/assets/images/ico.png"
+  },
+  {
+    "domain": "zone.mn",
+    "checked_at": "2026-10-19T17:56:55.560706+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "zug.mn",
+    "checked_at": "2026-10-19T17:56:51.826529+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [
+      "https://zug.mn/rss.xml"
+    ],
+    "http_status": 200,
+    "resolved_url": "https://zug.mn/",
+    "homepage_title": "Зүг.мн – News agency",
+    "icon_url": "https://zug.mn/favicon.ico"
+  },
+  {
+    "domain": "zugeer.mn",
+    "checked_at": "2026-10-19T17:57:14.912125+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://zugeer.mn/",
+    "homepage_title": "Zugeer — Messenger AI чатбот",
+    "icon_url": "https://zugeer.mn/creative-soft.png"
+  },
+  {
+    "domain": "zuv.mn",
+    "checked_at": "2026-10-19T17:56:16.052327+00:00",
+    "homepage_status": "reachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "http_status": 200,
+    "resolved_url": "https://zuv.mn/",
+    "homepage_title": "zuv.mn - Зөвийг дэмжинэ",
+    "icon_url": "https://zuv.mn/images/www/icons/apple-touch-icon-ipad-retina-152x152-precomposed.png"
+  },
+  {
+    "domain": "zuvnews.com",
+    "checked_at": "2026-10-19T17:57:09.924767+00:00",
+    "homepage_status": "unreachable",
+    "production_validated": false,
+    "transport": "research_environment",
+    "feed_candidates": [],
+    "error": "URLError: <urlopen error timed out>"
+  }
+]

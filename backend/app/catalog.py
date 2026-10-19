@@ -10,18 +10,23 @@ from sqlalchemy import select
 from .models import Source
 
 DATA = Path(__file__).parent / 'data'
-SITES = json.loads((DATA / 'mongolia100.v1.json').read_text())
+SITES = json.loads((DATA / 'mongolia-sites.v2.json').read_text())
 BY_DOMAIN = {site['domain']: site for site in SITES}
 
 def probe_results():
-    path = DATA / 'probe-2026-10-19.json'
-    return {row['domain']:row for row in json.loads(path.read_text())} if path.exists() else {}
+    merged={}
+    for name in ('probe-all-2026-10-19.json','probe-2026-10-19.json','probe-expanded-2026-10-20.json'):
+        path=DATA/name
+        if path.exists():
+            for row in json.loads(path.read_text()):
+                if row['domain'] in BY_DOMAIN:merged[row['domain']]={**merged.get(row['domain'],{}),**row}
+    return merged
 
 def domain_of(url):
     host = (urlsplit(url).hostname or '').lower()
     return host.removeprefix('www.')
 
-def web_search_link(query, domains, engine='google'):
+def web_search_link(query, domains, engine='google', date_from=None, date_to=None):
     if not query.strip():
         raise ValueError('Search query is required')
     if not domains or len(domains)>100 or any(d not in BY_DOMAIN for d in domains):
@@ -31,7 +36,13 @@ def web_search_link(query, domains, engine='google'):
     restriction=' OR '.join('site:'+d for d in domains)
     q='('+restriction+') '+query.strip()
     base='https://www.google.com/search' if engine=='google' else 'https://www.bing.com/search'
-    return base+'?'+urlencode({'q':q})
+    params={'q':q}
+    if date_from or date_to:
+        if engine!='google':raise ValueError('Date range links currently support Google only')
+        start=date_from.strftime('%m/%d/%Y') if date_from else ''
+        end=date_to.strftime('%m/%d/%Y') if date_to else ''
+        params['tbs']=f'cdr:1,cd_min:{start},cd_max:{end}'
+    return base+'?'+urlencode(params)
 
 def directory(db, query='', category='', availability='', offset=0, limit=20):
     probes=probe_results()
@@ -52,4 +63,4 @@ def directory(db, query='', category='', availability='', offset=0, limit=20):
         if availability=='reachable' and probe.get('homepage_status')!='reachable':continue
         if availability=='feed_found' and not probe.get('feed_url'):continue
         rows.append({**site,'probe':probe,'source_ids':[s.id for s in linked], 'active_source_ids':active, 'archive_status':'active' if active else 'not_active'})
-    return {'items':rows[offset:offset+limit],'total':len(rows),'offset':offset,'limit':limit,'directory_total':len(SITES),'ranking':'curated_not_traffic_rank','research_checked':len(probes),'research_reachable':sum(p.get('homepage_status')=='reachable' for p in probes.values()),'research_feed_found':sum(bool(p.get('feed_url')) for p in probes.values()),'archive_active_sites':sum(any(s.active for s in groups.get(site['domain'],[])) for site in SITES),'limitation':'ХХЗХ-ны бүртгэл болон сайтын өөрийн нүүрээс сонгосон лавлах; өнөөгийн топ хандалтын эрэмбэ биш. Веб хайлт нь гаднын Google/Bing рүү шилжинэ. Архивын хайлт зөвхөн татсан нийтлэлд үйлчилнэ.'}
+    return {'items':rows[offset:offset+limit],'total':len(rows),'offset':offset,'limit':limit,'directory_total':len(SITES),'directory_media_total':sum(s['category']!='official' for s in SITES),'directory_official_total':sum(s['category']=='official' for s in SITES),'ranking':'curated_not_traffic_rank','research_checked':len(probes),'research_reachable':sum(p.get('homepage_status')=='reachable' for p in probes.values()),'research_feed_found':sum(bool(p.get('feed_url')) for p in probes.values()),'archive_active_sites':sum(any(s.active for s in groups.get(site['domain'],[])) for site in SITES),'limitation':'Хэвлэл/мэдээллийн сайтын түүхэн бүртгэл ба тусдаа ангилсан албан эх сурвалжийн лавлах; өнөөгийн топ хандалтын эрэмбэ биш. Веб хайлт нь гаднын Google/Bing рүү шилжинэ. Архивын хайлт зөвхөн татсан нийтлэлд үйлчилнэ.'}

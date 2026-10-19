@@ -6,7 +6,7 @@
 
 | Шалгалт | Үр дүн |
 |---|---|
-| Python backend suite | **62 passed, 2 skipped** |
+| Python backend suite | **66 passed, 2 skipped** |
 | Next.js 16.4.2 production build + TypeScript | Амжилттай; `/` ба SSR `/reports/[id]` |
 | npm audit --omit=dev | **0 known vulnerabilities** |
 | Python pip-audit | **0 known vulnerabilities** — dependency шинэчлэсний дараа |
@@ -80,3 +80,15 @@ Audit 0 нь тухайн vulnerability database-ийн мэдэгдэж буй 
 8. Monitoring profile, alerts, disk, volume permissions, firewall, resource/load/penetration checklist.
 
 Эцсийн production commissioning нь дээрх серверийн бодит орчинд гүйцэтгэгдэх ёстой. Репод Phase 1–4-ийн код, migration, UI, тест, operational scripts орсон нь сервер дээр үйлчилгээг ажиллуулсан гэсэн утга биш.
+
+
+## 500 хаяг + хайлт + лого шинэчлэл — 2026-10-20 (Улаанбаатар)
+
+- Каталог: 500 давхардалгүй hostname, 326 хэвлэл/мэдээллийн лавлах + 174 албан эх сурвалж; 500 ажилладаг RSS гэсэн баталгаа биш.
+- Python: 66 passed, 2 PostgreSQL integration skipped; native PostgreSQL тестийн URL шаардлагатай.
+- Next.js production build + TypeScript амжилттай.
+- Шинэ кейсүүд: UTC+8 өдрийн эхлэх/дуусах зааг, нийтэлсэн огноогүй нийтлэл, хосолсон domain/category/date шүүлт, wildcard literal, дараалал, AI fallback-ийн хүрээ, Google date URL, Bing огнооны хамгаалалт, бүх сайтын сонголт.
+- Publisher favicon + monogram fallback хэрэгжсэн; бүх publisher-ийн дүрс байгаа гэж батлаагүй. Browser screenshot шалгалт хийгдээгүй.
+- Өмнөх security/dependency audit үр дүн нь тухайн үеийн snapshot; энэ өөрчлөлт dependency нэмээгүй.
+
+Өргөтгөсөн HTTP судалгаа: 500/500 хаяг оролдсон; 247 нүүр хуудас нээгдсэн, 250 нь энэ орчинд холбогдоогүй/timeout, 2 нь хязгаарлалт/placeholder, 1 нь HTML биш. 180 өөрийн домэйн дээрх icon холбоос, 63 explicit feed candidate илэрсэн. Энэ 63 нь XML parse хийгдсэн RSS гэсэн үг биш. `production_validated=false`; collector идэвхжээгүй. Live HTTP integration-ийг энэ шинэчлэлтэй дахин ажиллуулж PASS авсан.

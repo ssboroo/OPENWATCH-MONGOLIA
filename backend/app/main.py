@@ -1,4 +1,5 @@
 import asyncio
+from datetime import date
 import hmac
 import time
 from collections import defaultdict, deque
@@ -146,26 +147,26 @@ def source_detail(id: int, db: DB = Depends(get_db)):
 
 @app.get('/api/v1/search')
 @app.get('/api/v1/articles')
-def articles(q: str = Query('', max_length=200), mode: str = Query('lexical',pattern='^(lexical|fts)$'), domain: str = Query('', max_length=253), source_id: int | None = None, offset: int = Query(0, ge=0), limit: int = Query(30, ge=1, le=100), db: DB = Depends(get_db)):
-    stmt = select(Article)
-    if q and mode=='fts' and db.bind.dialect.name=='postgresql':
+def articles(q: str = Query('', max_length=200), mode: str = Query('lexical',pattern='^(lexical|fts)$'), domain: str = Query('', max_length=253), source_id: int | None = Query(None,gt=0), date_from: date | None = None, date_to: date | None = None, date_field: str = Query('published',pattern='^(published|discovered)$'), category: str = Query('',pattern='^(|news|regional|business|broadcast|official)$'), sort: str = Query('newest',pattern='^(newest|oldest|published_newest|relevance)$'), offset: int = Query(0, ge=0), limit: int = Query(30, ge=1, le=100), db: DB = Depends(get_db)):
+    from .search_filters import scope, ordered
+    q=q.strip()
+    stmt = scope(select(Article),db,domain,source_id,date_from,date_to,date_field,category)
+    indexed = bool(q and mode=='fts' and db.bind.dialect.name=='postgresql')
+    if indexed:
         doc=func.to_tsvector(literal_column("'simple'"),Article.title+literal_column("' '")+Article.excerpt)
         query=func.websearch_to_tsquery(literal_column("'simple'"),q)
-        stmt=stmt.where(doc.op('@@')(query)).order_by(func.ts_rank_cd(doc,query).desc())
+        stmt=stmt.where(doc.op('@@')(query))
+        if sort=='relevance':stmt=stmt.order_by(func.ts_rank_cd(doc,query).desc())
     elif q:
         escaped = q.replace('\\','\\\\').replace('%','\\%').replace('_','\\_')
         stmt = stmt.where(or_(Article.title.ilike(f'%{escaped}%', escape='\\'), Article.excerpt.ilike(f'%{escaped}%', escape='\\')))
-    if domain:
-        if domain not in BY_DOMAIN:
-            raise HTTPException(422, 'Unknown media domain')
-        ids = [s.id for s in db.scalars(select(Source)) if domain_of(s.endpoint) == domain]
-        stmt = stmt.where(Article.source_id.in_(ids))
-    if source_id:
-        stmt = stmt.where(Article.source_id == source_id)
-    result=page(db, stmt.order_by(Article.first_seen_at.desc(), Article.id.desc()), offset, limit)
+    result=page(db, ordered(stmt,sort), offset, limit)
     from .serialization import article_data
     result['items']=[article_data(a) for a in result['items']]
-    result['mode']='fts' if mode=='fts' and db.bind.dialect.name=='postgresql' else 'lexical'
+    result['mode']='fts' if indexed else 'lexical'
+    result['sort']=sort if sort!='relevance' or indexed else 'newest'
+    result['timezone']='Asia/Ulaanbaatar'
+    result['limitation']='PostgreSQL индекс байхгүй тул үгийн хайлт ашиглав.' if mode=='fts' and not indexed and q else ''
     return result
 
 @app.get('/api/v1/articles/{id}')
@@ -229,20 +230,27 @@ async def run_collector(db: DB = Depends(get_db)):
     return {'status':'accepted','status_url':'/api/v1/collector/status'}
 
 @app.get('/api/v1/media')
-def media_directory(q: str = Query('', max_length=200), category: str = Query('', pattern='^(|news|regional|business|broadcast)$'), availability: str = Query('', pattern='^(|active|reachable|feed_found)$'), offset: int = Query(0, ge=0), limit: int = Query(20, ge=1, le=100), db: DB = Depends(get_db)):
+def media_directory(q: str = Query('', max_length=200), category: str = Query('', pattern='^(|news|regional|business|broadcast|official)$'), availability: str = Query('', pattern='^(|active|reachable|feed_found)$'), offset: int = Query(0, ge=0), limit: int = Query(20, ge=1, le=100), db: DB = Depends(get_db)):
     return directory(db, q, category, availability, offset, limit)
 
+@app.get('/api/v1/media/options')
+def media_options():
+    return {'items':[{'domain':s['domain'],'name':s['name'],'category':s['category']} for s in SITES]}
+
 @app.get('/api/v1/media/search')
-def media_web_search(q: str = Query(..., min_length=1, max_length=200), domain: str = Query('', max_length=253), engine: str = Query('google', pattern='^(google|bing)$')):
+def media_web_search(q: str = Query(..., min_length=1, max_length=200), domain: str = Query('', max_length=253), engine: str = Query('google', pattern='^(google|bing)$'), category: str = Query('',pattern='^(|news|regional|business|broadcast|official)$'), availability: str = Query('',pattern='^(|active|reachable|feed_found)$'), date_from: date | None = None, date_to: date | None = None, db: DB = Depends(get_db)):
     if not q.strip():
         raise HTTPException(422, 'Search query is required')
     if domain and domain not in BY_DOMAIN:
         raise HTTPException(422, 'Unknown media domain')
-    sites = [BY_DOMAIN[domain]] if domain else SITES
+    if date_from and date_to and date_from>date_to:raise HTTPException(422,'Invalid date range')
+    if engine=='bing' and (date_from or date_to):raise HTTPException(422,'Choose Google for date range links')
+    selected=directory(db,category=category,availability=availability,limit=len(SITES))['items']
+    sites = [s for s in selected if not domain or s['domain']==domain]
     groups = [sites[i:i+10] for i in range(0,len(sites),10)]
     return {'mode':'external_search_links','query':q,'engine':engine,'total_sites':len(sites),
-        'groups':[{'domains':[s['domain'] for s in group], 'url':web_search_link(q,[s['domain'] for s in group],engine)} for group in groups],
-        'items':[{'domain':s['domain'],'name':s['name'],'url':web_search_link(q,[s['domain']],engine)} for s in sites],
+        'groups':[{'domains':[s['domain'] for s in group], 'url':web_search_link(q,[s['domain'] for s in group],engine,date_from,date_to)} for group in groups],
+        'items':[{'domain':s['domain'],'name':s['name'],'url':web_search_link(q,[s['domain']],engine,date_from,date_to)} for s in sites],
         'limitation':'Эдгээр нь хайлтын үр дүн биш, Google/Bing дээр хайх холбоосууд. Гаднын систем индексжүүлээгүй мэдээг харуулахгүй байж болно.'}
 
 

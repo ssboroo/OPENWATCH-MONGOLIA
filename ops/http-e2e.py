@@ -38,7 +38,7 @@ try:
   except Exception:time.sleep(.25)
  else:raise RuntimeError('Servers did not become healthy')
  assert all(p.poll() is None for p in processes),'A service exited unexpectedly'
- assert call('/api/v1/media?limit=100',port=3765)['total']==100
+ assert call('/api/v1/media?limit=100',port=3765)['total']==500
  r=call('/api/v1/admin/reports?state=draft',auth=True)['items'][0]
  assert call('/api/v1/reports')['total']==0
  call(f"/api/v1/admin/reports/{r['id']}/review",{'decision':'publish','privacy_checked':True,'expected_hash':r['body_hash'],'finding':'sources_differ','note':'[DEMO] Explicit human review performed for HTTP integration test.'},True)

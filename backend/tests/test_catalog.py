@@ -6,24 +6,26 @@ from app.models import Source
 from app.collector import ingest
 from test_archive import client, db, RSS, parse_feed
 
-def test_catalog_has_100_unique_sites():
-    assert len(SITES)==100 and len(BY_DOMAIN)==100
+def test_catalog_has_500_unique_sites():
+    assert len(SITES)==500 and len(BY_DOMAIN)==500
     assert all(s['website_url'].startswith('https://') and s['reference_url'].startswith('https://') for s in SITES)
     assert all('rank' not in s for s in SITES)
 
 def test_web_search_does_not_fabricate_results(client):
     r=client.get('/api/v1/media/search',params={'q':'Оюутолгой ногдол ашиг'}).json()
     assert r['mode']=='external_search_links'
-    assert r['total_sites']==100 and len(r['items'])==100 and len(r['groups'])==10
-    assert len({d for g in r['groups'] for d in g['domains']})==100
+    assert r['total_sites']==500 and len(r['items'])==500 and len(r['groups'])==50
+    assert len({d for g in r['groups'] for d in g['domains']})==500
     assert all(urlsplit(g['url']).hostname=='www.google.com' for g in r['groups'])
     assert 'results' not in r
 
 def test_directory_pagination_and_filter(client):
     r=client.get('/api/v1/media?limit=20').json()
-    assert len(r['items'])==20 and r['total']==100
+    assert len(r['items'])==20 and r['total']==500
+    assert r['directory_media_total']==326 and r['directory_official_total']==174
+    assert r['research_checked']==500
     assert r['items'][0]['archive_status']=='not_active'
-    assert client.get('/api/v1/media?offset=100').json()['items']==[]
+    assert client.get('/api/v1/media?offset=500').json()['items']==[]
     assert client.get('/api/v1/media?q=ikon.mn').json()['total']==1
     assert client.get('/api/v1/media?availability=active').json()['total']==0
     assert client.get('/api/v1/media?limit=101').status_code==422

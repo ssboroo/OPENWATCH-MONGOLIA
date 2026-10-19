@@ -1,0 +1,3633 @@
+[
+  {
+    "domain": "ikon.mn",
+    "checked_at": "2026-10-19T12:53:34.039589+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "iKon.MN : Next Horizon",
+    "resolved_url": "https://ikon.mn/",
+    "rechecked_at": "2026-10-19T12:59:57.276971+00:00",
+    "homepage_sample_bytes": 78849
+  },
+  {
+    "domain": "gogo.mn",
+    "checked_at": "2026-10-19T12:53:34.040143+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "candidates_failed",
+    "feed_candidates": [
+      "https://gogo.mn/feed/"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://gogo.mn/feed/",
+        "status": "failed",
+        "error": "HTTP Error 404: Not Found"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "GoGo",
+    "resolved_url": "https://gogo.mn/"
+  },
+  {
+    "domain": "news.mn",
+    "checked_at": "2026-10-19T12:53:34.040563+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "candidates_failed",
+    "feed_candidates": [
+      "https://news.mn/feed/"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://news.mn/feed/",
+        "status": "failed",
+        "error": "not well-formed (invalid token): line 2, column 5"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "News.MN - Мэдээллийн эх сурвалж",
+    "resolved_url": "https://news.mn/"
+  },
+  {
+    "domain": "montsame.mn",
+    "checked_at": "2026-10-19T12:53:34.043235+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "TimeoutError: The read operation timed out",
+    "retry_error": "TimeoutError: The read operation timed out"
+  },
+  {
+    "domain": "mnb.mn",
+    "checked_at": "2026-10-19T12:53:34.045055+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://www.mnb.mn/rss.xml"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://www.mnb.mn/rss.xml",
+        "status": "valid_feed",
+        "entries": 30,
+        "resolved_url": "https://www.mnb.mn/rss.xml"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "МҮОНРТ — Мэдээ, телевиз, радио",
+    "resolved_url": "https://mnb.mn/",
+    "feed_url": "https://www.mnb.mn/rss.xml"
+  },
+  {
+    "domain": "unuudur.mn",
+    "checked_at": "2026-10-19T12:53:34.045921+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Өнөөдөр – Монголын үндэсний өдөр тутмын сонин – Хэн сэтгэж байна түүнд зориулав",
+    "resolved_url": "https://www.unuudur.mn/",
+    "rechecked_at": "2026-10-19T13:00:05.868128+00:00",
+    "homepage_sample_bytes": 192187
+  },
+  {
+    "domain": "dnn.mn",
+    "checked_at": "2026-10-19T12:53:34.050936+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Өдрийн сонин | DNN.mn",
+    "resolved_url": "https://dnn.mn/"
+  },
+  {
+    "domain": "medee.mn",
+    "checked_at": "2026-10-19T12:53:34.053093+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Мэдээ.МН",
+    "resolved_url": "https://medee.mn/"
+  },
+  {
+    "domain": "eguur.mn",
+    "checked_at": "2026-10-19T12:53:34.054821+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "candidates_failed",
+    "feed_candidates": [
+      "https://eguur.mn/feed/"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://eguur.mn/feed/",
+        "status": "failed",
+        "error": "response_size_limit"
+      },
+      {
+        "url": "https://eguur.mn/comments/feed/",
+        "status": "failed",
+        "error": "response_size_limit"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Баримттай Мэдээлнэ - Eguur.MN",
+    "resolved_url": "https://eguur.mn/"
+  },
+  {
+    "domain": "itoim.mn",
+    "checked_at": "2026-10-19T12:53:34.057068+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://itoim.mn/rss.xml"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://itoim.mn/rss.xml",
+        "status": "valid_feed",
+        "entries": 4,
+        "resolved_url": "https://itoim.mn/rss.xml"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "iToim.mn",
+    "resolved_url": "https://itoim.mn/",
+    "feed_url": "https://itoim.mn/rss.xml"
+  },
+  {
+    "domain": "isee.mn",
+    "checked_at": "2026-10-19T12:53:34.058546+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "iSee.mn",
+    "resolved_url": "https://isee.mn/"
+  },
+  {
+    "domain": "zarig.mn",
+    "checked_at": "2026-10-19T12:53:34.059022+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Зариг.мн",
+    "resolved_url": "https://zarig.mn/"
+  },
+  {
+    "domain": "zindaa.mn",
+    "checked_at": "2026-10-19T12:53:40.382447+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>",
+    "retry_error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "time.mn",
+    "checked_at": "2026-10-19T12:53:40.702833+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "candidates_failed",
+    "feed_candidates": [
+      "https://time.mn/feed/"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://time.mn/feed/",
+        "status": "failed",
+        "error": "HTTP Error 404: Not Found"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Time.mn - Та итгэж болно",
+    "resolved_url": "https://time.mn/"
+  },
+  {
+    "domain": "sonin.mn",
+    "checked_at": "2026-10-19T12:53:41.061300+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Монголын анхны мэдээллийн сайт | Sonin.MN",
+    "resolved_url": "https://sonin.mn/"
+  },
+  {
+    "domain": "shuud.mn",
+    "checked_at": "2026-10-19T12:53:41.065332+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Shuud.mn - Өнөөдрөөс сайхан маргааш",
+    "resolved_url": "https://www.shuud.mn/"
+  },
+  {
+    "domain": "mass.mn",
+    "checked_at": "2026-10-19T12:53:41.639311+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "MASS.mn - Түрүүлж мэдээлнэ",
+    "resolved_url": "https://mass.mn/"
+  },
+  {
+    "domain": "eagle.mn",
+    "checked_at": "2026-10-19T12:53:46.981514+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "EAGLE.mn",
+    "resolved_url": "https://eagle.mn/",
+    "rechecked_at": "2026-10-19T12:59:56.364491+00:00",
+    "homepage_sample_bytes": 500000
+  },
+  {
+    "domain": "bloombergtv.mn",
+    "checked_at": "2026-10-19T12:53:47.268040+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Bloomberg TV Mongolia",
+    "resolved_url": "https://bloombergtv.mn/",
+    "rechecked_at": "2026-10-19T13:00:01.434210+00:00",
+    "homepage_sample_bytes": 185912
+  },
+  {
+    "domain": "ubn.mn",
+    "checked_at": "2026-10-19T12:53:47.391179+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Улаанбаатар ньюс",
+    "resolved_url": "https://ubn.mn/"
+  },
+  {
+    "domain": "livetv.mn",
+    "checked_at": "2026-10-19T12:53:48.015283+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "LiveTV.mn - Watch Different",
+    "resolved_url": "https://www.livetv.mn/"
+  },
+  {
+    "domain": "urug.mn",
+    "checked_at": "2026-10-19T12:53:48.839274+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "candidates_failed",
+    "feed_candidates": [
+      "https://urug.mn/feed/"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://urug.mn/feed/",
+        "status": "failed",
+        "error": "<urlopen error timed out>"
+      },
+      {
+        "url": "https://urug.mn/comments/feed/",
+        "status": "failed",
+        "error": "<urlopen error timed out>"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Нүүр хуудас - Өрөг.МН - Монголын хараат бус хэвлэл мэдээллийн хэрэгсэл",
+    "resolved_url": "https://urug.mn/"
+  },
+  {
+    "domain": "24tsag.mn",
+    "checked_at": "2026-10-19T12:53:49.241264+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "24 цаг холбоотой байя",
+    "resolved_url": "https://www.24tsag.mn/"
+  },
+  {
+    "domain": "unread.today",
+    "checked_at": "2026-10-19T12:53:51.364022+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Нүүр | Unread Today",
+    "resolved_url": "https://unread.today/"
+  },
+  {
+    "domain": "posted.mn",
+    "checked_at": "2026-10-19T12:53:52.912202+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Posted | Залуусын орон зай",
+    "resolved_url": "https://www.posted.mn/"
+  },
+  {
+    "domain": "lemonpress.mn",
+    "checked_at": "2026-10-19T12:53:53.931258+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "LemonPress",
+    "resolved_url": "https://lemonpress.mn/"
+  },
+  {
+    "domain": "peak.mn",
+    "checked_at": "2026-10-19T12:53:54.276653+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Өргөн өнцгөөр | Peak News",
+    "resolved_url": "https://peak.mn/",
+    "rechecked_at": "2026-10-19T13:00:05.425210+00:00",
+    "homepage_sample_bytes": 112287
+  },
+  {
+    "domain": "ublife.mn",
+    "checked_at": "2026-10-19T12:53:54.826003+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Ublife.mn",
+    "resolved_url": "https://ublife.mn/"
+  },
+  {
+    "domain": "olloo.mn",
+    "checked_at": "2026-10-19T12:53:55.426414+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 403: Forbidden",
+    "retry_error": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "domain": "dorgio.mn",
+    "checked_at": "2026-10-19T12:53:55.951360+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Information Guide · Dorgio.mn",
+    "resolved_url": "https://dorgio.mn/"
+  },
+  {
+    "domain": "bolod.mn",
+    "checked_at": "2026-10-19T12:53:57.947168+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>",
+    "retry_error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "vip76.mn",
+    "checked_at": "2026-10-19T12:53:58.065654+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "VIP76.mn | Монголын төрийн албан хаагчдын мэдээллийн портал",
+    "resolved_url": "https://vip76.mn/",
+    "rechecked_at": "2026-10-19T13:00:06.416485+00:00",
+    "homepage_sample_bytes": 500000
+  },
+  {
+    "domain": "newswall.mn",
+    "checked_at": "2026-10-19T12:53:58.593687+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://newswall.mn/?feed=rss2",
+      "https://newswall.mn/?feed=comments-rss2"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://newswall.mn/?feed=rss2",
+        "status": "valid_feed",
+        "entries": 10,
+        "resolved_url": "https://newswall.mn/?feed=rss2"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "NewsWall",
+    "resolved_url": "https://newswall.mn/",
+    "feed_url": "https://newswall.mn/?feed=rss2"
+  },
+  {
+    "domain": "gereg.mn",
+    "checked_at": "2026-10-19T12:53:58.719482+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://gereg.mn/feed"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://gereg.mn/feed",
+        "status": "valid_feed",
+        "entries": 10,
+        "resolved_url": "https://gereg.mn/feed"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "gereg.mn",
+    "resolved_url": "https://gereg.mn/",
+    "feed_url": "https://gereg.mn/feed"
+  },
+  {
+    "domain": "fact.mn",
+    "checked_at": "2026-10-19T12:53:59.656887+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "FACT.MN - ЧУХЛЫГ ОНЦЛОВ",
+    "resolved_url": "https://fact.mn/"
+  },
+  {
+    "domain": "factnews.mn",
+    "checked_at": "2026-10-19T12:54:00.749306+00:00",
+    "homepage_status": "blocked_or_placeholder",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Site Unavailable",
+    "resolved_url": "https://factnews.mn/"
+  },
+  {
+    "domain": "breakingnews.mn",
+    "checked_at": "2026-10-19T12:54:00.945558+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable",
+    "retry_error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "control.mn",
+    "checked_at": "2026-10-19T12:54:01.285400+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable",
+    "retry_error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "newslife.mn",
+    "checked_at": "2026-10-19T12:54:01.422086+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_article_feed_verified",
+    "feed_candidates": [
+      "https://newslife.mn/feed"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://newslife.mn/feed",
+        "status": "failed",
+        "error": "not well-formed (invalid token): line 379, column 402"
+      },
+      {
+        "url": "https://newslife.mn/comments/feed",
+        "status": "excluded_comments_feed",
+        "entries": 10,
+        "resolved_url": "https://newslife.mn/comments/feed"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "newslife.mn",
+    "resolved_url": "https://newslife.mn/"
+  },
+  {
+    "domain": "times.mn",
+    "checked_at": "2026-10-19T12:54:01.726060+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable",
+    "retry_error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "shuurhai.mn",
+    "checked_at": "2026-10-19T12:54:03.578713+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Шуурхай.мн",
+    "resolved_url": "https://shuurhai.mn/"
+  },
+  {
+    "domain": "tsag.mn",
+    "checked_at": "2026-10-19T12:54:04.900619+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Цаг үе, үйл явдал",
+    "resolved_url": "https://tsag.mn/"
+  },
+  {
+    "domain": "tumen.mn",
+    "checked_at": "2026-10-19T12:54:04.956066+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Tumen.mn",
+    "resolved_url": "https://tumen.mn/"
+  },
+  {
+    "domain": "tuuver.mn",
+    "checked_at": "2026-10-19T12:54:05.074651+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>",
+    "retry_error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "erennews.mn",
+    "checked_at": "2026-10-19T12:54:05.668004+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "ErenNews.MN",
+    "resolved_url": "https://erennews.mn/",
+    "rechecked_at": "2026-10-19T13:00:16.351786+00:00",
+    "homepage_sample_bytes": 245524
+  },
+  {
+    "domain": "paparazzi.mn",
+    "checked_at": "2026-10-19T12:54:06.352086+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Папарацци.мн",
+    "resolved_url": "https://paparazzi.mn/"
+  },
+  {
+    "domain": "niigmiintoli.mn",
+    "checked_at": "2026-10-19T12:54:06.609704+00:00",
+    "homepage_status": "blocked_or_placeholder",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "",
+    "resolved_url": "https://niigmiintoli.mn/"
+  },
+  {
+    "domain": "wikimon.mn",
+    "checked_at": "2026-10-19T12:54:08.279684+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "ValueError: redirect_unapproved: https://royalreels18casinosaustralia.com/en-au/",
+    "retry_error": "ValueError: Unapproved redirect"
+  },
+  {
+    "domain": "ontslokh.mn",
+    "checked_at": "2026-10-19T12:54:08.497749+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "ontslokh.mn | Уншихад урамтай",
+    "resolved_url": "https://www.ontslokh.mn/",
+    "rechecked_at": "2026-10-19T13:01:42.075446+00:00",
+    "homepage_sample_bytes": 67969
+  },
+  {
+    "domain": "ulsturch.mn",
+    "checked_at": "2026-10-19T12:54:10.345249+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "УЛСТӨРЧ.мн",
+    "resolved_url": "https://www.ulsturch.mn/"
+  },
+  {
+    "domain": "mongolcom.mn",
+    "checked_at": "2026-10-19T12:54:10.661394+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable",
+    "retry_error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "tovch.mn",
+    "checked_at": "2026-10-19T12:54:10.707548+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Товч.мн — Товч мэдээлнэ",
+    "resolved_url": "https://tovch.mn/"
+  },
+  {
+    "domain": "newsmongolia.mn",
+    "checked_at": "2026-10-19T12:54:11.320641+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "newsmongolia",
+    "resolved_url": "https://newsmongolia.mn/"
+  },
+  {
+    "domain": "comment.mn",
+    "checked_at": "2026-10-19T12:54:11.627667+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://www.comment.mn/feed/"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://www.comment.mn/feed/",
+        "status": "valid_feed",
+        "entries": 10,
+        "resolved_url": "https://www.comment.mn/feed"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Comment.mn – Монгол комментод нэгдэцгээе",
+    "resolved_url": "https://www.comment.mn/",
+    "feed_url": "https://www.comment.mn/feed/"
+  },
+  {
+    "domain": "ugluu.mn",
+    "checked_at": "2026-10-19T12:54:12.083902+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_article_feed_verified",
+    "feed_candidates": [
+      "https://ugluu.mn/feed"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://ugluu.mn/feed",
+        "status": "failed",
+        "error": "HTTP Error 503: Service Unavailable"
+      },
+      {
+        "url": "https://ugluu.mn/comments/feed",
+        "status": "excluded_comments_feed",
+        "entries": 0,
+        "resolved_url": "https://ugluu.mn/comments/feed"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Өглөө.мн – Шинэ өглөө, Шинэ мэдээлэл",
+    "resolved_url": "https://ugluu.mn/"
+  },
+  {
+    "domain": "undesten.mn",
+    "checked_at": "2026-10-19T12:54:12.676357+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable",
+    "retry_error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "urtuu.mn",
+    "checked_at": "2026-10-19T12:54:12.711373+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable",
+    "retry_error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "topmedee.mn",
+    "checked_at": "2026-10-19T12:54:13.039440+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable",
+    "retry_error": "HTTPError: HTTP Error 500: Internal Server Error"
+  },
+  {
+    "domain": "etoim.mn",
+    "checked_at": "2026-10-19T12:54:14.946434+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable",
+    "retry_error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "asuudal.mn",
+    "checked_at": "2026-10-19T12:54:15.317160+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>",
+    "retry_error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "ipost.mn",
+    "checked_at": "2026-10-19T12:54:15.507298+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "freedom.mn",
+    "checked_at": "2026-10-19T12:54:17.744288+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Freedom.mn Эрх чөлөөний дуу хоолой",
+    "resolved_url": "https://freedom.mn/",
+    "rechecked_at": "2026-10-19T13:01:36.643103+00:00",
+    "homepage_sample_bytes": 228271
+  },
+  {
+    "domain": "ene.mn",
+    "checked_at": "2026-10-19T12:54:18.052418+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "candidates_failed",
+    "feed_candidates": [
+      "https://ene.mn/feed/"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://ene.mn/feed/",
+        "status": "failed",
+        "error": "HTTP Error 404: Not Found"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "ene.mn — эндээс мэд",
+    "resolved_url": "https://ene.mn/"
+  },
+  {
+    "domain": "scandal.mn",
+    "checked_at": "2026-10-19T12:54:18.154778+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Scandal.mn - Мэдээллийн нэгдсэн сан",
+    "resolved_url": "https://scandal.mn/",
+    "rechecked_at": "2026-10-19T13:01:45.812906+00:00",
+    "homepage_sample_bytes": 215499
+  },
+  {
+    "domain": "guren.mn",
+    "checked_at": "2026-10-19T12:54:18.474044+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://guren.mn/engine/rss.php"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://guren.mn/engine/rss.php",
+        "status": "valid_feed",
+        "entries": 10,
+        "resolved_url": "https://guren.mn/engine/rss.php"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Guren.mn",
+    "resolved_url": "https://guren.mn/",
+    "feed_url": "https://guren.mn/engine/rss.php"
+  },
+  {
+    "domain": "ord.mn",
+    "checked_at": "2026-10-19T12:54:19.227371+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://www.ord.mn/engine/rss.php"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://www.ord.mn/engine/rss.php",
+        "status": "valid_feed",
+        "entries": 20,
+        "resolved_url": "https://www.ord.mn/engine/rss.php"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Ord.mn | Mongolian Mining",
+    "resolved_url": "https://ord.mn/",
+    "feed_url": "https://www.ord.mn/engine/rss.php"
+  },
+  {
+    "domain": "otoch.mn",
+    "checked_at": "2026-10-19T12:54:19.567302+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "candidates_failed",
+    "feed_candidates": [
+      "https://otoch.mn/engine/rss.php"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://otoch.mn/engine/rss.php",
+        "status": "failed",
+        "error": "<urlopen error timed out>"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Otoch.mn",
+    "resolved_url": "https://otoch.mn/"
+  },
+  {
+    "domain": "shudarga.mn",
+    "checked_at": "2026-10-19T12:54:20.255185+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Шударга мэдээ, мэдээллийн портал",
+    "resolved_url": "https://shudarga.mn/"
+  },
+  {
+    "domain": "unen.mn",
+    "checked_at": "2026-10-19T12:54:20.727491+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable",
+    "retry_error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "updown.mn",
+    "checked_at": "2026-10-19T12:54:22.326095+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "updown.mn – Тэнцвэртэй мэдээлнэ",
+    "resolved_url": "https://updown.mn/",
+    "rechecked_at": "2026-10-19T13:01:42.142083+00:00",
+    "homepage_sample_bytes": 208329
+  },
+  {
+    "domain": "etv.mn",
+    "checked_at": "2026-10-19T12:54:22.515917+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://www.etv.mn/?feed=rss2",
+      "https://www.etv.mn/?feed=comments-rss2"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://www.etv.mn/?feed=rss2",
+        "status": "valid_feed",
+        "entries": 10,
+        "resolved_url": "https://www.etv.mn/?feed=rss2"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "ETV - Тод харуулна",
+    "resolved_url": "https://www.etv.mn/",
+    "feed_url": "https://www.etv.mn/?feed=rss2"
+  },
+  {
+    "domain": "todmedee.mn",
+    "checked_at": "2026-10-19T12:54:24.753312+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://todmedee.mn/feed"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://todmedee.mn/feed",
+        "status": "valid_feed",
+        "entries": 10,
+        "resolved_url": "https://todmedee.mn/feed"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Todmedee.mn | Тод мэдээлнэ",
+    "resolved_url": "https://todmedee.mn/",
+    "feed_url": "https://todmedee.mn/feed"
+  },
+  {
+    "domain": "barimt.com",
+    "checked_at": "2026-10-19T12:54:27.249731+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "www.barimt.com",
+    "resolved_url": "https://barimt.com/",
+    "rechecked_at": "2026-10-19T13:01:43.164803+00:00",
+    "homepage_sample_bytes": 271737
+  },
+  {
+    "domain": "medeelne.mn",
+    "checked_at": "2026-10-19T12:54:27.583938+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable",
+    "retry_error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "untsug.mn",
+    "checked_at": "2026-10-19T12:54:29.335445+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "untsug.mn",
+    "resolved_url": "https://untsug.mn/",
+    "rechecked_at": "2026-10-19T13:01:43.655804+00:00",
+    "homepage_sample_bytes": 49209
+  },
+  {
+    "domain": "dardas.mn",
+    "checked_at": "2026-10-19T12:54:29.601755+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "TimeoutError: The read operation timed out",
+    "retry_error": "TimeoutError: The read operation timed out"
+  },
+  {
+    "domain": "tsenzuur.mn",
+    "checked_at": "2026-10-19T12:54:30.986915+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "candidates_failed",
+    "feed_candidates": [
+      "https://tsenzuur.mn/feed"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://tsenzuur.mn/feed",
+        "status": "failed",
+        "error": "HTTP Error 503: Service Unavailable"
+      },
+      {
+        "url": "https://tsenzuur.mn/comments/feed",
+        "status": "failed",
+        "error": "<urlopen error timed out>"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "tsenzuur.mn",
+    "resolved_url": "https://tsenzuur.mn/"
+  },
+  {
+    "domain": "check.mn",
+    "checked_at": "2026-10-19T12:54:31.750779+00:00",
+    "homepage_status": "blocked_or_placeholder",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Site is created successfully!",
+    "resolved_url": "https://check.mn/"
+  },
+  {
+    "domain": "tac.mn",
+    "checked_at": "2026-10-19T12:54:32.323714+00:00",
+    "homepage_status": "blocked_or_placeholder",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Site Unavailable",
+    "resolved_url": "https://tac.mn/"
+  },
+  {
+    "domain": "seen.mn",
+    "checked_at": "2026-10-19T12:54:34.091817+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://seen.mn/feed/"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://seen.mn/feed/",
+        "status": "valid_feed",
+        "entries": 9,
+        "resolved_url": "https://seen.mn/feed"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Seen.mn — Харах өнцөг – Өөрөөр харах эхлэл",
+    "resolved_url": "https://seen.mn/",
+    "feed_url": "https://seen.mn/feed/"
+  },
+  {
+    "domain": "zaluu.mn",
+    "checked_at": "2026-10-19T12:54:34.258362+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>",
+    "retry_error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "top.mn",
+    "checked_at": "2026-10-19T12:54:34.754184+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable",
+    "retry_error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "todotgol.mn",
+    "checked_at": "2026-10-19T12:54:35.064171+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Тодорхойгүй мэдээллийг тодотгоно",
+    "resolved_url": "https://todotgol.mn/"
+  },
+  {
+    "domain": "etimes.mn",
+    "checked_at": "2026-10-19T12:54:36.344516+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "eTimes.mn | Эрдэнэт хотын мэдээлэл",
+    "resolved_url": "https://etimes.mn/",
+    "rechecked_at": "2026-10-19T13:01:45.996188+00:00",
+    "homepage_sample_bytes": 79270
+  },
+  {
+    "domain": "asu.mn",
+    "checked_at": "2026-10-19T12:54:36.516769+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "ASU.MN — Монголын дараа үеийн мэдээллийн платформ",
+    "resolved_url": "https://asu.mn/"
+  },
+  {
+    "domain": "tug.mn",
+    "checked_at": "2026-10-19T12:54:37.097785+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "tug.mn - Мэдэх эрх эн тэргүүнд",
+    "resolved_url": "https://tug.mn/"
+  },
+  {
+    "domain": "todnews.mn",
+    "checked_at": "2026-10-19T12:54:37.416070+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Амьдралын тод хөтөч",
+    "resolved_url": "https://todnews.mn/"
+  },
+  {
+    "domain": "lead.style",
+    "checked_at": "2026-10-19T12:54:40.767590+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "ValueError: redirect_unapproved: https://expireddomains.com/domain/lead.style?utm_source=redi",
+    "retry_error": "ValueError: Unapproved redirect"
+  },
+  {
+    "domain": "zuv.mn",
+    "checked_at": "2026-10-19T12:54:40.797600+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "zuv.mn - Зөвийг дэмжинэ",
+    "resolved_url": "https://zuv.mn/"
+  },
+  {
+    "domain": "amjilt.news",
+    "checked_at": "2026-10-19T12:54:41.170705+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://amjilt.news/feed.xml",
+      "https://amjilt.news/atom.xml"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://amjilt.news/feed.xml",
+        "status": "valid_feed",
+        "entries": 20,
+        "resolved_url": "https://amjilt.news/feed.xml"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Amjilt News - Workplace culture, founders, careers, the economics of work",
+    "resolved_url": "https://amjilt.news/",
+    "feed_url": "https://amjilt.news/feed.xml"
+  },
+  {
+    "domain": "erdenetnews.mn",
+    "checked_at": "2026-10-19T12:54:41.265373+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://erdenetnews.mn/rss"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://erdenetnews.mn/rss",
+        "status": "valid_feed",
+        "entries": 30,
+        "resolved_url": "https://erdenetnews.mn/rss"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "ErdenetNews.MN| Эрдэнэт хотын мэдээллийн төв",
+    "resolved_url": "https://erdenetnews.mn/",
+    "feed_url": "https://erdenetnews.mn/rss"
+  },
+  {
+    "domain": "erdenetlife.mn",
+    "checked_at": "2026-10-19T12:54:43.354690+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://erdenetlife.mn/rss"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://erdenetlife.mn/rss",
+        "status": "valid_feed",
+        "entries": 30,
+        "resolved_url": "https://erdenetlife.mn/rss"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "ErdenetLife.mn | Erdenet Life",
+    "resolved_url": "https://erdenetlife.mn/",
+    "feed_url": "https://erdenetlife.mn/rss"
+  },
+  {
+    "domain": "erdenetinfo.mn",
+    "checked_at": "2026-10-19T12:54:43.552713+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable",
+    "retry_error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "erdenetpost.mn",
+    "checked_at": "2026-10-19T12:54:44.141330+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>",
+    "retry_error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "erdenetmedee.mn",
+    "checked_at": "2026-10-19T12:54:44.236755+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable",
+    "retry_error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "darkhannews.mn",
+    "checked_at": "2026-10-19T12:54:45.420130+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>",
+    "retry_error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "dornogovi.mn",
+    "checked_at": "2026-10-19T12:54:45.516942+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>",
+    "retry_error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "govisumbernews.mn",
+    "checked_at": "2026-10-19T12:54:46.769848+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>",
+    "retry_error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "kaznews.mn",
+    "checked_at": "2026-10-19T12:54:47.192764+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 403: Forbidden",
+    "retry_error": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "domain": "khuvsguliinungu.mn",
+    "checked_at": "2026-10-19T12:54:48.475258+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Хөвсгөл аймгийн мэдээллийн өдөр тутмын мэдээллийн сайт",
+    "resolved_url": "https://khuvsguliinungu.mn/",
+    "rechecked_at": "2026-10-19T13:01:52.878182+00:00",
+    "homepage_sample_bytes": 27219
+  },
+  {
+    "domain": "zms.mn",
+    "checked_at": "2026-10-19T12:56:55.194169+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "mminfo.mn",
+    "checked_at": "2026-10-19T12:56:55.195152+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable",
+    "retry_error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "baabar.mn",
+    "checked_at": "2026-10-19T12:56:55.195722+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "baabar.mn | Шилдэг нийтлэлчдийн клуб",
+    "resolved_url": "https://www.baabar.mn/"
+  },
+  {
+    "domain": "caak.mn",
+    "checked_at": "2026-10-19T12:56:55.199223+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Caak.mn | Бусдаас өөр мэдрэмж!",
+    "resolved_url": "https://www.caak.mn/"
+  },
+  {
+    "domain": "chuhal.mn",
+    "checked_at": "2026-10-19T12:56:55.202971+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable",
+    "retry_error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "mongoltv.mn",
+    "checked_at": "2026-10-19T12:56:55.205008+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "candidates_failed",
+    "feed_candidates": [
+      "https://mongoltv.mn/feed"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://mongoltv.mn/feed",
+        "status": "failed",
+        "error": "syntax error: line 4, column 0"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Монгол ТВ",
+    "resolved_url": "https://mongoltv.mn/"
+  },
+  {
+    "domain": "tv5.mn",
+    "checked_at": "2026-10-19T12:56:55.207620+00:00",
+    "homepage_status": "excluded_identity_mismatch",
+    "feed_status": "candidates_failed",
+    "feed_candidates": [
+      "https://tv5.mn/feed/"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://tv5.mn/feed/",
+        "status": "failed",
+        "error": "HTTP Error 503: Service Unavailable"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Ил Метро төсөл",
+    "resolved_url": "https://tv5.mn/",
+    "selection_note": "Мэдээллийн сайтын чиглэл тодорхой батлагдаагүй тул сонголтоос хассан; буруутай үйлдлийн дүгнэлт биш."
+  },
+  {
+    "domain": "tv9.mn",
+    "checked_at": "2026-10-19T12:56:55.208316+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>",
+    "retry_error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "tv25.mn",
+    "checked_at": "2026-10-19T12:56:55.209595+00:00",
+    "homepage_status": "blocked_or_placeholder",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "",
+    "resolved_url": "https://www.tv25.mn/"
+  },
+  {
+    "domain": "ubstv.mn",
+    "checked_at": "2026-10-19T12:56:55.213837+00:00",
+    "homepage_status": "blocked_or_placeholder",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "",
+    "resolved_url": "https://ubstv.mn/"
+  },
+  {
+    "domain": "noorog.mn",
+    "checked_at": "2026-10-19T12:56:55.219661+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Noorog",
+    "resolved_url": "https://www.noorog.mn/",
+    "rechecked_at": "2026-10-19T13:01:59.190527+00:00",
+    "homepage_sample_bytes": 19251
+  },
+  {
+    "domain": "nio.mn",
+    "checked_at": "2026-10-19T12:56:55.225230+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://nio.mn/feed/"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://nio.mn/feed/",
+        "status": "valid_feed",
+        "entries": 10,
+        "resolved_url": "https://nio.mn/feed/"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "NIO.mn – Мэргэжлийн, мэдрэмжтэй",
+    "resolved_url": "https://nio.mn/",
+    "feed_url": "https://nio.mn/feed/"
+  },
+  {
+    "domain": "tsahiur.mn",
+    "checked_at": "2026-10-19T12:57:01.520482+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Tsahiur.mn - Мэдэх эрхийн төлөө",
+    "resolved_url": "https://tsahiur.mn/"
+  },
+  {
+    "domain": "neguun.mn",
+    "checked_at": "2026-10-19T12:57:01.711725+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "НЭГҮҮН — Мэдээллийн сайт | НЭГҮҮН",
+    "resolved_url": "https://neguun.mn/",
+    "rechecked_at": "2026-10-19T13:02:00.226745+00:00",
+    "homepage_sample_bytes": 251524
+  },
+  {
+    "domain": "mpress.mn",
+    "checked_at": "2026-10-19T12:57:02.229264+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Тэгш эрхийн төлөө | mPress.mn",
+    "resolved_url": "https://mpress.mn/"
+  },
+  {
+    "domain": "dailynews.mn",
+    "checked_at": "2026-10-19T12:57:02.230482+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://dailynews.mn/feed"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://dailynews.mn/feed",
+        "status": "valid_feed",
+        "entries": 10,
+        "resolved_url": "https://dailynews.mn/feed"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "DailyNews.MN – Өдөр тутмын мэдээлэл",
+    "resolved_url": "https://dailynews.mn/",
+    "feed_url": "https://dailynews.mn/feed"
+  },
+  {
+    "domain": "ubpost.mn",
+    "checked_at": "2026-10-19T12:57:02.232843+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "www.ubPost.mn",
+    "resolved_url": "https://www.ubpost.mn/",
+    "rechecked_at": "2026-10-19T13:02:04.820785+00:00",
+    "homepage_sample_bytes": 81041
+  },
+  {
+    "domain": "mongolianminingjournal.com",
+    "checked_at": "2026-10-19T12:57:02.237497+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "The Mongolian Mining Journal",
+    "resolved_url": "https://www.mongolianminingjournal.com/",
+    "rechecked_at": "2026-10-19T13:02:04.834081+00:00",
+    "homepage_sample_bytes": 53031
+  },
+  {
+    "domain": "economy.mn",
+    "checked_at": "2026-10-19T12:57:05.597920+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable",
+    "retry_error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "business.mn",
+    "checked_at": "2026-10-19T12:57:07.288279+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Нүүр - BUSINESS.MN",
+    "resolved_url": "https://business.mn/",
+    "rechecked_at": "2026-10-19T13:02:03.921161+00:00",
+    "homepage_sample_bytes": 224028
+  },
+  {
+    "domain": "khentii.live",
+    "checked_at": "2026-10-19T12:57:07.477707+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable",
+    "retry_error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "sbinfo.mn",
+    "checked_at": "2026-10-19T12:57:08.463026+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable",
+    "retry_error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "uls.mn",
+    "checked_at": "2026-10-19T12:57:08.606234+00:00",
+    "homepage_status": "blocked_or_placeholder",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Вэб хостын үйлчилгээг түр зогсоов",
+    "resolved_url": "https://uls.mn/cgi-sys/suspendedpage.cgi",
+    "rechecked_at": "2026-10-19T13:02:12.265922+00:00",
+    "homepage_sample_bytes": 8788
+  },
+  {
+    "domain": "zaluucom.mn",
+    "checked_at": "2026-10-19T12:57:08.656893+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Zaluucom - Шинэ Эрин: Дэлхий 24/7",
+    "resolved_url": "https://www.zaluucom.mn/",
+    "rechecked_at": "2026-10-19T13:02:08.172038+00:00",
+    "homepage_sample_bytes": 88644
+  },
+  {
+    "domain": "zgm.mn",
+    "checked_at": "2026-10-19T12:57:08.722335+00:00",
+    "homepage_status": "excluded_identity_mismatch",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Мостбет ᐉ Mostbet обзор, бонусы и вход в онлайн казино",
+    "resolved_url": "https://zgm.mn/",
+    "selection_note": "Мэдээллийн сайтын чиглэл тодорхой батлагдаагүй тул сонголтоос хассан; буруутай үйлдлийн дүгнэлт биш."
+  },
+  {
+    "domain": "ekon.mn",
+    "checked_at": "2026-10-19T12:57:08.840274+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Ekon - сониуц мэдээ",
+    "resolved_url": "https://ekon.mn/"
+  },
+  {
+    "domain": "jirgee.mn",
+    "checked_at": "2026-10-19T12:57:08.882997+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable",
+    "retry_error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "fbnews.mn",
+    "checked_at": "2026-10-19T12:57:09.241620+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable",
+    "retry_error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "zarmedee.mn",
+    "checked_at": "2026-10-19T12:57:09.246288+00:00",
+    "homepage_status": "blocked_or_placeholder",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "",
+    "resolved_url": "https://zarmedee.mn/"
+  },
+  {
+    "domain": "erdenetkhot.mn",
+    "checked_at": "2026-10-19T12:57:09.730053+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "erdenetkhot.mn",
+    "resolved_url": "https://erdenetkhot.mn/"
+  },
+  {
+    "domain": "bulganinfo.mn",
+    "checked_at": "2026-10-19T12:57:12.065064+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable",
+    "retry_error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "darkhaninfo.mn",
+    "checked_at": "2026-10-19T12:57:12.683422+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable",
+    "retry_error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "arainfo.mn",
+    "checked_at": "2026-10-19T12:57:13.022178+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable",
+    "retry_error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "dornodinfo.mn",
+    "checked_at": "2026-10-19T12:57:13.412871+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable",
+    "retry_error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "khovdinfo.mn",
+    "checked_at": "2026-10-19T12:57:14.296681+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable",
+    "retry_error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "selengeinfo.mn",
+    "checked_at": "2026-10-19T12:57:14.335140+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable",
+    "retry_error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "tuvinfo.mn",
+    "checked_at": "2026-10-19T12:57:14.338102+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>",
+    "retry_error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "uvsinfo.mn",
+    "checked_at": "2026-10-19T12:57:15.666129+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable",
+    "retry_error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "altaicity.mn",
+    "checked_at": "2026-10-19T12:57:16.013577+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable",
+    "retry_error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "chinggisinfo.mn",
+    "checked_at": "2026-10-19T12:57:16.352667+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>",
+    "retry_error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "dornogovinews.mn",
+    "checked_at": "2026-10-19T12:57:16.885934+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable",
+    "retry_error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "dundgovinews.mn",
+    "checked_at": "2026-10-19T12:57:16.931075+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>",
+    "retry_error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "dzinfo.mn",
+    "checked_at": "2026-10-19T12:57:17.826494+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable",
+    "retry_error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "khuvsgulinfo.mn",
+    "checked_at": "2026-10-19T12:57:17.842656+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable",
+    "retry_error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "niislelinfo.mn",
+    "checked_at": "2026-10-19T12:57:18.419848+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable",
+    "retry_error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "sukhbaatarinfo.mn",
+    "checked_at": "2026-10-19T12:57:18.566031+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "uvinfo.mn",
+    "checked_at": "2026-10-19T12:57:18.986649+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "zavkhaninfo.mn",
+    "checked_at": "2026-10-19T12:57:19.264534+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "khongorinfo.mn",
+    "checked_at": "2026-10-19T12:57:20.221481+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "etzone.mn",
+    "checked_at": "2026-10-19T12:57:20.676281+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "geregtv.mn",
+    "checked_at": "2026-10-19T12:57:21.142218+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "huvisal.mn",
+    "checked_at": "2026-10-19T12:57:21.346399+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "bayangol.mn",
+    "checked_at": "2026-10-19T12:57:21.895634+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "mgltv.mn",
+    "checked_at": "2026-10-19T12:57:21.976185+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "mand.mn",
+    "checked_at": "2026-10-19T12:57:22.999306+00:00",
+    "homepage_status": "excluded_identity_mismatch",
+    "feed_status": "empty_feed",
+    "feed_candidates": [
+      "https://mand.mn/feed/",
+      "https://mand.mn/home/feed/"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://mand.mn/feed/",
+        "status": "failed",
+        "error": "<urlopen error timed out>"
+      },
+      {
+        "url": "https://mand.mn/home/feed/",
+        "status": "valid_feed",
+        "entries": 0,
+        "resolved_url": "https://mand.mn/home/feed/"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Home",
+    "resolved_url": "https://mand.mn/",
+    "selection_note": "Мэдээллийн сайтын чиглэл тодорхой батлагдаагүй тул сонголтоос хассан; буруутай үйлдлийн дүгнэлт биш."
+  },
+  {
+    "domain": "small.mn",
+    "checked_at": "2026-10-19T12:57:23.064845+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "newslive.mn",
+    "checked_at": "2026-10-19T12:57:23.361587+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "niisleltimes.mn",
+    "checked_at": "2026-10-19T12:57:23.939580+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://niisleltimes.mn/feed"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://niisleltimes.mn/feed",
+        "status": "valid_feed",
+        "entries": 10,
+        "resolved_url": "https://niisleltimes.mn/feed"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Нүүр - Niislel Times",
+    "resolved_url": "https://niisleltimes.mn/",
+    "feed_url": "https://niisleltimes.mn/feed"
+  },
+  {
+    "domain": "nuuts.mn",
+    "checked_at": "2026-10-19T12:57:24.606648+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "shilen.mn",
+    "checked_at": "2026-10-19T12:57:24.722777+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "tvmongolia.mn",
+    "checked_at": "2026-10-19T12:57:26.695368+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "urlag.mn",
+    "checked_at": "2026-10-19T12:57:27.685598+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://urlag.mn/feed"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://urlag.mn/feed",
+        "status": "valid_feed",
+        "entries": 10,
+        "resolved_url": "https://urlag.mn/feed"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Урлаг.мн – Таныг урлагийн тэнгэр ивээг",
+    "resolved_url": "https://urlag.mn/",
+    "feed_url": "https://urlag.mn/feed"
+  },
+  {
+    "domain": "lpost.mn",
+    "checked_at": "2026-10-19T12:57:27.976940+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "zone.mn",
+    "checked_at": "2026-10-19T12:57:28.302176+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "grandnews.mn",
+    "checked_at": "2026-10-19T12:57:28.553661+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "GRAND NEWS - Шүүлтүүргүй, Шуурхай Хиймэл Оюунт Хэвлэл Мэдээлэл",
+    "resolved_url": "https://grandnews.mn/"
+  },
+  {
+    "domain": "dmedee.mn",
+    "checked_at": "2026-10-19T12:57:28.670532+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "analiz.mn",
+    "checked_at": "2026-10-19T12:57:28.735304+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "ValueError: redirect_unapproved: http://www.analiz.mn/"
+  },
+  {
+    "domain": "saihan.mn",
+    "checked_at": "2026-10-19T12:57:29.704026+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "hunnu.mn",
+    "checked_at": "2026-10-19T12:57:31.134469+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 500: Internal Server Error"
+  },
+  {
+    "domain": "turleg.mn",
+    "checked_at": "2026-10-19T12:57:31.613369+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "ValueError: redirect_unapproved: http://www.turleg.mn/"
+  },
+  {
+    "domain": "tvmon.mn",
+    "checked_at": "2026-10-19T12:57:32.070128+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "opennews.mn",
+    "checked_at": "2026-10-19T12:57:33.704972+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "barimt.mn",
+    "checked_at": "2026-10-19T12:57:33.719275+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Баримт",
+    "resolved_url": "https://barimt.mn/"
+  },
+  {
+    "domain": "och.mn",
+    "checked_at": "2026-10-19T12:57:35.020372+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "xot.mn",
+    "checked_at": "2026-10-19T12:57:35.129357+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "XOT.mn | New Normal City",
+    "resolved_url": "https://xot.mn/"
+  },
+  {
+    "domain": "ulaanbaatarnews.mn",
+    "checked_at": "2026-10-19T12:57:35.457070+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "hunnunews.mn",
+    "checked_at": "2026-10-19T12:57:35.679039+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "chuulgan.mn",
+    "checked_at": "2026-10-19T12:57:36.205111+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "unennews.mn",
+    "checked_at": "2026-10-19T12:57:36.652832+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "internews.mn",
+    "checked_at": "2026-10-19T12:57:36.853800+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "newsweek.mn",
+    "checked_at": "2026-10-19T12:57:37.455232+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "ubmedia.mn",
+    "checked_at": "2026-10-19T12:57:38.564014+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "mongolmedia.mn",
+    "checked_at": "2026-10-19T12:57:39.127988+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "surug.mn",
+    "checked_at": "2026-10-19T12:57:39.128331+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "mongolpress.mn",
+    "checked_at": "2026-10-19T12:57:39.625231+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "suvag.mn",
+    "checked_at": "2026-10-19T12:57:40.258787+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "ValueError: redirect_unapproved: http://www.suvag.mn/"
+  },
+  {
+    "domain": "power.mn",
+    "checked_at": "2026-10-19T12:57:40.454973+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "ubinfo.mn",
+    "checked_at": "2026-10-19T12:57:40.625093+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "UB Info - утсандаа суулгаарай",
+    "resolved_url": "https://ubinfo.mn/"
+  },
+  {
+    "domain": "dornogovipost.mn",
+    "checked_at": "2026-10-19T12:57:40.783127+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "jim.mn",
+    "checked_at": "2026-10-19T12:57:40.886416+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "info5.mn",
+    "checked_at": "2026-10-19T12:57:41.288687+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "enter.mn",
+    "checked_at": "2026-10-19T12:57:42.054086+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "ardnews.mn",
+    "checked_at": "2026-10-19T12:57:42.132788+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "mlife.mn",
+    "checked_at": "2026-10-19T12:57:43.213888+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://mlife.mn/feed"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://mlife.mn/feed",
+        "status": "valid_feed",
+        "entries": 10,
+        "resolved_url": "https://mlife.mn/feed"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "mlife.mn",
+    "resolved_url": "https://mlife.mn/",
+    "feed_url": "https://mlife.mn/feed"
+  },
+  {
+    "domain": "info.mn",
+    "checked_at": "2026-10-19T12:57:43.352439+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "shinesuvag.mn",
+    "checked_at": "2026-10-19T12:57:44.640828+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "newkhovd.mn",
+    "checked_at": "2026-10-19T12:57:44.761532+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "ekhoron21.mn",
+    "checked_at": "2026-10-19T12:57:45.212793+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "tusgaar.mn",
+    "checked_at": "2026-10-19T12:57:45.507647+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "bataar.mn",
+    "checked_at": "2026-10-19T12:57:46.114930+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "snews.mn",
+    "checked_at": "2026-10-19T12:57:46.133384+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "moment.mn",
+    "checked_at": "2026-10-19T12:57:46.583222+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "tsegts.mn",
+    "checked_at": "2026-10-19T12:57:46.634218+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "khentiinews.mn",
+    "checked_at": "2026-10-19T12:57:47.896574+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "myarkhangai.mn",
+    "checked_at": "2026-10-19T12:57:48.616784+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "mmnews.mn",
+    "checked_at": "2026-10-19T12:57:48.835416+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Дэлхийн монголчуудын цахим элч www.mmnews.mn",
+    "resolved_url": "https://mmnews.mn/"
+  },
+  {
+    "domain": "ulstor.mn",
+    "checked_at": "2026-10-19T12:57:49.050841+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "sonirholtoi.com",
+    "checked_at": "2026-10-19T12:57:49.061514+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "khovdnews.mn",
+    "checked_at": "2026-10-19T12:57:49.177549+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "khovdtimes.mn",
+    "checked_at": "2026-10-19T12:57:51.649382+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "umonday.com",
+    "checked_at": "2026-10-19T12:57:52.762292+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "amlalt.mn",
+    "checked_at": "2026-10-19T12:57:53.143029+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Амлалт",
+    "resolved_url": "https://amlalt.mn/"
+  },
+  {
+    "domain": "populist.mn",
+    "checked_at": "2026-10-19T12:57:53.370379+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "lnews.mn",
+    "checked_at": "2026-10-19T12:57:53.590614+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "dayarmongol.mn",
+    "checked_at": "2026-10-19T12:57:53.947346+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://dayarmongol.mn/engine/rss.php"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://dayarmongol.mn/engine/rss.php",
+        "status": "valid_feed",
+        "entries": 10,
+        "resolved_url": "https://dayarmongol.mn/engine/rss.php"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "- Dayarmongol.mn -",
+    "resolved_url": "https://dayarmongol.mn/",
+    "feed_url": "https://dayarmongol.mn/engine/rss.php"
+  },
+  {
+    "domain": "dursamj.mn",
+    "checked_at": "2026-10-19T12:57:54.121118+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://dursamj.mn/engine/rss.php"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://dursamj.mn/engine/rss.php",
+        "status": "valid_feed",
+        "entries": 10,
+        "resolved_url": "https://dursamj.mn/engine/rss.php"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Dursamj.mn",
+    "resolved_url": "https://dursamj.mn/",
+    "feed_url": "https://dursamj.mn/engine/rss.php"
+  },
+  {
+    "domain": "ardiinelch.mn",
+    "checked_at": "2026-10-19T12:57:54.796224+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "window.mn",
+    "checked_at": "2026-10-19T12:57:54.956447+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "setguul.mn",
+    "checked_at": "2026-10-19T12:57:56.059251+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "shuum.mn",
+    "checked_at": "2026-10-19T12:57:56.653524+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "politic.mn",
+    "checked_at": "2026-10-19T12:57:56.663025+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "hadaas.mn",
+    "checked_at": "2026-10-19T12:57:57.468970+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Hadaas.mn",
+    "resolved_url": "https://hadaas.mn/"
+  },
+  {
+    "domain": "toirog.mn",
+    "checked_at": "2026-10-19T12:57:58.616260+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "tseneg.mn",
+    "checked_at": "2026-10-19T12:57:58.617187+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Оюуны цэнэг | Tseneg.mn",
+    "resolved_url": "https://tseneg.mn/"
+  },
+  {
+    "domain": "socialmedee.mn",
+    "checked_at": "2026-10-19T12:57:58.654226+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "ulstur.com",
+    "checked_at": "2026-10-19T12:57:59.959783+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "zuvnews.com",
+    "checked_at": "2026-10-19T12:58:00.838810+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "uvnews.mn",
+    "checked_at": "2026-10-19T12:58:00.962433+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "leader.mn",
+    "checked_at": "2026-10-19T12:58:03.067891+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "candidates_failed",
+    "feed_candidates": [
+      "https://leader.mn/feed/"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://leader.mn/feed/",
+        "status": "failed",
+        "error": "<urlopen error timed out>"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Мэдээллийн сайт  - Лидер медиа",
+    "resolved_url": "https://leader.mn/"
+  },
+  {
+    "domain": "ibook.mn",
+    "checked_at": "2026-10-19T12:58:03.644843+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "sedev.mn",
+    "checked_at": "2026-10-19T12:58:03.662139+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "ser.mn",
+    "checked_at": "2026-10-19T12:58:03.674209+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "hardnews.mn",
+    "checked_at": "2026-10-19T12:58:03.674620+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "murdugch.mn",
+    "checked_at": "2026-10-19T12:58:04.310924+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "zugeer.mn",
+    "checked_at": "2026-10-19T12:58:05.129304+00:00",
+    "homepage_status": "excluded_identity_mismatch",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Zugeer — Messenger AI чатбот",
+    "resolved_url": "https://zugeer.mn/",
+    "selection_note": "Мэдээллийн сайтын чиглэл тодорхой батлагдаагүй тул сонголтоос хассан; буруутай үйлдлийн дүгнэлт биш."
+  },
+  {
+    "domain": "niigem.mn",
+    "checked_at": "2026-10-19T12:58:05.662771+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Niigem.mn - Мэдээний портал",
+    "resolved_url": "https://niigem.mn/"
+  },
+  {
+    "domain": "darkhan.today",
+    "checked_at": "2026-10-19T12:58:06.447782+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "nutag.mn",
+    "checked_at": "2026-10-19T12:58:06.968404+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "dundgovi.mn",
+    "checked_at": "2026-10-19T12:58:08.384805+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "khentiid.mn",
+    "checked_at": "2026-10-19T12:58:08.602003+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "arkhangai.mn",
+    "checked_at": "2026-10-19T12:58:09.953281+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Өдөр тутмын мэдээ мэдээллийн вэб сайт",
+    "resolved_url": "https://arkhangai.mn/"
+  },
+  {
+    "domain": "govialtai.mn",
+    "checked_at": "2026-10-19T12:58:10.540843+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "selengenutag.mn",
+    "checked_at": "2026-10-19T12:58:10.671011+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "uvsnutag.mn",
+    "checked_at": "2026-10-19T12:58:11.003886+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "choibalsan.mn",
+    "checked_at": "2026-10-19T12:58:11.146779+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "TimeoutError: The read operation timed out"
+  },
+  {
+    "domain": "live.mn",
+    "checked_at": "2026-10-19T12:58:12.524370+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "dandaa.mn",
+    "checked_at": "2026-10-19T12:58:12.585300+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "arbis.mn",
+    "checked_at": "2026-10-19T12:58:13.352012+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "arbis.mn",
+    "resolved_url": "https://arbis.mn/"
+  },
+  {
+    "domain": "khanlig.info",
+    "checked_at": "2026-10-19T12:58:13.454249+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "shagai.mn",
+    "checked_at": "2026-10-19T12:58:13.740170+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "abcnews.mn",
+    "checked_at": "2026-10-19T12:58:13.977041+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "ubline.mn",
+    "checked_at": "2026-10-19T12:58:15.977576+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "deed.mn",
+    "checked_at": "2026-10-19T12:58:16.248208+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "ValueError: redirect_unapproved: http://www.deed.mn/"
+  },
+  {
+    "domain": "sor.mn",
+    "checked_at": "2026-10-19T12:58:16.644127+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 500: Internal Server Error"
+  },
+  {
+    "domain": "etcity.mn",
+    "checked_at": "2026-10-19T12:58:18.221043+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "peoplenews.mn",
+    "checked_at": "2026-10-19T12:58:18.304896+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "bolloo.mn",
+    "checked_at": "2026-10-19T12:58:18.589126+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://bolloo.mn/?feed=rss2"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://bolloo.mn/?feed=rss2",
+        "status": "valid_feed",
+        "entries": 10,
+        "resolved_url": "https://bolloo.mn/?feed=rss2"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "BOLLOO.MN",
+    "resolved_url": "https://bolloo.mn/",
+    "feed_url": "https://bolloo.mn/?feed=rss2"
+  },
+  {
+    "domain": "shuur.mn",
+    "checked_at": "2026-10-19T12:58:19.190696+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "yazguur.mn",
+    "checked_at": "2026-10-19T12:58:19.554848+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "teeverchid.mn",
+    "checked_at": "2026-10-19T12:58:19.593691+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "kingnews.mn",
+    "checked_at": "2026-10-19T12:58:20.727159+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "newsworld.mn",
+    "checked_at": "2026-10-19T12:58:20.748902+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "bestnews.mn",
+    "checked_at": "2026-10-19T12:58:20.987816+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Тэргүүлэх мэдээллийн сүлжээ сайт bestnews.mn",
+    "resolved_url": "https://bestnews.mn/"
+  },
+  {
+    "domain": "tonshuul.mn",
+    "checked_at": "2026-10-19T12:58:21.782294+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://tonshuul.mn/index.php?mod=rss",
+      "https://tonshuul.mn/index.php?mod=rss&rssmode=turbo",
+      "https://tonshuul.mn/index.php?mod=rss&rssmode=dzen"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://tonshuul.mn/index.php?mod=rss",
+        "status": "valid_feed",
+        "entries": 10,
+        "resolved_url": "https://tonshuul.mn/index.php?mod=rss"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Tonshuul.mn",
+    "resolved_url": "https://tonshuul.mn/",
+    "feed_url": "https://tonshuul.mn/index.php?mod=rss"
+  },
+  {
+    "domain": "word.mn",
+    "checked_at": "2026-10-19T12:58:22.537197+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 404: Not Found"
+  },
+  {
+    "domain": "said.mn",
+    "checked_at": "2026-10-19T12:58:22.922166+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "mongoltur.mn",
+    "checked_at": "2026-10-19T12:58:23.989491+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "24barimt.mn",
+    "checked_at": "2026-10-19T12:58:24.409423+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "candidates_failed",
+    "feed_candidates": [
+      "https://24barimt.mn/feed"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://24barimt.mn/feed",
+        "status": "failed",
+        "error": "<urlopen error timed out>"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "24barimt.mn - Бичих эрхийн индэр",
+    "resolved_url": "https://24barimt.mn/"
+  },
+  {
+    "domain": "see.mn",
+    "checked_at": "2026-10-19T12:58:24.661349+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://see.mn/feed"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://see.mn/feed",
+        "status": "valid_feed",
+        "entries": 10,
+        "resolved_url": "https://see.mn/feed"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Home - www.see.mn",
+    "resolved_url": "https://see.mn/",
+    "feed_url": "https://see.mn/feed"
+  },
+  {
+    "domain": "assa.mn",
+    "checked_at": "2026-10-19T12:58:24.896220+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "ASSA",
+    "resolved_url": "https://www.assa.mn/"
+  },
+  {
+    "domain": "montoim.mn",
+    "checked_at": "2026-10-19T12:58:24.902403+00:00",
+    "homepage_status": "blocked_or_placeholder",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Account Suspended",
+    "resolved_url": "https://montoim.mn/cgi-sys/suspendedpage.cgi"
+  },
+  {
+    "domain": "sonornews.com",
+    "checked_at": "2026-10-19T12:58:26.201270+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "goymedee.mn",
+    "checked_at": "2026-10-19T12:58:26.467610+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "ikonnews.net",
+    "checked_at": "2026-10-19T12:58:27.175799+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
+  {
+    "domain": "jaran.mn",
+    "checked_at": "2026-10-19T12:58:27.735479+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>"
+  }
+]

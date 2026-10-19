@@ -14,6 +14,7 @@ from .db import get_db
 from .models import Source, Article, ArticleVersion, Event, EventArticle, SimilarityMatch, CollectionRun, AuditLog, now
 from .collector import collect, parse_feed
 from .security import fetch_feed, resolve_public
+from .catalog import BY_DOMAIN, SITES, directory, web_search_link, domain_of
 
 @asynccontextmanager
 async def lifespan(app):
@@ -63,7 +64,9 @@ class SourceInput(BaseModel):
     permission_note: str = Field(default='', max_length=2000)
 
 class SourcePatch(BaseModel):
-    active: bool
+    active: bool | None = None
+    license: str | None = Field(default=None, max_length=2000)
+    permission_note: str | None = Field(default=None, max_length=2000)
 
 def get_or_404(db, model, id):
     row = db.get(model, id)
@@ -113,9 +116,14 @@ async def validate_source(id: int, db: DB = Depends(get_db)):
 @app.patch('/api/v1/sources/{id}', dependencies=[Depends(admin)])
 def patch_source(id: int, data: SourcePatch, db: DB = Depends(get_db)):
     source = get_or_404(db, Source, id)
-    if data.active and (not source.validated_at or not source.permission_note or not source.license):
+    if data.license is not None:
+        source.license = data.license.strip()
+    if data.permission_note is not None:
+        source.permission_note = data.permission_note.strip()
+    will_be_active = data.active if data.active is not None else source.active
+    if will_be_active and (not source.validated_at or not source.permission_note or not source.license):
         raise HTTPException(422, 'Validate feed and document license/permission before activation')
-    source.active = data.active
+    source.active = will_be_active
     db.add(AuditLog(action='source.activate', detail=f'{id}:{data.active}')); db.commit()
     return source
 
@@ -125,11 +133,16 @@ def source_detail(id: int, db: DB = Depends(get_db)):
 
 @app.get('/api/v1/search')
 @app.get('/api/v1/articles')
-def articles(q: str = Query('', max_length=200), source_id: int | None = None, offset: int = Query(0, ge=0), limit: int = Query(30, ge=1, le=100), db: DB = Depends(get_db)):
+def articles(q: str = Query('', max_length=200), domain: str = Query('', max_length=253), source_id: int | None = None, offset: int = Query(0, ge=0), limit: int = Query(30, ge=1, le=100), db: DB = Depends(get_db)):
     stmt = select(Article)
     if q:
         escaped = q.replace('\\','\\\\').replace('%','\\%').replace('_','\\_')
         stmt = stmt.where(or_(Article.title.ilike(f'%{escaped}%', escape='\\'), Article.excerpt.ilike(f'%{escaped}%', escape='\\')))
+    if domain:
+        if domain not in BY_DOMAIN:
+            raise HTTPException(422, 'Unknown media domain')
+        ids = [s.id for s in db.scalars(select(Source)) if domain_of(s.endpoint) == domain]
+        stmt = stmt.where(Article.source_id.in_(ids))
     if source_id:
         stmt = stmt.where(Article.source_id == source_id)
     return page(db, stmt.order_by(Article.first_seen_at.desc(), Article.id.desc()), offset, limit)
@@ -180,3 +193,21 @@ async def run_collector(db: DB = Depends(get_db)):
 @app.get('/api/v1/reports')
 def reports():
     return {'items':[], 'total':0, 'status':'Phase 3: хүний хяналттай тайлан хараахан идэвхжээгүй'}
+
+
+@app.get('/api/v1/media')
+def media_directory(q: str = Query('', max_length=200), category: str = Query('', pattern='^(|news|regional|business|broadcast)$'), availability: str = Query('', pattern='^(|active|reachable|feed_found)$'), offset: int = Query(0, ge=0), limit: int = Query(20, ge=1, le=100), db: DB = Depends(get_db)):
+    return directory(db, q, category, availability, offset, limit)
+
+@app.get('/api/v1/media/search')
+def media_web_search(q: str = Query(..., min_length=1, max_length=200), domain: str = Query('', max_length=253), engine: str = Query('google', pattern='^(google|bing)$')):
+    if not q.strip():
+        raise HTTPException(422, 'Search query is required')
+    if domain and domain not in BY_DOMAIN:
+        raise HTTPException(422, 'Unknown media domain')
+    sites = [BY_DOMAIN[domain]] if domain else SITES
+    groups = [sites[i:i+10] for i in range(0,len(sites),10)]
+    return {'mode':'external_search_links','query':q,'engine':engine,'total_sites':len(sites),
+        'groups':[{'domains':[s['domain'] for s in group], 'url':web_search_link(q,[s['domain'] for s in group],engine)} for group in groups],
+        'items':[{'domain':s['domain'],'name':s['name'],'url':web_search_link(q,[s['domain']],engine)} for s in sites],
+        'limitation':'Эдгээр нь хайлтын үр дүн биш, Google/Bing дээр хайх холбоосууд. Гаднын систем индексжүүлээгүй мэдээг харуулахгүй байж болно.'}

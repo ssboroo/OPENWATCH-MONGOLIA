@@ -1,0 +1,902 @@
+[
+  {
+    "domain": "ikon.mn",
+    "name": "iKon",
+    "website_url": "https://ikon.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "gogo.mn",
+    "name": "GoGo",
+    "website_url": "https://gogo.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "news.mn",
+    "name": "News.MN",
+    "website_url": "https://news.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "montsame.mn",
+    "name": "МОНЦАМЭ",
+    "website_url": "https://montsame.mn/",
+    "category": "news",
+    "reference_url": "https://admin.crc.gov.mn/articles/slug11728/mn",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "mnb.mn",
+    "name": "МҮОНРТ",
+    "website_url": "https://mnb.mn/",
+    "category": "broadcast",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "unuudur.mn",
+    "name": "Өнөөдөр",
+    "website_url": "https://unuudur.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "dnn.mn",
+    "name": "Өдрийн сонин",
+    "website_url": "https://dnn.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "medee.mn",
+    "name": "medee.mn",
+    "website_url": "https://medee.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "eguur.mn",
+    "name": "Eguur",
+    "website_url": "https://eguur.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "itoim.mn",
+    "name": "iToim",
+    "website_url": "https://itoim.mn/",
+    "category": "news",
+    "reference_url": "https://admin.crc.gov.mn/articles/slug11728/mn",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "isee.mn",
+    "name": "iSee",
+    "website_url": "https://isee.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "zarig.mn",
+    "name": "Зариг",
+    "website_url": "https://zarig.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "zindaa.mn",
+    "name": "zindaa.mn",
+    "website_url": "https://zindaa.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "time.mn",
+    "name": "time.mn",
+    "website_url": "https://time.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "sonin.mn",
+    "name": "sonin.mn",
+    "website_url": "https://sonin.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "shuud.mn",
+    "name": "shuud.mn",
+    "website_url": "https://shuud.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "mass.mn",
+    "name": "mass.mn",
+    "website_url": "https://mass.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "eagle.mn",
+    "name": "Eagle News",
+    "website_url": "https://eagle.mn/",
+    "category": "broadcast",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "bloombergtv.mn",
+    "name": "Bloomberg TV Mongolia",
+    "website_url": "https://bloombergtv.mn/",
+    "category": "business",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "ubn.mn",
+    "name": "ubn.mn",
+    "website_url": "https://ubn.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "livetv.mn",
+    "name": "livetv.mn",
+    "website_url": "https://livetv.mn/",
+    "category": "broadcast",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "urug.mn",
+    "name": "Өрөг",
+    "website_url": "https://urug.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "24tsag.mn",
+    "name": "24tsag.mn",
+    "website_url": "https://24tsag.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "unread.today",
+    "name": "Unread",
+    "website_url": "https://unread.today/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "posted.mn",
+    "name": "Posted",
+    "website_url": "https://posted.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "lemonpress.mn",
+    "name": "Lemon Press",
+    "website_url": "https://lemonpress.mn/",
+    "category": "business",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "peak.mn",
+    "name": "peak.mn",
+    "website_url": "https://peak.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "ublife.mn",
+    "name": "ublife.mn",
+    "website_url": "https://ublife.mn/",
+    "category": "news",
+    "reference_url": "https://admin.crc.gov.mn/articles/slug11728/mn",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "olloo.mn",
+    "name": "olloo.mn",
+    "website_url": "https://olloo.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "dorgio.mn",
+    "name": "dorgio.mn",
+    "website_url": "https://dorgio.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "bolod.mn",
+    "name": "bolod.mn",
+    "website_url": "https://bolod.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "vip76.mn",
+    "name": "vip76.mn",
+    "website_url": "https://vip76.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "newswall.mn",
+    "name": "newswall.mn",
+    "website_url": "https://newswall.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "gereg.mn",
+    "name": "gereg.mn",
+    "website_url": "https://gereg.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "fact.mn",
+    "name": "fact.mn",
+    "website_url": "https://fact.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "newslife.mn",
+    "name": "newslife.mn",
+    "website_url": "https://newslife.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "shuurhai.mn",
+    "name": "shuurhai.mn",
+    "website_url": "https://shuurhai.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "tsag.mn",
+    "name": "tsag.mn",
+    "website_url": "https://tsag.mn/",
+    "category": "news",
+    "reference_url": "https://admin.crc.gov.mn/articles/slug11728/mn",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "tumen.mn",
+    "name": "tumen.mn",
+    "website_url": "https://tumen.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "paparazzi.mn",
+    "name": "paparazzi.mn",
+    "website_url": "https://paparazzi.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "ulsturch.mn",
+    "name": "ulsturch.mn",
+    "website_url": "https://ulsturch.mn/",
+    "category": "news",
+    "reference_url": "https://admin.crc.gov.mn/articles/slug11728/mn",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "tovch.mn",
+    "name": "tovch.mn",
+    "website_url": "https://tovch.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "newsmongolia.mn",
+    "name": "newsmongolia.mn",
+    "website_url": "https://newsmongolia.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "comment.mn",
+    "name": "comment.mn",
+    "website_url": "https://comment.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "ugluu.mn",
+    "name": "ugluu.mn",
+    "website_url": "https://ugluu.mn/",
+    "category": "news",
+    "reference_url": "https://admin.crc.gov.mn/articles/slug11728/mn",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "ene.mn",
+    "name": "ene.mn",
+    "website_url": "https://ene.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "guren.mn",
+    "name": "guren.mn",
+    "website_url": "https://guren.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "ord.mn",
+    "name": "ord.mn",
+    "website_url": "https://ord.mn/",
+    "category": "business",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "otoch.mn",
+    "name": "otoch.mn",
+    "website_url": "https://otoch.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "shudarga.mn",
+    "name": "shudarga.mn",
+    "website_url": "https://shudarga.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "etv.mn",
+    "name": "etv.mn",
+    "website_url": "https://etv.mn/",
+    "category": "broadcast",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "todmedee.mn",
+    "name": "todmedee.mn",
+    "website_url": "https://todmedee.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "tsenzuur.mn",
+    "name": "tsenzuur.mn",
+    "website_url": "https://tsenzuur.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "seen.mn",
+    "name": "seen.mn",
+    "website_url": "https://seen.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "todotgol.mn",
+    "name": "todotgol.mn",
+    "website_url": "https://todotgol.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "asu.mn",
+    "name": "asu.mn",
+    "website_url": "https://asu.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "tug.mn",
+    "name": "tug.mn",
+    "website_url": "https://tug.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "todnews.mn",
+    "name": "todnews.mn",
+    "website_url": "https://todnews.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "zuv.mn",
+    "name": "zuv.mn",
+    "website_url": "https://zuv.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "amjilt.news",
+    "name": "amjilt.news",
+    "website_url": "https://amjilt.news/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "erdenetnews.mn",
+    "name": "erdenetnews.mn",
+    "website_url": "https://erdenetnews.mn/",
+    "category": "regional",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "erdenetlife.mn",
+    "name": "erdenetlife.mn",
+    "website_url": "https://erdenetlife.mn/",
+    "category": "regional",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  },
+  {
+    "domain": "baabar.mn",
+    "name": "baabar.mn",
+    "website_url": "https://baabar.mn/",
+    "category": "news",
+    "reference_url": "https://baabar.mn/",
+    "reference_label": "Сайтын өөрийн нүүр · HTTP шалгалт",
+    "reference_note": "Нүүр хуудасны HTTP шалгалтаар сонгосон; хандалтын эрэмбэ болон найдвартай байдлын оноо биш."
+  },
+  {
+    "domain": "caak.mn",
+    "name": "caak.mn",
+    "website_url": "https://caak.mn/",
+    "category": "news",
+    "reference_url": "https://caak.mn/",
+    "reference_label": "Сайтын өөрийн нүүр · HTTP шалгалт",
+    "reference_note": "Нүүр хуудасны HTTP шалгалтаар сонгосон; хандалтын эрэмбэ болон найдвартай байдлын оноо биш."
+  },
+  {
+    "domain": "mongoltv.mn",
+    "name": "mongoltv.mn",
+    "website_url": "https://mongoltv.mn/",
+    "category": "broadcast",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл",
+    "reference_note": "Нүүр хуудасны HTTP шалгалтаар сонгосон; хандалтын эрэмбэ болон найдвартай байдлын оноо биш."
+  },
+  {
+    "domain": "nio.mn",
+    "name": "nio.mn",
+    "website_url": "https://nio.mn/",
+    "category": "news",
+    "reference_url": "https://nio.mn/",
+    "reference_label": "Сайтын өөрийн нүүр · HTTP шалгалт",
+    "reference_note": "Нүүр хуудасны HTTP шалгалтаар сонгосон; хандалтын эрэмбэ болон найдвартай байдлын оноо биш."
+  },
+  {
+    "domain": "tsahiur.mn",
+    "name": "tsahiur.mn",
+    "website_url": "https://tsahiur.mn/",
+    "category": "news",
+    "reference_url": "https://tsahiur.mn/",
+    "reference_label": "Сайтын өөрийн нүүр · HTTP шалгалт",
+    "reference_note": "Нүүр хуудасны HTTP шалгалтаар сонгосон; хандалтын эрэмбэ болон найдвартай байдлын оноо биш."
+  },
+  {
+    "domain": "mpress.mn",
+    "name": "mpress.mn",
+    "website_url": "https://mpress.mn/",
+    "category": "news",
+    "reference_url": "https://mpress.mn/",
+    "reference_label": "Сайтын өөрийн нүүр · HTTP шалгалт",
+    "reference_note": "Нүүр хуудасны HTTP шалгалтаар сонгосон; хандалтын эрэмбэ болон найдвартай байдлын оноо биш."
+  },
+  {
+    "domain": "dailynews.mn",
+    "name": "dailynews.mn",
+    "website_url": "https://dailynews.mn/",
+    "category": "news",
+    "reference_url": "https://dailynews.mn/",
+    "reference_label": "Сайтын өөрийн нүүр · HTTP шалгалт",
+    "reference_note": "Нүүр хуудасны HTTP шалгалтаар сонгосон; хандалтын эрэмбэ болон найдвартай байдлын оноо биш."
+  },
+  {
+    "domain": "ekon.mn",
+    "name": "ekon.mn",
+    "website_url": "https://ekon.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл",
+    "reference_note": "Нүүр хуудасны HTTP шалгалтаар сонгосон; хандалтын эрэмбэ болон найдвартай байдлын оноо биш."
+  },
+  {
+    "domain": "erdenetkhot.mn",
+    "name": "erdenetkhot.mn",
+    "website_url": "https://erdenetkhot.mn/",
+    "category": "regional",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл",
+    "reference_note": "Нүүр хуудасны HTTP шалгалтаар сонгосон; хандалтын эрэмбэ болон найдвартай байдлын оноо биш."
+  },
+  {
+    "domain": "niisleltimes.mn",
+    "name": "niisleltimes.mn",
+    "website_url": "https://niisleltimes.mn/",
+    "category": "news",
+    "reference_url": "https://admin.crc.gov.mn/articles/slug11728/mn",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл",
+    "reference_note": "Нүүр хуудасны HTTP шалгалтаар сонгосон; хандалтын эрэмбэ болон найдвартай байдлын оноо биш."
+  },
+  {
+    "domain": "urlag.mn",
+    "name": "urlag.mn",
+    "website_url": "https://urlag.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл",
+    "reference_note": "Нүүр хуудасны HTTP шалгалтаар сонгосон; хандалтын эрэмбэ болон найдвартай байдлын оноо биш."
+  },
+  {
+    "domain": "grandnews.mn",
+    "name": "grandnews.mn",
+    "website_url": "https://grandnews.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл",
+    "reference_note": "Нүүр хуудасны HTTP шалгалтаар сонгосон; хандалтын эрэмбэ болон найдвартай байдлын оноо биш."
+  },
+  {
+    "domain": "barimt.mn",
+    "name": "barimt.mn",
+    "website_url": "https://barimt.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл",
+    "reference_note": "Нүүр хуудасны HTTP шалгалтаар сонгосон; хандалтын эрэмбэ болон найдвартай байдлын оноо биш."
+  },
+  {
+    "domain": "xot.mn",
+    "name": "xot.mn",
+    "website_url": "https://xot.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл",
+    "reference_note": "Нүүр хуудасны HTTP шалгалтаар сонгосон; хандалтын эрэмбэ болон найдвартай байдлын оноо биш."
+  },
+  {
+    "domain": "ubinfo.mn",
+    "name": "ubinfo.mn",
+    "website_url": "https://ubinfo.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл",
+    "reference_note": "Нүүр хуудасны HTTP шалгалтаар сонгосон; хандалтын эрэмбэ болон найдвартай байдлын оноо биш."
+  },
+  {
+    "domain": "mlife.mn",
+    "name": "mlife.mn",
+    "website_url": "https://mlife.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл",
+    "reference_note": "Нүүр хуудасны HTTP шалгалтаар сонгосон; хандалтын эрэмбэ болон найдвартай байдлын оноо биш."
+  },
+  {
+    "domain": "mmnews.mn",
+    "name": "mmnews.mn",
+    "website_url": "https://mmnews.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл",
+    "reference_note": "Нүүр хуудасны HTTP шалгалтаар сонгосон; хандалтын эрэмбэ болон найдвартай байдлын оноо биш."
+  },
+  {
+    "domain": "amlalt.mn",
+    "name": "amlalt.mn",
+    "website_url": "https://amlalt.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл",
+    "reference_note": "Нүүр хуудасны HTTP шалгалтаар сонгосон; хандалтын эрэмбэ болон найдвартай байдлын оноо биш."
+  },
+  {
+    "domain": "dayarmongol.mn",
+    "name": "dayarmongol.mn",
+    "website_url": "https://dayarmongol.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл",
+    "reference_note": "Нүүр хуудасны HTTP шалгалтаар сонгосон; хандалтын эрэмбэ болон найдвартай байдлын оноо биш."
+  },
+  {
+    "domain": "dursamj.mn",
+    "name": "dursamj.mn",
+    "website_url": "https://dursamj.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл",
+    "reference_note": "Нүүр хуудасны HTTP шалгалтаар сонгосон; хандалтын эрэмбэ болон найдвартай байдлын оноо биш."
+  },
+  {
+    "domain": "hadaas.mn",
+    "name": "hadaas.mn",
+    "website_url": "https://hadaas.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл",
+    "reference_note": "Нүүр хуудасны HTTP шалгалтаар сонгосон; хандалтын эрэмбэ болон найдвартай байдлын оноо биш."
+  },
+  {
+    "domain": "tseneg.mn",
+    "name": "tseneg.mn",
+    "website_url": "https://tseneg.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл",
+    "reference_note": "Нүүр хуудасны HTTP шалгалтаар сонгосон; хандалтын эрэмбэ болон найдвартай байдлын оноо биш."
+  },
+  {
+    "domain": "leader.mn",
+    "name": "leader.mn",
+    "website_url": "https://leader.mn/",
+    "category": "news",
+    "reference_url": "https://leader.mn/",
+    "reference_label": "Сайтын өөрийн нүүр · HTTP шалгалт",
+    "reference_note": "Нүүр хуудасны HTTP шалгалтаар сонгосон; хандалтын эрэмбэ болон найдвартай байдлын оноо биш."
+  },
+  {
+    "domain": "niigem.mn",
+    "name": "niigem.mn",
+    "website_url": "https://niigem.mn/",
+    "category": "news",
+    "reference_url": "https://niigem.mn/",
+    "reference_label": "Сайтын өөрийн нүүр · HTTP шалгалт",
+    "reference_note": "Нүүр хуудасны HTTP шалгалтаар сонгосон; хандалтын эрэмбэ болон найдвартай байдлын оноо биш."
+  },
+  {
+    "domain": "arkhangai.mn",
+    "name": "arkhangai.mn",
+    "website_url": "https://arkhangai.mn/",
+    "category": "regional",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл",
+    "reference_note": "Нүүр хуудасны HTTP шалгалтаар сонгосон; хандалтын эрэмбэ болон найдвартай байдлын оноо биш."
+  },
+  {
+    "domain": "arbis.mn",
+    "name": "arbis.mn",
+    "website_url": "https://arbis.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл",
+    "reference_note": "Нүүр хуудасны HTTP шалгалтаар сонгосон; хандалтын эрэмбэ болон найдвартай байдлын оноо биш."
+  },
+  {
+    "domain": "bolloo.mn",
+    "name": "bolloo.mn",
+    "website_url": "https://bolloo.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл",
+    "reference_note": "Нүүр хуудасны HTTP шалгалтаар сонгосон; хандалтын эрэмбэ болон найдвартай байдлын оноо биш."
+  },
+  {
+    "domain": "bestnews.mn",
+    "name": "bestnews.mn",
+    "website_url": "https://bestnews.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл",
+    "reference_note": "Нүүр хуудасны HTTP шалгалтаар сонгосон; хандалтын эрэмбэ болон найдвартай байдлын оноо биш."
+  },
+  {
+    "domain": "tonshuul.mn",
+    "name": "tonshuul.mn",
+    "website_url": "https://tonshuul.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл",
+    "reference_note": "Нүүр хуудасны HTTP шалгалтаар сонгосон; хандалтын эрэмбэ болон найдвартай байдлын оноо биш."
+  },
+  {
+    "domain": "24barimt.mn",
+    "name": "24barimt.mn",
+    "website_url": "https://24barimt.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл",
+    "reference_note": "Нүүр хуудасны HTTP шалгалтаар сонгосон; хандалтын эрэмбэ болон найдвартай байдлын оноо биш."
+  },
+  {
+    "domain": "see.mn",
+    "name": "see.mn",
+    "website_url": "https://see.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл",
+    "reference_note": "Нүүр хуудасны HTTP шалгалтаар сонгосон; хандалтын эрэмбэ болон найдвартай байдлын оноо биш."
+  },
+  {
+    "domain": "assa.mn",
+    "name": "assa.mn",
+    "website_url": "https://assa.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл",
+    "reference_note": "Нүүр хуудасны HTTP шалгалтаар сонгосон; хандалтын эрэмбэ болон найдвартай байдлын оноо биш."
+  },
+  {
+    "domain": "noorog.mn",
+    "name": "Noorog",
+    "website_url": "https://noorog.mn/",
+    "category": "news",
+    "reference_url": "https://noorog.mn/",
+    "reference_label": "Сайтын өөрийн нүүр · HTTP шалгалт",
+    "reference_note": "Нүүр хуудасны бодит HTTP шалгалт; хандалтын эрэмбэ болон найдвартай байдлын оноо биш."
+  },
+  {
+    "domain": "neguun.mn",
+    "name": "Нэгүүн",
+    "website_url": "https://neguun.mn/",
+    "category": "news",
+    "reference_url": "https://neguun.mn/",
+    "reference_label": "Сайтын өөрийн нүүр · HTTP шалгалт",
+    "reference_note": "Нүүр хуудасны бодит HTTP шалгалт; хандалтын эрэмбэ болон найдвартай байдлын оноо биш."
+  },
+  {
+    "domain": "mongolianminingjournal.com",
+    "name": "The Mongolian Mining Journal",
+    "website_url": "https://mongolianminingjournal.com/",
+    "category": "business",
+    "reference_url": "https://mongolianminingjournal.com/",
+    "reference_label": "Сайтын өөрийн нүүр · HTTP шалгалт",
+    "reference_note": "Нүүр хуудасны бодит HTTP шалгалт; хандалтын эрэмбэ болон найдвартай байдлын оноо биш."
+  },
+  {
+    "domain": "business.mn",
+    "name": "Business.MN",
+    "website_url": "https://business.mn/",
+    "category": "business",
+    "reference_url": "https://business.mn/",
+    "reference_label": "Сайтын өөрийн нүүр · HTTP шалгалт",
+    "reference_note": "Нүүр хуудасны бодит HTTP шалгалт; хандалтын эрэмбэ болон найдвартай байдлын оноо биш."
+  },
+  {
+    "domain": "ubpost.mn",
+    "name": "UB Post",
+    "website_url": "https://ubpost.mn/",
+    "category": "news",
+    "reference_url": "https://ubpost.mn/",
+    "reference_label": "Сайтын өөрийн нүүр · HTTP шалгалт",
+    "reference_note": "Нүүр хуудасны бодит HTTP шалгалт; хандалтын эрэмбэ болон найдвартай байдлын оноо биш."
+  },
+  {
+    "domain": "erennews.mn",
+    "name": "erennews.mn",
+    "website_url": "https://erennews.mn/",
+    "category": "news",
+    "reference_url": "https://manage.crc.gov.mn/articles/slug12071/en",
+    "reference_note": "ХХЗХ-ны 2020/2021 оны бүртгэл; одоогийн хандалтын эрэмбэ болон үйл ажиллагааны баталгаа биш.",
+    "reference_label": "ХХЗХ-ны 2020/2021 оны бүртгэл"
+  }
+]

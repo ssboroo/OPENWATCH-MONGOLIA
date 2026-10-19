@@ -1,0 +1,1592 @@
+[
+  {
+    "domain": "ikon.mn",
+    "checked_at": "2026-10-19T12:53:34.039589+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "iKon.MN : Next Horizon",
+    "resolved_url": "https://ikon.mn/",
+    "rechecked_at": "2026-10-19T12:59:57.276971+00:00",
+    "homepage_sample_bytes": 78849
+  },
+  {
+    "domain": "gogo.mn",
+    "checked_at": "2026-10-19T12:53:34.040143+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "candidates_failed",
+    "feed_candidates": [
+      "https://gogo.mn/feed/"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://gogo.mn/feed/",
+        "status": "failed",
+        "error": "HTTP Error 404: Not Found"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "GoGo",
+    "resolved_url": "https://gogo.mn/"
+  },
+  {
+    "domain": "news.mn",
+    "checked_at": "2026-10-19T12:53:34.040563+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "candidates_failed",
+    "feed_candidates": [
+      "https://news.mn/feed/"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://news.mn/feed/",
+        "status": "failed",
+        "error": "not well-formed (invalid token): line 2, column 5"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "News.MN - Мэдээллийн эх сурвалж",
+    "resolved_url": "https://news.mn/"
+  },
+  {
+    "domain": "montsame.mn",
+    "checked_at": "2026-10-19T12:53:34.043235+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "TimeoutError: The read operation timed out",
+    "retry_error": "TimeoutError: The read operation timed out"
+  },
+  {
+    "domain": "mnb.mn",
+    "checked_at": "2026-10-19T12:53:34.045055+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://www.mnb.mn/rss.xml"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://www.mnb.mn/rss.xml",
+        "status": "valid_feed",
+        "entries": 30,
+        "resolved_url": "https://www.mnb.mn/rss.xml"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "МҮОНРТ — Мэдээ, телевиз, радио",
+    "resolved_url": "https://mnb.mn/",
+    "feed_url": "https://www.mnb.mn/rss.xml"
+  },
+  {
+    "domain": "unuudur.mn",
+    "checked_at": "2026-10-19T12:53:34.045921+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Өнөөдөр – Монголын үндэсний өдөр тутмын сонин – Хэн сэтгэж байна түүнд зориулав",
+    "resolved_url": "https://www.unuudur.mn/",
+    "rechecked_at": "2026-10-19T13:00:05.868128+00:00",
+    "homepage_sample_bytes": 192187
+  },
+  {
+    "domain": "dnn.mn",
+    "checked_at": "2026-10-19T12:53:34.050936+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Өдрийн сонин | DNN.mn",
+    "resolved_url": "https://dnn.mn/"
+  },
+  {
+    "domain": "medee.mn",
+    "checked_at": "2026-10-19T12:53:34.053093+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Мэдээ.МН",
+    "resolved_url": "https://medee.mn/"
+  },
+  {
+    "domain": "eguur.mn",
+    "checked_at": "2026-10-19T12:53:34.054821+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "candidates_failed",
+    "feed_candidates": [
+      "https://eguur.mn/feed/"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://eguur.mn/feed/",
+        "status": "failed",
+        "error": "response_size_limit"
+      },
+      {
+        "url": "https://eguur.mn/comments/feed/",
+        "status": "failed",
+        "error": "response_size_limit"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Баримттай Мэдээлнэ - Eguur.MN",
+    "resolved_url": "https://eguur.mn/"
+  },
+  {
+    "domain": "itoim.mn",
+    "checked_at": "2026-10-19T12:53:34.057068+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://itoim.mn/rss.xml"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://itoim.mn/rss.xml",
+        "status": "valid_feed",
+        "entries": 4,
+        "resolved_url": "https://itoim.mn/rss.xml"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "iToim.mn",
+    "resolved_url": "https://itoim.mn/",
+    "feed_url": "https://itoim.mn/rss.xml"
+  },
+  {
+    "domain": "isee.mn",
+    "checked_at": "2026-10-19T12:53:34.058546+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "iSee.mn",
+    "resolved_url": "https://isee.mn/"
+  },
+  {
+    "domain": "zarig.mn",
+    "checked_at": "2026-10-19T12:53:34.059022+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Зариг.мн",
+    "resolved_url": "https://zarig.mn/"
+  },
+  {
+    "domain": "zindaa.mn",
+    "checked_at": "2026-10-19T12:53:40.382447+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>",
+    "retry_error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "time.mn",
+    "checked_at": "2026-10-19T12:53:40.702833+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "candidates_failed",
+    "feed_candidates": [
+      "https://time.mn/feed/"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://time.mn/feed/",
+        "status": "failed",
+        "error": "HTTP Error 404: Not Found"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Time.mn - Та итгэж болно",
+    "resolved_url": "https://time.mn/"
+  },
+  {
+    "domain": "sonin.mn",
+    "checked_at": "2026-10-19T12:53:41.061300+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Монголын анхны мэдээллийн сайт | Sonin.MN",
+    "resolved_url": "https://sonin.mn/"
+  },
+  {
+    "domain": "shuud.mn",
+    "checked_at": "2026-10-19T12:53:41.065332+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Shuud.mn - Өнөөдрөөс сайхан маргааш",
+    "resolved_url": "https://www.shuud.mn/"
+  },
+  {
+    "domain": "mass.mn",
+    "checked_at": "2026-10-19T12:53:41.639311+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "MASS.mn - Түрүүлж мэдээлнэ",
+    "resolved_url": "https://mass.mn/"
+  },
+  {
+    "domain": "eagle.mn",
+    "checked_at": "2026-10-19T12:53:46.981514+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "EAGLE.mn",
+    "resolved_url": "https://eagle.mn/",
+    "rechecked_at": "2026-10-19T12:59:56.364491+00:00",
+    "homepage_sample_bytes": 500000
+  },
+  {
+    "domain": "bloombergtv.mn",
+    "checked_at": "2026-10-19T12:53:47.268040+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Bloomberg TV Mongolia",
+    "resolved_url": "https://bloombergtv.mn/",
+    "rechecked_at": "2026-10-19T13:00:01.434210+00:00",
+    "homepage_sample_bytes": 185912
+  },
+  {
+    "domain": "ubn.mn",
+    "checked_at": "2026-10-19T12:53:47.391179+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Улаанбаатар ньюс",
+    "resolved_url": "https://ubn.mn/"
+  },
+  {
+    "domain": "livetv.mn",
+    "checked_at": "2026-10-19T12:53:48.015283+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "LiveTV.mn - Watch Different",
+    "resolved_url": "https://www.livetv.mn/"
+  },
+  {
+    "domain": "urug.mn",
+    "checked_at": "2026-10-19T12:53:48.839274+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "candidates_failed",
+    "feed_candidates": [
+      "https://urug.mn/feed/"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://urug.mn/feed/",
+        "status": "failed",
+        "error": "<urlopen error timed out>"
+      },
+      {
+        "url": "https://urug.mn/comments/feed/",
+        "status": "failed",
+        "error": "<urlopen error timed out>"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Нүүр хуудас - Өрөг.МН - Монголын хараат бус хэвлэл мэдээллийн хэрэгсэл",
+    "resolved_url": "https://urug.mn/"
+  },
+  {
+    "domain": "24tsag.mn",
+    "checked_at": "2026-10-19T12:53:49.241264+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "24 цаг холбоотой байя",
+    "resolved_url": "https://www.24tsag.mn/"
+  },
+  {
+    "domain": "unread.today",
+    "checked_at": "2026-10-19T12:53:51.364022+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Нүүр | Unread Today",
+    "resolved_url": "https://unread.today/"
+  },
+  {
+    "domain": "posted.mn",
+    "checked_at": "2026-10-19T12:53:52.912202+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Posted | Залуусын орон зай",
+    "resolved_url": "https://www.posted.mn/"
+  },
+  {
+    "domain": "lemonpress.mn",
+    "checked_at": "2026-10-19T12:53:53.931258+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "LemonPress",
+    "resolved_url": "https://lemonpress.mn/"
+  },
+  {
+    "domain": "peak.mn",
+    "checked_at": "2026-10-19T12:53:54.276653+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Өргөн өнцгөөр | Peak News",
+    "resolved_url": "https://peak.mn/",
+    "rechecked_at": "2026-10-19T13:00:05.425210+00:00",
+    "homepage_sample_bytes": 112287
+  },
+  {
+    "domain": "ublife.mn",
+    "checked_at": "2026-10-19T12:53:54.826003+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Ublife.mn",
+    "resolved_url": "https://ublife.mn/"
+  },
+  {
+    "domain": "olloo.mn",
+    "checked_at": "2026-10-19T12:53:55.426414+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "HTTPError: HTTP Error 403: Forbidden",
+    "retry_error": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "domain": "dorgio.mn",
+    "checked_at": "2026-10-19T12:53:55.951360+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Information Guide · Dorgio.mn",
+    "resolved_url": "https://dorgio.mn/"
+  },
+  {
+    "domain": "bolod.mn",
+    "checked_at": "2026-10-19T12:53:57.947168+00:00",
+    "homepage_status": "unavailable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "error": "URLError: <urlopen error timed out>",
+    "retry_error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "domain": "vip76.mn",
+    "checked_at": "2026-10-19T12:53:58.065654+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "VIP76.mn | Монголын төрийн албан хаагчдын мэдээллийн портал",
+    "resolved_url": "https://vip76.mn/",
+    "rechecked_at": "2026-10-19T13:00:06.416485+00:00",
+    "homepage_sample_bytes": 500000
+  },
+  {
+    "domain": "newswall.mn",
+    "checked_at": "2026-10-19T12:53:58.593687+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://newswall.mn/?feed=rss2",
+      "https://newswall.mn/?feed=comments-rss2"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://newswall.mn/?feed=rss2",
+        "status": "valid_feed",
+        "entries": 10,
+        "resolved_url": "https://newswall.mn/?feed=rss2"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "NewsWall",
+    "resolved_url": "https://newswall.mn/",
+    "feed_url": "https://newswall.mn/?feed=rss2"
+  },
+  {
+    "domain": "gereg.mn",
+    "checked_at": "2026-10-19T12:53:58.719482+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://gereg.mn/feed"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://gereg.mn/feed",
+        "status": "valid_feed",
+        "entries": 10,
+        "resolved_url": "https://gereg.mn/feed"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "gereg.mn",
+    "resolved_url": "https://gereg.mn/",
+    "feed_url": "https://gereg.mn/feed"
+  },
+  {
+    "domain": "fact.mn",
+    "checked_at": "2026-10-19T12:53:59.656887+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "FACT.MN - ЧУХЛЫГ ОНЦЛОВ",
+    "resolved_url": "https://fact.mn/"
+  },
+  {
+    "domain": "newslife.mn",
+    "checked_at": "2026-10-19T12:54:01.422086+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_article_feed_verified",
+    "feed_candidates": [
+      "https://newslife.mn/feed"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://newslife.mn/feed",
+        "status": "failed",
+        "error": "not well-formed (invalid token): line 379, column 402"
+      },
+      {
+        "url": "https://newslife.mn/comments/feed",
+        "status": "excluded_comments_feed",
+        "entries": 10,
+        "resolved_url": "https://newslife.mn/comments/feed"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "newslife.mn",
+    "resolved_url": "https://newslife.mn/"
+  },
+  {
+    "domain": "shuurhai.mn",
+    "checked_at": "2026-10-19T12:54:03.578713+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Шуурхай.мн",
+    "resolved_url": "https://shuurhai.mn/"
+  },
+  {
+    "domain": "tsag.mn",
+    "checked_at": "2026-10-19T12:54:04.900619+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Цаг үе, үйл явдал",
+    "resolved_url": "https://tsag.mn/"
+  },
+  {
+    "domain": "tumen.mn",
+    "checked_at": "2026-10-19T12:54:04.956066+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Tumen.mn",
+    "resolved_url": "https://tumen.mn/"
+  },
+  {
+    "domain": "paparazzi.mn",
+    "checked_at": "2026-10-19T12:54:06.352086+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Папарацци.мн",
+    "resolved_url": "https://paparazzi.mn/"
+  },
+  {
+    "domain": "ulsturch.mn",
+    "checked_at": "2026-10-19T12:54:10.345249+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "УЛСТӨРЧ.мн",
+    "resolved_url": "https://www.ulsturch.mn/"
+  },
+  {
+    "domain": "tovch.mn",
+    "checked_at": "2026-10-19T12:54:10.707548+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Товч.мн — Товч мэдээлнэ",
+    "resolved_url": "https://tovch.mn/"
+  },
+  {
+    "domain": "newsmongolia.mn",
+    "checked_at": "2026-10-19T12:54:11.320641+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "newsmongolia",
+    "resolved_url": "https://newsmongolia.mn/"
+  },
+  {
+    "domain": "comment.mn",
+    "checked_at": "2026-10-19T12:54:11.627667+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://www.comment.mn/feed/"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://www.comment.mn/feed/",
+        "status": "valid_feed",
+        "entries": 10,
+        "resolved_url": "https://www.comment.mn/feed"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Comment.mn – Монгол комментод нэгдэцгээе",
+    "resolved_url": "https://www.comment.mn/",
+    "feed_url": "https://www.comment.mn/feed/"
+  },
+  {
+    "domain": "ugluu.mn",
+    "checked_at": "2026-10-19T12:54:12.083902+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_article_feed_verified",
+    "feed_candidates": [
+      "https://ugluu.mn/feed"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://ugluu.mn/feed",
+        "status": "failed",
+        "error": "HTTP Error 503: Service Unavailable"
+      },
+      {
+        "url": "https://ugluu.mn/comments/feed",
+        "status": "excluded_comments_feed",
+        "entries": 0,
+        "resolved_url": "https://ugluu.mn/comments/feed"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Өглөө.мн – Шинэ өглөө, Шинэ мэдээлэл",
+    "resolved_url": "https://ugluu.mn/"
+  },
+  {
+    "domain": "ene.mn",
+    "checked_at": "2026-10-19T12:54:18.052418+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "candidates_failed",
+    "feed_candidates": [
+      "https://ene.mn/feed/"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://ene.mn/feed/",
+        "status": "failed",
+        "error": "HTTP Error 404: Not Found"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "ene.mn — эндээс мэд",
+    "resolved_url": "https://ene.mn/"
+  },
+  {
+    "domain": "guren.mn",
+    "checked_at": "2026-10-19T12:54:18.474044+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://guren.mn/engine/rss.php"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://guren.mn/engine/rss.php",
+        "status": "valid_feed",
+        "entries": 10,
+        "resolved_url": "https://guren.mn/engine/rss.php"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Guren.mn",
+    "resolved_url": "https://guren.mn/",
+    "feed_url": "https://guren.mn/engine/rss.php"
+  },
+  {
+    "domain": "ord.mn",
+    "checked_at": "2026-10-19T12:54:19.227371+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://www.ord.mn/engine/rss.php"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://www.ord.mn/engine/rss.php",
+        "status": "valid_feed",
+        "entries": 20,
+        "resolved_url": "https://www.ord.mn/engine/rss.php"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Ord.mn | Mongolian Mining",
+    "resolved_url": "https://ord.mn/",
+    "feed_url": "https://www.ord.mn/engine/rss.php"
+  },
+  {
+    "domain": "otoch.mn",
+    "checked_at": "2026-10-19T12:54:19.567302+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "candidates_failed",
+    "feed_candidates": [
+      "https://otoch.mn/engine/rss.php"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://otoch.mn/engine/rss.php",
+        "status": "failed",
+        "error": "<urlopen error timed out>"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Otoch.mn",
+    "resolved_url": "https://otoch.mn/"
+  },
+  {
+    "domain": "shudarga.mn",
+    "checked_at": "2026-10-19T12:54:20.255185+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Шударга мэдээ, мэдээллийн портал",
+    "resolved_url": "https://shudarga.mn/"
+  },
+  {
+    "domain": "etv.mn",
+    "checked_at": "2026-10-19T12:54:22.515917+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://www.etv.mn/?feed=rss2",
+      "https://www.etv.mn/?feed=comments-rss2"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://www.etv.mn/?feed=rss2",
+        "status": "valid_feed",
+        "entries": 10,
+        "resolved_url": "https://www.etv.mn/?feed=rss2"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "ETV - Тод харуулна",
+    "resolved_url": "https://www.etv.mn/",
+    "feed_url": "https://www.etv.mn/?feed=rss2"
+  },
+  {
+    "domain": "todmedee.mn",
+    "checked_at": "2026-10-19T12:54:24.753312+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://todmedee.mn/feed"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://todmedee.mn/feed",
+        "status": "valid_feed",
+        "entries": 10,
+        "resolved_url": "https://todmedee.mn/feed"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Todmedee.mn | Тод мэдээлнэ",
+    "resolved_url": "https://todmedee.mn/",
+    "feed_url": "https://todmedee.mn/feed"
+  },
+  {
+    "domain": "tsenzuur.mn",
+    "checked_at": "2026-10-19T12:54:30.986915+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "candidates_failed",
+    "feed_candidates": [
+      "https://tsenzuur.mn/feed"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://tsenzuur.mn/feed",
+        "status": "failed",
+        "error": "HTTP Error 503: Service Unavailable"
+      },
+      {
+        "url": "https://tsenzuur.mn/comments/feed",
+        "status": "failed",
+        "error": "<urlopen error timed out>"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "tsenzuur.mn",
+    "resolved_url": "https://tsenzuur.mn/"
+  },
+  {
+    "domain": "seen.mn",
+    "checked_at": "2026-10-19T12:54:34.091817+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://seen.mn/feed/"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://seen.mn/feed/",
+        "status": "valid_feed",
+        "entries": 9,
+        "resolved_url": "https://seen.mn/feed"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Seen.mn — Харах өнцөг – Өөрөөр харах эхлэл",
+    "resolved_url": "https://seen.mn/",
+    "feed_url": "https://seen.mn/feed/"
+  },
+  {
+    "domain": "todotgol.mn",
+    "checked_at": "2026-10-19T12:54:35.064171+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Тодорхойгүй мэдээллийг тодотгоно",
+    "resolved_url": "https://todotgol.mn/"
+  },
+  {
+    "domain": "asu.mn",
+    "checked_at": "2026-10-19T12:54:36.516769+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "ASU.MN — Монголын дараа үеийн мэдээллийн платформ",
+    "resolved_url": "https://asu.mn/"
+  },
+  {
+    "domain": "tug.mn",
+    "checked_at": "2026-10-19T12:54:37.097785+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "tug.mn - Мэдэх эрх эн тэргүүнд",
+    "resolved_url": "https://tug.mn/"
+  },
+  {
+    "domain": "todnews.mn",
+    "checked_at": "2026-10-19T12:54:37.416070+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Амьдралын тод хөтөч",
+    "resolved_url": "https://todnews.mn/"
+  },
+  {
+    "domain": "zuv.mn",
+    "checked_at": "2026-10-19T12:54:40.797600+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "zuv.mn - Зөвийг дэмжинэ",
+    "resolved_url": "https://zuv.mn/"
+  },
+  {
+    "domain": "amjilt.news",
+    "checked_at": "2026-10-19T12:54:41.170705+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://amjilt.news/feed.xml",
+      "https://amjilt.news/atom.xml"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://amjilt.news/feed.xml",
+        "status": "valid_feed",
+        "entries": 20,
+        "resolved_url": "https://amjilt.news/feed.xml"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Amjilt News - Workplace culture, founders, careers, the economics of work",
+    "resolved_url": "https://amjilt.news/",
+    "feed_url": "https://amjilt.news/feed.xml"
+  },
+  {
+    "domain": "erdenetnews.mn",
+    "checked_at": "2026-10-19T12:54:41.265373+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://erdenetnews.mn/rss"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://erdenetnews.mn/rss",
+        "status": "valid_feed",
+        "entries": 30,
+        "resolved_url": "https://erdenetnews.mn/rss"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "ErdenetNews.MN| Эрдэнэт хотын мэдээллийн төв",
+    "resolved_url": "https://erdenetnews.mn/",
+    "feed_url": "https://erdenetnews.mn/rss"
+  },
+  {
+    "domain": "erdenetlife.mn",
+    "checked_at": "2026-10-19T12:54:43.354690+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://erdenetlife.mn/rss"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://erdenetlife.mn/rss",
+        "status": "valid_feed",
+        "entries": 30,
+        "resolved_url": "https://erdenetlife.mn/rss"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "ErdenetLife.mn | Erdenet Life",
+    "resolved_url": "https://erdenetlife.mn/",
+    "feed_url": "https://erdenetlife.mn/rss"
+  },
+  {
+    "domain": "baabar.mn",
+    "checked_at": "2026-10-19T12:56:55.195722+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "baabar.mn | Шилдэг нийтлэлчдийн клуб",
+    "resolved_url": "https://www.baabar.mn/"
+  },
+  {
+    "domain": "caak.mn",
+    "checked_at": "2026-10-19T12:56:55.199223+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Caak.mn | Бусдаас өөр мэдрэмж!",
+    "resolved_url": "https://www.caak.mn/"
+  },
+  {
+    "domain": "mongoltv.mn",
+    "checked_at": "2026-10-19T12:56:55.205008+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "candidates_failed",
+    "feed_candidates": [
+      "https://mongoltv.mn/feed"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://mongoltv.mn/feed",
+        "status": "failed",
+        "error": "syntax error: line 4, column 0"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Монгол ТВ",
+    "resolved_url": "https://mongoltv.mn/"
+  },
+  {
+    "domain": "nio.mn",
+    "checked_at": "2026-10-19T12:56:55.225230+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://nio.mn/feed/"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://nio.mn/feed/",
+        "status": "valid_feed",
+        "entries": 10,
+        "resolved_url": "https://nio.mn/feed/"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "NIO.mn – Мэргэжлийн, мэдрэмжтэй",
+    "resolved_url": "https://nio.mn/",
+    "feed_url": "https://nio.mn/feed/"
+  },
+  {
+    "domain": "tsahiur.mn",
+    "checked_at": "2026-10-19T12:57:01.520482+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Tsahiur.mn - Мэдэх эрхийн төлөө",
+    "resolved_url": "https://tsahiur.mn/"
+  },
+  {
+    "domain": "mpress.mn",
+    "checked_at": "2026-10-19T12:57:02.229264+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Тэгш эрхийн төлөө | mPress.mn",
+    "resolved_url": "https://mpress.mn/"
+  },
+  {
+    "domain": "dailynews.mn",
+    "checked_at": "2026-10-19T12:57:02.230482+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://dailynews.mn/feed"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://dailynews.mn/feed",
+        "status": "valid_feed",
+        "entries": 10,
+        "resolved_url": "https://dailynews.mn/feed"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "DailyNews.MN – Өдөр тутмын мэдээлэл",
+    "resolved_url": "https://dailynews.mn/",
+    "feed_url": "https://dailynews.mn/feed"
+  },
+  {
+    "domain": "ekon.mn",
+    "checked_at": "2026-10-19T12:57:08.840274+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Ekon - сониуц мэдээ",
+    "resolved_url": "https://ekon.mn/"
+  },
+  {
+    "domain": "erdenetkhot.mn",
+    "checked_at": "2026-10-19T12:57:09.730053+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "erdenetkhot.mn",
+    "resolved_url": "https://erdenetkhot.mn/"
+  },
+  {
+    "domain": "niisleltimes.mn",
+    "checked_at": "2026-10-19T12:57:23.939580+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://niisleltimes.mn/feed"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://niisleltimes.mn/feed",
+        "status": "valid_feed",
+        "entries": 10,
+        "resolved_url": "https://niisleltimes.mn/feed"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Нүүр - Niislel Times",
+    "resolved_url": "https://niisleltimes.mn/",
+    "feed_url": "https://niisleltimes.mn/feed"
+  },
+  {
+    "domain": "urlag.mn",
+    "checked_at": "2026-10-19T12:57:27.685598+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://urlag.mn/feed"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://urlag.mn/feed",
+        "status": "valid_feed",
+        "entries": 10,
+        "resolved_url": "https://urlag.mn/feed"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Урлаг.мн – Таныг урлагийн тэнгэр ивээг",
+    "resolved_url": "https://urlag.mn/",
+    "feed_url": "https://urlag.mn/feed"
+  },
+  {
+    "domain": "grandnews.mn",
+    "checked_at": "2026-10-19T12:57:28.553661+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "GRAND NEWS - Шүүлтүүргүй, Шуурхай Хиймэл Оюунт Хэвлэл Мэдээлэл",
+    "resolved_url": "https://grandnews.mn/"
+  },
+  {
+    "domain": "barimt.mn",
+    "checked_at": "2026-10-19T12:57:33.719275+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Баримт",
+    "resolved_url": "https://barimt.mn/"
+  },
+  {
+    "domain": "xot.mn",
+    "checked_at": "2026-10-19T12:57:35.129357+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "XOT.mn | New Normal City",
+    "resolved_url": "https://xot.mn/"
+  },
+  {
+    "domain": "ubinfo.mn",
+    "checked_at": "2026-10-19T12:57:40.625093+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "UB Info - утсандаа суулгаарай",
+    "resolved_url": "https://ubinfo.mn/"
+  },
+  {
+    "domain": "mlife.mn",
+    "checked_at": "2026-10-19T12:57:43.213888+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://mlife.mn/feed"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://mlife.mn/feed",
+        "status": "valid_feed",
+        "entries": 10,
+        "resolved_url": "https://mlife.mn/feed"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "mlife.mn",
+    "resolved_url": "https://mlife.mn/",
+    "feed_url": "https://mlife.mn/feed"
+  },
+  {
+    "domain": "mmnews.mn",
+    "checked_at": "2026-10-19T12:57:48.835416+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Дэлхийн монголчуудын цахим элч www.mmnews.mn",
+    "resolved_url": "https://mmnews.mn/"
+  },
+  {
+    "domain": "amlalt.mn",
+    "checked_at": "2026-10-19T12:57:53.143029+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Амлалт",
+    "resolved_url": "https://amlalt.mn/"
+  },
+  {
+    "domain": "dayarmongol.mn",
+    "checked_at": "2026-10-19T12:57:53.947346+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://dayarmongol.mn/engine/rss.php"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://dayarmongol.mn/engine/rss.php",
+        "status": "valid_feed",
+        "entries": 10,
+        "resolved_url": "https://dayarmongol.mn/engine/rss.php"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "- Dayarmongol.mn -",
+    "resolved_url": "https://dayarmongol.mn/",
+    "feed_url": "https://dayarmongol.mn/engine/rss.php"
+  },
+  {
+    "domain": "dursamj.mn",
+    "checked_at": "2026-10-19T12:57:54.121118+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://dursamj.mn/engine/rss.php"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://dursamj.mn/engine/rss.php",
+        "status": "valid_feed",
+        "entries": 10,
+        "resolved_url": "https://dursamj.mn/engine/rss.php"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Dursamj.mn",
+    "resolved_url": "https://dursamj.mn/",
+    "feed_url": "https://dursamj.mn/engine/rss.php"
+  },
+  {
+    "domain": "hadaas.mn",
+    "checked_at": "2026-10-19T12:57:57.468970+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Hadaas.mn",
+    "resolved_url": "https://hadaas.mn/"
+  },
+  {
+    "domain": "tseneg.mn",
+    "checked_at": "2026-10-19T12:57:58.617187+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Оюуны цэнэг | Tseneg.mn",
+    "resolved_url": "https://tseneg.mn/"
+  },
+  {
+    "domain": "leader.mn",
+    "checked_at": "2026-10-19T12:58:03.067891+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "candidates_failed",
+    "feed_candidates": [
+      "https://leader.mn/feed/"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://leader.mn/feed/",
+        "status": "failed",
+        "error": "<urlopen error timed out>"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Мэдээллийн сайт  - Лидер медиа",
+    "resolved_url": "https://leader.mn/"
+  },
+  {
+    "domain": "niigem.mn",
+    "checked_at": "2026-10-19T12:58:05.662771+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Niigem.mn - Мэдээний портал",
+    "resolved_url": "https://niigem.mn/"
+  },
+  {
+    "domain": "arkhangai.mn",
+    "checked_at": "2026-10-19T12:58:09.953281+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Өдөр тутмын мэдээ мэдээллийн вэб сайт",
+    "resolved_url": "https://arkhangai.mn/"
+  },
+  {
+    "domain": "arbis.mn",
+    "checked_at": "2026-10-19T12:58:13.352012+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "arbis.mn",
+    "resolved_url": "https://arbis.mn/"
+  },
+  {
+    "domain": "bolloo.mn",
+    "checked_at": "2026-10-19T12:58:18.589126+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://bolloo.mn/?feed=rss2"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://bolloo.mn/?feed=rss2",
+        "status": "valid_feed",
+        "entries": 10,
+        "resolved_url": "https://bolloo.mn/?feed=rss2"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "BOLLOO.MN",
+    "resolved_url": "https://bolloo.mn/",
+    "feed_url": "https://bolloo.mn/?feed=rss2"
+  },
+  {
+    "domain": "bestnews.mn",
+    "checked_at": "2026-10-19T12:58:20.987816+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Тэргүүлэх мэдээллийн сүлжээ сайт bestnews.mn",
+    "resolved_url": "https://bestnews.mn/"
+  },
+  {
+    "domain": "tonshuul.mn",
+    "checked_at": "2026-10-19T12:58:21.782294+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://tonshuul.mn/index.php?mod=rss",
+      "https://tonshuul.mn/index.php?mod=rss&rssmode=turbo",
+      "https://tonshuul.mn/index.php?mod=rss&rssmode=dzen"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://tonshuul.mn/index.php?mod=rss",
+        "status": "valid_feed",
+        "entries": 10,
+        "resolved_url": "https://tonshuul.mn/index.php?mod=rss"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Tonshuul.mn",
+    "resolved_url": "https://tonshuul.mn/",
+    "feed_url": "https://tonshuul.mn/index.php?mod=rss"
+  },
+  {
+    "domain": "24barimt.mn",
+    "checked_at": "2026-10-19T12:58:24.409423+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "candidates_failed",
+    "feed_candidates": [
+      "https://24barimt.mn/feed"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://24barimt.mn/feed",
+        "status": "failed",
+        "error": "<urlopen error timed out>"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "24barimt.mn - Бичих эрхийн индэр",
+    "resolved_url": "https://24barimt.mn/"
+  },
+  {
+    "domain": "see.mn",
+    "checked_at": "2026-10-19T12:58:24.661349+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "parsed_research_only",
+    "feed_candidates": [
+      "https://see.mn/feed"
+    ],
+    "feed_checks": [
+      {
+        "url": "https://see.mn/feed",
+        "status": "valid_feed",
+        "entries": 10,
+        "resolved_url": "https://see.mn/feed"
+      }
+    ],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Home - www.see.mn",
+    "resolved_url": "https://see.mn/",
+    "feed_url": "https://see.mn/feed"
+  },
+  {
+    "domain": "assa.mn",
+    "checked_at": "2026-10-19T12:58:24.896220+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "no_feed_discovered",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "ASSA",
+    "resolved_url": "https://www.assa.mn/"
+  },
+  {
+    "domain": "noorog.mn",
+    "checked_at": "2026-10-19T12:56:55.219661+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Noorog",
+    "resolved_url": "https://www.noorog.mn/",
+    "rechecked_at": "2026-10-19T13:01:59.190527+00:00",
+    "homepage_sample_bytes": 19251
+  },
+  {
+    "domain": "neguun.mn",
+    "checked_at": "2026-10-19T12:57:01.711725+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "НЭГҮҮН — Мэдээллийн сайт | НЭГҮҮН",
+    "resolved_url": "https://neguun.mn/",
+    "rechecked_at": "2026-10-19T13:02:00.226745+00:00",
+    "homepage_sample_bytes": 251524
+  },
+  {
+    "domain": "mongolianminingjournal.com",
+    "checked_at": "2026-10-19T12:57:02.237497+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "The Mongolian Mining Journal",
+    "resolved_url": "https://www.mongolianminingjournal.com/",
+    "rechecked_at": "2026-10-19T13:02:04.834081+00:00",
+    "homepage_sample_bytes": 53031
+  },
+  {
+    "domain": "business.mn",
+    "checked_at": "2026-10-19T12:57:07.288279+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "Нүүр - BUSINESS.MN",
+    "resolved_url": "https://business.mn/",
+    "rechecked_at": "2026-10-19T13:02:03.921161+00:00",
+    "homepage_sample_bytes": 224028
+  },
+  {
+    "domain": "ubpost.mn",
+    "checked_at": "2026-10-19T12:57:02.232843+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "www.ubPost.mn",
+    "resolved_url": "https://www.ubpost.mn/",
+    "rechecked_at": "2026-10-19T13:02:04.820785+00:00",
+    "homepage_sample_bytes": 81041
+  },
+  {
+    "domain": "erennews.mn",
+    "checked_at": "2026-10-19T12:54:05.668004+00:00",
+    "homepage_status": "reachable",
+    "feed_status": "not_checked",
+    "feed_candidates": [],
+    "feed_checks": [],
+    "transport": "research_proxy",
+    "production_validated": false,
+    "homepage_title": "ErenNews.MN",
+    "resolved_url": "https://erennews.mn/",
+    "rechecked_at": "2026-10-19T13:00:16.351786+00:00",
+    "homepage_sample_bytes": 245524
+  }
+]

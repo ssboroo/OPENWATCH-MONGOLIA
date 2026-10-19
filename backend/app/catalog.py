@@ -1,0 +1,55 @@
+"""Versioned media directory and honest links to external web search.
+
+Directory order is editorial and is not a traffic or credibility ranking.
+A reachable homepage never implies valid feed, permission or collector activation.
+"""
+import json
+from pathlib import Path
+from urllib.parse import urlencode, urlsplit
+from sqlalchemy import select
+from .models import Source
+
+DATA = Path(__file__).parent / 'data'
+SITES = json.loads((DATA / 'mongolia100.v1.json').read_text())
+BY_DOMAIN = {site['domain']: site for site in SITES}
+
+def probe_results():
+    path = DATA / 'probe-2026-10-19.json'
+    return {row['domain']:row for row in json.loads(path.read_text())} if path.exists() else {}
+
+def domain_of(url):
+    host = (urlsplit(url).hostname or '').lower()
+    return host.removeprefix('www.')
+
+def web_search_link(query, domains, engine='google'):
+    if not query.strip():
+        raise ValueError('Search query is required')
+    if not domains or len(domains)>100 or any(d not in BY_DOMAIN for d in domains):
+        raise ValueError('Choose registered media domains')
+    # Quote sites structurally, not user input; query syntax remains user-controlled
+    # only in the external search engine, never as a local fetch URL.
+    restriction=' OR '.join('site:'+d for d in domains)
+    q='('+restriction+') '+query.strip()
+    base='https://www.google.com/search' if engine=='google' else 'https://www.bing.com/search'
+    return base+'?'+urlencode({'q':q})
+
+def directory(db, query='', category='', availability='', offset=0, limit=20):
+    probes=probe_results()
+    sources=list(db.scalars(select(Source)))
+    groups={}
+    for source in sources:
+        groups.setdefault(domain_of(source.endpoint),[]).append(source)
+    rows=[]
+    for site in SITES:
+        if query and query.casefold() not in (site['name']+' '+site['domain']).casefold():
+            continue
+        if category and category != site['category']:
+            continue
+        probe=probes.get(site['domain'],{})
+        linked=groups.get(site['domain'],[])
+        active=[s.id for s in linked if s.active]
+        if availability=='active' and not active:continue
+        if availability=='reachable' and probe.get('homepage_status')!='reachable':continue
+        if availability=='feed_found' and not probe.get('feed_url'):continue
+        rows.append({**site,'probe':probe,'source_ids':[s.id for s in linked], 'active_source_ids':active, 'archive_status':'active' if active else 'not_active'})
+    return {'items':rows[offset:offset+limit],'total':len(rows),'offset':offset,'limit':limit,'directory_total':len(SITES),'ranking':'curated_not_traffic_rank','research_checked':len(probes),'research_reachable':sum(p.get('homepage_status')=='reachable' for p in probes.values()),'research_feed_found':sum(bool(p.get('feed_url')) for p in probes.values()),'archive_active_sites':sum(any(s.active for s in groups.get(site['domain'],[])) for site in SITES),'limitation':'ХХЗХ-ны бүртгэл болон сайтын өөрийн нүүрээс сонгосон лавлах; өнөөгийн топ хандалтын эрэмбэ биш. Веб хайлт нь гаднын Google/Bing рүү шилжинэ. Архивын хайлт зөвхөн татсан нийтлэлд үйлчилнэ.'}

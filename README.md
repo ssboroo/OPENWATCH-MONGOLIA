@@ -165,3 +165,59 @@ BACKEND_URL=http://127.0.0.1:8000 npm start
 - Admin UI байхгүй; хамгаалагдсан API ашиглана. Authentication нь single-admin bearer token; multi-user/role management байхгүй.
 - API IP limit нь proxy ард бүх хүсэлт нэг IP болж харагдаж болзошгүй: одоогийн uvicorn `--no-proxy-headers` нь хуурамч forwarded header-д итгэхгүй. Олон нийтийн ачаалалд proxy талын client IP rate limiting эсвэл итгэмжлэгдсэн proxy тохиргоо нэмнэ.
 - AI-ийн timeout/JSON болон public report correction тестүүд нь тэдгээр функц хэрэгжээгүй тул ажиллуулаагүй. Үүнийг Phase 1-ийн тесттэй андуурахгүй.
+
+## Монголын 100 эх сурвалжийн лавлах, нэгдсэн хайлтын холбоос
+
+`Монголын 100 сайт` цэсэнд нэр/домэйн, чиглэл, HTTP шалгалтын төлөв, feed илэрсэн эсэх, архивын идэвхээр шүүнэ. Энэ нь **хандалтын статистикаар батлагдсан Top 100 ranking биш**: ХХЗХ-ны 2020/2021 оны бүртгэл болон хэвлэлийн өөрийн нүүр хуудсаас сонгосон 100 домэйн. Нэг сайт нээгдсэн нь түүний агуулга үнэн, feed шинэ, ашиглах эрх зөвшөөрөгдсөн гэсэн баталгаа биш.
+
+Хоёр хайлт тусдаа ажиллана:
+
+- **Веб хайлт**: түлхүүр үгээр Google/Bing-ийн `site:` операторыг ашиглана. 100 сайтыг 10 бүлэг болгон хайх холбоос, сайт тус бүрээр хайх холбоос гаргана. Хэрэглэгч холбоос дээр дарж гаднын хайлтын системийн үр дүнг нээнэ. Хайлтын үр дүнг API-д татаж байгаа, 100 сайтаас realtime мэдээ scrape хийж байгаа мэт харуулахгүй. Хайлтын системийн индексийн хамрах хүрээ, site оператор нь төгс баталгаа биш.
+- **Архивын хайлт**: сайт сонгоод `Архиваас хайх` дарвал `articles?domain=...&q=...` API-аар зөвхөн татаж хадгалсан нийтлэлийг хайна. Татагдаагүй сайтад хоосон үр дүн гарна.
+
+API:
+
+```text
+GET /api/v1/media?q=ikon&category=news&availability=reachable&limit=20&offset=0
+GET /api/v1/media/search?q=Оюутолгой&engine=google
+GET /api/v1/media/search?q=төсөв&domain=ikon.mn&engine=bing
+GET /api/v1/articles?q=төсөв&domain=ikon.mn
+```
+
+`media/search` нь **external_search_links**, мэдээний үр дүнгийн массив биш. Нэрээр шүүх `media?q` болон мэдээний агуулгаар хайх `articles?q`-г ялгана.
+
+Сонголт ба HTTP шалгалтын evidence:
+
+- `backend/app/data/mongolia100.v1.json`: хувилбарласан 100 домэйн, provenance, төрөл.
+- `backend/app/data/probe-2026-10-19.json`: сонгосон 100 домэйны нүүр/feed шалгалтын бодит үр дүн.
+- `backend/app/data/probe-all-2026-10-19.json`: 275 нэр дэвшигчийн шалгалтын тайлан, timeout/403/503, өөр зориулалттай болсон шалтгаан. Энэ нь буруутгал, найдвартай байдлын үнэлгээ биш.
+
+Feed snapshot нь тухайн хөгжүүлэлтийн орчны HTTP proxy-оор хийсэн XML parse шалгалт. Production-ийн robots, pinned DNS, лицензийн шалгалтыг орлохгүй. Нүүр HTTP 200 болсныг feed баталгаажсан гэж тооцоогүй; comments feed-ийг тусад нь хассан. Шалгалт амжилтгүй гэдэг нь сайт бүх хэрэглэгчид ажиллахгүй гэсэн дүгнэлт биш.
+
+### VPS дээр feed-үүдийг бодитоор холбох
+
+```sh
+# Одоогийн 100 домэйн болон www хувилбарууд security allowlist-д багтсан.
+# Шинэчлэх, migration:
+docker compose build
+docker compose run --rm migrate
+docker compose up -d
+# Бүх лавлах сайтаас explicit RSS/Atom feed нээж, robots ба XML шалгана:
+docker compose exec backend python -m app.catalog_sync
+# Эсвэл нэг сайт:
+docker compose exec backend python -m app.catalog_sync --domain mnb.mn
+```
+
+Sync нь feed хүчинтэй бол Source-г idempotent үүсгэн validated_at хадгалж, **шинэ эх сурвалжийг идэвхгүй** үлдээнэ. Лиценз/ашиглалтын тайлбарыг бодитоор бүртгэж байж админ идэвхжүүлнэ. `POST /sources` нь name, endpoint, publisher, license, permission_note талбаруудтай; Source байгаа бол доорх PATCH-ээр эдгээр тайлбарыг шинэчилж болно. Robots болон лицензийн шалгалтыг тойрч бүх эх сурвалжийг сохроор идэвхжүүлэхгүй. Хэвлэлийн бүрэн агуулгыг дахин нийтлэхгүй.
+
+Feed snapshot-аас зөвхөн URL/probe metadata дамжсан; бодит нийтлэлийн архивт судалгааны fixture эсвэл зохиомол мэдээ оруулаагүй. Сайтын нэр, домэйн бүр Google/Bing хайлттай шууд ажиллах бөгөөд архив нь баталгаажуулж идэвхжүүлсэн feed-ээс бүрдэнэ.
+
+Импортолсон feed-ийн бодит эрхийн тайлбарыг оруулах жишээ (placeholder-ийг шалгасан утгаар солино):
+
+```sh
+curl --fail -X PATCH "$BASE_URL/api/v1/sources/1" \
+  -H "Authorization: Bearer $ADMIN_TOKEN" -H 'Content-Type: application/json' \
+  -d '{"license":"Шалгасан нөхцөлийн URL","permission_note":"Зөвшөөрөгдсөн metadata/excerpt ашиглалтын хүрээ","active":true}'
+```
+
+2026-10-19-ний snapshot: 100 сонгосон домэйнээс 96 нүүр хуудас нээгдсэн, 23 feed XML parse амжилттай. Тухайн орчинд timeout/403 болсон нь сайт бүх хэрэглэгчид ажиллахгүй гэсэн баталгаа биш. Шалгалтын дэлгэрэнгүй `VALIDATION.md` болон JSON файлуудад байна.

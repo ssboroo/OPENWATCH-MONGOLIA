@@ -19,3 +19,12 @@
 - Ачаалал, том архив, redirect/TLS SNI end-to-end, DNS rebinding penetration тест хийгээгүй. DNS private/mixed-address block unit тесттэй.
 
 Төгс production систем гэж батлаагүй. Phase 1-ийн бодит код, тест, ажиллуулах тохиргоо бөгөөд Phase 2–4 болон deployment баталгаажуулалт үлдсэн. Тестээс нэг upstream AnyIO/Starlette deprecation warning гарсан, failure биш.
+
+## 100 эх сурвалжийн шинэчлэлт — 2026-10-19
+
+- 275 домэйнд HTTP судалгаа хийж, зориулалт өөрчлөгдсөн, placeholder болон комментийн feed-ийг ялгасан. 100 домэйн сонгосон; **96 нүүр хуудас нээгдсэн, 23 нийтлэлийн feed XML parse амжилттай**. MONTSAME, Zindaa, Olloo, Bolod-ийн шууд HTTP шалгалт timeout/403 хэвээр; хайлтын холбоосыг ашиглаж болно. Хандалтын Top 100 эрэмбэ гэж батлаагүй.
+- Research proxy-ийн шалгалт нь production pinned-DNS, robots, license validation-ийг орлохгүй. Live collector-ийн баталгаажсан шинэ source **0**, автоматаар идэвхжүүлсэн source **0**; VPS дээр `catalog_sync` + эрхийн бүртгэл + activation шаардлагатай.
+- `pytest`: **30 passed**. Нэмэлт кейсүүд: 100 unique domain, provenance, directory/search pagination/filter, Google/Bing query encoding, 10 бүлгийн 100 домэйны бүрэн хамралт, мэдээний үр дүн зохиохгүй external link contract, invalid domain/engine, domain archive filtering, импортолсон source-ийн эрх шинэчлэх, feed sync idempotence ба auto-activation хориг.
+- Next.js production build/TypeScript: шинэ media directory component-той амжилттай.
+- Шинэ UI-д site search, category/status filter, Google/Bing external links, archive domain filter холбогдсон. Гаднын хайлтын системийн үр дүнг дотоод агрегат үр дүн мэт харуулаагүй.
+- Өмнөх Docker/PostgreSQL/VPS/browser executable хязгаарлалтууд хэвээр. Feed parse нь XML формат шалгасан болохоос нийтлэлийн үнэн зөв, шинэ байдал эсвэл лицензийн зөвшөөрлийг батлаагүй.

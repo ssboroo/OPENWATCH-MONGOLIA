@@ -5,10 +5,12 @@ from urllib.parse import urlsplit, urljoin
 from urllib.robotparser import RobotFileParser
 import httpx
 from .config import settings
+from .catalog import BY_DOMAIN
 
 async def resolve_public(url):
     u = urlsplit(url)
     allowed = {h.strip().lower() for h in settings.allowed_hosts.split(',') if h.strip()}
+    allowed |= {host for domain in BY_DOMAIN for host in (domain, 'www.'+domain)}
     if u.scheme != 'https' or u.username or u.password or u.port not in (None, 443) or not u.hostname or u.hostname.lower() not in allowed:
         raise ValueError('HTTPS URL must use an explicitly allowed hostname')
     addresses = await asyncio.get_running_loop().getaddrinfo(u.hostname, 443, type=socket.SOCK_STREAM)

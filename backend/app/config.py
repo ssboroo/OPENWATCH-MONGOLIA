@@ -28,6 +28,11 @@ class Settings(BaseSettings):
     semantic_threshold: float = 0.88
     worker_tick_seconds: int = 60
     cluster_candidates: int = 150
+    collection_concurrency: int = 4
+    source_timeout_seconds: int = 40
+    catalog_bootstrap: bool = False
+    catalog_concurrency: int = 8
+    catalog_site_timeout: int = 35
     model_config = SettingsConfigDict(env_file='.env', extra='ignore')
 
 settings = Settings()

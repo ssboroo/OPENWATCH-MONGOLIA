@@ -162,11 +162,11 @@ def install_routes(app, admin, tasks):
 
     @router.get('/system/status')
     def system_status(db:DB=Depends(get_db)):
-        states=list(db.scalars(select(SystemState)))
+        states=list(db.scalars(select(SystemState).where(~SystemState.name.like('discovery:%'))))
         disk=shutil.disk_usage('/')
         worker=db.get(SystemState,'worker')
         stale=worker is None or (now()-utc(worker.updated_at)).total_seconds()>max(600,settings.worker_tick_seconds*5)
-        return {'worker_stale':stale,'ai_enabled':settings.ai_enabled,'generation_model':settings.ollama_model,'embedding_model':settings.embedding_model,'disk_free_ratio':round(disk.free/disk.total,4),'disk_alert':disk.free/disk.total<.15,'states':[{'name':s.name,'value':{k:v for k,v in s.value.items() if k in ('status','processed','reports','enabled','batch_size')},'updated_at':s.updated_at} for s in states],'analysis_counts':dict(db.execute(select(Article.analysis_status,func.count()).group_by(Article.analysis_status)).all()),'pending_corrections':db.scalar(select(func.count()).select_from(ReportCorrection).where(ReportCorrection.state=='pending'))}
+        return {'worker_stale':stale,'ai_enabled':settings.ai_enabled,'generation_model':settings.ollama_model,'embedding_model':settings.embedding_model,'disk_free_ratio':round(disk.free/disk.total,4),'disk_alert':disk.free/disk.total<.15,'states':[{'name':s.name,'value':{k:v for k,v in s.value.items() if k in ('status','processed','reports','enabled','batch_size','total')},'updated_at':s.updated_at} for s in states],'analysis_counts':dict(db.execute(select(Article.analysis_status,func.count()).group_by(Article.analysis_status)).all()),'pending_corrections':db.scalar(select(func.count()).select_from(ReportCorrection).where(ReportCorrection.state=='pending'))}
 
     @router.get('/admin/audit',dependencies=[Depends(admin)])
     def audits(offset:int=Query(0,ge=0),limit:int=Query(30,ge=1,le=100),db:DB=Depends(get_db)):

@@ -11,6 +11,7 @@ from defusedxml import ElementTree
 from sqlalchemy import select, delete, text
 from .models import Article, ArticleVersion, Source, Event, EventArticle, SimilarityMatch, CollectionRun, now
 from .db import Session
+from .config import settings
 from .security import fetch_feed
 
 def canonical(url):
@@ -105,13 +106,19 @@ async def collect():
                 run = CollectionRun(); db.add(run); db.commit(); run_id = run.id
                 ids = list(db.scalars(select(Source.id).where(Source.active.is_(True))))
             added, errors = 0, []
-            for sid in ids:
+            semaphore=asyncio.Semaphore(max(1,min(settings.collection_concurrency,8)))
+            async def collect_one(sid):
+                nonlocal added
+                async with semaphore:
+                    await collect_locked(sid)
+            async def collect_locked(sid):
+                nonlocal added
                 with Session() as db:
                     source = db.get(Source, sid)
                     try:
                         source.checked_at = now()
                         from .importers import parse_source
-                        rows = parse_source(await fetch_feed(source.endpoint),source.kind,source.endpoint)
+                        rows = parse_source(await asyncio.wait_for(fetch_feed(source.endpoint),settings.source_timeout_seconds),source.kind,source.endpoint)
                         added += ingest(db, source, rows)
                         source.success_at = now(); source.error = None
                         db.commit()
@@ -120,6 +127,7 @@ async def collect():
                         source = db.get(Source, sid); source.checked_at = now(); source.error = type(exc).__name__ + ': ' + str(exc)[:300]
                         errors.append({'source_id':sid,'error':source.error}); db.commit()
                 await asyncio.sleep(1)
+            await asyncio.gather(*(collect_one(sid) for sid in ids))
             with Session() as db:
                 rebuild_events(db)
                 run = db.get(CollectionRun, run_id); run.finished_at = now(); run.status = 'partial' if errors else 'completed'; run.added = added; run.errors = errors

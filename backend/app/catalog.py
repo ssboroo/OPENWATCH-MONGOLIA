@@ -7,7 +7,7 @@ import json
 from pathlib import Path
 from urllib.parse import urlencode, urlsplit
 from sqlalchemy import select, func
-from .models import Source, Article
+from .models import Source, Article, SystemState
 
 DATA = Path(__file__).parent / 'data'
 SITES = json.loads((DATA / 'mongolia-sites.v2.json').read_text())
@@ -46,6 +46,7 @@ def web_search_link(query, domains, engine='google', date_from=None, date_to=Non
 
 def directory(db, query='', category='', availability='', offset=0, limit=20):
     probes=probe_results()
+    discoveries={s.value.get('domain'):{**s.value,'checked_at':s.updated_at.isoformat()} for s in db.scalars(select(SystemState).where(SystemState.name.like('discovery:%')))}
     sources=list(db.scalars(select(Source)))
     counts=dict(db.execute(select(Article.source_id,func.count(Article.id)).group_by(Article.source_id)).all())
     groups={}
@@ -66,5 +67,5 @@ def directory(db, query='', category='', availability='', offset=0, limit=20):
         success=[s for s in linked if s.active and s.success_at]
         last_success=max((s.success_at for s in success),default=None)
         health='degraded' if any(s.active and s.error for s in linked) else 'ready' if success else 'validated' if any(s.active and s.validated_at for s in linked) else 'not_active'
-        rows.append({**site,'probe':probe,'source_ids':[s.id for s in linked], 'active_source_ids':active, 'archive_status':'active' if active else 'not_active','feed_health':health,'last_success_at':last_success,'article_count':sum(counts.get(s.id,0) for s in linked)})
-    return {'items':rows[offset:offset+limit],'total':len(rows),'offset':offset,'limit':limit,'directory_total':len(SITES),'directory_media_total':sum(s['category']!='official' for s in SITES),'directory_official_total':sum(s['category']=='official' for s in SITES),'ranking':'curated_not_traffic_rank','research_checked':len(probes),'research_reachable':sum(p.get('homepage_status')=='reachable' for p in probes.values()),'research_feed_found':sum(bool(p.get('feed_url')) for p in probes.values()),'archive_active_sites':sum(any(s.active for s in groups.get(site['domain'],[])) for site in SITES),'limitation':'Хэвлэл/мэдээллийн сайтын түүхэн бүртгэл ба тусдаа ангилсан албан эх сурвалжийн лавлах; өнөөгийн топ хандалтын эрэмбэ биш. Веб хайлт нь гаднын Google/Bing рүү шилжинэ. Архивын хайлт зөвхөн татсан нийтлэлд үйлчилнэ.'}
+        rows.append({**site,'probe':probe,'source_ids':[s.id for s in linked], 'active_source_ids':active, 'archive_status':'active' if active else 'not_active','discovery':discoveries.get(site['domain'],{}),'feed_health':health,'last_success_at':last_success,'article_count':sum(counts.get(s.id,0) for s in linked)})
+    return {'items':rows[offset:offset+limit],'total':len(rows),'offset':offset,'limit':limit,'directory_total':len(SITES),'directory_media_total':sum(s['category']!='official' for s in SITES),'directory_official_total':sum(s['category']=='official' for s in SITES),'ranking':'curated_not_traffic_rank','discovery_checked':len(discoveries),'discovery_total':len(SITES),'discovery_active':sum(d.get('status')=='active' for d in discoveries.values()),'research_checked':len(probes),'research_reachable':sum(p.get('homepage_status')=='reachable' for p in probes.values()),'research_feed_found':sum(bool(p.get('feed_url')) for p in probes.values()),'archive_active_sites':sum(any(s.active for s in groups.get(site['domain'],[])) for site in SITES),'limitation':'Хэвлэл/мэдээллийн сайтын түүхэн бүртгэл ба тусдаа ангилсан албан эх сурвалжийн лавлах; өнөөгийн топ хандалтын эрэмбэ биш. Веб хайлт нь гаднын Google/Bing рүү шилжинэ. Архивын хайлт зөвхөн татсан нийтлэлд үйлчилнэ.'}

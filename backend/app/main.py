@@ -71,7 +71,7 @@ def admin(authorization: str = Header(default='')):
 class SourceInput(BaseModel):
     name: str = Field(min_length=1, max_length=200)
     endpoint: HttpUrl
-    kind: Literal['rss','atom','json','csv','sitemap'] = 'rss'
+    kind: Literal['rss','atom','json','csv','sitemap','html'] = 'rss'
     publisher: str = Field(default='', max_length=200)
     license: str = Field(default='', max_length=2000)
     permission_note: str = Field(default='', max_length=2000)

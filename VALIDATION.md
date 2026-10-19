@@ -102,3 +102,8 @@ Backend/worker/frontend тусдаа Railway config, backend pre-deploy Alembic,
 ## Бодит RSS цуглуулалт — 2026-10-20
 
 Railway production дээр нийтэд нээлттэй 23 RSS endpoint-ийг pinned DNS, robots болон XML parser-аар шалгав. 22 valid feed-ийг гарчиг, анхны холбоос, feed-д нийтэлсэн 600 тэмдэгт хүртэл тоймын хүрээнд идэвхжүүлсэн; бүтэн текстийн лиценз/нийтлэгчийн тусгай зөвшөөрөл гэж мэдэгдээгүй. dailynews.mn-ийн robots шалгалт амжилтгүй тул идэвхгүй хэвээр. Collector production DB-д бодит нийтлэл хадгалж эхэлснийг нийтийн `/articles`, `/statistics`, `/sources` API-аар шалгасан. Картын live feed health, last-success, article-count нь түүхэн homepage snapshot-оос тусдаа; алдаа гарсан ч хадгалсан мэдээ хэвээр үлдэнэ. Backend 71 passed, 2 skipped; Next.js build амжилттай.
+
+
+## 500 хаягийн сэргээж үргэлжлүүлэх commissioning
+
+HTML headline-only адаптер, publisher-declared news sitemap title, 12 хүртэл зэрэгцээ deadline-тай scan, DB progress/resume, advisory lock, supervised daily scan болон эх сурвалж тус бүрийн хязгаартай зэрэгцээ collector нэмсэн. Навигаци/өөр домэйн/duplicate link-ийг news болгон авахгүй гэсэн кейсүүд, мэдээний provenance, scan resume, нэг host-ийн алдаа бусдыг зогсоохгүй гэсэн кейсүүд нэмэгдсэн. 75 тест passed, 2 native PostgreSQL skipped. 500 хаягийн live scan-ийн тоо нь `/media` ба `/system/status`-ийн бодит progress; код deploy хийсэн нь 500 сайт бүгд ажилласан гэсэн баталгаа биш.

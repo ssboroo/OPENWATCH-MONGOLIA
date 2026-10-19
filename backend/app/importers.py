@@ -25,6 +25,7 @@ def records(rows,kind):
 def parse_source(raw,kind='rss',endpoint=''):
     if len(raw)>2_000_000:raise ValueError('Import exceeds size limit')
     if kind in ('rss','atom'):return parse_feed(raw)
+    if kind=='html':return parse_headlines(raw,endpoint)
     if kind=='json':
         data=json.loads(raw)
         return records(data.get('items') if isinstance(data,dict) else data,'json')
@@ -39,6 +40,34 @@ def parse_source(raw,kind='rss',endpoint=''):
             values={c.tag.rsplit('}',1)[-1]:(c.text or '') for c in node}
             url=canonical(values.get('loc',''))
             if (urlsplit(url).hostname or '').removeprefix('www.')!=host:raise ValueError('Cross-domain sitemap URL rejected')
-            rows.append({'url':url,'title':'[Гарчиг татаагүй] '+urlsplit(url).path[-120:],'excerpt':'','published_at':None,'updated_at':timestamp(values.get('lastmod')) if 'T' in values.get('lastmod','') else None,'source_metadata':{'format':'sitemap','metadata_only':True,'sitemap_lastmod_raw':values.get('lastmod','')[:200]}})
+            news=next((c for c in node if c.tag.rsplit('}',1)[-1]=='news'),None)
+            title=next(((c.text or '') for c in list(news) if c.tag.rsplit('}',1)[-1]=='title'),'') if news is not None else ''
+            rows.append({'url':url,'title':clean(title)[:1000] if title else '[Гарчиг татаагүй] '+urlsplit(url).path[-120:],'excerpt':'','published_at':None,'updated_at':timestamp(values.get('lastmod')) if 'T' in values.get('lastmod','') else None,'source_metadata':{'format':'sitemap','metadata_only':True,'sitemap_has_title':bool(title),'sitemap_lastmod_raw':values.get('lastmod','')[:200]}})
         return rows
     raise ValueError('Unsupported source kind')
+
+def parse_headlines(raw, endpoint):
+    """Publisher's public headline links only; no article-body scraping."""
+    from bs4 import BeautifulSoup
+    from urllib.parse import urljoin
+    import re
+    soup=BeautifulSoup(raw,'html.parser')
+    for tag in soup.select('script,style,nav,header,footer,form,aside,noscript'):tag.decompose()
+    host=(urlsplit(endpoint).hostname or '').removeprefix('www.')
+    rows=[];seen=set()
+    selectors='article a[href],h1 a[href],h2 a[href],h3 a[href],a[href]:has(h2),a[href]:has(h3),a[class*="title"][href],a[class*="headline"][href]'
+    for tag in soup.select(selectors):
+        heading=tag.find(['h1','h2','h3'])
+        title=clean((heading or tag).get_text(' ',strip=True))
+        if len(title)<24 or len(title)>500 or len(title.split())<3:continue
+        try:url=canonical(urljoin(endpoint,tag['href']))
+        except ValueError:continue
+        u=urlsplit(url)
+        if u.scheme!='https' or (u.hostname or '').removeprefix('www.')!=host or u.path in ('','/'):continue
+        if re.search(r'/(?:category|tag|author|search|login|register|page)(?:/|$)',u.path,re.I):continue
+        if url in seen:continue
+        seen.add(url)
+        rows.append({'url':url,'title':title,'excerpt':'','published_at':None,'updated_at':None,'source_metadata':{'format':'html','metadata_only':True,'headline_only':True}})
+        if len(rows)>=80:break
+    if len(rows)<3:raise ValueError('No reliable public headline list found')
+    return rows

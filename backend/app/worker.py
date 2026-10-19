@@ -17,6 +17,9 @@ async def pulse():
 
 async def main():
     asyncio.create_task(pulse())
+    if settings.catalog_bootstrap:
+        from .discovery import supervisor
+        asyncio.create_task(supervisor())
     last_collection=0
     while True:
         try:

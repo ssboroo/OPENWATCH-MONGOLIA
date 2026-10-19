@@ -110,3 +110,9 @@ HTML headline-only адаптер, publisher-declared news sitemap title, 12 х�
 
 
 Adapter v2: plain publisher article-ID links (including iKon `/n/...`) нэмсэн. Бодит татсан iKon homepage-оос гарчиг задлах шалгалт амжилттай; өмнөх `no_public_stream` төлөвтэй хаягуудыг шинэ адаптераар нэг удаа дахин шалгана, ажилласан урсгалыг зогсоохгүй. Backend 76 passed, 2 skipped; Next.js build амжилттай. Нийтэлсэн огноо тодорхойгүй гарчгийн цагийг `Илрүүлсэн` гэж ялгаж харуулна.
+
+## Topic evidence research
+
+Read-only `/api/v1/research` searches all query terms in current archived versions, with category/domain and inclusive Ulaanbaatar date filters. Returns exact title/excerpt quotes (PII redaction marked), version IDs, SHA-256, original links, known publication and discovery timestamps, and unverified numeric statement candidates. Headline-only scope is explicit. Graph tab includes a search workspace refreshing every 60 seconds while open. No independent corroboration, truth score, full-text access or AI inference is asserted. Backend: 79 passed, 2 PostgreSQL tests skipped locally. Frontend production build passed.
+
+Isolated real HTTP integration also passed through standalone Next rewrite: research returned both DEMO version-grounded results and numeric candidates; existing human review, SSR reports, moderated correction, worker heartbeat and AI-offline fallback passed. No production fixture writes.

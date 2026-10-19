@@ -53,6 +53,8 @@ try:
  assert call(f"/api/v1/reports/{r['id']}")['corrections']==[]
  call(f"/api/v1/admin/corrections/{correction['id']}/review",{'decision':'accepted','privacy_checked':True,'response':'[DEMO] Reviewed isolated test annotation.'},True)
  assert len(call(f"/api/v1/reports/{r['id']}")['corrections'])==1
+ rsearch=call('/api/v1/research?q=DEMO',port=3765)
+ assert rsearch['total']==2 and all(r['claims'] and r['version_id'] for r in rsearch['items'])
  assert call('/api/v1/semantic-search?q=DEMO')['mode']=='lexical_fallback'
  assert call('/api/v1/system/status')['worker_stale'] is False
  subprocess.run([sys.executable,str(root/'ops/smoke.py'),'http://127.0.0.1:3765','--require-worker'],check=True)

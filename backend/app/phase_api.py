@@ -38,6 +38,11 @@ def install_routes(app, admin, tasks):
         response: str = Field(min_length=10,max_length=3000)
         privacy_checked: bool = False
 
+    @router.get('/research')
+    def investigate(q:str=Query(...,min_length=1,max_length=200),domain:str=Query('',max_length=253),category:str=Query('',pattern='^(|news|regional|business|broadcast|official)$'),date_from:date|None=None,date_to:date|None=None,date_field:str=Query('discovered',pattern='^(published|discovered)$'),offset:int=Query(0,ge=0),limit:int=Query(20,ge=1,le=50),db:DB=Depends(get_db)):
+        from .research import research
+        return research(db,q,domain,category,date_from,date_to,date_field,offset,limit)
+
     @router.get('/reports')
     def list_reports(offset: int=Query(0,ge=0),limit: int=Query(20,ge=1,le=100),db: DB=Depends(get_db)):
         condition=PublicReport.state.in_(['published','withdrawn'])

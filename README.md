@@ -52,6 +52,10 @@ Provenance: `backend/app/data/mongolia-sites.v2.json`. Хуучин 100 сайт
 
 Энэ нь зөвхөн homepage судалгаа; production collector-ийн хамгаалалтыг өөрчилдөггүй, source үүсгэж идэвхжүүлдэггүй.
 
+## Railway
+
+Railway-д backend, worker, frontend болон pgvector Postgres-ийг тусдаа service болгох тохиргоо бэлэн. Нарийвчилсан deploy specification: [ops/RAILWAY.md](ops/RAILWAY.md). Холбогдсон Railway эрхгүй бол эдгээр файл өөрсдөө project үүсгэж deploy хийхгүй.
+
 ## VPS суулгах
 
 Ubuntu 24.04 LTS, Docker Engine + Compose plugin: https://docs.docker.com/engine/install/ubuntu/ . Эхний CPU-only архивт 4 GB RAM орчмоос эхэлж ачааллаа хэмжинэ; 8B AI model + DB-д **16 GB RAM-аас эхлэхийг тооцоолох** хэрэгтэй. Энэ нь benchmark баталгаа биш. API төлбөргүй; VPS, RAM/GPU, диск, model download-ийн зардал тусдаа.

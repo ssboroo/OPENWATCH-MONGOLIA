@@ -37,6 +37,7 @@ try:
    call('/health');call('/',port=3765);break
   except Exception:time.sleep(.25)
  else:raise RuntimeError('Servers did not become healthy')
+ assert call('/health',port=3765)['status']=='ok'
  assert all(p.poll() is None for p in processes),'A service exited unexpectedly'
  assert call('/api/v1/media?limit=100',port=3765)['total']==500
  r=call('/api/v1/admin/reports?state=draft',auth=True)['items'][0]
@@ -54,6 +55,7 @@ try:
  assert len(call(f"/api/v1/reports/{r['id']}")['corrections'])==1
  assert call('/api/v1/semantic-search?q=DEMO')['mode']=='lexical_fallback'
  assert call('/api/v1/system/status')['worker_stale'] is False
+ subprocess.run([sys.executable,str(root/'ops/smoke.py'),'http://127.0.0.1:3765','--require-worker'],check=True)
  print('PASS: live HTTP + standalone Next.js rewrite + SSR report + human publish + moderated correction + worker heartbeat + AI-offline fallback; isolated DEMO fixtures only')
 finally:
  for p in reversed(processes):

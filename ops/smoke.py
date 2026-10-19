@@ -13,7 +13,7 @@ media=get('/api/v1/media?limit=100')
 assert media['directory_total']==500 and len(media['items'])==100
 search=get('/api/v1/media/search?q=OpenWatch')
 assert search['mode']=='external_search_links' and search['total_sites']==500
-assert len(search['groups'])==10
+assert len(search['groups'])==50
 assert all(isinstance(v,int) for v in get('/api/v1/statistics').values())
 status=get('/api/v1/system/status')
 if args.require_worker:assert not status['worker_stale'],'Worker heartbeat is stale'

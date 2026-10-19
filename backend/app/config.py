@@ -1,7 +1,17 @@
+from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     database_url: str = 'postgresql+psycopg://openwatch:openwatch@db/openwatch'
+    @field_validator('database_url', mode='before')
+    @classmethod
+    def postgres_driver(cls, value):
+        # Railway exports a standard Postgres URL; this app installs psycopg 3.
+        if isinstance(value,str):
+            for prefix in ('postgres://','postgresql://'):
+                if value.startswith(prefix):return 'postgresql+psycopg://'+value[len(prefix):]
+        return value
+
     admin_token: str = ''
     allowed_hosts: str = ''
     max_feed_bytes: int = 2_000_000

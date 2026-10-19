@@ -92,3 +92,8 @@ Audit 0 нь тухайн vulnerability database-ийн мэдэгдэж буй 
 - Өмнөх security/dependency audit үр дүн нь тухайн үеийн snapshot; энэ өөрчлөлт dependency нэмээгүй.
 
 Өргөтгөсөн HTTP судалгаа: 500/500 хаяг оролдсон; 247 нүүр хуудас нээгдсэн, 250 нь энэ орчинд холбогдоогүй/timeout, 2 нь хязгаарлалт/placeholder, 1 нь HTML биш. 180 өөрийн домэйн дээрх icon холбоос, 63 explicit feed candidate илэрсэн. Энэ 63 нь XML parse хийгдсэн RSS гэсэн үг биш. `production_validated=false`; collector идэвхжээгүй. Live HTTP integration-ийг энэ шинэчлэлтэй дахин ажиллуулж PASS авсан.
+
+
+## Railway deployment бэлтгэл — 2026-10-20
+
+Backend/worker/frontend тусдаа Railway config, backend pre-deploy Alembic, PORT/BIND_HOST, Railway Postgres URL → psycopg 3, Docker build-time BACKEND_URL, frontend `/health` rewrite, Railway дээр үйлчлэх security headers бэлдсэн. CSP нь publisher-ийн HTTPS icon-уудыг зөвшөөрнө. 70 backend tests passed, 2 native PostgreSQL tests skipped; Next.js production build амжилттай. Энэ нь Railway дээр deployment ажилласан гэсэн баталгаа биш; actual service/domain/log validation дараа хийгдэнэ.

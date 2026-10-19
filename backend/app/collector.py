@@ -4,6 +4,7 @@ import re
 from datetime import datetime, timezone
 from urllib.parse import urlsplit, urlunsplit, parse_qsl, urlencode
 import calendar
+import ipaddress
 import feedparser
 from bs4 import BeautifulSoup
 from defusedxml import ElementTree
@@ -13,9 +14,15 @@ from .db import Session
 from .security import fetch_feed
 
 def canonical(url):
+    if len(url.encode('utf-8'))>2048:raise ValueError('Article URL exceeds size limit')
     u = urlsplit(url)
     if u.scheme not in ('http', 'https') or not u.hostname or u.username or u.password:
         raise ValueError('Invalid article URL')
+    if u.hostname.lower() in ('localhost','localhost.localdomain') or u.hostname.lower().endswith('.local'):raise ValueError('Local article URL blocked')
+    try:address=ipaddress.ip_address(u.hostname)
+    except ValueError:address=None
+    if address is not None and not address.is_global:raise ValueError('Private article URL blocked')
+    if any(k.casefold() in {'api_key','apikey','access_token','password','secret','authorization','token','signature'} for k,_ in parse_qsl(u.query)):raise ValueError('Credential-bearing article URL rejected')
     query = [(k,v) for k,v in parse_qsl(u.query) if not k.lower().startswith('utm_') and k.lower() not in {'fbclid','gclid'}]
     return urlunsplit((u.scheme.lower(), u.netloc.lower(), u.path or '/', urlencode(sorted(query)), ''))
 
@@ -40,32 +47,13 @@ def parse_feed(raw):
             continue
         def timestamp(key):
             val = dict(e).get(key)
+            raw_date=str(dict(e).get(key.removesuffix('_parsed'),''))
+            if not re.search(r'(?:[+-]\d{2}:?\d{2}|Z|UTC|GMT|[ECMP][SD]T)\s*$',raw_date,re.I):return None
             return datetime.fromtimestamp(calendar.timegm(val), timezone.utc) if val else None
-        rows.append(dict(url=canonical(e.link), title=clean(e.title)[:1000], excerpt=clean(e.get('summary',''))[:600], published_at=timestamp('published_parsed'), updated_at=timestamp('updated_parsed')))
+        rows.append(dict(url=canonical(e.link), title=clean(e.title)[:1000], excerpt=clean(e.get('summary',''))[:600], published_at=timestamp('published_parsed'), updated_at=timestamp('updated_parsed'),source_metadata={'published_raw':str(dict(e).get('published',''))[:200],'updated_raw':str(dict(e).get('updated',''))[:200]}))
     return rows
 
-def rebuild_events(db):
-    # Rebuild current lexical clusters transactionally; versions remain immutable.
-    db.execute(delete(SimilarityMatch)); db.execute(delete(EventArticle)); db.execute(delete(Event))
-    rows = list(db.scalars(select(Article).order_by(Article.id)))
-    parent = {a.id: a.id for a in rows}
-    def root(i):
-        while parent[i] != i:
-            parent[i] = parent[parent[i]]; i = parent[i]
-        return i
-    for i, a in enumerate(rows):
-        for b in rows[:i]:
-            score = 1.0 if a.text_hash == b.text_hash else similarity(a.title+' '+a.excerpt, b.title+' '+b.excerpt)
-            if score >= .72:
-                parent[root(a.id)] = root(b.id)
-                db.add(SimilarityMatch(article_id=a.id, other_id=b.id, score=score, method='sha256' if a.text_hash == b.text_hash else 'token_jaccard'))
-    groups = {}
-    for a in rows:
-        groups.setdefault(root(a.id), []).append(a)
-    for members in groups.values():
-        event = Event(title=members[0].title, first_seen_at=min(a.first_seen_at for a in members))
-        db.add(event); db.flush()
-        db.add_all(EventArticle(event_id=event.id, article_id=a.id) for a in members)
+from .clustering import rebuild_events
 
 def ingest(db, source, rows):
     added = 0
@@ -76,16 +64,33 @@ def ingest(db, source, rows):
             a = Article(source_id=source.id, **row, text_hash=h, version=1, fetched_at=now())
             db.add(a); db.flush(); added += 1
         elif a.source_id != source.id:
-            continue
+            if a.source_metadata.get('metadata_only') and not row.get('source_metadata',{}).get('metadata_only'):
+                from .catalog import domain_of
+                if domain_of(a.url)!=domain_of(source.endpoint):continue
+                a.source_id=source.id;a.version+=1
+                for key,value in row.items():setattr(a,key,value)
+                a.text_hash=h
+            else:continue
         else:
             a.fetched_at = now()
             if a.text_hash == h:
+                changed=False
+                for key in ('published_at','updated_at'):
+                    val=row.get(key)
+                    from .clustering import utc
+                    old=getattr(a,key)
+                    if (utc(val) if val else None)!=(utc(old) if old else None):
+                        setattr(a,key,val);changed=True
+                if 'source_metadata' in row:a.source_metadata=row['source_metadata']
+                if changed:a.analysis_hash=None;a.analysis_status='pending'
                 continue
             a.version += 1
             for k,v in row.items():
                 setattr(a, k, v)
             a.text_hash = h
-        db.add(ArticleVersion(article_id=a.id, version=a.version, title=a.title, excerpt=a.excerpt, text_hash=h))
+        a.source_metadata=dict(row.get('source_metadata',{}))
+        a.analysis_status='pending';a.analysis_hash=None;a.ai_hash=None;a.next_analysis_at=None
+        db.add(ArticleVersion(article_id=a.id, source_id=source.id,source_metadata=dict(a.source_metadata or {}),version=a.version, title=a.title, excerpt=a.excerpt, text_hash=h))
     db.flush()
     return added
 
@@ -94,6 +99,7 @@ async def collect():
         if lockdb.bind.dialect.name == 'postgresql':
             if not lockdb.scalar(text('SELECT pg_try_advisory_lock(20471019)')):
                 return {'status':'already_running'}
+        run_id=None
         try:
             with Session() as db:
                 run = CollectionRun(); db.add(run); db.commit(); run_id = run.id
@@ -104,7 +110,8 @@ async def collect():
                     source = db.get(Source, sid)
                     try:
                         source.checked_at = now()
-                        rows = parse_feed(await fetch_feed(source.endpoint))
+                        from .importers import parse_source
+                        rows = parse_source(await fetch_feed(source.endpoint),source.kind,source.endpoint)
                         added += ingest(db, source, rows)
                         source.success_at = now(); source.error = None
                         db.commit()
@@ -118,6 +125,14 @@ async def collect():
                 run = db.get(CollectionRun, run_id); run.finished_at = now(); run.status = 'partial' if errors else 'completed'; run.added = added; run.errors = errors
                 db.commit()
             return {'status':'partial' if errors else 'completed','added':added,'errors':errors}
+        except Exception as exc:
+            try:
+                with Session() as db:
+                    run=db.get(CollectionRun,run_id) if run_id else None
+                    if run:
+                        run.status='failed';run.finished_at=now();run.errors=[{'stage':'collection','error':type(exc).__name__}];db.commit()
+            except Exception:pass
+            return {'status':'failed','error':type(exc).__name__}
         finally:
             if lockdb.bind.dialect.name == 'postgresql':
                 lockdb.execute(text('SELECT pg_advisory_unlock(20471019)'))

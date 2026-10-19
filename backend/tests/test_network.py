@@ -46,3 +46,29 @@ def test_collector_integration_and_failure(db, monkeypatch):
     with factory() as s:
         assert s.scalar(select(func.count()).select_from(Article))==1
         assert s.scalar(select(CollectionRun).order_by(CollectionRun.id.desc())).finished_at
+
+def test_credentials_in_public_source_and_article_urls_are_blocked_before_dns():
+    from app.collector import canonical
+    with pytest.raises(ValueError,match='Credentials'):
+        asyncio.run(security.resolve_public('https://ikon.mn/rss?api_key=not-a-real-secret'))
+    with pytest.raises(ValueError,match='Credential'):
+        canonical('https://ikon.mn/article?access_token=not-a-real-secret')
+
+def test_redirect_rechecks_robots_and_pins_host_sni(monkeypatch):
+    import httpx
+    from urllib.parse import urlsplit
+    original=httpx.AsyncClient;calls=[]
+    async def public(url):return urlsplit(url),'93.184.216.34'
+    def handler(request):
+        host=request.headers['host'];calls.append((host,request.url.path))
+        assert request.url.host=='93.184.216.34' and request.extensions['sni_hostname']==host
+        if request.url.path=='/robots.txt':
+            return httpx.Response(200,text='User-agent: *\nDisallow: /feed\n' if host=='gogo.mn' else 'User-agent: *\nAllow: /\n')
+        return httpx.Response(302,headers={'Location':'https://gogo.mn/feed'})
+    def client(**kwargs):return original(transport=httpx.MockTransport(handler),**kwargs)
+    monkeypatch.setattr(security,'resolve_public',public)
+    monkeypatch.setattr(security.httpx,'AsyncClient',client)
+    security._last_fetch.clear()
+    with pytest.raises(ValueError,match='robots'):
+        asyncio.run(security.fetch_feed('https://ikon.mn/feed'))
+    assert ('gogo.mn','/robots.txt') in calls and ('gogo.mn','/feed') not in calls

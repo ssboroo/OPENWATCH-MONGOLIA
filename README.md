@@ -2,222 +2,234 @@
 
 **Нээлттэй мэдээлэл. Нотолгоонд суурилсан хяналт.**
 
-Монгол хэлтэй нийтийн мэдээллийн архив, RSS/Atom цуглуулалт, нийтлэлийн өөрчлөлт болон ижил агуулгыг харьцуулах систем. **Phase 1 MVP**. AI дүгнэлт, баталгаажсан баримтын тайлан, бодит хүмүүсийн холбооны дүгнэлт гаргахгүй.
+Монголын нийтийн мэдээллийн RSS/Atom архив, локал AI шинжилгээ, нотолгооны харьцуулалт, хүний хяналттай тайлангийн платформ. Монгол хэлтэй responsive Next.js dashboard (үндсэн navigation-д MN/EN сонголттой), FastAPI, PostgreSQL/pgvector, Ollama, Docker Compose.
 
-## Хэрэгжсэн хүрээ
+**Phase 1–4-ийн хэрэгжүүлэлт энэ репод байна.** Кодын тест болон бодит VPS дээрх commissioning хоёр тусдаа. Docker-capable VPS, домэйн, model download, эх сурвалжийн эрхийн шалгалт шаардлагатай. Deploy, HTTPS, PostgreSQL live runtime, бодит Ollama model-ийн Монгол хэлний чанарыг энэ орчинд баталгаажуулсан гэж үзэхгүй. Ажиллуулсан шалгалт бүр `VALIDATION.md`-д байна.
 
-- Next.js App Router + TypeScript responsive dashboard: хайлт, pagination, нийтлэлийн дэлгэрэнгүй, хувилбарын түүх, үйл явдлын timeline, эх сурвалж, collector төлөв.
-- FastAPI + SQLAlchemy 2; PostgreSQL/pgvector image; Alembic `0001_archive` migration.
-- RSS 2.0, Atom: гарчиг, 600 тэмдэгт хүртэл товч агуулга, анхны URL, published/updated/first_seen/fetched timestamp тус тус хадгална.
-- Canonical URL, tracking query normalization, SHA-256 exact match, token Jaccard near match, connected-component event clustering.
-- Хувилбарын архив; эх сурвалжийг устгахын оронд идэвхгүй болгоно.
-- Нийтийн унших API; админы mutation bearer authentication; mutation audit log.
-- HTTPS-only allowlist, private/reserved IP block, DNS resolution → pinned IP + TLS SNI, redirect бүрийн шалгалт, robots.txt шалгалт, timeout, хэмжээний хязгаар, аюулгүй XML parsing.
-- Давхар collector ажиллуулахыг PostgreSQL advisory lock-оор хориглоно. Source бүр тусдаа transaction; нэг feed-ийн алдаа бусдыг зогсоохгүй.
-- Caddy reverse proxy, автомат HTTPS тохиргоо; backup болон тусдаа database руу restore шалгах script.
+## Боломжууд
 
-Хуурамч нийтлэл, seed статистик, баталгаажаагүй идэвхтэй feed байхгүй. Тестийн өгөгдөл зөвхөн `backend/tests` дотор байна. Ижил агуулга/цаг нь зохион байгуулалт, ашиг сонирхол эсвэл хууль бус үйлдлийн нотолгоо биш. `events` ID нь одоогийн clustering дахин тооцоход өөрчлөгдөж болно; Phase 3 хүртэл тогтвортой тайлангийн ID гэж ашиглахгүй.
+| Үе шат | Хэрэгжүүлэлт |
+|---|---|
+| 1 — Архив | RSS/Atom collector, canonical URL, SHA-256, version history, lexical matching, хайлт, dashboard |
+| 2 — Локал AI | Ollama schema-тай extraction, 1024-dimensional bge-m3 embedding, pgvector cosine search, semantic matching, topic classification, extractive summary, retry/fallback |
+| 3 — Нотолгоо | Immutable evidence spans, entity mention graph, тоо/огнооны зөрүүний нэр дэвшигч, snapshot тайлан, хүний review/publish/withdraw, moderated corrections |
+| 4 — Ажиллагаа | HTTPS proxy, non-root application containers, auth, request/rate limits, SSRF guards, audit, worker heartbeat, backup service, isolated restore-check, Prometheus rules, retention, deploy/preflight/smoke scripts |
 
-## Ubuntu VPS суулгах
+JSON/CSV нээлттэй өгөгдөл болон sitemap metadata импорт дэмжинэ. Sitemap нь URL ба lastmod л бүртгэнэ; гарчиг зохиохгүй, lastmod-ийг published_at гэж үзэхгүй. Нийтлэлийн URL-ын 404/410 шалгалтыг админ тусад нь ажиллуулж болно; feed-ээс алга болсныг устсан гэж дүгнэхгүй.
 
-Эхний тохиргоо: 2–4 CPU, 4 GB RAM, 30+ GB диск; энэ нь ачааллын баталгаат хэмжээ биш. AI profile нэмбэл model-оос хамааран илүү RAM/GPU шаардана. Төлбөртэй API ашиглаагүй; VPS, диск, сүлжээ, локал model-ийн зардал тусдаа.
+### Тайлбарлах зарчим
 
-1. Ubuntu 24.04 LTS сервер дээр Docker Engine + Compose plugin-ийг Docker-ийн албан ёсны Ubuntu заавраар суулгана: https://docs.docker.com/engine/install/ubuntu/ . SSH, 80, 443 портыг зөвшөөрнө; DB болон Ollama порт нээхгүй.
-2. Git суулгаад кодоо татна:
+- Ижил текст, утгын ойролцоо байдал, ойр нийтэлсэн цаг нь зохион байгуулалт, ашиг сонирхол, хууль бус үйлдлийн нотолгоо биш.
+- Хамгийн эрт **бүртгэгдсэн** мэдээ нь анхны нийтлэгч гэдгийг батлахгүй.
+- `published_at`, `first_seen_at`, `fetched_at`, feed updated цаг тусдаа. Published цаг байхгүй бол first_seen-ээр орлуулахгүй.
+- AI entity/claim/summary нь архивын хувилбарын **яг таарсан текстийн хэсэгт** тулгуурлана. Эхэд байхгүй нэр, тоо, ишлэл болон JSON schema алдааг хүлээж авахгүй.
+- AI summary нь extractive quotes: шинэ баримт зохиосон чөлөөт дүгнэлт биш. Category нь мэдээний сэдэв; хүний улс төрийн үзэл бодол, намын харьяалал биш.
+- Тоо/огнооны ялгааг `different_value_candidate` гэж тэмдэглэнэ. Албан баримтаар автоматаар баталгаажуулсан гэж үзүүлэхгүй. Хүний шалгалтгүй verified finding нийтлэхгүй.
+- Тайлан бүр default **draft**. Token-той админ нотолгоо, privacy, хязгаарлалтыг шалгаж, тэмдэглэлтэйгээр publish хийнэ. Corrections мөн хүний review шаарддаг.
+- Утас, email, регистрийн хэв шинжийг нийтийн текстэд нуух хамгаалалттай; энэ нь PII илрүүлэх бүрэн баталгаа биш. Тайлангийн explicit privacy review заавал.
+
+## 100 эх сурвалж
+
+`Монголын 100 сайт` цэсэнд нэр/домэйн, чиглэл, HTTP төлөв, feed илэрсэн эсэх, архивын идэвхээр шүүнэ. Энэ нь **хандалтаар батлагдсан Top 100 ranking биш**. ХХЗХ-ны 2020/2021 оны бүртгэл болон хэвлэлийн өөрийн нүүр хуудсаас нэр дэвшигчдийг сонгон шалгасан.
+
+- 275 домэйн шүүсэн; каталогт 100 домэйн.
+- 2026-10-19 snapshot: **96 нүүр хуудас нээгдсэн, 23 нийтлэлийн feed XML parse амжилттай**.
+- MONTSAME, Zindaa, Olloo, Bolod-ийн шууд HTTP шалгалт timeout/403. Энэ нь сайт бүх хэрэглэгчид ажиллахгүй гэсэн дүгнэлт биш.
+- Research proxy-ийн XML parse нь production pinned-DNS, robots, лицензийн шалгалтыг орлохгүй. Feed-үүд автоматаар идэвхжээгүй.
+
+Хайлт хоёр төрөлтэй:
+
+1. **Веб хайлт** — Google/Bing-ийн `site:` холбоос. Сайт тус бүр эсвэл 10 сайттай 10 бүлэг. Хэрэглэгч гаднын системийн бодит үр дүнг нээнэ; энэ API хайлтын үр дүн зохиохгүй, scrape хийж байгаа мэт дүр эсгэхгүй.
+2. **Дотоод архив** — зөвхөн татаж хадгалсан нийтлэл; үгийн, PostgreSQL FTS болон локал embedding хайлт. AI unavailable бол `lexical_fallback` гэж ил тод тэмдэглэнэ.
+
+Provenance: `backend/app/data/mongolia100.v1.json`, `probe-2026-10-19.json`, `probe-all-2026-10-19.json`.
+
+## VPS суулгах
+
+Ubuntu 24.04 LTS, Docker Engine + Compose plugin: https://docs.docker.com/engine/install/ubuntu/ . Эхний CPU-only архивт 4 GB RAM орчмоос эхэлж ачааллаа хэмжинэ; 8B AI model + DB-д **16 GB RAM-аас эхлэхийг тооцоолох** хэрэгтэй. Энэ нь benchmark баталгаа биш. API төлбөргүй; VPS, RAM/GPU, диск, model download-ийн зардал тусдаа.
+
+DNS A/AAAA record-ийг VPS руу заана. SSH, TCP 80/443 болон шаардлагатай бол UDP 443 нээнэ. Database, Ollama, backend, Prometheus порт нийтэд нээхгүй.
 
 ```sh
 sudo apt-get update
-sudo apt-get install -y git openssl curl
+sudo apt-get install -y git python3 curl
 git clone https://github.com/ssboroo/OPENWATCH-MONGOLIA.git
 cd OPENWATCH-MONGOLIA
-cp .env.example .env
-openssl rand -hex 32
-openssl rand -hex 32
-```
-
-3. `.env` дотор эхний random утгыг `POSTGRES_PASSWORD`, хоёр дахь утгыг `ADMIN_TOKEN` болгоно. Password-д URL reserved тэмдэг оруулахгүй: hex утга тохиромжтой. `.env`-ийг Git-д оруулахгүй; `chmod 600 .env` ажиллуулна.
-4. Домэйн A/AAAA record-ийг VPS руу заагаад `SITE_ADDRESS=watch.example.mn` тохируулна. Домэйнгүй туршихад `:80` ашиглаж болно; админ token-оо нийтийн HTTP сүлжээгээр илгээхгүй, HTTPS эсвэл SSH туннель ашиглана.
-5. Дарааллаар ажиллуулна:
-
-```sh
-docker compose config --quiet
-docker compose build
-docker compose up -d db
-docker compose run --rm migrate
-docker compose up -d
-# Домэйнээр HTTPS тохируулсан бол:
-curl --fail https://watch.example.mn/health
+python3 ops/setup.py --domain watch.example.mn
+# .env-г үүсгэж, random DB password/token-ийг 0600 эрхтэй хадгална.
+# Үүссэн secrets stdout-д хэвлэхгүй, байгаа .env-г overwrite хийхгүй.
+sh ops/deploy.sh
+python3 ops/smoke.py https://watch.example.mn --require-worker
 docker compose ps
-docker compose logs --tail=100 backend worker proxy
+docker compose logs --tail=100 backend worker proxy backup
 ```
 
-`migrate` service бүх шинэчлэлтэд Alembic ажиллуулна. Production-д `create_all` ашиглахгүй. Caddy сертификат авахын тулд зөв DNS ба 80/443 нээлттэй байх ёстой. Compose зөвхөн proxy портуудыг нийтэд нээнэ.
+`watch.example.mn`-г өөрийн домэйноор солино. `ops/deploy.sh`: config preflight → Compose validation → build → DB → Alembic migration → services. Шинэ суулгалтад migration job автоматаар ажиллана. Production schema-г `create_all`-аар удирдахгүй.
 
-## Эх сурвалж нэмэх
+Домэйнгүй локал туршилтад `.env.example`-ийг `.env` болгож random hex secrets тохируулаад `SITE_ADDRESS=:80`-оор `docker compose up -d --build` ажиллуулж болно. Production preflight нь HTTP-only тохиргоог хүлээн авахгүй. Нийтийн HTTP сүлжээгээр admin token бүү илгээ.
 
-Анх **0 эх сурвалж** байна. URL, feed-ийн хүчинтэй байдал болон нийтлэгчийн нөхцөлийг шалгалгүй идэвхжүүлэхгүй. Зөвхөн нийтэд нээлттэй, зөвшөөрөлтэй RSS/Atom endpoint ашиглана; login/paywall тойрохгүй. Эх сурвалжийн Terms, лиценз, excerpt ашиглах эрхийг оператор шалгаж бүртгэнэ. robots.txt нь ашиглах лицензийг орлохгүй.
-
-1. `.env`-д `ALLOWED_HOSTS=news.example.mn` нэмнэ. Redirect эсвэл robots.txt өөр hostname ашиглавал зөвхөн шалгасан hostname-ийг таслалаар нэмж болно. Wildcard байхгүй.
-2. `docker compose up -d --force-recreate backend worker`.
-3. Аюулгүй админ терминалд token оруулна. Frontend-д token хадгалахгүй:
+### Локал AI идэвхжүүлэх
 
 ```sh
-read -rs ADMIN_TOKEN
-export ADMIN_TOKEN
-export BASE_URL=https://watch.example.mn
-curl --fail "$BASE_URL/api/v1/sources" \
-  -H "Authorization: Bearer $ADMIN_TOKEN" -H 'Content-Type: application/json' \
-  -d '{"name":"Шалгасан нийтлэгч","endpoint":"https://news.example.mn/rss","publisher":"Нийтлэгч","license":"Бодитоор шалгасан лиценз/нөхцөлийн URL","permission_note":"Зөвшөөрөгдсөн ашиглалтын хүрээ, шалгасан огноо"}'
-# Буцаасан ID-г ашиглана (жишээнд 1):
-curl --fail -X POST "$BASE_URL/api/v1/sources/1/validate" -H "Authorization: Bearer $ADMIN_TOKEN"
-# valid:true болсны дараа:
-curl --fail -X PATCH "$BASE_URL/api/v1/sources/1" \
-  -H "Authorization: Bearer $ADMIN_TOKEN" -H 'Content-Type: application/json' -d '{"active":true}'
-curl --fail -X POST "$BASE_URL/api/v1/collect/run" -H "Authorization: Bearer $ADMIN_TOKEN"
-curl --fail "$BASE_URL/api/v1/collector/status"
-unset ADMIN_TOKEN
+sh ops/ai-setup.sh
+# qwen3:8b ба bge-m3 татна; серверийн диск/RAM хүрэлцэх ёстой.
+# .env-д AI_ENABLED=true тохируулсны дараа:
+docker compose --profile ai up -d --force-recreate backend worker ollama
 ```
 
-Дээрх `news.example.mn` нь **жишээ домэйн** бөгөөд ажиллаж буй feed гэж батлаагүй. Баталгаажуулалт нь дахин татаж XML/feed болон robots шалгана; activation-ийг оператор тусад нь хийнэ. Операторын оруулсан эрхийн тайлбарыг систем хууль зүйн дүгнэлтээр автоматаар баталгаажуулахгүй. Source алдаа, checked_at, success_at-ийг API харуулна.
+`bge-m3` embedding нь schema-д **1024 dimension**. Өөр dimension-той model ашиглавал migration болон re-embedding шаардлагатай. Model сольсон үед worker current model/prompt signature-ийг харж дахин боловсруулна. Generation/embedding model-ийн нэрийг snapshot-д хадгална. Ollama нь internal service; prompt дотор tool execution, external fetch байхгүй. Text бол JSON field доторх untrusted data. Prompt instruction-оос гадна exact-span validation ба хүний publish gate хамгаална.
 
-## API
+AI unavailable, timeout, schema/evidence invalid үед архив, lexical search, lexical claims, draft report үргэлжилнэ. Retry/backoff ба durable next_analysis_at хэрэглэнэ. AI-г ассан гэж дүр эсгэхгүй; System status, Admin → Ажиллагаа → Ollama/model төлөв харуулна.
 
-`GET /health` нь DB холболт шалгана. Endpoint жагсаалт ба schema-г backend дотор `/docs`-оор үзэж болно; proxy үүнийг нийтэд гаргаагүй.
+## Эх сурвалж холбох
 
-| Нийтийн GET | Үүрэг |
-|---|---|
-| `/api/v1/sources`, `/sources/{id}` | Source бүртгэл |
-| `/api/v1/articles`, `/search` | `q`, `source_id`, `offset`, `limit` (1–100) |
-| `/api/v1/articles/{id}` | Нийтлэл ба анхны URL |
-| `/api/v1/articles/{id}/versions` | Хувилбарын түүх, pagination |
-| `/api/v1/events`, `/clusters` | Lexical event бүлэг, pagination |
-| `/api/v1/events/{id}` | Ижил төстэй холбоос, оноо, арга |
-| `/api/v1/events/{id}/timeline`, `/sources` | Цагийн дараалал, нийтлэгчид |
-| `/api/v1/statistics` | DB-аас бодит тоонууд |
-| `/api/v1/collector/status` | Сүүлийн ажил, алдаа |
-| `/api/v1/reports` | Phase 3 идэвхжээгүй, хоосон жагсаалт |
+Админ цэсээр `.env`-ийн ADMIN_TOKEN-г өөрийн аюулгүй төхөөрөмжөөс оруулна. Token зөвхөн цонхны санах ойд; localStorage, cookie, URL-д хадгалахгүй. Single-admin bearer authentication; байгууллагын олон хэрэглэгчтэй SSO/RBAC систем биш.
 
-Админ: `POST /sources`, `POST /sources/{id}/validate`, `PATCH /sources/{id}` (active), `POST /collect/run`, бүгд `/api/v1` prefix-тэй. Тодорхойгүй ID 404, schema 422, DB failure 503. Rate limit нь API process бүрд client IP тутамд 120 хүсэлт/мин; proxy hop дээр client IP ашиглах тохиргоог доорх хязгаарлалтаас уншина уу.
+1. **Админ → Ажиллагаа → Feed илрүүлэх**: домэйн эсвэл бүх 100 сайт. Background scan эхэлж, хүчинтэй feed Source үүсгэнэ. Идэвхгүй хэвээр.
+2. **Админ → Эх сурвалж**: URL/robots/feed validation ажиллуулна.
+3. Нийтлэгчийн Terms/лиценз, excerpt ашиглах зөвшөөрлийг бодитоор шалгаж license болон permission_note бөглөнө.
+4. Идэвхжүүлсний дараа collector тогтмол татна. Шаардлагатай бол Ажиллагаа → Цуглуулалт эхлүүлэх.
+5. Worker lexical/AI шинжилж event, evidence, draft үүсгэнэ. Тайланг тусад нь хүний хяналтаар нийтэлнэ.
 
-## Database, migration
-
-`0001_archive` нь sources, articles, article_versions, events, event_articles, similarity_matches, collection_runs, audit_logs гэсэн 8 хүснэгт үүсгэнэ. Foreign key, unique URL, unique article/version, timestamp/index-үүд; PostgreSQL-д vector extension, JSONB GIN ба `simple` full-text GIN index үүсгэнэ. Монгол хэлний stemming гэж батлаагүй. Одоогийн хайлт нь substring ILIKE; FTS index-ийг ranked search-д ашиглах нь дараагийн ажил.
-
-Phase 2/3-ийн entities, mentions, embeddings, claims, comparisons, evidence, reports, corrections хүснэгтүүдийг одоогоор үүсгээгүй. Хэрэгжээгүй хүснэгт, хоосон AI дүгнэлтийг бодит боломж мэт харуулахгүй.
-
-## Backup, restore, update
+CLI хувилбар:
 
 ```sh
-sh ops/backup.sh
-sh ops/restore-test.sh backups/openwatch-YYYYMMDDTHHMMSSZ.dump
+docker compose exec backend python -m app.catalog_sync --domain mnb.mn
+# Эсвэл бүх 100:
+docker compose exec backend python -m app.catalog_sync
 ```
 
-Backup нь 14 хоног хадгална; production DB-г солихгүй тусдаа `openwatch_restore_check` DB-д сэргээн SQL шалгана. Production restore хийхийн өмнө backup болон зогсолтын төлөвлөгөө шаардлагатай. Нөөцийг encrypted offsite хадгалалт руу хуулж, restore-test тогтмол хийнэ. Cron (`/opt/OPENWATCH-MONGOLIA`-г бодит замаар солино):
+Каталогийн домэйн ба www хувилбарууд explicit allowlist-д багтсан. Өөр host нэмэх бол `.env`-ийн `ALLOWED_HOSTS`-д exact нэрээр оруулж backend/worker-ийг recreate хийнэ. DNS public эсэх, redirect бүр, IP pinning, TLS SNI, timeout, response size, XML entity хамгаалалт ашиглана. Нэвтрэх хязгаарлалт, paywall, login тойрохгүй. robots.txt нь лицензийг орлохгүй.
 
-```cron
-15 2 * * * cd /opt/OPENWATCH-MONGOLIA && sh ops/backup.sh >> /var/log/openwatch-backup.log 2>&1
+Нээлттэй JSON/CSV endpoint-ийн schema:
+
+```json
+{"items":[{"title":"Бодит эхийн гарчиг","url":"https://publisher.example/article/1","summary":"Зөвшөөрөгдсөн богино хэсэг","published_at":"2026-10-19T12:00:00+08:00","updated_at":null}]}
 ```
 
-Disk monitoring: `df -h`, `docker system df`, `du -sh backups`; лог: `docker compose logs --since=1h worker`. Feed error status API-г гаднын монитор хянах боломжтой; alert илгээх integration хийгээгүй.
+CSV columns: `title,url,summary,published_at,updated_at`. JSON raw array мөн болно. Timestamp өгвөл explicit timezone шаардлагатай. Импорт 500 хүртэл record, response 2 MB, excerpt 600 тэмдэгт. Sitemap index бол child sitemap-уудыг тусад нь бүртгэнэ. Sitemap-ээс нийтлэлийн бүтэн агуулга татахгүй.
 
-Шинэчлэх:
+## Тайлан, залруулга
+
+- Event ID-г устгаж дахин үүсгэхгүй. Merge болсон хуучин ID canonical event руу resolve хийнэ. Matching нь bounded token candidates, exact hash, valid current embeddings ашиглана.
+- Evidence span нь article_version_id, source URL, offsets, exact quote, method, observed time-тай.
+- Report snapshot нь scope, source links, timeline, matches, claims/discrepancy candidates, model/prompt provenance, limitations, privacy flags, checksum агуулна.
+- Draft өөрчлөхийн оронд шинэ revision үүсгэнэ. Review нь expected_hash шалгана. Архивын хувилбар нь retention-д арилсан draft-ийг publish хийхгүй, дахин build шаарддаг.
+- Publish нь privacy_checked + хяналтын тэмдэглэл шаарддаг. Нийтийн байнгын URL: `/reports/{id}`; JSON татаж болно.
+- Withdraw нь шалтгаан/time/hash бүхий tombstone үлдээнэ, body-г нийтээс нууна.
+- Corrections pending текстийг нийтэд гаргахгүй. Хүн accepted/rejected шийдвэр, үндэслэл өгнө; accepted annotation-г нийтийн тайланд хавсаргана. Хувийн холбоо барих мэдээлэл цуглуулахгүй.
+- Graph нь publisher → article → event candidate болон article → mentions entity холбоос. Бодит хамтын ажиллагаа, улс төрийн байр суурийг таамаглахгүй.
+
+## Backup, restore, retention
+
+Compose-ийн **backup service** 24 цаг тутам custom-format dump хийж, archive listing шалгаад 14 хоног хадгална. Named volume `backup_data` дотор байна. Автомат backup healthcheck 25 цагаас хуучирвал unhealthy.
+
+```sh
+docker compose exec backup ls -l /backups
+# Нэрийг бодитоор үүссэн dump-аар солино:
+docker compose exec backup sh /ops/restore-check.sh /backups/openwatch-YYYYMMDDTHHMMSSZ.dump
+```
+
+Restore-check нь тусдаа `ow_restore_*` database үүсгэж сэргээн SQL шалгаад устгана; production database-г солихгүй. Backup volume нь VPS дискнээс тусдаа offsite backup биш. Dumps-ийг encrypted offsite хадгалалт руу хуулж, бодит restore test тогтмол ажиллуулах шаардлагатай. Хуучин manual `sh ops/backup.sh`, `sh ops/restore-test.sh backups/file.dump` хувилбар мөн бий.
+
+Retention: Admin → Ажиллагаа → dry-run; админ API `POST /api/v1/admin/maintenance/retention` body `{"dry_run":false}` нь noncurrent, хуучин, нийтэлсэн/withdrawn тайланд ишлэгдээгүй хувилбаруудыг л цэвэрлэнэ. Current version болон reviewed report evidence хамгаалагдана. Report snapshot-ийн хууль зүйн retention/takedown нь тусдаа хүний бодлого; database backup-д хуучин агуулга үлдэж болохыг тооцно. Автоматаар production дээр устгах job идэвхжүүлээгүй.
+
+## Мониторинг, аюулгүй ажиллагаа
+
+```sh
+docker compose --profile monitoring up -d prometheus
+# Нийтийн порт нээхгүй. SSH/Docker exec ашиглан дотоод alerts шалгана:
+docker compose exec prometheus wget -qO- http://localhost:9090/api/v1/alerts
+docker compose logs --since=1h worker backup
+df -h
+docker system df
+```
+
+System status нь heartbeat, AI config/status, диск, pending corrections харуулна. Prometheus `/metrics` internal endpoint-ийг scrape хийнэ. Worker stale, backend unreachable, disk <15%, active source errors дүрэмтэй. Alert notification-г Slack/email рүү автоматаар илгээхгүй; receiver/notification routing сервер дээр тусад нь тохируулна.
+
+DB/Ollama/backend/metrics public port-гүй. Caddy нь HTTPS, headers, CSP, HSTS тохиргоотой; Next.js inline script/style-д `unsafe-inline` шаардлагатай baseline CSP бөгөөд nonce-based хатуу CSP гэж батлаагүй. API нь process/IP тутам 120 хүсэлт/мин, correction 5/цаг, mutation body 64 KiB хязгаартай. Multi-replica үед shared rate-limit store шаардлагатай.
+
+Docker-ийн backend зөвхөн дотоод сүлжээнд, Caddy forwarded IP-д итгэхээр тохируулсан. Backend порт public болгож болохгүй. DB bootstrap role нь official image-ийн database owner; хэрэглэгч олонтой production-д тусдаа least-privilege runtime/migration/backup role тогтоох, TLS/access hardening хийхийг commissioning-д шалгана.
+
+## Update, rollback
 
 ```sh
 git rev-parse HEAD  # өмнөх commit-ийг хадгал
 sh ops/backup.sh
 git pull --ff-only
-docker compose build
-docker compose run --rm migrate
-docker compose up -d
+sh ops/deploy.sh
+python3 ops/smoke.py https://watch.example.mn --require-worker
 ```
 
-Rollback: шинэ migration backward-compatible эсэхийг шалгаад өмнөх commit-ийг checkout хийж build/up ажиллуулна. DB-г сохроор downgrade хийхгүй; migration downgrade өгөгдөл устгаж болно. Migration rollback-ийг disposable DB дээр эхэлж шалгана.
+Rollback хийхдээ өмнөх commit-ийг checkout → build/up. Шинэ migration backward-compatible эсэхийг эхлээд шалгана; database-г сохроор downgrade хийхгүй. `0002_evidence` downgrade нь AI/evidence/report хүснэгтүүдийг устгадаг тул production rollback-д backup + тусдаа сэргээх rehearsal шаардлагатай. `ops/restore-check.sh` live restore биш.
 
-## Локал хөгжүүлэлт ба шалгалт
+## API тойм
 
-Python 3.12+, Node 22+. Frontend build үед гаднын font татах шаардлагагүй (CSS font холболт runtime-д fallback-тай).
+Нийтийн endpoints:
+
+- `/health`, `/api/v1/system/status`
+- `/api/v1/media`, `/media/search`
+- `/api/v1/articles`, `/search`: q, domain, source_id, mode=lexical|fts, offset, limit
+- `/api/v1/semantic-search`: q, domain, offset, limit; semantic эсвэл ил тод lexical_fallback
+- `/api/v1/articles/{id}`, `/versions`, `/analysis`, `/observations`
+- `/api/v1/events`, `/clusters`, `/events/{id}`, `/timeline`, `/sources`, `/graph`
+- `/api/v1/statistics`, `/collector/status`
+- `/api/v1/reports`, `/reports/{id}`, `POST /reports/{id}/corrections`
+
+Admin bearer endpoints:
+
+- `POST /api/v1/sources`, `PATCH /sources/{id}`, `POST /sources/{id}/validate`
+- `POST /api/v1/collect/run`, `/admin/analysis/run`, `/admin/catalog/sync`
+- `GET /api/v1/admin/reports`, `POST /admin/reports/build`, `/admin/reports/{id}/review`
+- `GET /api/v1/admin/corrections`, `POST /admin/corrections/{id}/review`
+- `GET /api/v1/admin/audit`, `/admin/ai/status`
+- `POST /api/v1/admin/articles/{id}/check`, `/admin/maintenance/retention`
+
+Backend `/docs` ба `/openapi.json` нь internal; public proxy тэдгээрийг нийтэд гаргаагүй. Pagination 1–100. 401 auth, 404 not found, 409 stale/conflict, 413 body size, 422 schema/review guard, 429 rate, 503 DB failure.
+
+## Хөгжүүлэлт ба тест
 
 ```sh
-python -m venv .venv
-.venv/bin/pip install -r backend/requirements.txt
+python3 -m venv .venv
+.venv/bin/pip install -r backend/requirements-dev.txt
 cd backend
 ../.venv/bin/python -m pytest -q
-# SQLite зөвхөн локал туршилт; PostgreSQL deployment-ийг орлохгүй.
 DATABASE_URL=sqlite:////tmp/openwatch-dev.db ../.venv/bin/alembic upgrade head
 DATABASE_URL=sqlite:////tmp/openwatch-dev.db ../.venv/bin/uvicorn app.main:app --port 8000
-# өөр терминалд repository root-оос:
+# Өөр терминалд:
 cd frontend
 npm ci
-BACKEND_URL=http://127.0.0.1:8000 npm run build
-BACKEND_URL=http://127.0.0.1:8000 npm start
+BACKEND_URL=http://127.0.0.1:8000 npm run dev
 ```
 
-Тестийн хураангуй: `VALIDATION.md`.
-
-## Хязгаарлалт ба дараагийн үе шат
-
-- **Phase 1**: Feed archive + lexical анализ. Clustering бүх архивын хосыг харьцуулдаг O(n²); том архивт incremental/indexed matching нэмэхээс өмнө ачааллын тест шаардлагатай. Cluster ID одоогоор дахин тооцогдоно.
-- **Phase 2**: Ollama schema-тай JSON, Монгол embedding чанарын үнэлгээ, pgvector similarity, grounded summary/entity/claim extraction, timeout/retry/prompt injection хамгаалалт хараахан хэрэгжээгүй. Ollama profile зөвхөн тусгаарласан service бэлтгэнэ. `docker compose --profile ai up -d ollama`; model татах жишээ: `docker compose exec ollama ollama pull qwen3:8b`. Pipeline хараахан холбогдоогүй. AI байхгүй үед Phase 1 бүрэн хамааралгүй ажиллана.
-- **Phase 3**: Evidence graph, claim discrepancy, хүний хяналттай public report, correction workflow, тогтвортой report/event identity нэмнэ. Тайлан нийтэлж байгаа мэт товч байхгүй. Одоогийн нийтлэлийн эх сурвалжийг шууд нээж болно.
-- **Phase 4**: VPS deployment, бодит HTTPS/backup-restore баталгаа, ачаалал/SSRF penetration test, мониторинг/alert, config hardening шаардлагатай. Энэ repository өөрөө VPS-д deploy хийгдээгүй.
-- Нийтлэл устсан/404 болсон эсэхийг тусад нь crawl хийдэггүй. Feed-ээс алга болсныг устсан гэж тэмдэглэхгүй. Retention автомат purge хараахан хэрэгжээгүй; `retention_days` нь одоогоор ашиглагдахгүй. Зөвшөөрөл, архив хадгалах бодлогоо тогтоохоос өмнө production feed-ийг идэвхжүүлэхгүй.
-- JSON API, sitemap, CSV import болон bilingual English UI дараагийн ажил. RSS/Atom л одоогоор дэмжинэ.
-- Admin UI байхгүй; хамгаалагдсан API ашиглана. Authentication нь single-admin bearer token; multi-user/role management байхгүй.
-- API IP limit нь proxy ард бүх хүсэлт нэг IP болж харагдаж болзошгүй: одоогийн uvicorn `--no-proxy-headers` нь хуурамч forwarded header-д итгэхгүй. Олон нийтийн ачаалалд proxy талын client IP rate limiting эсвэл итгэмжлэгдсэн proxy тохиргоо нэмнэ.
-- AI-ийн timeout/JSON болон public report correction тестүүд нь тэдгээр функц хэрэгжээгүй тул ажиллуулаагүй. Үүнийг Phase 1-ийн тесттэй андуурахгүй.
-
-## Монголын 100 эх сурвалжийн лавлах, нэгдсэн хайлтын холбоос
-
-`Монголын 100 сайт` цэсэнд нэр/домэйн, чиглэл, HTTP шалгалтын төлөв, feed илэрсэн эсэх, архивын идэвхээр шүүнэ. Энэ нь **хандалтын статистикаар батлагдсан Top 100 ranking биш**: ХХЗХ-ны 2020/2021 оны бүртгэл болон хэвлэлийн өөрийн нүүр хуудсаас сонгосон 100 домэйн. Нэг сайт нээгдсэн нь түүний агуулга үнэн, feed шинэ, ашиглах эрх зөвшөөрөгдсөн гэсэн баталгаа биш.
-
-Хоёр хайлт тусдаа ажиллана:
-
-- **Веб хайлт**: түлхүүр үгээр Google/Bing-ийн `site:` операторыг ашиглана. 100 сайтыг 10 бүлэг болгон хайх холбоос, сайт тус бүрээр хайх холбоос гаргана. Хэрэглэгч холбоос дээр дарж гаднын хайлтын системийн үр дүнг нээнэ. Хайлтын үр дүнг API-д татаж байгаа, 100 сайтаас realtime мэдээ scrape хийж байгаа мэт харуулахгүй. Хайлтын системийн индексийн хамрах хүрээ, site оператор нь төгс баталгаа биш.
-- **Архивын хайлт**: сайт сонгоод `Архиваас хайх` дарвал `articles?domain=...&q=...` API-аар зөвхөн татаж хадгалсан нийтлэлийг хайна. Татагдаагүй сайтад хоосон үр дүн гарна.
-
-API:
-
-```text
-GET /api/v1/media?q=ikon&category=news&availability=reachable&limit=20&offset=0
-GET /api/v1/media/search?q=Оюутолгой&engine=google
-GET /api/v1/media/search?q=төсөв&domain=ikon.mn&engine=bing
-GET /api/v1/articles?q=төсөв&domain=ikon.mn
-```
-
-`media/search` нь **external_search_links**, мэдээний үр дүнгийн массив биш. Нэрээр шүүх `media?q` болон мэдээний агуулгаар хайх `articles?q`-г ялгана.
-
-Сонголт ба HTTP шалгалтын evidence:
-
-- `backend/app/data/mongolia100.v1.json`: хувилбарласан 100 домэйн, provenance, төрөл.
-- `backend/app/data/probe-2026-10-19.json`: сонгосон 100 домэйны нүүр/feed шалгалтын бодит үр дүн.
-- `backend/app/data/probe-all-2026-10-19.json`: 275 нэр дэвшигчийн шалгалтын тайлан, timeout/403/503, өөр зориулалттай болсон шалтгаан. Энэ нь буруутгал, найдвартай байдлын үнэлгээ биш.
-
-Feed snapshot нь тухайн хөгжүүлэлтийн орчны HTTP proxy-оор хийсэн XML parse шалгалт. Production-ийн robots, pinned DNS, лицензийн шалгалтыг орлохгүй. Нүүр HTTP 200 болсныг feed баталгаажсан гэж тооцоогүй; comments feed-ийг тусад нь хассан. Шалгалт амжилтгүй гэдэг нь сайт бүх хэрэглэгчид ажиллахгүй гэсэн дүгнэлт биш.
-
-### VPS дээр feed-үүдийг бодитоор холбох
+SQLite нь local tests/dev fallback; pgvector SQL distance, HNSW, PostgreSQL advisory/row locks-ийг орлохгүй. Production нь PostgreSQL. `backend/migrations/versions/0001_archive.py`, `0002_evidence.py`, `0003_version_provenance.py` explicit migration; 19 application tables. API stat бүх тоо DB-аас; source research тоо хувилбарласан probe snapshot-оос.
 
 ```sh
-# Одоогийн 100 домэйн болон www хувилбарууд security allowlist-д багтсан.
-# Шинэчлэх, migration:
-docker compose build
-docker compose run --rm migrate
-docker compose up -d
-# Бүх лавлах сайтаас explicit RSS/Atom feed нээж, robots ба XML шалгана:
-docker compose exec backend python -m app.catalog_sync
-# Эсвэл нэг сайт:
-docker compose exec backend python -m app.catalog_sync --domain mnb.mn
+cd frontend
+npm run build
+npm audit --omit=dev
+# Репогийн root-оос, dependency-тэй CI environment:
+sh ops/ci.sh
 ```
 
-Sync нь feed хүчинтэй бол Source-г idempotent үүсгэн validated_at хадгалж, **шинэ эх сурвалжийг идэвхгүй** үлдээнэ. Лиценз/ашиглалтын тайлбарыг бодитоор бүртгэж байж админ идэвхжүүлнэ. `POST /sources` нь name, endpoint, publisher, license, permission_note талбаруудтай; Source байгаа бол доорх PATCH-ээр эдгээр тайлбарыг шинэчилж болно. Robots болон лицензийн шалгалтыг тойрч бүх эх сурвалжийг сохроор идэвхжүүлэхгүй. Хэвлэлийн бүрэн агуулгыг дахин нийтлэхгүй.
+Тест/үлдсэн commissioning шалгалтууд: **[VALIDATION.md](VALIDATION.md)**. Ollama API contract: https://docs.ollama.com/api/embed ; structured output: https://docs.ollama.com/capabilities/structured-outputs ; pgvector SQLAlchemy: https://github.com/pgvector/pgvector-python . Model-ийн Монгол хэлний чанарыг өөрийн бодит validation dataset дээр хэмжиж threshold, review policy-г тохируулна.
 
-Feed snapshot-аас зөвхөн URL/probe metadata дамжсан; бодит нийтлэлийн архивт судалгааны fixture эсвэл зохиомол мэдээ оруулаагүй. Сайтын нэр, домэйн бүр Google/Bing хайлттай шууд ажиллах бөгөөд архив нь баталгаажуулж идэвхжүүлсэн feed-ээс бүрдэнэ.
+### Native PostgreSQL integration test
 
-Импортолсон feed-ийн бодит эрхийн тайлбарыг оруулах жишээ (placeholder-ийг шалгасан утгаар солино):
+Dedicated **test database**-ийн URL-ийг environment-д `OPENWATCH_TEST_POSTGRES_URL` болгож өгөөд `pytest` ажиллуулбал тусгаарласан `ow_test_*` schema дотор migration, JSONB, HNSW/cosine query болон advisory lock-ийн native тестүүд ажиллана. Schema-г эцэст нь цэвэрлэнэ. Production URL өгч болохгүй. Энэ environment variable байхгүй бол тэр хоёр тестийг skipped гэж ил тод тайлагнана.
+
+### Хуучин container volume-ийн ownership
+
+Өмнөх root Caddy/Ollama image ашигласан persistent volume-оо non-root image руу шилжүүлэх үед ownership-ийг нэг удаа тохируулах шаардлагатай байж болно. Файлыг устгахгүй. Compose-ийн default project name `openwatch` үед:
 
 ```sh
-curl --fail -X PATCH "$BASE_URL/api/v1/sources/1" \
-  -H "Authorization: Bearer $ADMIN_TOKEN" -H 'Content-Type: application/json' \
-  -d '{"license":"Шалгасан нөхцөлийн URL","permission_note":"Зөвшөөрөгдсөн metadata/excerpt ашиглалтын хүрээ","active":true}'
+# Үйлчилгээг update хийхийн өмнө backup авна.
+docker run --rm --user 0 --entrypoint sh \
+  -v openwatch_caddy_data:/data -v openwatch_caddy_config:/config \
+  caddy:2-alpine -c 'chown -R 10001:10001 /data /config'
+docker run --rm --user 0 --entrypoint sh \
+  -v openwatch_ollama:/models \
+  alpine:3 -c 'chown -R 10001:10001 /models'
 ```
 
-2026-10-19-ний snapshot: 100 сонгосон домэйнээс 96 нүүр хуудас нээгдсэн, 23 feed XML parse амжилттай. Тухайн орчинд timeout/403 болсон нь сайт бүх хэрэглэгчид ажиллахгүй гэсэн баталгаа биш. Шалгалтын дэлгэрэнгүй `VALIDATION.md` болон JSON файлуудад байна.
+Шинэ суулгалтад image-ийн directory ownership бэлэн. Ollama model cache нь хуучин volume-ийн `models/` бүтэцтэй нийцнэ. Custom Compose project name ашигласан бол volume нэрээ эхэлж `docker volume ls`-ээр шалгаж тохируулна.

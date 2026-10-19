@@ -27,6 +27,8 @@ def db():
 def client(db):
     app.dependency_overrides[get_db] = lambda: db
     buckets.clear()
+    from app.main import submission_buckets
+    submission_buckets.clear()
     with TestClient(app) as c:
         yield c
     app.dependency_overrides.clear()
@@ -106,3 +108,15 @@ def test_activation_requires_validation(client,db,monkeypatch):
     monkeypatch.setattr(settings,'admin_token','x'*32)
     s=Source(name='T',endpoint='https://news.example/rss');db.add(s);db.commit()
     assert client.patch(f'/api/v1/sources/{s.id}',json={'active':True},headers={'Authorization':'Bearer '+'x'*32}).status_code==422
+
+def test_feed_timestamp_without_timezone_is_not_invented():
+    raw=RSS.replace(b'Mon, 19 Oct 2026 10:00:00 +0800',b'Mon, 19 Oct 2026 10:00:00')
+    result=parse_feed(raw)[0]
+    assert result['published_at'] is None
+    assert result['source_metadata']['published_raw']=='Mon, 19 Oct 2026 10:00:00'
+
+def test_non_ascii_auth_header_is_rejected_without_server_error(client,monkeypatch):
+    from app.config import settings
+    monkeypatch.setattr(settings,'admin_token','x'*32)
+    response=client.post('/api/v1/collect/run',headers=[(b'authorization',b'Bearer \xff')])
+    assert response.status_code==401

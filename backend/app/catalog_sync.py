@@ -19,7 +19,7 @@ async def sync(domain=None):
     sites=[BY_DOMAIN[domain]] if domain else SITES
     # Narrow to catalog domains, not arbitrary external redirects.
     allowed={host for site in sites for host in (site['domain'],'www.'+site['domain'])}
-    settings.allowed_hosts=','.join(sorted(allowed))
+    # Catalog hostnames are already an explicit security allowlist; do not mutate process configuration.
     probes=probe_results()
     result=[]
     for site in sites:
@@ -54,6 +54,7 @@ async def sync(domain=None):
                 result.append({'domain':site['domain'],'feed':endpoint,'status':'failed','error':type(exc).__name__+': '+str(exc)[:200]})
         await asyncio.sleep(1)
     print(json.dumps(result,ensure_ascii=False,indent=2))
+    return result
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)

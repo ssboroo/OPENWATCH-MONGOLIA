@@ -5,8 +5,9 @@ from collections import defaultdict, deque
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, Depends, HTTPException, Header, Query, Request
 from fastapi.responses import JSONResponse
+from typing import Literal
 from pydantic import BaseModel, Field, HttpUrl
-from sqlalchemy import select, func, text, or_
+from sqlalchemy import select, func, text, or_, literal_column
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session as DB
 from .config import settings
@@ -25,8 +26,11 @@ async def lifespan(app):
         await asyncio.gather(*tasks, return_exceptions=True)
 
 app = FastAPI(title='OpenWatch Mongolia', lifespan=lifespan)
+from .http_limits import BodyLimit
+app.add_middleware(BodyLimit)
 tasks = set()
 buckets = defaultdict(deque)
+submission_buckets = defaultdict(deque)
 
 @app.middleware('http')
 async def limits(request: Request, call_next):
@@ -42,6 +46,13 @@ async def limits(request: Request, call_next):
     if len(q) >= 120:
         return JSONResponse({'detail':'Rate limit exceeded'}, status_code=429, headers={'Retry-After':'60'})
     q.append(t)
+    if request.method=='POST' and request.url.path.endswith('/corrections'):
+        for old in list(submission_buckets):
+            if not submission_buckets[old] or submission_buckets[old][-1]<t-3600:del submission_buckets[old]
+        history=submission_buckets[key]
+        while history and history[0]<t-3600:history.popleft()
+        if len(history)>=5:return JSONResponse({'detail':'Correction rate limit exceeded'},status_code=429,headers={'Retry-After':'3600'})
+        history.append(t)
     response = await call_next(request)
     response.headers['X-Content-Type-Options'] = 'nosniff'
     response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'
@@ -53,12 +64,13 @@ async def database_error(request, exc):
 
 def admin(authorization: str = Header(default='')):
     expected = f'Bearer {settings.admin_token}'
-    if len(settings.admin_token) < 32 or not hmac.compare_digest(authorization, expected):
+    if len(settings.admin_token) < 32 or settings.admin_token.startswith('CHANGE_ME') or not hmac.compare_digest(authorization.encode('utf-8'), expected.encode('utf-8')):
         raise HTTPException(401, 'Admin bearer token required')
 
 class SourceInput(BaseModel):
     name: str = Field(min_length=1, max_length=200)
     endpoint: HttpUrl
+    kind: Literal['rss','atom','json','csv','sitemap'] = 'rss'
     publisher: str = Field(default='', max_length=200)
     license: str = Field(default='', max_length=2000)
     permission_note: str = Field(default='', max_length=2000)
@@ -81,7 +93,7 @@ def page(db, statement, offset, limit):
 @app.get('/health')
 def health(db: DB = Depends(get_db)):
     db.execute(text('SELECT 1'))
-    return {'status':'ok','ai':'not_enabled','collector':'separate_worker'}
+    return {'status':'ok','ai':'enabled' if settings.ai_enabled else 'not_enabled','collector':'separate_worker'}
 
 @app.get('/api/v1/sources')
 def sources(db: DB = Depends(get_db), offset: int = Query(0, ge=0), limit: int = Query(30, ge=1, le=100)):
@@ -104,7 +116,8 @@ async def validate_source(id: int, db: DB = Depends(get_db)):
     source = get_or_404(db, Source, id)
     source.checked_at = now()
     try:
-        rows = parse_feed(await fetch_feed(source.endpoint))
+        from .importers import parse_source
+        rows = parse_source(await fetch_feed(source.endpoint),source.kind,source.endpoint)
         source.validated_at = now(); source.error = None
         result = {'valid':True,'entries':len(rows)}
     except Exception as exc:
@@ -121,7 +134,7 @@ def patch_source(id: int, data: SourcePatch, db: DB = Depends(get_db)):
     if data.permission_note is not None:
         source.permission_note = data.permission_note.strip()
     will_be_active = data.active if data.active is not None else source.active
-    if will_be_active and (not source.validated_at or not source.permission_note or not source.license):
+    if will_be_active and (not source.validated_at or not source.permission_note.strip() or not source.license.strip()):
         raise HTTPException(422, 'Validate feed and document license/permission before activation')
     source.active = will_be_active
     db.add(AuditLog(action='source.activate', detail=f'{id}:{data.active}')); db.commit()
@@ -133,9 +146,13 @@ def source_detail(id: int, db: DB = Depends(get_db)):
 
 @app.get('/api/v1/search')
 @app.get('/api/v1/articles')
-def articles(q: str = Query('', max_length=200), domain: str = Query('', max_length=253), source_id: int | None = None, offset: int = Query(0, ge=0), limit: int = Query(30, ge=1, le=100), db: DB = Depends(get_db)):
+def articles(q: str = Query('', max_length=200), mode: str = Query('lexical',pattern='^(lexical|fts)$'), domain: str = Query('', max_length=253), source_id: int | None = None, offset: int = Query(0, ge=0), limit: int = Query(30, ge=1, le=100), db: DB = Depends(get_db)):
     stmt = select(Article)
-    if q:
+    if q and mode=='fts' and db.bind.dialect.name=='postgresql':
+        doc=func.to_tsvector(literal_column("'simple'"),Article.title+literal_column("' '")+Article.excerpt)
+        query=func.websearch_to_tsquery(literal_column("'simple'"),q)
+        stmt=stmt.where(doc.op('@@')(query)).order_by(func.ts_rank_cd(doc,query).desc())
+    elif q:
         escaped = q.replace('\\','\\\\').replace('%','\\%').replace('_','\\_')
         stmt = stmt.where(or_(Article.title.ilike(f'%{escaped}%', escape='\\'), Article.excerpt.ilike(f'%{escaped}%', escape='\\')))
     if domain:
@@ -145,40 +162,61 @@ def articles(q: str = Query('', max_length=200), domain: str = Query('', max_len
         stmt = stmt.where(Article.source_id.in_(ids))
     if source_id:
         stmt = stmt.where(Article.source_id == source_id)
-    return page(db, stmt.order_by(Article.first_seen_at.desc(), Article.id.desc()), offset, limit)
+    result=page(db, stmt.order_by(Article.first_seen_at.desc(), Article.id.desc()), offset, limit)
+    from .serialization import article_data
+    result['items']=[article_data(a) for a in result['items']]
+    result['mode']='fts' if mode=='fts' and db.bind.dialect.name=='postgresql' else 'lexical'
+    return result
 
 @app.get('/api/v1/articles/{id}')
 def article(id: int, db: DB = Depends(get_db)):
-    return get_or_404(db, Article, id)
+    from .serialization import article_data
+    return article_data(get_or_404(db, Article, id))
 
 @app.get('/api/v1/articles/{id}/versions')
 def versions(id: int, db: DB = Depends(get_db), offset: int = Query(0, ge=0), limit: int = Query(30, ge=1, le=100)):
     get_or_404(db, Article, id)
-    return page(db, select(ArticleVersion).where(ArticleVersion.article_id == id).order_by(ArticleVersion.version.desc()), offset, limit)
+    result=page(db, select(ArticleVersion).where(ArticleVersion.article_id == id).order_by(ArticleVersion.version.desc()), offset, limit)
+    from .evidence import redact
+    result['items']=[{'id':v.id,'article_id':v.article_id,'source_id':v.source_id,'version':v.version,'title':redact(v.title),'excerpt':redact(v.excerpt),'text_hash':v.text_hash,'observed_at':v.observed_at} for v in result['items']]
+    return result
 
 @app.get('/api/v1/clusters')
 @app.get('/api/v1/events')
 def events(db: DB = Depends(get_db), offset: int = Query(0, ge=0), limit: int = Query(30, ge=1, le=100)):
-    return page(db, select(Event).order_by(Event.first_seen_at.desc(), Event.id.desc()), offset, limit)
+    return page(db, select(Event).where(Event.merged_into_id.is_(None)).order_by(Event.first_seen_at.desc(), Event.id.desc()), offset, limit)
 
 @app.get('/api/v1/events/{id}')
 def event_detail(id: int, db: DB = Depends(get_db)):
-    return {'event':get_or_404(db, Event, id), 'matches':list(db.scalars(select(SimilarityMatch).join(EventArticle, SimilarityMatch.article_id == EventArticle.article_id).where(EventArticle.event_id == id)))}
+    from .clustering import canonical_event
+    event=canonical_event(db,id)
+    if event is None:raise HTTPException(404,'Not found')
+    id=event.id
+    return {'event':event, 'matches':list(db.scalars(select(SimilarityMatch).join(EventArticle, SimilarityMatch.article_id == EventArticle.article_id).where(EventArticle.event_id == id)))}
 
 @app.get('/api/v1/events/{id}/timeline')
 def timeline(id: int, db: DB = Depends(get_db)):
-    get_or_404(db, Event, id)
+    from .clustering import canonical_event
+    event=canonical_event(db,id)
+    if event is None:raise HTTPException(404,'Not found')
+    id=event.id
     rows = list(db.scalars(select(Article).join(EventArticle, Article.id == EventArticle.article_id).where(EventArticle.event_id == id).order_by(Article.published_at.asc().nulls_last(), Article.id)))
-    return {'items':rows,'timezone':'UTC','limitation':'Хамгийн эрт бүртгэгдсэн нийтлэл нь анхны нийтлэгч гэдгийг батлахгүй.'}
+    from .serialization import article_data
+    return {'items':[article_data(a) for a in rows],'timezone':'UTC','limitation':'Хамгийн эрт бүртгэгдсэн нийтлэл нь анхны нийтлэгч гэдгийг батлахгүй.'}
 
 @app.get('/api/v1/events/{id}/sources')
 def event_sources(id: int, db: DB = Depends(get_db)):
-    get_or_404(db, Event, id)
+    from .clustering import canonical_event
+    event=canonical_event(db,id)
+    if event is None:raise HTTPException(404,'Not found')
+    id=event.id
     return {'items':list(db.scalars(select(Source).join(Article).join(EventArticle, EventArticle.article_id == Article.id).where(EventArticle.event_id == id).distinct()))}
 
 @app.get('/api/v1/statistics')
 def statistics(db: DB = Depends(get_db)):
-    return {name:db.scalar(select(func.count()).select_from(model)) for name,model in [('sources',Source),('articles',Article),('events',Event),('matches',SimilarityMatch)]}
+    result={name:db.scalar(select(func.count()).select_from(model)) for name,model in [('sources',Source),('articles',Article),('events',Event),('matches',SimilarityMatch)]}
+    result['events']=db.scalar(select(func.count()).select_from(Event).where(Event.merged_into_id.is_(None)))
+    return result
 
 @app.get('/api/v1/collector/status')
 def collector_status(db: DB = Depends(get_db)):
@@ -189,11 +227,6 @@ async def run_collector(db: DB = Depends(get_db)):
     db.add(AuditLog(action='collect.request', detail='admin')); db.commit()
     task = asyncio.create_task(collect()); tasks.add(task); task.add_done_callback(tasks.discard)
     return {'status':'accepted','status_url':'/api/v1/collector/status'}
-
-@app.get('/api/v1/reports')
-def reports():
-    return {'items':[], 'total':0, 'status':'Phase 3: хүний хяналттай тайлан хараахан идэвхжээгүй'}
-
 
 @app.get('/api/v1/media')
 def media_directory(q: str = Query('', max_length=200), category: str = Query('', pattern='^(|news|regional|business|broadcast)$'), availability: str = Query('', pattern='^(|active|reachable|feed_found)$'), offset: int = Query(0, ge=0), limit: int = Query(20, ge=1, le=100), db: DB = Depends(get_db)):
@@ -211,3 +244,27 @@ def media_web_search(q: str = Query(..., min_length=1, max_length=200), domain: 
         'groups':[{'domains':[s['domain'] for s in group], 'url':web_search_link(q,[s['domain'] for s in group],engine)} for group in groups],
         'items':[{'domain':s['domain'],'name':s['name'],'url':web_search_link(q,[s['domain']],engine)} for s in sites],
         'limitation':'Эдгээр нь хайлтын үр дүн биш, Google/Bing дээр хайх холбоосууд. Гаднын систем индексжүүлээгүй мэдээг харуулахгүй байж болно.'}
+
+
+from .phase_api import install_routes
+install_routes(app, admin, tasks)
+
+
+@app.get('/metrics', include_in_schema=False)
+def metrics(db: DB=Depends(get_db)):
+    from fastapi.responses import PlainTextResponse
+    import shutil
+    from .models import SystemState,ReportCorrection
+    from .clustering import utc
+    disk=shutil.disk_usage('/')
+    worker=db.get(SystemState,'worker')
+    values={
+        'openwatch_articles':db.scalar(select(func.count()).select_from(Article)),
+        'openwatch_sources_active':db.scalar(select(func.count()).select_from(Source).where(Source.active.is_(True))),
+        'openwatch_sources_error':db.scalar(select(func.count()).select_from(Source).where(Source.active.is_(True),Source.error.is_not(None))),
+        'openwatch_worker_stale':int(worker is None or (now()-utc(worker.updated_at)).total_seconds()>600),
+        'openwatch_disk_free_ratio':disk.free/disk.total,
+        'openwatch_corrections_pending':db.scalar(select(func.count()).select_from(ReportCorrection).where(ReportCorrection.state=='pending')),
+        'openwatch_ai_fallback_articles':db.scalar(select(func.count()).select_from(Article).where(Article.analysis_status=='ai_unavailable')),
+    }
+    return PlainTextResponse(''.join(f'# TYPE {name} gauge\n{name} {value}\n' for name,value in values.items()),media_type='text/plain; version=0.0.4')

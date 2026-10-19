@@ -1,0 +1,1 @@
+export default function NotFound(){return <main className="standalone-report"><section className="panel workspace-padding"><h2>404 · Тайлан олдсонгүй</h2><p className="muted">Энэ холбоос буруу эсвэл тайлан нийтлэгдээгүй байна.</p><a className="back-button" href="/">← OPENWATCH MONGOLIA</a></section></main>}

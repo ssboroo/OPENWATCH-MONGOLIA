@@ -1,0 +1,23 @@
+groups:
+  - name: openwatch
+    rules:
+      - alert: WorkerHeartbeatStale
+        expr: openwatch_worker_stale == 1
+        for: 5m
+        labels: {severity: critical}
+        annotations: {summary: 'OpenWatch worker heartbeat is stale'}
+      - alert: LowDiskSpace
+        expr: openwatch_disk_free_ratio < 0.15
+        for: 5m
+        labels: {severity: warning}
+        annotations: {summary: 'OpenWatch disk free space below 15 percent'}
+      - alert: SourceCollectionErrors
+        expr: openwatch_sources_error > 0
+        for: 30m
+        labels: {severity: warning}
+        annotations: {summary: 'One or more active sources are failing'}
+      - alert: BackendUnreachable
+        expr: up{job="openwatch"} == 0
+        for: 2m
+        labels: {severity: critical}
+        annotations: {summary: 'OpenWatch API scrape is failing'}

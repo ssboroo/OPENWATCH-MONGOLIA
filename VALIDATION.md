@@ -97,3 +97,8 @@ Audit 0 нь тухайн vulnerability database-ийн мэдэгдэж буй 
 ## Railway deployment бэлтгэл — 2026-10-20
 
 Backend/worker/frontend тусдаа Railway config, backend pre-deploy Alembic, PORT/BIND_HOST, Railway Postgres URL → psycopg 3, Docker build-time BACKEND_URL, frontend `/health` rewrite, Railway дээр үйлчлэх security headers бэлдсэн. CSP нь publisher-ийн HTTPS icon-уудыг зөвшөөрнө. 70 backend tests passed, 2 native PostgreSQL tests skipped; Next.js production build амжилттай. Энэ нь Railway дээр deployment ажилласан гэсэн баталгаа биш; actual service/domain/log validation дараа хийгдэнэ.
+
+
+## Бодит RSS цуглуулалт — 2026-10-20
+
+Railway production дээр нийтэд нээлттэй 23 RSS endpoint-ийг pinned DNS, robots болон XML parser-аар шалгав. 22 valid feed-ийг гарчиг, анхны холбоос, feed-д нийтэлсэн 600 тэмдэгт хүртэл тоймын хүрээнд идэвхжүүлсэн; бүтэн текстийн лиценз/нийтлэгчийн тусгай зөвшөөрөл гэж мэдэгдээгүй. dailynews.mn-ийн robots шалгалт амжилтгүй тул идэвхгүй хэвээр. Collector production DB-д бодит нийтлэл хадгалж эхэлснийг нийтийн `/articles`, `/statistics`, `/sources` API-аар шалгасан. Картын live feed health, last-success, article-count нь түүхэн homepage snapshot-оос тусдаа; алдаа гарсан ч хадгалсан мэдээ хэвээр үлдэнэ. Backend 71 passed, 2 skipped; Next.js build амжилттай.

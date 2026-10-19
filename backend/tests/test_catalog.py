@@ -86,3 +86,13 @@ def test_catalog_sync_validates_without_auto_activation(db,monkeypatch,capsys):
         rows=list(session.scalars(select(Source)))
         assert len(rows)==1 and rows[0].validated_at is not None
         assert rows[0].active is False and not rows[0].license
+
+def test_directory_shows_live_feed_health_and_article_count(client,db):
+    from app.models import now
+    s=Source(name='Live RSS',endpoint='https://ikon.mn/rss',active=True,validated_at=now(),success_at=now())
+    db.add(s);db.flush();ingest(db,s,parse_feed(RSS));db.commit()
+    row=client.get('/api/v1/media?q=ikon.mn').json()['items'][0]
+    assert row['feed_health']=='ready' and row['article_count']==1 and row['last_success_at']
+    s.error='Timed out';db.commit()
+    row=client.get('/api/v1/media?q=ikon.mn').json()['items'][0]
+    assert row['feed_health']=='degraded' and row['article_count']==1

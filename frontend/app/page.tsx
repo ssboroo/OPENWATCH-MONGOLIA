@@ -1,5 +1,6 @@
 'use client';
 import {apiFetch} from './apiClient';
+import {formatDate} from './chronology';
 import AdvancedSearch,{defaultAdvanced,readAdvanced,AdvancedFilters} from './AdvancedSearch';
 import {refreshWorkspace} from './workspaceRefresh';
 import ApiCooldownNotice from './ApiCooldownNotice';
@@ -15,7 +16,7 @@ import { useCallback, useEffect, useState, useRef } from 'react';
 import { Activity, ArrowUpRight, BookOpen, CheckCircle2, ChevronRight, Clock3, Database, FileText, Globe2, HeartHandshake, Layers3, LayoutDashboard, Menu, Radio, RefreshCw, Search, ShieldCheck, X } from 'lucide-react';
 type Row = Record<string, any>;
 const tabs = [{id:'dashboard',name:'Хяналтын самбар',icon:LayoutDashboard},{id:'articles',name:'Нийтлэлийн архив',icon:FileText},{id:'intelligence',name:'AI шинжилгээ',icon:Activity},{id:'events',name:'Ижил агуулгын бүлэг',icon:Layers3},{id:'media',name:'Монголын сайтууд',icon:Globe2},{id:'sources',name:'Өгөгдлийн эх сурвалж',icon:Radio},{id:'reports',name:'Нийтийн тайлан',icon:BookOpen},{id:'graph',name:'Нотолгооны граф',icon:Layers3},{id:'status',name:'Системийн статус',icon:Activity},{id:'guide',name:'Ашиглах заавар',icon:BookOpen},{id:'donation',name:'Дэмжих',icon:HeartHandshake}];
-const date=(value:string|null)=>value ? new Date(value.endsWith('Z')||/[+-]\d\d:\d\d$/.test(value)?value:value+'Z').toLocaleString('mn-MN',{timeZone:'Asia/Ulaanbaatar'}) : 'Тодорхойгүй';
+const date=formatDate;
 export default function Home(){
  const {lang,toggle,tr}=useLocale();
  const requestVersion=useRef(0);

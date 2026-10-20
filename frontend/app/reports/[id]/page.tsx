@@ -10,7 +10,8 @@ const load=cache(async(id:string)=>{
 });
 export async function generateMetadata({params}:{params:Promise<{id:string}>}){
  const {id}=await params;const report=await load(id);
- return {title:report.title+' — OpenWatch Mongolia',description:'Эх сурвалж, цаг хугацаа, нотолгооны snapshot тайлан.'};
+ const base=process.env.NEXT_PUBLIC_SITE_URL||'https://openwatch-mongolia-production.up.railway.app';
+ return {title:report.title+' — OpenWatch Mongolia',description:'Эх сурвалж, цаг хугацаа, нотолгооны snapshot тайлан.',openGraph:{title:report.title,url:`${base}/reports/${id}`,images:report.state==='published'?[{url:`${base}/reports/${id}/card`,width:1200,height:630}]:[]},twitter:{card:'summary_large_image',title:report.title,images:report.state==='published'?[`${base}/reports/${id}/card`]:[]}};
 }
 export default async function Page({params}:{params:Promise<{id:string}>}){
  const {id}=await params;const report=await load(id);

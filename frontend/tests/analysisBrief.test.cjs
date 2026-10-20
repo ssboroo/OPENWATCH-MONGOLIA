@@ -1,0 +1,15 @@
+const assert=require('node:assert/strict');
+const {buildBrief}=require(process.argv[2]);
+const make=(items=[],body={state:'ready',checked_at:'2026-10-20T08:00:00Z',version_id:3})=>({article_id:1,title:'Нээлттэй эхийн мэдээний шинэ шинжилгээ',url:'https://ikon.mn/n/1',published_at:null,body,items,candidate_count:500,candidate_limit:5000});
+const match=(kind,extras={})=>({id:2,title:'Өөр нийтлэгчийн шинэ мэдээ',url:'https://gogo.mn/r/2',published_at:'2026-10-20T07:00:00Z',comparison:kind,body:{state:'ready',checked_at:'2026-10-20T08:00:00Z'},...extras});
+let b=buildBrief(make([match('normalized_body_equal')]));
+assert.equal(b.exact,1);assert.equal(b.domains,2);assert.match(b.summary,/1 өөр нийтлэл/);assert.ok(b.unknowns.some(x=>x.includes('Хэн хэнээс хуулсан')));assert.ok(b.unknowns.some(x=>x.includes('цаг тодорхойгүй')));
+b=buildBrief(make([match('observed_body_equal')]));assert.equal(b.exact,0);assert.equal(b.partial,1);assert.match(b.summary,/Бүтэн эх ижил гэж дүгнээгүй/);
+b=buildBrief(make([match('title_only_candidate',{body:{state:'not_checked'}})],{state:'no_body'}));assert.equal(b.ready,0);assert.match(b.verdict,/гарчгийн/);assert.equal(b.exact,0);
+b=buildBrief(make([],{state:'no_body'}));assert.match(b.verdict,/хүрэлцэхгүй/);assert.equal(b.ready,0);
+b=buildBrief(make([match('no_strong_match')]));assert.match(b.verdict,/илрээгүй/);assert.match(b.summary,/баталгаа биш/);
+const equalTime=make([match('normalized_body_equal')]);equalTime.published_at=equalTime.items[0].published_at;
+b=buildBrief(equalTime);assert.ok(b.facts.some(x=>x.text.includes('2 нийтлэл ижил хамгийн эрт цагтай')));
+assert.ok(b.facts.some(x=>x.text.includes('захиалгат биш гэсэн баталгаа биш')));
+b=buildBrief(make([match('normalized_body_equal',{body:{state:'ready',disclosures:[{quote:'Төлбөртэй мэдээ'}]}})]));assert.ok(b.facts.some(x=>x.text.includes('1 эхэд нийтлэгчийн')));
+console.log('PASS: exact vs truncated/partial/title-only evidence, unknown bodies/dates, equal timestamps, disclosure uncertainty');

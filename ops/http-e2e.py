@@ -16,7 +16,7 @@ import asyncio
 with Session() as db:
  s=Source(name='[DEMO] HTTP integration fixture',endpoint='https://ikon.mn/rss',license='[DEMO] fixture only',permission_note='[DEMO] not production',active=False);db.add(s);db.flush()
  for i,n in enumerate(['400','500']):
-  ingest(db,s,[{'url':f'https://ikon.mn/demo-only/{i}','title':'[DEMO] Улсын төсвийн тухай мэдээлэл','excerpt':f'Улсын шинэ төсөв {n} сая төгрөг.','published_at':None,'updated_at':None}])
+  ingest(db,s,[{'url':f'https://ikon.mn/demo-only/{i}','title':'[DEMO] Монгол Улсын Ерөнхийлөгч Бүгд Найрамдах Финланд Улсад төрийн айлчлал хийх үеийн улсын төсвийн тухай мэдээлэл','excerpt':f'Улсын шинэ төсөв {n} сая төгрөг.','published_at':None,'updated_at':None}])
  db.commit()
 asyncio.run(process_batch())
 logs=open(temp.name+'/server.log','w')
@@ -60,6 +60,23 @@ try:
  assert call('/api/v1/donation',port=3765)=={'enabled':False}
  assert all(p.poll() is None for p in processes),'A service exited unexpectedly'
  assert call('/api/v1/media?limit=100',port=3765)['total']==500
+ analysis_html=call('/analysis/1?other=2',port=3765)
+ assert 'Баримтад тулгуурласан дүгнэлт' in analysis_html and 'Нотолгоотой нь хуваалцах' in analysis_html
+ assert 'og:image' in analysis_html and 'twitter:card' in analysis_html
+ def png(path,width,height):
+  import struct
+  with urllib.request.urlopen('http://127.0.0.1:3765'+path,timeout=30) as response:
+   raw=response.read()
+   assert response.headers.get('content-type','').startswith('image/png')
+   assert raw[:8]==b'\x89PNG\r\n\x1a\n'
+   assert struct.unpack('>II',raw[16:24])==(width,height)
+   return raw
+ Path('/tmp/ow-share-landscape.png').write_bytes(png('/analysis/1/card?other=2',1200,630))
+ Path('/tmp/ow-share-portrait.png').write_bytes(png('/analysis/1/card?other=2&format=portrait',1080,1350))
+ for route in ['/analysis/invalid','/analysis/1?other=1','/analysis/999999','/reports/999999/card']:
+  try:call(route,port=3765);raise AssertionError('Invalid/private share route must not be public: '+route)
+  except urllib.error.HTTPError as exc:assert exc.code==404
+
  r=call('/api/v1/admin/reports?state=draft',auth=True)['items'][0]
  assert call('/api/v1/reports')['total']==0
  call(f"/api/v1/admin/reports/{r['id']}/review",{'decision':'publish','privacy_checked':True,'expected_hash':r['body_hash'],'finding':'sources_differ','note':'[DEMO] Explicit human review performed for HTTP integration test.'},True)
@@ -67,6 +84,8 @@ try:
  assert public['state']=='published' and public['body']['evidence'] and public['body']['discrepancies']
  html=call(f"/reports/{r['id']}",port=3765)
  assert '[DEMO]' in html and '400 сая төгрөг' in html,'SSR report evidence was not rendered'
+ assert 'Нотолгоотой нь хуваалцах' in html and 'og:image' in html
+ png(f"/reports/{r['id']}/card",1200,630)
  try:call('/reports/invalid',port=3765);raise AssertionError('Invalid report route should be 404')
  except urllib.error.HTTPError as exc:assert exc.code==404
  correction=call(f"/api/v1/reports/{r['id']}/corrections",{'text':'[DEMO] Additional evidence for the isolated integration test.','evidence_urls':['https://ikon.mn/demo-only/evidence']})
@@ -78,6 +97,10 @@ try:
  assert call('/api/v1/semantic-search?q=DEMO')['mode']=='lexical_fallback'
  assert call('/api/v1/system/status')['worker_stale'] is False
  subprocess.run([sys.executable,str(root/'ops/smoke.py'),'http://127.0.0.1:3765','--require-worker'],check=True)
+ call(f"/api/v1/admin/reports/{r['id']}/review",{'decision':'withdraw','privacy_checked':True,'expected_hash':r['body_hash'],'finding':'needs_review','note':'[DEMO] Withdraw after sharing integration checks.'},True)
+ assert call(f"/api/v1/reports/{r['id']}")['body'] is None
+ try:png(f"/reports/{r['id']}/card",1200,630);raise AssertionError('Withdrawn report image must not be public')
+ except urllib.error.HTTPError as exc:assert exc.code==404
  print('PASS: separate admin login + protected donation draft/publish/unpublish + live HTTP + standalone Next.js rewrite + SSR report + human publish + moderated correction + worker heartbeat + AI-offline fallback; isolated DEMO fixtures only')
 finally:
  for p in reversed(processes):

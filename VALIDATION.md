@@ -190,3 +190,12 @@ Release verification for this change: 105 backend tests passed, 2 dedicated Post
 - Headline adapters recognize newsDetail/news-detail, safe same-host HTTPS upgrades for legacy newsid links and overlay post cards. Real homepage samples yielded 43 Sonin, 19 LemonPress and 50 Ublife distinct public metadata entries; discovery prioritizes those recoveries and retries outdated failures.
 - Literal search can include the version-matched stored body lead (at most 600 characters), with a separate body field. Full-text search is not claimed. PostgreSQL indexed/semantic search limitations remain explicit.
 - 114 backend tests passed; 2 PostgreSQL-only tests skipped locally. Frontend production build passed.
+
+
+## 2026-10-20 evidence conclusions and social sharing
+
+- Added public server-rendered /analysis/{id} and explicit ?other={id} pair conclusions. Facts distinguish normalized full-body equality, partial/truncated comparison, title-only candidates, insufficient bodies and unknown publication times. Tied timestamps and paid-label uncertainty are preserved; no truth, payment or copy-direction verdict is generated. Existing quote-grounded AI extracts are shown with their title/excerpt scope.
+- Added Facebook and X composer links, device-native Web Share, copyable/editable captions and canonical links. Instagram workflow explicitly exports a portrait image + caption for user posting; no social account credentials or automatic publication.
+- Added cached public analysis Open Graph/Twitter metadata and 1200x630 / 1080x1350 PNG card routes. Bundled a licensed DejaVu Cyrillic subset for network-independent rendering, with license notices. Cards include the evidence scope, publisher domains, checked time/version and uncertainty.
+- Published reports have matching share controls/cards; non-public and withdrawn report image requests return 404. Existing human review publication remains required.
+- Pure conclusion tests passed for equality vs truncated/partial/title-only evidence, missing bodies/dates, publication ties and disclosure uncertainty. Production Next.js build passed. HTTP end-to-end passed SSR metadata, both PNG sizes/signatures, invalid IDs/pairs, public report export and image withdrawal, plus previous admin/donation/correction/worker checks. Fixtures were isolated, explicitly marked DEMO.

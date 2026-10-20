@@ -138,6 +138,15 @@ def install_routes(app, admin, tasks):
         status='awaiting_ai' if pending and article.analysis_status in ('metadata_only','lexical_only','pending') else article.analysis_status
         return {'article_id':id,'ai_enabled':settings.ai_enabled,'ai_pending':pending,'status':status,'connections':linked,'items':[{'model':r.model,'prompt_version':r.prompt_version,'status':r.status,'source_article_ids':[id],'evidence_urls':r.evidence_urls,'confidence':r.confidence,'limitation':r.limitation,'created_at':r.created_at,'scope':r.result.get('scope'),'summary_quotes':[redact(q) for q in r.result.get('summary_quotes',[])]} for r in runs]}
 
+    @router.get('/source-icons/{domain}')
+    async def source_icon(domain:str):
+        from fastapi.responses import Response
+        from .source_icons import publisher_icon
+        if domain not in BY_DOMAIN:raise HTTPException(404,'Unknown publisher')
+        raw,mime=await publisher_icon(domain)
+        if raw is None:return Response(status_code=404,headers={'Cache-Control':'public, max-age=300'})
+        return Response(raw,media_type=mime,headers={'Cache-Control':'public, max-age=86400','X-Content-Type-Options':'nosniff'})
+
     @router.get('/comparison/groups')
     def grouped_comparison(q:str=Query('',max_length=200),domain:str=Query('',max_length=253),kind:str=Query('all',pattern='^(all|exact|cross_site)$'),sort:str=Query('newest',pattern='^(newest|largest)$'),offset:int=Query(0,ge=0),limit:int=Query(12,ge=1,le=30),db:DB=Depends(get_db)):
         from .comparison_index import comparison_groups

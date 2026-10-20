@@ -18,6 +18,7 @@ from .reports import build_report, public_report, FINDINGS, content_hash
 from .graph import evidence_graph
 from .pipeline import process_batch, model_hash
 from .catalog import BY_DOMAIN, domain_of
+from .donations import DonationInput, read_donation, save_donation
 
 router=APIRouter(prefix='/api/v1')
 
@@ -37,6 +38,18 @@ def install_routes(app, admin, tasks):
         decision: Literal['accepted','rejected']
         response: str = Field(min_length=10,max_length=3000)
         privacy_checked: bool = False
+
+    @router.get('/donation')
+    def public_donation(db:DB=Depends(get_db)):
+        return read_donation(db)
+
+    @router.get('/admin/donation',dependencies=[Depends(admin)])
+    def admin_donation(db:DB=Depends(get_db)):
+        return read_donation(db,True)
+
+    @router.put('/admin/donation',dependencies=[Depends(admin)])
+    def update_donation(data:DonationInput,db:DB=Depends(get_db)):
+        return save_donation(db,data)
 
     @router.get('/research')
     def investigate(q:str=Query(...,min_length=1,max_length=200),domain:str=Query('',max_length=253),category:str=Query('',pattern='^(|news|regional|business|broadcast|official)$'),date_from:date|None=None,date_to:date|None=None,date_field:str=Query('discovered',pattern='^(published|discovered)$'),offset:int=Query(0,ge=0),limit:int=Query(20,ge=1,le=50),db:DB=Depends(get_db)):

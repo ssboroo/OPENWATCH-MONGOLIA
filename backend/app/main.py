@@ -62,6 +62,8 @@ async def limits(request: Request, call_next):
         if len(history)>=5:return JSONResponse({'detail':'Correction rate limit exceeded'},status_code=429,headers={'Retry-After':'3600'})
         history.append(t)
     response = await call_next(request)
+    if request.url.path.startswith('/api/v1/admin/'):
+        response.headers['Cache-Control']='no-store'
     response.headers['X-RateLimit-Scope'] = 'health' if request.url.path == '/health' else 'icons' if asset else 'api'
     response.headers['X-Content-Type-Options'] = 'nosniff'
     response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'

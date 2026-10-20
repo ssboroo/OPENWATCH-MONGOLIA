@@ -1,20 +1,23 @@
 """Public operational evidence; unknown never means healthy."""
 from datetime import timedelta
-from sqlalchemy import select, func, or_
+from sqlalchemy import select, func, or_, false
 from .models import Article, AnalysisRun, SystemState, now
 from .clustering import utc
-from .pipeline import model_hash
+from .ai import PROMPT_VERSION
+import hashlib
 from .config import settings
 from .catalog import directory
 
 def reliability(db):
     current=now()
-    articles=list(db.scalars(select(Article)))
-    pending=[a for a in articles if settings.ai_enabled and a.ai_hash!=model_hash(a)]
-    cooling=[a for a in pending if a.next_analysis_at and utc(a.next_analysis_at)>current]
-    last=db.scalar(select(func.max(AnalysisRun.updated_at)).where(AnalysisRun.status=='complete'))
+    signature=':'+hashlib.sha256((settings.ollama_model+settings.embedding_model+PROMPT_VERSION).encode()).hexdigest()[:16]
+    condition=or_(Article.ai_hash.is_(None),Article.ai_hash!=Article.text_hash+signature) if settings.ai_enabled else false()
+    count=db.scalar(select(func.count()).select_from(Article).where(condition))
+    cooling=db.scalar(select(func.count()).select_from(Article).where(condition,Article.next_analysis_at>current))
+    oldest=db.scalar(select(func.min(Article.first_seen_at)).where(condition))
+    last=db.scalar(select(func.max(AnalysisRun.updated_at)).where(AnalysisRun.status=='complete',AnalysisRun.model==settings.ollama_model,AnalysisRun.prompt_version==PROMPT_VERSION))
     pipeline=db.get(SystemState,'pipeline')
-    stalled=bool(pending and (last is None or (current-utc(last)).total_seconds()>1800))
+    stalled=bool(count and (last is None or (current-utc(last)).total_seconds()>1800))
     sites=directory(db,limit=1000)['items']
     for s in sites:
         s['stale']=bool(s['last_success_at'] and (current-utc(s['last_success_at'])).total_seconds()>max(3600,settings.collection_interval*4))
@@ -29,4 +32,4 @@ def reliability(db):
     if backup is None or evidence(backup)['status']!='completed':alerts.append({'code':'backup_unverified','message':'Production нөөцлөлт баталгаажаагүй, алдаатай эсвэл 48 цагаас хуучирсан.'})
     from .quality import summary
     if restore is None or evidence(restore)['status']!='completed':alerts.append({'code':'restore_unverified','message':'Нөөцөөс сэргээх амжилттай туршилт баталгаажаагүй эсвэл хуучирсан.'})
-    return {'checked_at':current,'queue':{'pending':len(pending),'ready':len(pending)-len(cooling),'retry_wait':len(cooling),'oldest_pending_at':min((a.first_seen_at for a in pending),default=None),'last_completed_at':last,'progress_stalled':stalled,'pipeline_updated_at':pipeline.updated_at if pipeline else None},'sources':{'total':len(sites),'with_articles':sum(s['article_count']>0 for s in sites),'healthy':sum(s['feed_health']=='ready' and not s['stale'] for s in sites),'degraded':degraded,'unverified':sum(not s['last_success_at'] for s in sites)},'backup':evidence(backup),'restore_check':evidence(restore),'alerts':alerts,'quality':summary(db)}
+    return {'checked_at':current,'queue':{'pending':count,'ready':count-cooling,'retry_wait':cooling,'oldest_pending_at':oldest,'last_completed_at':last,'progress_stalled':stalled,'pipeline_updated_at':pipeline.updated_at if pipeline else None},'sources':{'total':len(sites),'with_articles':sum(s['article_count']>0 for s in sites),'healthy':sum(s['feed_health']=='ready' and not s['stale'] for s in sites),'degraded':degraded,'unverified':sum(not s['last_success_at'] for s in sites)},'backup':evidence(backup),'restore_check':evidence(restore),'alerts':alerts,'quality':summary(db)}

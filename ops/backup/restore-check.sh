@@ -4,6 +4,7 @@ set -eu
 file="${1:?Pass /backups/openwatch-date.dump}"
 case "$file" in /backups/openwatch-*.dump) ;; *) echo 'Backup path rejected' >&2; exit 1;; esac
 [ "$(dirname "$file")" = /backups ] || exit 1
+[ -f "$file.sha256" ] && sha256sum -c "$file.sha256" >/dev/null
 checkdb="ow_restore_$(date +%s)_$$"
 createdb "$checkdb"
 trap 'dropdb "$checkdb"' EXIT HUP INT TERM

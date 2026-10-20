@@ -114,4 +114,4 @@ def language_hint(text):
 def cosine(a,b):
     if len(a)!=len(b):return 0.0
     denom=math.sqrt(sum(x*x for x in a))*math.sqrt(sum(x*x for x in b))
-    return sum(x*y for x,y in zip(a,b))/denom if denom else 0.0
+    return float(sum(x*y for x,y in zip(a,b))/denom) if denom else 0.0

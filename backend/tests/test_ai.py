@@ -45,3 +45,11 @@ def test_embedding_validation_and_normalization():
     assert vector[0]==1.0 and cosine(vector,vector)==1.0
     for values in [[1.0,0.0],[0.0]*DIMENSIONS,['x']*DIMENSIONS]:
         with pytest.raises(InferenceFailure):execute(lambda r:httpx.Response(200,json={'embeddings':[values]}),'embed')
+
+
+def test_pgvector_numpy_cosine_is_a_json_number():
+    import numpy as np
+    from fastapi.encoders import jsonable_encoder
+    score=cosine(np.array([1.,0.],dtype=np.float32),[1.,0.])
+    assert type(score) is float
+    assert jsonable_encoder({'similarity':round(score,4)})=={'similarity':1.0}

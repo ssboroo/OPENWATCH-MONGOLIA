@@ -35,8 +35,19 @@ async def analysis_loop():
             except Exception:pass
         await asyncio.sleep(max(10,settings.worker_tick_seconds))
 
+async def body_loop():
+    from .body_checks import body_batch
+    while True:
+        try:
+            result=await body_batch()
+            with Session() as db:
+                heartbeat(db,'body_analysis',result);db.commit()
+            print(json.dumps({'service':'body_analysis',**result}),flush=True)
+        except Exception as exc:print(json.dumps({'service':'body_analysis','status':'failed','error':type(exc).__name__}),flush=True)
+        await asyncio.sleep(20)
+
 async def main():
-    tasks=[pulse(),collection_loop(),analysis_loop()]
+    tasks=[pulse(),collection_loop(),analysis_loop(),body_loop()]
     if settings.catalog_bootstrap:
         from .discovery import supervisor
         tasks.append(supervisor())

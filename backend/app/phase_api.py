@@ -138,6 +138,37 @@ def install_routes(app, admin, tasks):
         status='awaiting_ai' if pending and article.analysis_status in ('metadata_only','lexical_only','pending') else article.analysis_status
         return {'article_id':id,'ai_enabled':settings.ai_enabled,'ai_pending':pending,'status':status,'connections':linked,'items':[{'model':r.model,'prompt_version':r.prompt_version,'status':r.status,'source_article_ids':[id],'evidence_urls':r.evidence_urls,'confidence':r.confidence,'limitation':r.limitation,'created_at':r.created_at,'scope':r.result.get('scope'),'summary_quotes':[redact(q) for q in r.result.get('summary_quotes',[])]} for r in runs]}
 
+    @router.get('/comparison/status')
+    def comparison_status(db:DB=Depends(get_db)):
+        from .body_checks import coverage
+        return coverage(db)
+
+    @router.get('/articles/{id}/comparison')
+    def comparison(id:int,db:DB=Depends(get_db)):
+        article=db.get(Article,id)
+        if article is None:raise HTTPException(404,'Article not found')
+        from .body_checks import compare_archive,JOBS
+        return {**compare_archive(db,article),'running':id in JOBS}
+
+    body_requests={}
+    @router.post('/articles/{id}/content-check',status_code=202)
+    async def request_content_check(id:int,request:Request,db:DB=Depends(get_db)):
+        import time
+        from .body_checks import JOBS,check_with_neighbors
+        if db.get(Article,id) is None:raise HTTPException(404,'Article not found')
+        if id in JOBS:return {'status':'already_running'}
+        if len(JOBS)>=2:raise HTTPException(429,'Body analysis busy; retry shortly')
+        key=request.client.host if request.client else 'unknown';current=time.monotonic()
+        # Bound both memory and publisher reads for this fixed-article-ID endpoint.
+        for old in list(body_requests):
+            body_requests[old]=[t for t in body_requests[old] if current-t<60]
+            if not body_requests[old]:del body_requests[old]
+        history=body_requests.setdefault(key,[])
+        if len(history)>=3:raise HTTPException(429,'Three body checks per minute; retry shortly')
+        history.append(current);JOBS.add(id)
+        task=asyncio.create_task(check_with_neighbors(id));tasks.add(task);task.add_done_callback(tasks.discard)
+        return {'status':'accepted','status_url':f'/api/v1/articles/{id}/comparison'}
+
     @router.get('/articles/{id}/connections')
     def related_articles(id:int,db:DB=Depends(get_db)):
         article=db.get(Article,id)

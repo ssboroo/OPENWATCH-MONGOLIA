@@ -225,3 +225,12 @@ class SystemState(Base):
     name: Mapped[str] = mapped_column(String(80), primary_key=True)
     value: Mapped[dict] = mapped_column(JSON, default=dict)
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=now)
+
+class ArticleBodyCheck(Base):
+    __tablename__ = 'article_body_checks'
+    article_id: Mapped[int] = mapped_column(ForeignKey('articles.id',ondelete='CASCADE'),primary_key=True)
+    article_version_id: Mapped[int] = mapped_column(ForeignKey('article_versions.id',ondelete='CASCADE'),index=True)
+    state: Mapped[str] = mapped_column(String(30),index=True)
+    body_hash: Mapped[str | None] = mapped_column(String(64),index=True)
+    data: Mapped[dict] = mapped_column(JSON().with_variant(JSONB,'postgresql'),default=dict)
+    checked_at: Mapped[datetime] = mapped_column(DateTime(timezone=True),default=now)

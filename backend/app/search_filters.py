@@ -2,8 +2,8 @@
 from datetime import date, datetime, time, timedelta, timezone
 from zoneinfo import ZoneInfo
 from fastapi import HTTPException
-from sqlalchemy import select, func
-from .models import Article, Source
+from sqlalchemy import select, func, or_, and_
+from .models import Article, Source, ArticleBodyCheck, ArticleVersion
 from .catalog import BY_DOMAIN, domain_of
 
 SORTS = ('newest', 'oldest', 'published_newest', 'relevance')
@@ -33,3 +33,31 @@ def ordered(stmt, sort='newest'):
     if sort=='oldest':return stmt.order_by(Article.first_seen_at.asc(),Article.id.asc())
     if sort=='published_newest':return stmt.order_by(Article.published_at.desc().nullslast(),Article.id.desc())
     return stmt.order_by(Article.first_seen_at.desc(),Article.id.desc())
+
+
+def advanced(stmt, db, q='', match='phrase', field='all', exclude='', analysis='', body='', publication=''):
+    """Bounded literal search and current-version processing filters; no raw SQL."""
+    from .body_checks import VERSION
+    columns=[Article.title] if field=='title' else [Article.excerpt] if field=='excerpt' else [Article.title,Article.excerpt]
+    def contains(term):
+        escaped=term.replace('\\','\\\\').replace('%','\\%').replace('_','\\_')
+        return or_(*(column.ilike('%'+escaped+'%',escape='\\') for column in columns))
+    words=list(dict.fromkeys(q.split()))
+    omitted=list(dict.fromkeys(exclude.split()))
+    if (match!='phrase' and len(words)>20) or len(omitted)>20:
+        raise HTTPException(422,'Use at most 20 search words and 20 excluded words')
+    if words:
+        clauses=[contains(q.strip())] if match=='phrase' else [contains(word) for word in words]
+        stmt=stmt.where(or_(*clauses) if match=='any' else and_(*clauses))
+    for word in omitted:stmt=stmt.where(~contains(word))
+    if analysis=='complete':stmt=stmt.where(Article.analysis_status=='ai_complete')
+    elif analysis=='pending':stmt=stmt.where(Article.analysis_status.in_(['pending','metadata_only','lexical_only']))
+    elif analysis=='unavailable':stmt=stmt.where(Article.analysis_status=='ai_unavailable')
+    if publication=='known':stmt=stmt.where(Article.published_at.is_not(None))
+    elif publication=='unknown':stmt=stmt.where(Article.published_at.is_(None))
+    if body:
+        ready=select(ArticleBodyCheck.article_id).join(ArticleVersion,ArticleVersion.id==ArticleBodyCheck.article_version_id).where(
+            ArticleBodyCheck.article_id==Article.id,ArticleVersion.version==Article.version,
+            ArticleBodyCheck.state=='ready',ArticleBodyCheck.data['adapter'].as_string()==VERSION).correlate(Article).exists()
+        stmt=stmt.where(ready if body=='ready' else ~ready)
+    return stmt

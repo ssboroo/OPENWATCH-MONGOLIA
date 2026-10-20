@@ -170,3 +170,12 @@ Release verification for this change: 105 backend tests passed, 2 dedicated Post
 - Fixed workspace refresh propagation while retaining filters and selected articles. Comparison and status views clear recovered fetch errors; report pagination cancels obsolete requests. Research polling pauses in hidden tabs and preserves existing results during transient errors.
 - Added Mongolian analysis status descriptions and explicit Ulaanbaatar formatting for article analysis timestamps.
 - Backend regression suite: 105 passed, 2 PostgreSQL-only tests skipped in local SQLite environment. Frontend production build passed.
+
+
+## 2026-10-20 open public search release
+
+- Removed the decorative OW account-like avatar from the public header. Added a public search → comparison → evidence workflow; no account is required for public reads. Administrative publishing and account settings remain protected.
+- Search API and UI support all/any/literal phrase matching, title/excerpt selection, literal excluded words, AI processing state, current-version body availability and known/unknown publication date. Existing domain/category/inclusive Ulaanbaatar date filters and pagination combine with these conditions.
+- Saved search links restore query and filter controls. Semantic matching clearly distinguishes unavailable literal controls; semantic fallback preserves scope and explicit exclusions.
+- Filter changes request the archive once, rather than refetching statistics, source metadata and collector status each time.
+- 108 backend tests passed, 2 PostgreSQL-only local tests skipped. Added coverage for word matching, literal percent/underscore, exclusions, combined processing/date conditions, obsolete body adapters/versions, and AI-offline fallback. Production frontend build passed. HTTP end-to-end checks cover advanced search through the Next rewrite, avatar removal, protected admin/donations, SSR reports and worker heartbeat.

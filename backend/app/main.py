@@ -157,26 +157,25 @@ def source_detail(id: int, db: DB = Depends(get_db)):
 
 @app.get('/api/v1/search')
 @app.get('/api/v1/articles')
-def articles(q: str = Query('', max_length=200), mode: str = Query('lexical',pattern='^(lexical|fts)$'), domain: str = Query('', max_length=253), source_id: int | None = Query(None,gt=0), date_from: date | None = None, date_to: date | None = None, date_field: str = Query('published',pattern='^(published|discovered)$'), category: str = Query('',pattern='^(|news|regional|business|broadcast|official)$'), sort: str = Query('newest',pattern='^(newest|oldest|published_newest|relevance)$'), offset: int = Query(0, ge=0), limit: int = Query(30, ge=1, le=100), db: DB = Depends(get_db)):
-    from .search_filters import scope, ordered
+def articles(match: str = Query('phrase',pattern='^(phrase|all|any)$'), field: str = Query('all',pattern='^(all|title|excerpt)$'), exclude: str = Query('',max_length=200), analysis: str = Query('',pattern='^(|complete|pending|unavailable)$'), body: str = Query('',pattern='^(|ready|unread)$'), publication: str = Query('',pattern='^(|known|unknown)$'), q: str = Query('', max_length=200), mode: str = Query('lexical',pattern='^(lexical|fts)$'), domain: str = Query('', max_length=253), source_id: int | None = Query(None,gt=0), date_from: date | None = None, date_to: date | None = None, date_field: str = Query('published',pattern='^(published|discovered)$'), category: str = Query('',pattern='^(|news|regional|business|broadcast|official)$'), sort: str = Query('newest',pattern='^(newest|oldest|published_newest|relevance)$'), offset: int = Query(0, ge=0), limit: int = Query(30, ge=1, le=100), db: DB = Depends(get_db)):
+    from .search_filters import scope, ordered, advanced
     q=q.strip()
     stmt = scope(select(Article),db,domain,source_id,date_from,date_to,date_field,category)
-    indexed = bool(q and mode=='fts' and db.bind.dialect.name=='postgresql')
+    indexed = bool(q and mode=='fts' and match=='phrase' and field=='all' and db.bind.dialect.name=='postgresql')
+    stmt=advanced(stmt,db,q,match,field,exclude,analysis,body,publication)
     if indexed:
         doc=func.to_tsvector(literal_column("'simple'"),Article.title+literal_column("' '")+Article.excerpt)
         query=func.websearch_to_tsquery(literal_column("'simple'"),q)
         stmt=stmt.where(doc.op('@@')(query))
         if sort=='relevance':stmt=stmt.order_by(func.ts_rank_cd(doc,query).desc())
-    elif q:
-        escaped = q.replace('\\','\\\\').replace('%','\\%').replace('_','\\_')
-        stmt = stmt.where(or_(Article.title.ilike(f'%{escaped}%', escape='\\'), Article.excerpt.ilike(f'%{escaped}%', escape='\\')))
     result=page(db, ordered(stmt,sort), offset, limit)
     from .serialization import article_data
     result['items']=[article_data(a) for a in result['items']]
     result['mode']='fts' if indexed else 'lexical'
     result['sort']=sort if sort!='relevance' or indexed else 'newest'
     result['timezone']='Asia/Ulaanbaatar'
-    result['limitation']='PostgreSQL индекс байхгүй тул үгийн хайлт ашиглав.' if mode=='fts' and not indexed and q else ''
+    result['filters']={'match':match,'field':field,'exclude':exclude,'analysis':analysis,'body':body,'publication':publication}
+    result['limitation']='Сонгосон нөхцөлд үгийн хайлт ашиглав. Хайлт зөвхөн архивын гарчиг, хураангуйд хамаарна.' if mode=='fts' and not indexed and q else 'Архивын гарчиг, хадгалсан хураангуйд хайна. Бүтэн эхийн хайлт биш.'
     return result
 
 @app.get('/api/v1/articles/{id}')

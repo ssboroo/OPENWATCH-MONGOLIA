@@ -39,6 +39,11 @@ try:
  else:raise RuntimeError('Servers did not become healthy')
  assert call('/health',port=3765)['status']=='ok'
  assert 'Админ хяналт' not in call('/',port=3765)
+ assert 'class="avatar"' not in call('/',port=3765)
+ scoped=call('/api/v1/articles?q=400&field=excerpt&match=all&publication=unknown',port=3765)
+ assert scoped['total']==1 and '400' in scoped['items'][0]['excerpt']
+ assert call('/api/v1/articles?q=400&exclude=400',port=3765)['total']==0
+ assert call('/api/v1/articles?body=ready',port=3765)['total']==0
  admin_html=call('/admin',port=3765)
  assert 'noindex' in admin_html and 'Нэвтрэх' in admin_html
  assert call('/api/v1/donation',port=3765)=={'enabled':False}

@@ -13,7 +13,7 @@ export function apiFetch(url:string,init:RequestInit={}):Promise<Response>{
  // Never replay mutations or share authenticated responses.
  if(method!=='GET'||new Headers(init.headers).has('authorization'))return fetch(url,init);
  const key=url;const existing=pending.get(key);if(existing)return observed(existing,init.signal);
- const run=(async()=>{for(let attempt=0;;attempt++){await cooldown();await slot();let response:Response;try{await cooldown();response=await fetch(url,{...init,signal:undefined})}finally{release()}
+ const run=(async()=>{for(let attempt=0;;attempt++){await cooldown();await slot();let response:Response;try{await cooldown();response=await fetch(url,{...init,signal:AbortSignal.timeout(30000)})}finally{release()}
  if(response.status!==429)return response;
  resumeAt=Math.max(resumeAt,Date.now()+retryDelay(response.headers.get('Retry-After')));announce();
  if(attempt>=1)return response;

@@ -239,9 +239,27 @@ def install_routes(app, admin, tasks):
             from .serialization import article_data
             return {'mode':'lexical_fallback','items':[article_data(a) for a in db.scalars(stmt.order_by(Article.id.desc()).offset(offset).limit(limit))],'total':total,'offset':offset,'limit':limit,'limitation':'Локал AI байхгүй эсвэл алдаатай тул үгийн хайлт ашиглав.'}
 
+    class QualityReview(BaseModel):
+        left: int = Field(gt=0)
+        right: int = Field(gt=0)
+        expected: bool
+        note: str = Field(min_length=10,max_length=1000)
+
+    @router.post('/admin/quality/review',dependencies=[Depends(admin)])
+    def quality_review(data:QualityReview,db:DB=Depends(get_db)):
+        from .quality import review
+        try:result=review(db,data.left,data.right,data.expected,data.note)
+        except ValueError as exc:raise HTTPException(422,str(exc))
+        db.add(AuditLog(action='quality.review',detail=f'{data.left}:{data.right}:{data.expected}'));db.commit();return result
+
+    @router.get('/system/reliability')
+    def operational_evidence(db:DB=Depends(get_db)):
+        from .reliability import reliability
+        return reliability(db)
+
     @router.get('/system/status')
     def system_status(db:DB=Depends(get_db)):
-        states=list(db.scalars(select(SystemState).where(~SystemState.name.like('discovery:%'))))
+        states=list(db.scalars(select(SystemState).where(~SystemState.name.like('discovery:%'),~SystemState.name.like('quality:%'))))
         disk=shutil.disk_usage('/')
         worker=db.get(SystemState,'worker')
         stale=worker is None or (now()-utc(worker.updated_at)).total_seconds()>max(600,settings.worker_tick_seconds*5)

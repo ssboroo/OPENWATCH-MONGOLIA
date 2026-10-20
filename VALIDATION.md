@@ -199,3 +199,13 @@ Release verification for this change: 105 backend tests passed, 2 dedicated Post
 - Added cached public analysis Open Graph/Twitter metadata and 1200x630 / 1080x1350 PNG card routes. Bundled a licensed DejaVu Cyrillic subset for network-independent rendering, with license notices. Cards include the evidence scope, publisher domains, checked time/version and uncertainty.
 - Published reports have matching share controls/cards; non-public and withdrawn report image requests return 404. Existing human review publication remains required.
 - Pure conclusion tests passed for equality vs truncated/partial/title-only evidence, missing bodies/dates, publication ties and disclosure uncertainty. Production Next.js build passed. HTTP end-to-end passed SSR metadata, both PNG sizes/signatures, invalid IDs/pairs, public report export and image withdrawal, plus previous admin/donation/correction/worker checks. Fixtures were isolated, explicitly marked DEMO.
+
+## Operational evidence and reviewed quality (2026-10-20)
+- `/api/v1/system/reliability`: current model-signature queue, cooldown, oldest pending, last completion, 30-minute progress alarm; source freshness and coverage; backup/restore evidence expires after 48 hours.
+- Media cards expose last source attempt, actual archived count, errors and last success. Catalog presence is never labelled successful reading.
+- Inference has a bounded whole-article deadline (max 600 seconds), persists retry eligibility and advances the batch on errors/timeouts. PostgreSQL advisory lock prevents overlapping pipeline workers.
+- Archived 600-character leads have sentence alignment: exact text, lexical candidate changes and unmatched sentences. No unseen full-body diff is implied.
+- Admin quality review pins both current body versions/hashes; unread pairs rejected; repeated review of the same versions updates one record. Public precision/recall remain null until independent human labels exist. `ops/evaluate-quality.py` also evaluates provenance-bearing JSONL offline. No model self-labelling presented as human review.
+- Backup service: dedicated volume, daily custom-format dump, SHA-256, 14-day retention, isolated restore database test and durable status rows. No public backup download endpoint. Same-project volume is not an independent off-provider disaster recovery copy.
+- Backend suite: 118 passed, 2 PostgreSQL environment-dependent tests skipped. Frontend production build and Mongolian sentence alignment assertions passed. Production deployment/restore must additionally be verified from Railway logs.
+- Donation editor already supports bank, beneficiary, IBAN/account and preview; do not publish invented bank details.

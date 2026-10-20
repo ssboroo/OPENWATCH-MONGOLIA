@@ -107,7 +107,10 @@ async def process_batch(ollama=None):
                 heartbeat(db,'pipeline',{'status':'running','batch_size':len(ids)});db.commit()
             results=[]
             for article_id in ids:
-                try:results.append(await analyze_article(article_id,ollama))
+                try:
+                    with Session() as db:
+                        heartbeat(db,'pipeline',{'status':'running','article_id':article_id,'batch_size':len(ids)});db.commit()
+                    results.append(await asyncio.wait_for(analyze_article(article_id,ollama),timeout=max(30,min(600,settings.ai_timeout*(settings.ai_retries+1)*2+15))))
                 except Exception as exc:
                     results.append({'article_id':article_id,'status':'error','error':type(exc).__name__})
                     with Session() as db:

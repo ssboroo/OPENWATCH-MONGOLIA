@@ -171,6 +171,13 @@ def articles(match: str = Query('phrase',pattern='^(phrase|all|any)$'), field: s
     result=page(db, ordered(stmt,sort), offset, limit)
     from .serialization import article_data
     result['items']=[article_data(a) for a in result['items']]
+    if q and field in ('all','body') and result['items']:
+        from .models import ArticleBodyCheck
+        from .body_checks import VERSION
+        ids=[row['id'] for row in result['items']]
+        checks=db.scalars(select(ArticleBodyCheck).join(Article,Article.id==ArticleBodyCheck.article_id).join(ArticleVersion,ArticleVersion.id==ArticleBodyCheck.article_version_id).where(Article.id.in_(ids),ArticleVersion.version==Article.version,ArticleBodyCheck.state=='ready',ArticleBodyCheck.data['adapter'].as_string()==VERSION))
+        leads={c.article_id:c.data.get('lead','') for c in checks}
+        for row in result['items']:row['body_lead']=leads.get(row['id'],'')
     result['mode']='fts' if indexed else 'lexical'
     result['sort']=sort if sort!='relevance' or indexed else 'newest'
     result['timezone']='Asia/Ulaanbaatar'

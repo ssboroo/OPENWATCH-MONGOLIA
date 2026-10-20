@@ -110,6 +110,7 @@ def test_read_body_lead_search_is_version_grounded(client,db):
     db.commit()
     r=client.get('/api/v1/articles?q=Unique&field=body').json()
     assert r['total']==1 and r['items'][0]['id']==rows[0].id
+    assert r['items'][0]['body_lead']=='Unique publisher lead proof'
     assert client.get('/api/v1/articles?q=Unique&field=all').json()['total']==1
     assert client.get('/api/v1/articles?q=Unique&field=title').json()['total']==0
     assert client.get('/api/v1/articles?q=Budget&exclude=Unique').json()['total']==3

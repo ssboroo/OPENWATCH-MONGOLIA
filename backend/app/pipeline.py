@@ -42,7 +42,7 @@ async def analyze_article(article_id,ollama=None):
         if version is None:return {'status':'no_version'}
         text_source=full_text(version);expected_hash=article.text_hash;vid=version.id;metadata_only=article.source_metadata.get('metadata_only',False)
     extraction=vector=None;error=None
-    if settings.ai_enabled and not metadata_only:
+    if settings.ai_enabled:
         try:
             extraction=await client.extract(text_source)
             vector=await client.embed(text_source)
@@ -51,7 +51,7 @@ async def analyze_article(article_id,ollama=None):
         article=db.scalar(select(Article).where(Article.id==article_id).with_for_update())
         if article is None or article.text_hash!=expected_hash:return {'status':'superseded'}
         version=db.get(ArticleVersion,vid)
-        if not metadata_only:lexical_claims(db,article,version)
+        lexical_claims(db,article,version)
         model=settings.ollama_model if settings.ai_enabled else 'deterministic'
         run=db.scalar(select(AnalysisRun).where(AnalysisRun.article_version_id==vid,AnalysisRun.model==model,AnalysisRun.prompt_version==PROMPT_VERSION))
         if run is None:
@@ -62,9 +62,11 @@ async def analyze_article(article_id,ollama=None):
         run.evidence_urls=[article.url];run.error=error;run.updated_at=now()
         run.status='complete' if extraction is not None and error is None else 'fallback'
         # No generated fallback prose: extractive title/excerpt with source attribution.
-        quotes=[] if metadata_only else extraction.summary_quotes if extraction is not None else [version.title]
+        quotes=extraction.summary_quotes if extraction is not None else [version.title]
         for quote in quotes:evidence_for(db,article,version,quote,'model_extractive_v1' if extraction else 'source_title_v1')
-        run.result={'summary_quotes':quotes,'language_hint':language_hint(text_source),'category':extraction.category if extraction else 'other','source_article_ids':[article_id],'embedding_model':settings.embedding_model if vector is not None else None}
+        run.limitation=LIMITATION if settings.ai_enabled else run.limitation
+        if metadata_only:run.limitation+=' Зөвхөн гарчгийн хүрээнд шинжилсэн; бүтэн эхийг уншаагүй.'
+        run.result={'scope':'headline_only' if metadata_only else 'title_and_excerpt','summary_quotes':quotes,'language_hint':language_hint(text_source),'category':extraction.category if extraction else 'other','source_article_ids':[article_id],'embedding_model':settings.embedding_model if vector is not None else None}
         run.confidence=extraction.confidence if extraction is not None else 0.0
         if extraction is not None:
             for entity in extraction.entities:
@@ -76,9 +78,9 @@ async def analyze_article(article_id,ollama=None):
             if embedding is None:embedding=ArticleEmbedding(article_id=article_id);db.add(embedding)
             embedding.text_hash=expected_hash;embedding.model=settings.embedding_model;embedding.vector=vector;embedding.dimensions=1024;embedding.created_at=now();db.flush()
             add_semantic_matches(db,article,embedding)
-            article.ai_hash=model_hash(article)
+            article.ai_hash=model_hash(article) if extraction is not None and error is None else None
         article.analysis_hash=expected_hash
-        article.analysis_status='metadata_only' if metadata_only else 'ai_complete' if run.status=='complete' else 'ai_unavailable' if error else 'lexical_only'
+        article.analysis_status='ai_complete' if run.status=='complete' else 'ai_unavailable' if error else 'metadata_only' if metadata_only else 'lexical_only'
         article.next_analysis_at=now()+timedelta(seconds=max(60,settings.ai_retry_seconds)) if error else None
         heartbeat(db,'ai',{'status':article.analysis_status,'article_id':article_id,'enabled':settings.ai_enabled,'error':error})
         db.commit()
@@ -93,8 +95,12 @@ async def process_batch(ollama=None):
                 condition=or_(Article.analysis_hash.is_(None),Article.analysis_hash!=Article.text_hash)
                 if settings.ai_enabled:
                     signature=':'+hashlib.sha256((settings.ollama_model+settings.embedding_model+PROMPT_VERSION).encode()).hexdigest()[:16]
-                    condition=or_(condition,and_(Article.analysis_status!='metadata_only',or_(Article.ai_hash.is_(None),Article.ai_hash!=Article.text_hash+signature),or_(Article.next_analysis_at.is_(None),Article.next_analysis_at<=now())))
-                ids=list(db.scalars(select(Article.id).where(condition,or_(Article.next_analysis_at.is_(None),Article.next_analysis_at<=now())).order_by(Article.id).limit(max(1,min(settings.ai_batch_size,100)))))
+                    condition=or_(condition,and_(or_(Article.ai_hash.is_(None),Article.ai_hash!=Article.text_hash+signature),or_(Article.next_analysis_at.is_(None),Article.next_analysis_at<=now())))
+                batch=max(1,min(settings.ai_batch_size,4 if settings.ai_enabled else 100))
+                candidates=select(Article.id).where(condition,or_(Article.next_analysis_at.is_(None),Article.next_analysis_at<=now()))
+                # Split capacity between fresh news and archive backfill; neither starves.
+                ids=list(db.scalars(candidates.order_by(Article.id.desc()).limit((batch+1)//2)))
+                ids+=list(db.scalars(candidates.where(Article.id.not_in(ids)).order_by(Article.id).limit(batch-len(ids))))
                 heartbeat(db,'pipeline',{'status':'running','batch_size':len(ids)});db.commit()
             results=[]
             for article_id in ids:

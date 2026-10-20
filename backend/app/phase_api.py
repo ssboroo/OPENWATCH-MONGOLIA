@@ -129,8 +129,18 @@ def install_routes(app, admin, tasks):
     def analysis(id:int,db:DB=Depends(get_db)):
         article=db.get(Article,id)
         if article is None:raise HTTPException(404,'Article not found')
-        runs=list(db.scalars(select(AnalysisRun).where(AnalysisRun.article_id==id).order_by(AnalysisRun.id.desc()).limit(20)))
-        return {'article_id':id,'status':article.analysis_status,'items':[{'model':r.model,'prompt_version':r.prompt_version,'status':r.status,'source_article_ids':[id],'evidence_urls':r.evidence_urls,'confidence':r.confidence,'limitation':r.limitation,'created_at':r.created_at,'summary_quotes':[redact(q) for q in r.result.get('summary_quotes',[])]} for r in runs]}
+        version=db.scalar(select(ArticleVersion).where(ArticleVersion.article_id==id,ArticleVersion.version==article.version))
+        runs=list(db.scalars(select(AnalysisRun).where(AnalysisRun.article_id==id,AnalysisRun.article_version_id==version.id).order_by(AnalysisRun.id.desc()).limit(20))) if version else []
+        from .connections import connections
+        linked=connections(db,article)
+        return {'article_id':id,'status':article.analysis_status,'connections':linked,'items':[{'model':r.model,'prompt_version':r.prompt_version,'status':r.status,'source_article_ids':[id],'evidence_urls':r.evidence_urls,'confidence':r.confidence,'limitation':r.limitation,'created_at':r.created_at,'scope':r.result.get('scope'),'summary_quotes':[redact(q) for q in r.result.get('summary_quotes',[])]} for r in runs]}
+
+    @router.get('/articles/{id}/connections')
+    def related_articles(id:int,db:DB=Depends(get_db)):
+        article=db.get(Article,id)
+        if article is None:raise HTTPException(404,'Article not found')
+        from .connections import connections
+        return connections(db,article)
 
     @router.post('/admin/analysis/run',dependencies=[Depends(admin)],status_code=202)
     async def run_analysis():
@@ -171,7 +181,7 @@ def install_routes(app, admin, tasks):
         disk=shutil.disk_usage('/')
         worker=db.get(SystemState,'worker')
         stale=worker is None or (now()-utc(worker.updated_at)).total_seconds()>max(600,settings.worker_tick_seconds*5)
-        return {'worker_stale':stale,'ai_enabled':settings.ai_enabled,'generation_model':settings.ollama_model,'embedding_model':settings.embedding_model,'disk_free_ratio':round(disk.free/disk.total,4),'disk_alert':disk.free/disk.total<.15,'states':[{'name':s.name,'value':{k:v for k,v in s.value.items() if k in ('status','processed','reports','enabled','batch_size','total')},'updated_at':s.updated_at} for s in states],'analysis_counts':dict(db.execute(select(Article.analysis_status,func.count()).group_by(Article.analysis_status)).all()),'pending_corrections':db.scalar(select(func.count()).select_from(ReportCorrection).where(ReportCorrection.state=='pending'))}
+        return {'worker_stale':stale,'ai_enabled':settings.ai_enabled,'generation_model':settings.ollama_model,'embedding_model':settings.embedding_model,'disk_free_ratio':round(disk.free/disk.total,4),'disk_alert':disk.free/disk.total<.15,'states':[{'name':s.name,'value':{k:v for k,v in s.value.items() if k in ('status','processed','reports','enabled','batch_size','total')},'updated_at':s.updated_at} for s in states],'analysis_counts':dict(db.execute(select(Article.analysis_status,func.count()).group_by(Article.analysis_status)).all()),'ai_completed_articles':db.scalar(select(func.count()).select_from(Article).where(Article.analysis_status=='ai_complete')),'current_embeddings':db.scalar(select(func.count()).select_from(ArticleEmbedding).join(Article,Article.id==ArticleEmbedding.article_id).where(ArticleEmbedding.text_hash==Article.text_hash,ArticleEmbedding.model==settings.embedding_model)),'pending_corrections':db.scalar(select(func.count()).select_from(ReportCorrection).where(ReportCorrection.state=='pending'))}
 
     @router.get('/admin/audit',dependencies=[Depends(admin)])
     def audits(offset:int=Query(0,ge=0),limit:int=Query(30,ge=1,le=100),db:DB=Depends(get_db)):

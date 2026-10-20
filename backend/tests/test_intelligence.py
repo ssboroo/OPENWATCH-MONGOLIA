@@ -67,3 +67,14 @@ def test_slow_collection_does_not_block_analysis(db,monkeypatch):
             for task in tasks:task.cancel()
             await asyncio.gather(*tasks,return_exceptions=True)
     asyncio.run(check())
+
+
+def test_rejected_extraction_still_indexes_semantic_text(db,monkeypatch):
+    seed(db,1)
+    monkeypatch.setattr(pipeline,'Session',sessionmaker(db.bind,expire_on_commit=False));monkeypatch.setattr(settings,'ai_enabled',True)
+    class Partial(Contract):
+        async def extract(self,text):raise InferenceFailure('ungrounded model output rejected')
+    assert asyncio.run(pipeline.analyze_article(1,Partial()))['status']=='ai_unavailable'
+    with sessionmaker(db.bind)() as check:
+        assert check.get(ArticleEmbedding,1) is not None
+        assert check.get(Article,1).ai_hash is None

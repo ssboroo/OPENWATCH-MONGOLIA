@@ -45,8 +45,11 @@ async def analyze_article(article_id,ollama=None):
     if settings.ai_enabled:
         try:
             extraction=await client.extract(text_source)
-            vector=await client.embed(text_source)
         except InferenceFailure as exc:error=str(exc)
+        # Embedding can remain useful even when strict extraction rejects a response.
+        try:
+            vector=await client.embed(text_source)
+        except InferenceFailure as exc:error=(error+'; ' if error else '')+str(exc)
     with Session() as db:
         article=db.scalar(select(Article).where(Article.id==article_id).with_for_update())
         if article is None or article.text_hash!=expected_hash:return {'status':'superseded'}

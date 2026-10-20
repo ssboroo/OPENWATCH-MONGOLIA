@@ -80,6 +80,7 @@ def test_offline_pipeline_keeps_archive_and_drafts(db,monkeypatch):
     monkeypatch.setattr(settings,'ai_enabled',True)
     class Offline:
         async def extract(self,text):raise InferenceFailure('offline')
+        async def embed(self,text):raise InferenceFailure('offline')
     result=asyncio.run(pipeline.process_batch(Offline()))
     assert result['status']=='completed' and result['draft_report_ids']
     with sessionmaker(db.bind)() as check:

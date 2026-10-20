@@ -42,7 +42,7 @@ def test_publish_review_correction_withdraw_flow(client,db,monkeypatch):
     from app.main import submission_buckets
     submission_buckets.clear()
     event=populate(db);report=build_report(db,event.id);db.commit();auth=headers(monkeypatch)
-    assert client.get('/api/v1/reports').json()['total']==0
+    assert client.get('/api/v1/reports?freshness=all').json()['total']==0
     assert client.get(f'/api/v1/reports/{report.id}').status_code==404
     body={'decision':'publish','expected_hash':report.body_hash,'note':'Source links and private information reviewed.','privacy_checked':False,'finding':'sources_differ'}
     assert client.post(f'/api/v1/admin/reports/{report.id}/review',json=body).status_code==401
@@ -91,7 +91,7 @@ def test_offline_pipeline_keeps_archive_and_drafts(db,monkeypatch):
 def test_public_redaction(client,db):
     s=Source(name='Fixture',endpoint='https://ikon.mn/rss');db.add(s);db.flush()
     ingest(db,s,[{'title':'Холбогдох утас 99112233','excerpt':'И-мэйл secret@example.com, регистр АБ12345678','url':'https://ikon.mn/redaction','published_at':None,'updated_at':None}]);db.commit()
-    data=client.get('/api/v1/articles').json()['items'][0]
+    data=client.get('/api/v1/articles?freshness=all').json()['items'][0]
     assert '99112233' not in data['title'] and 'secret@example.com' not in data['excerpt'] and 'АБ12345678' not in data['excerpt']
     assert data['url']=='https://ikon.mn/redaction'
 

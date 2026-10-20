@@ -10,7 +10,7 @@ def seed(db):
 
 def test_exact_version_evidence_and_unverified_claims(client,db):
     seed(db)
-    r=client.get('/api/v1/research',params={'q':'public Budget'}).json()
+    r=client.get('/api/v1/research?freshness=all',params={'freshness':'all','q':'public Budget'}).json()
     assert r['total']==1
     item=r['items'][0]
     assert item['published_at'] is None and item['scope']=='title_and_excerpt'
@@ -24,22 +24,22 @@ def test_exact_version_evidence_and_unverified_claims(client,db):
 
 def test_scope_pagination_unknown_dates_and_headlines(client,db):
     seed(db)
-    r=client.get('/api/v1/research?q=Budget&limit=1').json()
+    r=client.get('/api/v1/research?freshness=all&q=Budget&limit=1').json()
     assert r['total']==2 and len(r['items'])==1
     assert r['items'][0]['scope']=='headline_only'
-    assert client.get('/api/v1/research?q=Budget&category=official').json()['total']==0
-    assert client.get('/api/v1/research?q=Budget&domain=gogo.mn').json()['total']==0
-    assert client.get('/api/v1/research?q=Budget&date_field=published&date_from=2020-01-01').json()['total']==0
-    assert client.get('/api/v1/research?q=Budget&date_field=discovered&date_from=2020-01-01').json()['total']==2
-    assert client.get('/api/v1/research?q=100%25').json()['total']==0
-    assert client.get('/api/v1/research?q=%20%20').status_code==422
-    assert client.get('/api/v1/research?q=x&date_from=2026-10-20&date_to=2026-10-19').status_code==422
-    assert client.get('/api/v1/research?q=x&limit=51').status_code==422
+    assert client.get('/api/v1/research?freshness=all&q=Budget&category=official').json()['total']==0
+    assert client.get('/api/v1/research?freshness=all&q=Budget&domain=gogo.mn').json()['total']==0
+    assert client.get('/api/v1/research?freshness=all&q=Budget&date_field=published&date_from=2020-01-01').json()['total']==0
+    assert client.get('/api/v1/research?freshness=all&q=Budget&date_field=discovered&date_from=2020-01-01').json()['total']==2
+    assert client.get('/api/v1/research?freshness=all&q=100%25').json()['total']==0
+    assert client.get('/api/v1/research?freshness=all&q=%20%20').status_code==422
+    assert client.get('/api/v1/research?freshness=all&q=x&date_from=2026-10-20&date_to=2026-10-19').status_code==422
+    assert client.get('/api/v1/research?freshness=all&q=x&limit=51').status_code==422
 
 def test_current_version_only(client,db):
     seed(db)
     a=db.query(Article).filter(Article.url=='https://ikon.mn/n/test1').one()
     a.version=2;a.title='Correction';a.excerpt='';a.text_hash='b'*64
     db.add(ArticleVersion(article_id=a.id,version=2,title='Correction',excerpt='',text_hash=a.text_hash));db.commit()
-    assert client.get('/api/v1/research?q=public').json()['total']==0
-    assert client.get('/api/v1/research?q=Correction').json()['items'][0]['version']==2
+    assert client.get('/api/v1/research?freshness=all&q=public').json()['total']==0
+    assert client.get('/api/v1/research?freshness=all&q=Correction').json()['items'][0]['version']==2

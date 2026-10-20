@@ -73,3 +73,4 @@ def fresh(stmt, db, freshness='all'):
     current=now();cutoff=current-timedelta(hours=48 if freshness=='48h' else 168)
     if db.bind.dialect.name=='sqlite':current=current.replace(tzinfo=None);cutoff=cutoff.replace(tzinfo=None)
     return stmt.where(Article.published_at>=cutoff,Article.published_at<=current)
+

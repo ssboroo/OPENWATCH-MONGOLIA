@@ -4,10 +4,11 @@ from .clustering import canonical_event
 from .evidence import redact
 from .catalog import domain_of
 
-def evidence_graph(db,event_id):
+def evidence_graph(db,event_id,freshness='all'):
+    from .search_filters import fresh
     event=canonical_event(db,event_id)
     if event is None:raise ValueError('Event not found')
-    articles=list(db.scalars(select(Article).join(EventArticle,EventArticle.article_id==Article.id).where(EventArticle.event_id==event.id).order_by(Article.id).limit(100)))
+    articles=list(db.scalars(fresh(select(Article).join(EventArticle,EventArticle.article_id==Article.id).where(EventArticle.event_id==event.id).order_by(Article.id).limit(100),db,freshness)))
     ids=[a.id for a in articles];nodes=[{'id':f'event:{event.id}','type':'event','label':redact(event.title)}];links=[];seen={n['id'] for n in nodes}
     for a in articles:
         s=db.get(Source,a.source_id);sid=f'source:{s.id}';aid=f'article:{a.id}'

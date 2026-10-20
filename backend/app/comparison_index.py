@@ -8,8 +8,9 @@ from .evidence import redact
 from .clustering import tokens
 
 
-def comparison_groups(db,q='',domain='',kind='all',offset=0,limit=12,sort='newest'):
-    rows=list(db.execute(select(Article,Source,ArticleBodyCheck,ArticleVersion.version).join(Source,Source.id==Article.source_id).outerjoin(ArticleBodyCheck,ArticleBodyCheck.article_id==Article.id).outerjoin(ArticleVersion,ArticleVersion.id==ArticleBodyCheck.article_version_id)))
+def comparison_groups(db,q='',domain='',kind='all',offset=0,limit=12,sort='newest',freshness='48h'):
+    from .search_filters import fresh
+    rows=list(db.execute(fresh(select(Article,Source,ArticleBodyCheck,ArticleVersion.version).join(Source,Source.id==Article.source_id).outerjoin(ArticleBodyCheck,ArticleBodyCheck.article_id==Article.id).outerjoin(ArticleVersion,ArticleVersion.id==ArticleBodyCheck.article_version_id),db,freshness)))
     articles={a.id:(a,s,c if c and v==a.version and c.data.get('adapter')==VERSION else None) for a,s,c,v in rows}
     parent={i:i for i in articles};edges=[]
     def root(i):
@@ -53,6 +54,6 @@ def comparison_groups(db,q='',domain='',kind='all',offset=0,limit=12,sort='newes
         if kind=='cross_site' and len({x['domain'] for x in members})<2:continue
         if domain and not any(x['domain']==domain for x in members):continue
         if q and not all(word in normalized(' '.join(x['title']+' '+x['domain']+' '+x['source'] for x in members)) for word in normalized(q).split()):continue
-        result.append({'id':min(ids),'title':members[0]['title'],'members':members,'domains':sorted({x['domain'] for x in members}),'methods':sorted(methods[gid]),'exact_families':exact,'article_count':len(ids),'ready_count':sum(x['body']['state']=='ready' for x in members),'latest_id':max(ids)})
-    result.sort(key=lambda x:(x['article_count'],x['latest_id']) if sort=='largest' else (x['latest_id'],x['article_count']),reverse=True)
-    return {'items':result[offset:offset+limit],'total':len(result),'offset':offset,'limit':limit,'summary':{'groups':sum(len(x)>1 for x in groups.values()),'articles_in_groups':len(all_group_articles),'domains':len(all_domains),'archive_articles':len(articles),'checked_bodies':sum(c is not None and c.state=='ready' for a,s,c in articles.values())},'domain_options':sorted(all_domains),'scope':'Бүх архивын ижил гарчиг, одоогийн эхийн хэш, гарчиг/хураангуйн үгийн давхцлын холбоосоор бүлэглэв. Бүлэгт хамт байх нь бүх хосын бүтэн эх ижил гэсэн үг биш. Уншаагүй эх, илрээгүй холбоос үлдэж болно.'}
+        result.append({'id':min(ids),'title':members[0]['title'],'members':members,'domains':sorted({x['domain'] for x in members}),'methods':sorted(methods[gid]),'exact_families':exact,'article_count':len(ids),'ready_count':sum(x['body']['state']=='ready' for x in members),'latest_id':max(ids),'latest_published_at':max((articles[i][0].published_at for i in ids if articles[i][0].published_at),default=None)})
+    result.sort(key=lambda x:(x['article_count'],str(x['latest_published_at'] or ''),x['latest_id']) if sort=='largest' else (str(x['latest_published_at'] or ''),x['latest_id']),reverse=True)
+    return {'items':result[offset:offset+limit],'total':len(result),'offset':offset,'limit':limit,'summary':{'groups':sum(len(x)>1 for x in groups.values()),'articles_in_groups':len(all_group_articles),'domains':len(all_domains),'archive_articles':len(articles),'checked_bodies':sum(c is not None and c.state=='ready' for a,s,c in articles.values())},'domain_options':sorted(all_domains),'freshness':freshness,'scope':('Сүүлийн 48 цагт нийтэлсэн мэдээнүүд. Нийтэлсэн огноогүй, ирээдүйн болон хуучин мэдээ орохгүй. ' if freshness=='48h' else 'Архивын хүрээнд. ')+'Ижил гарчиг, одоогийн эхийн хэш, гарчиг/хураангуйн үгийн давхцлын холбоосоор бүлэглэв. Бүлэгт хамт байх нь бүх хосын бүтэн эх ижил гэсэн үг биш. Уншаагүй эх, илрээгүй холбоос үлдэж болно.'}

@@ -52,13 +52,21 @@ def install_routes(app, admin, tasks):
         return save_donation(db,data)
 
     @router.get('/research')
-    def investigate(q:str=Query(...,min_length=1,max_length=200),domain:str=Query('',max_length=253),category:str=Query('',pattern='^(|news|regional|business|broadcast|official)$'),date_from:date|None=None,date_to:date|None=None,date_field:str=Query('discovered',pattern='^(published|discovered)$'),offset:int=Query(0,ge=0),limit:int=Query(20,ge=1,le=50),db:DB=Depends(get_db)):
+    def investigate(freshness:str=Query('48h',pattern='^(48h|all)$'),q:str=Query(...,min_length=1,max_length=200),domain:str=Query('',max_length=253),category:str=Query('',pattern='^(|news|regional|business|broadcast|official)$'),date_from:date|None=None,date_to:date|None=None,date_field:str=Query('discovered',pattern='^(published|discovered)$'),offset:int=Query(0,ge=0),limit:int=Query(20,ge=1,le=50),db:DB=Depends(get_db)):
         from .research import research
-        return research(db,q,domain,category,date_from,date_to,date_field,offset,limit)
+        return research(db,q,domain,category,date_from,date_to,date_field,offset,limit,freshness=freshness)
 
     @router.get('/reports')
-    def list_reports(offset: int=Query(0,ge=0),limit: int=Query(20,ge=1,le=100),db: DB=Depends(get_db)):
+    def list_reports(freshness:str=Query('48h',pattern='^(48h|all)$'),offset: int=Query(0,ge=0),limit: int=Query(20,ge=1,le=100),db: DB=Depends(get_db)):
         condition=PublicReport.state.in_(['published','withdrawn'])
+        if freshness=='48h':
+            from .search_filters import fresh
+            recent=set(db.scalars(fresh(select(Article.id),db,'48h')))
+            eligible=[]
+            for rid,scope in db.execute(select(PublicReport.id,PublicReport.body['scope']).where(condition)):
+                ids=set((scope or {}).get('article_ids',[]))
+                if ids and ids.issubset(recent):eligible.append(rid)
+            condition=and_(condition,PublicReport.id.in_(eligible))
         rows=list(db.scalars(select(PublicReport).where(condition).order_by(PublicReport.id.desc()).offset(offset).limit(limit)))
         return {'items':[{'id':r.id,'event_id':r.event_id,'title':redact(r.title),'revision':r.revision,'state':r.state,'finding':r.finding,'created_at':r.created_at,'reviewed_at':r.reviewed_at,'correction_pending':r.correction_pending} for r in rows],'total':db.scalar(select(func.count()).select_from(PublicReport).where(condition)),'offset':offset,'limit':limit}
 
@@ -135,7 +143,7 @@ def install_routes(app, admin, tasks):
 
     @router.get('/events/{id}/graph')
     def graph(id:int,db:DB=Depends(get_db)):
-        try:return evidence_graph(db,id)
+        try:return evidence_graph(db,id,freshness='48h')
         except ValueError as exc:raise HTTPException(404,str(exc))
 
     @router.get('/articles/{id}/analysis')
@@ -145,7 +153,7 @@ def install_routes(app, admin, tasks):
         version=db.scalar(select(ArticleVersion).where(ArticleVersion.article_id==id,ArticleVersion.version==article.version))
         runs=list(db.scalars(select(AnalysisRun).where(AnalysisRun.article_id==id,AnalysisRun.article_version_id==version.id).order_by(AnalysisRun.id.desc()).limit(20))) if version else []
         from .connections import connections
-        linked=connections(db,article)
+        linked=connections(db,article,freshness='48h')
         pending=settings.ai_enabled and article.ai_hash!=model_hash(article)
         if settings.ai_enabled:runs=[r for r in runs if r.model==settings.ollama_model and r.prompt_version==PROMPT_VERSION]
         status='awaiting_ai' if pending and article.analysis_status in ('metadata_only','lexical_only','pending') else article.analysis_status
@@ -161,9 +169,9 @@ def install_routes(app, admin, tasks):
         return Response(raw,media_type=mime,headers={'Cache-Control':'public, max-age=86400','X-Content-Type-Options':'nosniff'})
 
     @router.get('/comparison/groups')
-    def grouped_comparison(q:str=Query('',max_length=200),domain:str=Query('',max_length=253),kind:str=Query('all',pattern='^(all|exact|cross_site)$'),sort:str=Query('newest',pattern='^(newest|largest)$'),offset:int=Query(0,ge=0),limit:int=Query(12,ge=1,le=30),db:DB=Depends(get_db)):
+    def grouped_comparison(freshness:str=Query('48h',pattern='^(48h|all)$'),q:str=Query('',max_length=200),domain:str=Query('',max_length=253),kind:str=Query('all',pattern='^(all|exact|cross_site)$'),sort:str=Query('newest',pattern='^(newest|largest)$'),offset:int=Query(0,ge=0),limit:int=Query(12,ge=1,le=30),db:DB=Depends(get_db)):
         from .comparison_index import comparison_groups
-        return comparison_groups(db,q,domain,kind,offset,limit,sort)
+        return comparison_groups(db,q,domain,kind,offset,limit,sort,freshness)
 
     @router.get('/comparison/status')
     def comparison_status(db:DB=Depends(get_db)):
@@ -176,7 +184,7 @@ def install_routes(app, admin, tasks):
         if article is None:raise HTTPException(404,'Article not found')
         if other_id is not None and (other_id==id or db.get(Article,other_id) is None):raise HTTPException(422,'Choose two distinct existing articles')
         from .body_checks import compare_archive,JOBS
-        return {**compare_archive(db,article,other_id),'running':id in JOBS}
+        return {**compare_archive(db,article,other_id,freshness='48h' if other_id is None else 'all'),'running':id in JOBS}
 
     body_requests={}
     @router.post('/articles/{id}/content-check',status_code=202)
@@ -210,7 +218,7 @@ def install_routes(app, admin, tasks):
         return {'status':'accepted','status_url':'/api/v1/system/status'}
 
     @router.get('/semantic-search')
-    async def semantic_search(freshness: str = Query('all',pattern='^(all|48h|7d)$'), match: str = Query('phrase',pattern='^(phrase|all|any)$'), field: str = Query('all',pattern='^(all|title|excerpt|body)$'), exclude: str = Query('',max_length=200), analysis: str = Query('',pattern='^(|complete|pending|unavailable)$'), body: str = Query('',pattern='^(|ready|unread)$'), publication: str = Query('',pattern='^(|known|unknown)$'), q:str=Query(...,min_length=1,max_length=200),domain:str=Query('',max_length=253),source_id:int|None=Query(None,gt=0),date_from:date|None=None,date_to:date|None=None,date_field:str=Query('published',pattern='^(published|discovered)$'),category:str=Query('',pattern='^(|news|regional|business|broadcast|official)$'),offset:int=Query(0,ge=0),limit:int=Query(20,ge=1,le=100),db:DB=Depends(get_db)):
+    async def semantic_search(freshness: str = Query('48h',pattern='^(all|48h|7d)$'), match: str = Query('phrase',pattern='^(phrase|all|any)$'), field: str = Query('all',pattern='^(all|title|excerpt|body)$'), exclude: str = Query('',max_length=200), analysis: str = Query('',pattern='^(|complete|pending|unavailable)$'), body: str = Query('',pattern='^(|ready|unread)$'), publication: str = Query('',pattern='^(|known|unknown)$'), q:str=Query(...,min_length=1,max_length=200),domain:str=Query('',max_length=253),source_id:int|None=Query(None,gt=0),date_from:date|None=None,date_to:date|None=None,date_field:str=Query('published',pattern='^(published|discovered)$'),category:str=Query('',pattern='^(|news|regional|business|broadcast|official)$'),offset:int=Query(0,ge=0),limit:int=Query(20,ge=1,le=100),db:DB=Depends(get_db)):
         if not q.strip():raise HTTPException(422,'Query is required')
         from .search_filters import scope, advanced, fresh
         # Validate even when the local AI is unavailable.
@@ -326,3 +334,4 @@ def install_routes(app, admin, tasks):
         return {'status':'accepted','domain':data.domain,'status_url':'/api/v1/system/status'}
 
     app.include_router(router)
+

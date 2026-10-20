@@ -1,3 +1,4 @@
+from app.models import now
 import asyncio,json
 from sqlalchemy import select
 from sqlalchemy.orm import sessionmaker
@@ -15,7 +16,7 @@ def html(body=BODY,label=''):
 def seed(db,active=True):
     ss=[Source(name='iKon fixture',endpoint='https://ikon.mn/rss',active=active),Source(name='GoGo fixture',endpoint='https://gogo.mn/rss',active=active)]
     db.add_all(ss);db.flush()
-    for i,s in enumerate(ss):ingest(db,s,[{'url':s.endpoint.replace('rss','news/fixture'),'title':'Улсын төсвийн шинэ тайлан нийтлэгдлээ' if not i else 'Засгийн газар төсвийн мэдээллээ танилцуулав','excerpt':'','published_at':None,'updated_at':None}])
+    for i,s in enumerate(ss):ingest(db,s,[{'url':s.endpoint.replace('rss','news/fixture'),'title':'Улсын төсвийн шинэ тайлан нийтлэгдлээ' if not i else 'Засгийн газар төсвийн мэдээллээ танилцуулав','excerpt':'','published_at':now(),'updated_at':None}])
     db.commit();return list(db.scalars(select(Article).order_by(Article.id)))
 
 def test_body_container_and_jsonld_graph():
@@ -120,15 +121,15 @@ def test_comparison_groups_equal_body_changed_headline_filters_and_paging(db,cli
     rows=seed(db);monkeypatch.setattr(bc,'Session',sessionmaker(db.bind,expire_on_commit=False))
     async def fetch(url):return html()
     for a in rows:asyncio.run(bc.check_article(a.id,fetch))
-    d=client.get('/api/v1/comparison/groups?kind=exact&domain=ikon.mn&limit=1').json()
+    d=client.get('/api/v1/comparison/groups?freshness=all&kind=exact&domain=ikon.mn&limit=1').json()
     assert d['total']==1 and len(d['items'])==1
     g=d['items'][0]
     assert g['article_count']==2 and g['exact_families']==[[2,1]]
     assert g['domains']==['gogo.mn','ikon.mn'] and g['ready_count']==2
-    assert client.get('/api/v1/comparison/groups?offset=1&limit=1').json()['items']==[]
-    assert client.get('/api/v1/comparison/groups?q=not-present').json()['total']==0
+    assert client.get('/api/v1/comparison/groups?freshness=all&offset=1&limit=1').json()['items']==[]
+    assert client.get('/api/v1/comparison/groups?freshness=all&q=not-present').json()['total']==0
     c=db.get(ArticleBodyCheck,rows[1].id);c.data={**c.data,'adapter':'old-adapter'};db.commit()
-    assert client.get('/api/v1/comparison/groups?kind=exact').json()['total']==0
+    assert client.get('/api/v1/comparison/groups?freshness=all&kind=exact').json()['total']==0
 
 def test_explicit_pair_shows_unrelated_and_unread_instead_of_omitting(db,client,monkeypatch):
     rows=seed(db)
@@ -144,11 +145,11 @@ def test_explicit_pair_shows_unrelated_and_unread_instead_of_omitting(db,client,
 
 def test_groups_titles_are_not_full_body_verdicts(db,client):
     rows=seed(db);rows[1].title=rows[0].title;db.commit()
-    d=client.get('/api/v1/comparison/groups?kind=cross_site').json()
+    d=client.get('/api/v1/comparison/groups?freshness=all&kind=cross_site').json()
     assert d['total']==1
     assert d['items'][0]['exact_families']==[] and d['items'][0]['ready_count']==0
     assert 'title_equal' in d['items'][0]['methods']
-    assert client.get('/api/v1/comparison/groups?kind=exact').json()['total']==0
+    assert client.get('/api/v1/comparison/groups?freshness=all&kind=exact').json()['total']==0
 
 
 def test_publisher_layouts_exclude_related_cards():
@@ -192,3 +193,38 @@ def test_improved_reader_retries_old_no_body_without_invalidating_ready(db,monke
     assert asyncio.run(bc.check_article(rows[0].id,readable))['state']=='ready'
     async def never(url):raise AssertionError('Valid ready caches stay usable')
     assert asyncio.run(bc.check_article(rows[0].id,never))['cached']
+
+def test_default_groups_exclude_old_unknown_future_and_newly_collected_old_news(db,client):
+    from datetime import timedelta,datetime,timezone
+    from app.models import now
+    rows=seed(db)
+    for a in rows:a.title='Монгол Улсын шинэ төсвийн мэдээ';a.published_at=now()-timedelta(hours=1)
+    for i,published in enumerate([datetime(2023,1,1,tzinfo=timezone.utc),now()-timedelta(hours=49),None,now()+timedelta(hours=1)]):
+        db.add(Article(source_id=rows[0].source_id,url=f'https://ikon.mn/old-fixture-{i}',title=rows[0].title,excerpt='',text_hash=str(i)*64,published_at=published,first_seen_at=now()))
+    db.commit()
+    d=client.get('/api/v1/comparison/groups').json()
+    assert d['freshness']=='48h' and d['total']==1
+    assert {m['id'] for m in d['items'][0]['members']}=={a.id for a in rows}
+    assert d['items'][0]['article_count']==2 and d['summary']['archive_articles']==2
+    rows[1].published_at=now()-timedelta(days=4);db.commit()
+    assert client.get('/api/v1/comparison/groups').json()['total']==0
+
+def test_public_default_lists_share_recent_window(db,client,monkeypatch):
+    from datetime import timedelta
+    from app.models import now,Event,EventArticle
+    from app.config import settings
+    monkeypatch.setattr(settings,'ai_enabled',False)
+    rows=seed(db)
+    for a in rows:a.title='Монгол Улсын шинэ төсвийн мэдээ';a.published_at=now()-timedelta(hours=1)
+    old=Article(source_id=rows[0].source_id,url='https://ikon.mn/old-2023',title=rows[0].title,excerpt='',text_hash='x'*64,published_at=now()-timedelta(days=1000));db.add(old);db.flush()
+    event=Event(title='Шинэ ба хуучин мэдээний тест');db.add(event);db.flush()
+    for a in [rows[0],old]:db.add(EventArticle(event_id=event.id,article_id=a.id))
+    for a in rows:db.scalar(select(ArticleVersion).where(ArticleVersion.article_id==a.id)).title=a.title
+    db.add(ArticleVersion(article_id=old.id,version=1,title=old.title,excerpt='',text_hash=old.text_hash))
+    db.commit()
+    assert {a['id'] for a in client.get('/api/v1/articles').json()['items']}=={a.id for a in rows}
+    graph=client.get(f'/api/v1/events/{event.id}/graph').json()
+    assert f'article:{old.id}' not in {n['id'] for n in graph['nodes']}
+    assert {a['id'] for a in client.get(f'/api/v1/events/{event.id}/timeline').json()['items']}=={rows[0].id}
+    for path in ['/api/v1/research?q=Монгол','/api/v1/semantic-search?q=Монгол']:
+        assert client.get(path).json()['total']==2

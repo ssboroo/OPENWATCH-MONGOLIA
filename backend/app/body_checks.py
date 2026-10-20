@@ -142,14 +142,15 @@ def public_check(c):
     d=c.data
     return {'state':c.state,'checked_at':c.checked_at,'body_hash':c.body_hash,'scope':d.get('scope'),'word_count':d.get('word_count'),'characters':d.get('characters'),'truncated':d.get('truncated',False),'lead':d.get('lead',''),'disclosure':'explicit_label_found' if d.get('disclosures') else 'not_observed' if c.state=='ready' else 'unknown','disclosures':d.get('disclosures',[]),'promotion_signals':d.get('promotion_signals',[]),'source_credits':d.get('source_credits',[]),'reason':d.get('reason'),'version_id':c.article_version_id}
 
-def compare_archive(db,a,other_id=None):
+def compare_archive(db,a,other_id=None,freshness='all'):
+    from .search_filters import fresh
     own=current_check(db,a);own_data=own.data if own and own.state=='ready' else None
     title=words(a.title)
     query=select(Article,Source,ArticleBodyCheck,ArticleVersion.version).join(Source,Article.source_id==Source.id).outerjoin(ArticleBodyCheck,ArticleBodyCheck.article_id==Article.id).outerjoin(ArticleVersion,ArticleVersion.id==ArticleBodyCheck.article_version_id).where(Article.id!=a.id)
     if other_id is not None:query=query.where(Article.id==other_id)
-    rows=list(db.execute(query.order_by(Article.id.desc()).limit(5000)))
+    rows=list(db.execute(fresh(query,db,freshness).order_by(Article.id.desc()).limit(5000)))
     if other_id is None and own and own.body_hash:
-        extra=db.execute(select(Article,Source,ArticleBodyCheck,ArticleVersion.version).join(Source,Article.source_id==Source.id).join(ArticleBodyCheck,ArticleBodyCheck.article_id==Article.id).join(ArticleVersion,ArticleVersion.id==ArticleBodyCheck.article_version_id).where(Article.id!=a.id,ArticleBodyCheck.body_hash==own.body_hash).limit(50))
+        extra=db.execute(fresh(select(Article,Source,ArticleBodyCheck,ArticleVersion.version).join(Source,Article.source_id==Source.id).join(ArticleBodyCheck,ArticleBodyCheck.article_id==Article.id).join(ArticleVersion,ArticleVersion.id==ArticleBodyCheck.article_version_id).where(Article.id!=a.id,ArticleBodyCheck.body_hash==own.body_hash),db,freshness).limit(50))
         seen={x[0].id for x in rows};rows.extend(x for x in extra if x[0].id not in seen)
     result=[];ready=0
     for other,source,c,body_version in rows:

@@ -2,11 +2,11 @@
 from sqlalchemy import select, func, or_
 from .models import Article, ArticleVersion, Source, now
 from .evidence import PATTERNS, privacy_flags, redact
-from .search_filters import scope
+from .search_filters import scope, fresh
 
 LIMITATION = 'Архивт хадгалсан гарчиг, хураангуйн хайлт. Эшлэл нь нийтлэгчийн мэдэгдэл болохоос үнэн зөвийн баталгаа биш. Өөр сайт дээр давтагдсан нь бие даасан баталгаа биш. Тоон ялгааг автоматаар зөрчил гэж дүгнээгүй. Бүтэн эх болон анхны баримтыг эх холбоосоор нягтална.'
 
-def research(db, q, domain='', category='', date_from=None, date_to=None, date_field='discovered', offset=0, limit=20):
+def research(db, q, domain='', category='', date_from=None, date_to=None, date_field='discovered', offset=0, limit=20,freshness='all'):
     from fastapi import HTTPException
     terms=list(dict.fromkeys(q.split()))
     if not terms or len(terms)>12:raise HTTPException(422,'Use 1–12 search terms')
@@ -14,7 +14,7 @@ def research(db, q, domain='', category='', date_from=None, date_to=None, date_f
     for term in terms:
         escaped=term.replace('\\','\\\\').replace('%','\\%').replace('_','\\_')
         stmt=stmt.where(or_(ArticleVersion.title.ilike('%'+escaped+'%',escape='\\'),ArticleVersion.excerpt.ilike('%'+escaped+'%',escape='\\')))
-    stmt=scope(stmt,db,domain=domain,category=category,date_from=date_from,date_to=date_to,date_field=date_field)
+    stmt=fresh(scope(stmt,db,domain=domain,category=category,date_from=date_from,date_to=date_to,date_field=date_field),db,freshness)
     total=db.scalar(select(func.count()).select_from(stmt.subquery()))
     items=[]
     for a,v,s in db.execute(stmt.order_by(Article.first_seen_at.desc(),Article.id.desc()).offset(offset).limit(limit)):

@@ -157,7 +157,7 @@ def source_detail(id: int, db: DB = Depends(get_db)):
 
 @app.get('/api/v1/search')
 @app.get('/api/v1/articles')
-def articles(freshness: str = Query('all',pattern='^(all|48h|7d)$'), match: str = Query('phrase',pattern='^(phrase|all|any)$'), field: str = Query('all',pattern='^(all|title|excerpt|body)$'), exclude: str = Query('',max_length=200), analysis: str = Query('',pattern='^(|complete|pending|unavailable)$'), body: str = Query('',pattern='^(|ready|unread)$'), publication: str = Query('',pattern='^(|known|unknown)$'), q: str = Query('', max_length=200), mode: str = Query('lexical',pattern='^(lexical|fts)$'), domain: str = Query('', max_length=253), source_id: int | None = Query(None,gt=0), date_from: date | None = None, date_to: date | None = None, date_field: str = Query('published',pattern='^(published|discovered)$'), category: str = Query('',pattern='^(|news|regional|business|broadcast|official)$'), sort: str = Query('newest',pattern='^(newest|oldest|published_newest|relevance)$'), offset: int = Query(0, ge=0), limit: int = Query(30, ge=1, le=100), db: DB = Depends(get_db)):
+def articles(freshness: str = Query('48h',pattern='^(all|48h|7d)$'), match: str = Query('phrase',pattern='^(phrase|all|any)$'), field: str = Query('all',pattern='^(all|title|excerpt|body)$'), exclude: str = Query('',max_length=200), analysis: str = Query('',pattern='^(|complete|pending|unavailable)$'), body: str = Query('',pattern='^(|ready|unread)$'), publication: str = Query('',pattern='^(|known|unknown)$'), q: str = Query('', max_length=200), mode: str = Query('lexical',pattern='^(lexical|fts)$'), domain: str = Query('', max_length=253), source_id: int | None = Query(None,gt=0), date_from: date | None = None, date_to: date | None = None, date_field: str = Query('published',pattern='^(published|discovered)$'), category: str = Query('',pattern='^(|news|regional|business|broadcast|official)$'), sort: str = Query('newest',pattern='^(newest|oldest|published_newest|relevance)$'), offset: int = Query(0, ge=0), limit: int = Query(30, ge=1, le=100), db: DB = Depends(get_db)):
     from .search_filters import scope, ordered, advanced, fresh
     q=q.strip()
     stmt = fresh(scope(select(Article),db,domain,source_id,date_from,date_to,date_field,category),db,freshness)
@@ -202,7 +202,9 @@ def versions(id: int, db: DB = Depends(get_db), offset: int = Query(0, ge=0), li
 @app.get('/api/v1/clusters')
 @app.get('/api/v1/events')
 def events(db: DB = Depends(get_db), offset: int = Query(0, ge=0), limit: int = Query(30, ge=1, le=100)):
-    return page(db, select(Event).where(Event.merged_into_id.is_(None)).order_by(Event.first_seen_at.desc(), Event.id.desc()), offset, limit)
+    from .search_filters import fresh
+    recent=fresh(select(EventArticle.event_id).join(Article,Article.id==EventArticle.article_id),db,'48h')
+    return page(db, select(Event).where(Event.merged_into_id.is_(None),Event.id.in_(recent)).order_by(Event.first_seen_at.desc(), Event.id.desc()), offset, limit)
 
 @app.get('/api/v1/events/{id}')
 def event_detail(id: int, db: DB = Depends(get_db)):
@@ -218,7 +220,8 @@ def timeline(id: int, db: DB = Depends(get_db)):
     event=canonical_event(db,id)
     if event is None:raise HTTPException(404,'Not found')
     id=event.id
-    rows = list(db.scalars(select(Article).join(EventArticle, Article.id == EventArticle.article_id).where(EventArticle.event_id == id).order_by(Article.published_at.asc().nulls_last(), Article.id)))
+    from .search_filters import fresh
+    rows = list(db.scalars(fresh(select(Article).join(EventArticle, Article.id == EventArticle.article_id).where(EventArticle.event_id == id).order_by(Article.published_at.asc().nulls_last(), Article.id),db,'48h')))
     from .serialization import article_data
     return {'items':[article_data(a) for a in rows],'timezone':'UTC','limitation':'Хамгийн эрт бүртгэгдсэн нийтлэл нь анхны нийтлэгч гэдгийг батлахгүй.'}
 
@@ -232,8 +235,13 @@ def event_sources(id: int, db: DB = Depends(get_db)):
 
 @app.get('/api/v1/statistics')
 def statistics(db: DB = Depends(get_db)):
-    result={name:db.scalar(select(func.count()).select_from(model)) for name,model in [('sources',Source),('articles',Article),('events',Event),('matches',SimilarityMatch)]}
-    result['events']=db.scalar(select(func.count()).select_from(Event).where(Event.merged_into_id.is_(None)))
+    from .search_filters import fresh
+    recent=fresh(select(Article.id),db,'48h')
+    event_ids=select(EventArticle.event_id).where(EventArticle.article_id.in_(recent))
+    result={'sources':db.scalar(select(func.count(func.distinct(Article.source_id))).where(Article.id.in_(recent))),
+            'articles':db.scalar(select(func.count()).select_from(Article).where(Article.id.in_(recent))),
+            'events':db.scalar(select(func.count()).select_from(Event).where(Event.merged_into_id.is_(None),Event.id.in_(event_ids))),
+            'matches':db.scalar(select(func.count()).select_from(SimilarityMatch).where(SimilarityMatch.article_id.in_(recent),SimilarityMatch.other_id.in_(recent)))}
     return result
 
 @app.get('/api/v1/collector/status')
@@ -293,3 +301,4 @@ def metrics(db: DB=Depends(get_db)):
         'openwatch_ai_fallback_articles':db.scalar(select(func.count()).select_from(Article).where(Article.analysis_status=='ai_unavailable')),
     }
     return PlainTextResponse(''.join(f'# TYPE {name} gauge\n{name} {value}\n' for name,value in values.items()),media_type='text/plain; version=0.0.4')
+

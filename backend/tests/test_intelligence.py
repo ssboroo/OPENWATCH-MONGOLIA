@@ -1,3 +1,4 @@
+from app.models import now
 import asyncio
 from sqlalchemy import select
 from sqlalchemy.orm import sessionmaker
@@ -17,7 +18,7 @@ class Contract:
 
 def seed(db,n=2):
     s=Source(name='Headline fixture',endpoint='https://ikon.mn/');db.add(s);db.flush()
-    for i in range(n):ingest(db,s,[{'url':f'https://ikon.mn/n/{i}','title':f'Монголбанк бодлогын хүүг хэлэлцэж байна {i}','excerpt':'','published_at':None,'updated_at':None,'source_metadata':{'metadata_only':True}}])
+    for i in range(n):ingest(db,s,[{'url':f'https://ikon.mn/n/{i}','title':f'Монголбанк бодлогын хүүг хэлэлцэж байна {i}','excerpt':'','published_at':now(),'updated_at':None,'source_metadata':{'metadata_only':True}}])
     db.commit()
 
 def test_headline_ai_backfill_fairness_and_source_cited_connections(db,client,monkeypatch):

@@ -1,0 +1,15 @@
+const assert=require('node:assert/strict');
+const {validate,empty,csvCell,exportCsv,numbers}=require(process.argv[2]);
+const article={id:1,title:'Монгол мэдээ',url:'https://example.mn/story',excerpt:'20 сая төгрөг',published_at:'2026-10-20T01:00:00Z',saved_at:'2026-10-20T02:00:00Z',folder:'Ерөнхий',note:'эшлэл, "тайлбар"'};
+assert.deepEqual(validate(empty()),empty());
+assert.equal(validate({...empty(),articles:[article,article]}).articles.length,1);
+for(const url of ['javascript:alert(1)','https://','https://user:pass@example.mn'])assert.throws(()=>validate({...empty(),articles:[{...article,url}]}));
+assert.throws(()=>validate({...empty(),articles:Array(501).fill(article)}));
+assert.throws(()=>validate({...empty(),topics:Array(13).fill({})}));
+assert.equal(validate({...empty(),articles:[{...article,published_at:{bad:true}}]}).articles[0].published_at,null);
+assert.equal(validate({...empty(),articles:[{...article,folder:'missing'}]}).articles[0].folder,'Ерөнхий');
+for(const payload of ['=1+1',' +cmd','@SUM(A1)','-2'])assert.equal(csvCell(payload).slice(0,2),'"\'');
+assert.equal(csvCell('эшлэл, "тест"'),'"эшлэл, ""тест"""');
+const csv=exportCsv([article]);assert.ok(csv.startsWith('\ufeff'));assert.ok(csv.includes('https://example.mn/story'));assert.ok(csv.includes('2026-10-20T02:00:00Z'));
+assert.deepEqual(numbers('20 сая төгрөг, 20 сая төгрөг; 3.5%'),['20 сая','3.5%']);
+console.log('Research storage: URL validation, limits, deduplication, dates, CSV safety and Mongolian text passed.');

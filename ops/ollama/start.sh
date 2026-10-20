@@ -22,9 +22,17 @@ for model in "${GENERATION_MODEL:-qwen3:8b}" "${EMBEDDING_MODEL:-bge-m3}"; do
   echo "OPENWATCH downloading model: $model"
   ollama pull "$model" > /tmp/model-pull.log 2>&1 &
   pull_pid=$!
+  elapsed=0
   while kill -0 "$pull_pid" 2>/dev/null; do
-    echo "OPENWATCH model download in progress: $model"
+    percent=$(tail -c 4000 /tmp/model-pull.log | grep -oE '[0-9]+%' | tail -n 1)
+    echo "OPENWATCH model download in progress: $model ${percent:-starting}"
+    if [ "$elapsed" -ge "${MAX_PULL_SECONDS:-1200}" ]; then
+      echo "OPENWATCH model download deadline reached; cached parts will resume on restart"
+      kill "$pull_pid" 2>/dev/null || true
+      exit 1
+    fi
     sleep 10
+    elapsed=$((elapsed+10))
   done
   if ! wait "$pull_pid"; then tail -c 1000 /tmp/model-pull.log; exit 1; fi
   echo "OPENWATCH model installed: $model"

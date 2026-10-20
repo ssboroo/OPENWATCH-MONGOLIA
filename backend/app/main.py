@@ -41,12 +41,19 @@ async def limits(request: Request, call_next):
     for old in list(buckets):
         if not buckets[old] or buckets[old][-1] < t-60:
             del buckets[old]
-    q = buckets[key]
-    while q and q[0] < t-60:
-        q.popleft()
-    if len(q) >= 120:
-        return JSONResponse({'detail':'Rate limit exceeded'}, status_code=429, headers={'Retry-After':'60'})
-    q.append(t)
+    # Publisher assets have their own bounded budget; browsing logos cannot
+    # exhaust article/search reads. Health probes do not consume either budget.
+    asset = request.method in ('GET','HEAD') and request.url.path.startswith('/api/v1/source-icons/')
+    if request.url.path != '/health':
+        scope='icons' if asset else 'api'
+        q = buckets[(key,scope)]
+        while q and q[0] < t-60:
+            q.popleft()
+        if len(q) >= (600 if asset else 120):
+            import math
+            retry=max(1,math.ceil(q[0]+60-t))
+            return JSONResponse({'detail':'Rate limit exceeded','scope':scope}, status_code=429, headers={'Retry-After':str(retry),'X-RateLimit-Scope':scope})
+        q.append(t)
     if request.method=='POST' and request.url.path.endswith('/corrections'):
         for old in list(submission_buckets):
             if not submission_buckets[old] or submission_buckets[old][-1]<t-3600:del submission_buckets[old]
@@ -55,6 +62,7 @@ async def limits(request: Request, call_next):
         if len(history)>=5:return JSONResponse({'detail':'Correction rate limit exceeded'},status_code=429,headers={'Retry-After':'3600'})
         history.append(t)
     response = await call_next(request)
+    response.headers['X-RateLimit-Scope'] = 'health' if request.url.path == '/health' else 'icons' if asset else 'api'
     response.headers['X-Content-Type-Options'] = 'nosniff'
     response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'
     return response

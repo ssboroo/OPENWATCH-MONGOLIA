@@ -1,4 +1,5 @@
 'use client';
+import {apiFetch} from './apiClient';
 import {useEffect,useState} from 'react';
 import ResearchWorkspace from './ResearchWorkspace';
 import {Activity,ArrowUpRight,Network,RefreshCw} from 'lucide-react';
@@ -6,8 +7,8 @@ type Row=Record<string,any>;
 export {ArticleAnalysis} from './ArticleIntelligence';
 export default function EvidenceWorkspace(){
  const [events,setEvents]=useState<Row[]>([]),[id,setId]=useState(''),[data,setData]=useState<Row|null>(null),[selected,setSelected]=useState(''),[error,setError]=useState('');
- useEffect(()=>{fetch('/api/v1/events?limit=100').then(r=>r.json()).then(d=>{setEvents(d.items||[]);if(d.items?.length)setId(String(d.items[0].id))}).catch(()=>setError('Үйл явдлуудыг ачаалж чадсангүй.'))},[]);
- useEffect(()=>{if(!id)return;const c=new AbortController();setData(null);setSelected('');setError('');fetch(`/api/v1/events/${id}/graph`,{signal:c.signal}).then(async r=>{if(!r.ok)throw Error('Граф ачаалж чадсангүй.');return r.json()}).then(setData).catch(e=>{if(e.name!=='AbortError')setError(e.message)});return()=>c.abort()},[id]);
+ useEffect(()=>{apiFetch('/api/v1/events?limit=100').then(r=>r.json()).then(d=>{setEvents(d.items||[]);if(d.items?.length)setId(String(d.items[0].id))}).catch(()=>setError('Үйл явдлуудыг ачаалж чадсангүй.'))},[]);
+ useEffect(()=>{if(!id)return;const c=new AbortController();setData(null);setSelected('');setError('');apiFetch(`/api/v1/events/${id}/graph`,{signal:c.signal}).then(async r=>{if(!r.ok)throw Error('Граф ачаалж чадсангүй.');return r.json()}).then(setData).catch(e=>{if(e.name!=='AbortError')setError(e.message)});return()=>c.abort()},[id]);
  const nodes=(data?.nodes||[]).slice(0,70);const positions:Row={};const counts=[0,0,0,0];
  nodes.forEach((n:Row)=>{const col=n.type==='publisher'?0:n.type==='article'?1:n.type==='event'?2:3;positions[n.id]={x:col*245+20,y:65+counts[col]++*73}});
  const height=Math.max(350,Math.max(...counts)*73+110);
@@ -16,6 +17,6 @@ export default function EvidenceWorkspace(){
 }
 export function StatusWorkspace(){
  const [data,setData]=useState<Row|null>(null),[error,setError]=useState('');
- useEffect(()=>{const c=new AbortController();const load=()=>fetch('/api/v1/system/status',{signal:c.signal}).then(async r=>{if(!r.ok)throw Error('Системийн төлөв ачаалж чадсангүй.');return r.json()}).then(setData).catch(e=>{if(e.name!=='AbortError')setError(e.message)});load();const timer=setInterval(load,30000);return()=>{clearInterval(timer);c.abort()}},[]);
+ useEffect(()=>{const c=new AbortController();const load=()=>apiFetch('/api/v1/system/status',{signal:c.signal}).then(async r=>{if(!r.ok)throw Error('Системийн төлөв ачаалж чадсангүй.');return r.json()}).then(setData).catch(e=>{if(e.name!=='AbortError')setError(e.message)});load();const timer=setInterval(()=>{if(document.visibilityState==='visible')load()},30000);return()=>{clearInterval(timer);c.abort()}},[]);
  return <section className="panel"><div className="panel-heading"><h2>Системийн ажиллагааны хяналт</h2><Activity size={18}/></div>{error&&<p className="error">{error}</p>}{data?<div className="workspace-padding"><div className="system-cards"><div><small>Worker heartbeat</small><strong>{data.worker_stale?'Хоцорсон / ажиллаагүй':'Хэвийн'}</strong></div><div><small>Локал AI</small><strong>{data.ai_enabled?`AI дууссан: ${data.ai_completed_articles??0} · утгын индекс: ${data.current_embeddings??0}`:'Үгийн шинжилгээ / AI унтраалттай'}</strong></div><div><small>Дискийн сул зай</small><strong>{(data.disk_free_ratio*100).toFixed(1)}%{data.disk_alert?' · Анхаарах':''}</strong></div><div><small>Хүлээгдэж буй залруулга</small><strong>{data.pending_corrections}</strong></div></div><h3>Боловсруулалтын төлөв</h3><div className="comparison-list">{Object.entries(data.analysis_counts||{}).map(([key,value])=><div key={key}><span>{key}</span><strong>{String(value)}</strong></div>)}</div><h3>Сүүлийн ажлууд</h3>{data.states?.map((s:Row)=><div className="graph-evidence" key={s.name}><strong>{s.name} · {s.value.status}</strong><small>{new Date(s.updated_at).toLocaleString('mn-MN')}</small></div>)}<p className="muted">Generation: {data.generation_model} · Embedding: {data.embedding_model}. Тохиргоо идэвхтэй байх нь model татагдсан эсвэл inference амжилттай гэсэн баталгаа биш.</p></div>:<div className="empty"><RefreshCw className="spin"/></div>}</section>
 }

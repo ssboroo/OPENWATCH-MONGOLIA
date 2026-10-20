@@ -1,4 +1,5 @@
 'use client';
+import {apiFetch} from './apiClient';
 import {useEffect,useState} from 'react';
 import {ArrowLeft,ArrowRight,ArrowUpRight,CheckCheck,Clock3,Filter,Globe2,Layers3,Search} from 'lucide-react';
 import PublicationTimeline from './PublicationTimeline';
@@ -6,7 +7,7 @@ import {chronology,duration,formatDate} from './chronology';
 import PairInspector,{SourceIcon,Row,date} from './PairInspector';
 export default function ComparisonExplorer(){
  const [data,setData]=useState<Row|null>(null),[error,setError]=useState(''),[loading,setLoading]=useState(true),[input,setInput]=useState(''),[q,setQ]=useState(''),[kind,setKind]=useState('all'),[domain,setDomain]=useState(''),[sort,setSort]=useState('newest'),[offset,setOffset]=useState(0),[selected,setSelected]=useState<Row|null>(null),[left,setLeft]=useState(0),[right,setRight]=useState(0),[refresh,setRefresh]=useState(0);
- useEffect(()=>{const c=new AbortController();setLoading(true);fetch('/api/v1/comparison/groups?'+new URLSearchParams({q,domain,kind,sort,offset:String(offset),limit:'12'}),{signal:c.signal,cache:'no-store'}).then(async r=>{if(!r.ok)throw Error('Бүлгүүдийг ачаалж чадсангүй.');return r.json()}).then(d=>{setData(d);setError('');setLoading(false)}).catch(e=>{if(e.name!=='AbortError'){setError(e.message);setLoading(false)}});return()=>c.abort()},[q,kind,domain,sort,offset,refresh]);
+ useEffect(()=>{const c=new AbortController();setLoading(true);apiFetch('/api/v1/comparison/groups?'+new URLSearchParams({q,domain,kind,sort,offset:String(offset),limit:'12'}),{signal:c.signal,cache:'no-store'}).then(async r=>{if(!r.ok)throw Error('Бүлгүүдийг ачаалж чадсангүй.');return r.json()}).then(d=>{setData(d);setError('');setLoading(false)}).catch(e=>{if(e.name!=='AbortError'){setError(e.message);setLoading(false)}});return()=>c.abort()},[q,kind,domain,sort,offset,refresh]);
  const open=(g:Row)=>{setSelected(g);const pair=g.exact_families[0]||g.members.slice(0,2).map((m:Row)=>m.id);setLeft(pair[0]);setRight(pair[1])};
  return <div className="cx-explorer"><section className="cx-hero"><div><span className="cx-eyebrow"><span/> CONTENT INTELLIGENCE / МОНГОЛ</span><h2>Нэг мэдээ.<br/><em>Хэдэн эх сурвалж?</em></h2><p>Аль сайтын ямар мэдээ ижил байгааг олж,<br/>эх сурвалжуудыг баримттай зэрэгцүүл.</p></div><div className="cx-hero-graphic" aria-hidden="true"><div><span>ЭХ 01</span><i/><i/><i/></div><CheckCheck size={28}/><div><span>ЭХ 02</span><i/><i/><i/></div><small>COMPARE · TRACE · UNDERSTAND</small></div></section>
  <div className="cx-overview">{[[Layers3,data?.summary.groups,'Холбоотой мэдээний бүлэг'],[CheckCheck,data?.summary.articles_in_groups,'Бүлгүүдэд орсон мэдээ'],[Globe2,data?.summary.domains,'Давхцал илэрсэн домэйн']].map(([Icon,n,label]:any)=><div key={label}><Icon size={20}/><strong>{n??'—'}</strong><span>{label}</span></div>)}</div>

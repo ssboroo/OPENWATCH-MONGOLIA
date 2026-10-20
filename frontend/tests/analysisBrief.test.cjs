@@ -6,7 +6,7 @@ let b=buildBrief(make([match('normalized_body_equal')]));
 assert.equal(b.exact,1);assert.equal(b.domains,2);assert.match(b.summary,/1 өөр нийтлэл/);assert.ok(b.unknowns.some(x=>x.includes('Хэн хэнээс хуулсан')));assert.ok(b.unknowns.some(x=>x.includes('цаг тодорхойгүй')));
 b=buildBrief(make([match('observed_body_equal')]));assert.equal(b.exact,0);assert.equal(b.partial,1);assert.match(b.summary,/Бүтэн эх ижил гэж дүгнээгүй/);
 b=buildBrief(make([match('title_only_candidate',{body:{state:'not_checked'}})],{state:'no_body'}));assert.equal(b.ready,0);assert.match(b.verdict,/гарчгийн/);assert.equal(b.exact,0);
-b=buildBrief(make([],{state:'no_body'}));assert.match(b.verdict,/хүрэлцэхгүй/);assert.equal(b.ready,0);
+b=buildBrief(make([],{state:'no_body'}));assert.match(b.verdict,/хүрэлцэхгүй/);assert.equal(b.ready,0);assert.ok(b.facts.some(x=>x.text.includes('шалгаж чадаагүй')));
 b=buildBrief(make([match('no_strong_match')]));assert.match(b.verdict,/илрээгүй/);assert.match(b.summary,/баталгаа биш/);
 const equalTime=make([match('normalized_body_equal')]);equalTime.published_at=equalTime.items[0].published_at;
 b=buildBrief(equalTime);assert.ok(b.facts.some(x=>x.text.includes('2 нийтлэл ижил хамгийн эрт цагтай')));

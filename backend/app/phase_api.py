@@ -210,9 +210,9 @@ def install_routes(app, admin, tasks):
         return {'status':'accepted','status_url':'/api/v1/system/status'}
 
     @router.get('/semantic-search')
-    async def semantic_search(match: str = Query('phrase',pattern='^(phrase|all|any)$'), field: str = Query('all',pattern='^(all|title|excerpt|body)$'), exclude: str = Query('',max_length=200), analysis: str = Query('',pattern='^(|complete|pending|unavailable)$'), body: str = Query('',pattern='^(|ready|unread)$'), publication: str = Query('',pattern='^(|known|unknown)$'), q:str=Query(...,min_length=1,max_length=200),domain:str=Query('',max_length=253),source_id:int|None=Query(None,gt=0),date_from:date|None=None,date_to:date|None=None,date_field:str=Query('published',pattern='^(published|discovered)$'),category:str=Query('',pattern='^(|news|regional|business|broadcast|official)$'),offset:int=Query(0,ge=0),limit:int=Query(20,ge=1,le=100),db:DB=Depends(get_db)):
+    async def semantic_search(freshness: str = Query('all',pattern='^(all|48h|7d)$'), match: str = Query('phrase',pattern='^(phrase|all|any)$'), field: str = Query('all',pattern='^(all|title|excerpt|body)$'), exclude: str = Query('',max_length=200), analysis: str = Query('',pattern='^(|complete|pending|unavailable)$'), body: str = Query('',pattern='^(|ready|unread)$'), publication: str = Query('',pattern='^(|known|unknown)$'), q:str=Query(...,min_length=1,max_length=200),domain:str=Query('',max_length=253),source_id:int|None=Query(None,gt=0),date_from:date|None=None,date_to:date|None=None,date_field:str=Query('published',pattern='^(published|discovered)$'),category:str=Query('',pattern='^(|news|regional|business|broadcast|official)$'),offset:int=Query(0,ge=0),limit:int=Query(20,ge=1,le=100),db:DB=Depends(get_db)):
         if not q.strip():raise HTTPException(422,'Query is required')
-        from .search_filters import scope, advanced
+        from .search_filters import scope, advanced, fresh
         # Validate even when the local AI is unavailable.
         scope(select(Article),db,domain,source_id,date_from,date_to,date_field,category)
         advanced(select(Article),db,'',match,field,exclude,analysis,body,publication)
@@ -220,7 +220,7 @@ def install_routes(app, admin, tasks):
             if not settings.ai_enabled:raise InferenceFailure('Local AI is disabled')
             vector=await Ollama().embed(q)
             stmt=select(ArticleEmbedding,Article).join(Article,Article.id==ArticleEmbedding.article_id).where(ArticleEmbedding.model==settings.embedding_model,ArticleEmbedding.text_hash==Article.text_hash)
-            stmt=scope(stmt,db,domain,source_id,date_from,date_to,date_field,category)
+            stmt=fresh(scope(stmt,db,domain,source_id,date_from,date_to,date_field,category),db,freshness)
             stmt=advanced(stmt,db,'',match,field,exclude,analysis,body,publication)
             if db.bind.dialect.name=='postgresql':
                 distance=ArticleEmbedding.vector.cosine_distance(vector)
@@ -233,7 +233,7 @@ def install_routes(app, admin, tasks):
         except InferenceFailure:
             # Preserve usable search while explicitly labeling the lexical fallback.
             stmt=advanced(select(Article),db,q,match,field)
-            stmt=scope(stmt,db,domain,source_id,date_from,date_to,date_field,category)
+            stmt=fresh(scope(stmt,db,domain,source_id,date_from,date_to,date_field,category),db,freshness)
             stmt=advanced(stmt,db,'',match,field,exclude,analysis,body,publication)
             total=db.scalar(select(func.count()).select_from(stmt.subquery()))
             from .serialization import article_data

@@ -64,3 +64,12 @@ def advanced(stmt, db, q='', match='phrase', field='all', exclude='', analysis='
             ArticleBodyCheck.state=='ready',ArticleBodyCheck.data['adapter'].as_string()==VERSION).correlate(Article).exists()
         stmt=stmt.where(ready if body=='ready' else ~ready)
     return stmt
+
+
+def fresh(stmt, db, freshness='all'):
+    """Use publication, never discovery, as the freshness proof."""
+    if freshness=='all':return stmt
+    from .models import now
+    current=now();cutoff=current-timedelta(hours=48 if freshness=='48h' else 168)
+    if db.bind.dialect.name=='sqlite':current=current.replace(tzinfo=None);cutoff=cutoff.replace(tzinfo=None)
+    return stmt.where(Article.published_at>=cutoff,Article.published_at<=current)

@@ -114,3 +114,16 @@ def test_read_body_lead_search_is_version_grounded(client,db):
     assert client.get('/api/v1/articles?q=Unique&field=all').json()['total']==1
     assert client.get('/api/v1/articles?q=Unique&field=title').json()['total']==0
     assert client.get('/api/v1/articles?q=Budget&exclude=Unique').json()['total']==3
+
+def test_freshness_uses_publication_not_newly_discovered(db):
+    from datetime import timedelta
+    from sqlalchemy import select
+    from app.models import Source,Article,now
+    from app.search_filters import fresh
+    s=Source(name='fresh-test',endpoint='https://ikon.mn/fresh-test');db.add(s);db.flush()
+    dates=[now()-timedelta(hours=1),now()-timedelta(days=3),now()-timedelta(days=1000),None,now()+timedelta(days=1)]
+    for i,d in enumerate(dates):db.add(Article(source_id=s.id,url=f'https://ikon.mn/fresh-test/{i}',title=str(i),excerpt='',text_hash=str(i)*64,published_at=d,first_seen_at=now()))
+    db.commit()
+    assert [a.title for a in db.scalars(fresh(select(Article),db,'48h'))]==['0']
+    assert {a.title for a in db.scalars(fresh(select(Article),db,'7d'))}=={'0','1'}
+    assert len(list(db.scalars(fresh(select(Article),db,'all'))))==5

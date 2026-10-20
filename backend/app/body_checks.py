@@ -13,6 +13,7 @@ from .catalog import domain_of
 from .clustering import utc
 
 VERSION='body-fingerprint-v2'
+READER_REVISION=3
 LIMIT=80000
 K=256
 LABELS={'сурталчилгаа','төлбөртэй мэдээ','төлбөртэй нийтлэл','хамтран бэлтгэв','sponsored','advertorial','paid content','paid partnership'}
@@ -23,7 +24,7 @@ def normalized(s):return ' '.join(unicodedata.normalize('NFKC',s).casefold().spl
 def words(s):return re.findall(r'\w+',normalized(s))
 def hash_text(s):return hashlib.sha256(s.encode()).hexdigest()
 
-def extract_body(raw,expected_title=''):
+def extract_body(raw,expected_title='',url=''):
     soup=BeautifulSoup(raw,'html.parser')
     bodies=[]
     for tag in soup.select('script[type="application/ld+json"]')[:20]:
@@ -38,6 +39,13 @@ def extract_body(raw,expected_title=''):
                 kinds=row.get('@type',[]);kinds=[kinds] if isinstance(kinds,str) else kinds
                 if isinstance(kinds,list) and any(k in ('NewsArticle','Article','ReportageNewsArticle') for k in kinds) and isinstance(row.get('articleBody'),str):bodies.append(BeautifulSoup(row['articleBody'],'html.parser').get_text(' ',strip=True))
         except (ValueError,TypeError):pass
+    # Site-specific public layouts are isolated from unrelated recommendation cards.
+    domain=domain_of(url) if url else ''
+    precise={'politic.mn':'.post--single .post--content','assa.mn':'.view__text','medee.mn':'#single-content .wordwrap'}
+    if domain=='gogo.mn' and not bodies:
+        from .publisher_state import gogo_body
+        state_body=gogo_body(soup,expected_title,normalized)
+        if state_body:bodies.append(state_body)
     disclosures=[]
     for tag in soup.select('meta[name="genre"],meta[property="article:section"],.article-label,.post-label,.entry-category,.article-category,.news-category')[:50]:
         label=' '.join((tag.get('content') or tag.get_text(' ',strip=True)).split())
@@ -45,7 +53,7 @@ def extract_body(raw,expected_title=''):
     for tag in soup.select('script,style,nav,header,footer,aside,form,noscript,.related,.related-news,.share,.social,.advertisement,.ads'):tag.decompose()
     json_bodies=[x for x in bodies if len(x)>=250 and len(words(x))>=40]
     bodies=json_bodies[:1]
-    for selector in ([] if bodies else SELECTORS):
+    for selector in ([] if bodies else ([precise[domain]] if domain in precise else [])+SELECTORS):
         for tag in soup.select(selector)[:4]:
             for headline in tag.select('h1'):headline.decompose()
             value=tag.get_text(' ',strip=True)
@@ -78,7 +86,7 @@ def extract_body(raw,expected_title=''):
     for m in re.finditer(r'(?:Эх\s*сурвалж|Source)\s*[:：]\s*.{5,120}',body,re.I):credits.append(redact(m.group()))
     tokens=words(body)
     shingles={hash_text(' '.join(tokens[i:i+5]))[:16] for i in range(max(0,len(tokens)-4))}
-    return {'adapter':VERSION,'body_hash':hash_text(normalized(body)),'characters':len(body),'word_count':len(tokens),'shingle_count':len(shingles),'signature':sorted(shingles)[:K],'lead':redact(body[:600]),'truncated':truncated,'disclosures':disclosures[:3],'promotion_signals':promotion[:3],'source_credits':credits[:2],'scope':'truncated_body' if truncated else 'extracted_article_body','retention':'Full body was read transiently; only derived fingerprints and a short lead are retained.'}
+    return {'adapter':VERSION,'reader_revision':READER_REVISION,'body_hash':hash_text(normalized(body)),'characters':len(body),'word_count':len(tokens),'shingle_count':len(shingles),'signature':sorted(shingles)[:K],'lead':redact(body[:600]),'truncated':truncated,'disclosures':disclosures[:3],'promotion_signals':promotion[:3],'source_credits':credits[:2],'scope':'truncated_body' if truncated else 'extracted_article_body','retention':'Full body was read transiently; only derived fingerprints and a short lead are retained.'}
 
 def current_check(db,a):
     c=db.get(ArticleBodyCheck,a.id)
@@ -92,7 +100,7 @@ async def check_article(article_id,fetcher=fetch_feed,force=False):
         a=db.get(Article,article_id)
         if a is None:return {'state':'not_found'}
         old=current_check(db,a)
-        if old and not force and (now()-utc(old.checked_at)).total_seconds()<21600:return {'state':old.state,'cached':True}
+        if old and not force and not (old.state=='no_body' and old.data.get('reader_revision',0)<READER_REVISION) and (now()-utc(old.checked_at)).total_seconds()<21600:return {'state':old.state,'cached':True}
         v=db.scalar(select(ArticleVersion).where(ArticleVersion.article_id==a.id,ArticleVersion.version==a.version))
         if v is None:return {'state':'no_version'}
         url=a.url;vid=v.id;expected=a.text_hash;source=db.get(Source,a.source_id);active=bool(source and source.active)
@@ -100,7 +108,7 @@ async def check_article(article_id,fetcher=fetch_feed,force=False):
         if not active:state='source_inactive';data={'reason':'Collection is disabled for this source.'}
         else:
             raw=await asyncio.wait_for(fetcher(url),timeout=25)
-            data=extract_body(raw,a.title)
+            data=extract_body(raw,a.title,url)
             state='ready' if data else 'no_body'
             data=data or {'reason':'No reliable article-body container or articleBody metadata found.'}
     except asyncio.TimeoutError:state='timeout';data={'reason':'Publisher body read exceeded deadline.'}
@@ -112,7 +120,7 @@ async def check_article(article_id,fetcher=fetch_feed,force=False):
         if a is None or a.text_hash!=expected or a.version!=v.version:return {'state':'superseded'}
         row=db.get(ArticleBodyCheck,article_id)
         if row is None:row=ArticleBodyCheck(article_id=article_id);db.add(row)
-        row.article_version_id=vid;row.state=state;row.data={**data,'adapter':VERSION};row.body_hash=data.get('body_hash');row.checked_at=now()
+        row.article_version_id=vid;row.state=state;row.data={**data,'adapter':VERSION,'reader_revision':READER_REVISION};row.body_hash=data.get('body_hash');row.checked_at=now()
         try:db.commit()
         except IntegrityError:
             db.rollback()
@@ -179,7 +187,7 @@ async def body_batch():
         if pg and not lock.scalar(text('SELECT pg_try_advisory_lock(20471025)')):return {'status':'already_running'}
         try:
             with Session() as db:
-                q=select(Article.id).join(Source,Source.id==Article.source_id).join(ArticleVersion,and_(ArticleVersion.article_id==Article.id,ArticleVersion.version==Article.version)).outerjoin(ArticleBodyCheck,ArticleBodyCheck.article_id==Article.id).where(Source.active.is_(True),or_(ArticleBodyCheck.article_id.is_(None),ArticleBodyCheck.article_version_id!=ArticleVersion.id,ArticleBodyCheck.checked_at<now()-timedelta(hours=24),ArticleBodyCheck.data['adapter'].as_string().is_(None),ArticleBodyCheck.data['adapter'].as_string()!=VERSION))
+                q=select(Article.id).join(Source,Source.id==Article.source_id).join(ArticleVersion,and_(ArticleVersion.article_id==Article.id,ArticleVersion.version==Article.version)).outerjoin(ArticleBodyCheck,ArticleBodyCheck.article_id==Article.id).where(Source.active.is_(True),or_(ArticleBodyCheck.article_id.is_(None),ArticleBodyCheck.article_version_id!=ArticleVersion.id,ArticleBodyCheck.checked_at<now()-timedelta(hours=24),and_(ArticleBodyCheck.state=='no_body',func.coalesce(ArticleBodyCheck.data['reader_revision'].as_integer(),0)<READER_REVISION),and_(ArticleBodyCheck.state.in_(['timeout','unavailable']),ArticleBodyCheck.checked_at<now()-timedelta(hours=1)),ArticleBodyCheck.data['adapter'].as_string().is_(None),ArticleBodyCheck.data['adapter'].as_string()!=VERSION))
                 ids=list(db.scalars(q.order_by(Article.id.desc()).limit(3)))
                 ids+=list(db.scalars(q.where(Article.id.not_in(ids)).order_by(Article.id).limit(3)))
             sem=asyncio.Semaphore(3)

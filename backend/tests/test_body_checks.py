@@ -149,3 +149,46 @@ def test_groups_titles_are_not_full_body_verdicts(db,client):
     assert d['items'][0]['exact_families']==[] and d['items'][0]['ready_count']==0
     assert 'title_equal' in d['items'][0]['methods']
     assert client.get('/api/v1/comparison/groups?kind=exact').json()['total']==0
+
+
+def test_publisher_layouts_exclude_related_cards():
+    for url,markup in [
+        ('https://politic.mn/n/1',f'<div class="post--single"><div class="post--content">{BODY}</div></div><div class="post--content">{OTHER}</div>'),
+        ('https://assa.mn/a/1',f'<div class="view__text">{BODY}</div><aside>{OTHER}</aside>'),
+        ('https://medee.mn/p/1',f'<article><div id="single-content"><div class="wordwrap">{BODY}</div></div><div>{OTHER}</div></article>'),
+    ]:
+        d=bc.extract_body(markup.encode(),'Fixture long enough article title',url)
+        assert d and d['body_hash']==bc.hash_text(bc.normalized(BODY))
+        assert 'Спорт' not in d['lead']
+
+
+def flight_fixture(title,body,foreign=False,missing=False):
+    payload=f'<p>{body}</p>'
+    ref='1a:T'+format(len(payload.encode()),'x')+','+payload
+    row=[None,{'initialData':{'id':7,'title':title,'content':[{'newsId':8 if foreign else 7,'conttype':0,'body':'$1a'}]}}]
+    text=('' if missing else ref)+'11:'+json.dumps(row,ensure_ascii=False)+'\n'
+    pieces=[text[:len(text)//2],text[len(text)//2:]]
+    return ''.join('<script>self.__next_f.push('+json.dumps([1,p],ensure_ascii=False)+')</script>' for p in pieces).encode()
+
+
+def test_gogo_public_flight_text_not_arbitrary_script_or_related_news():
+    title='Монгол Улсын төсвийн шинэ мэдээлэл нийтлэгдлээ'
+    raw=flight_fixture(title,BODY)
+    d=bc.extract_body(raw,title,'https://gogo.mn/r/1')
+    assert d and d['body_hash']==bc.hash_text(bc.normalized(BODY))
+    assert bc.extract_body(raw,'Огт өөр сэдэвтэй шинэ мэдээ байна','https://gogo.mn/r/1') is None
+    assert bc.extract_body(raw,title,'https://ikon.mn/n/1') is None
+    assert bc.extract_body(flight_fixture(title,BODY,foreign=True),title,'https://gogo.mn/r/1') is None
+    assert bc.extract_body(flight_fixture(title,BODY,missing=True),title,'https://gogo.mn/r/1') is None
+    assert bc.extract_body(('<script>window.articleBody='+json.dumps(BODY)+'</script>').encode(),title,'https://gogo.mn/r/1') is None
+
+
+def test_improved_reader_retries_old_no_body_without_invalidating_ready(db,monkeypatch):
+    rows=seed(db);monkeypatch.setattr(bc,'Session',sessionmaker(db.bind,expire_on_commit=False))
+    async def empty(url):return b'<p>No article body</p>'
+    asyncio.run(bc.check_article(rows[0].id,empty))
+    c=db.get(ArticleBodyCheck,rows[0].id);c.data={'adapter':bc.VERSION};db.commit()
+    async def readable(url):return html()
+    assert asyncio.run(bc.check_article(rows[0].id,readable))['state']=='ready'
+    async def never(url):raise AssertionError('Valid ready caches stay usable')
+    assert asyncio.run(bc.check_article(rows[0].id,never))['cached']

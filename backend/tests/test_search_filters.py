@@ -100,3 +100,16 @@ def test_semantic_offline_keeps_advanced_conditions(client,db,monkeypatch):
     r=client.get('/api/v1/semantic-search',params={'q':'budget law','match':'all','exclude':'other','analysis':'complete','body':'ready','publication':'known'}).json()
     assert r['mode']=='lexical_fallback' and r['total']==1
     assert r['items'][0]['title']=='Budget new law'
+
+
+def test_read_body_lead_search_is_version_grounded(client,db):
+    from app.models import ArticleBodyCheck
+    rows=advanced_seed(db)
+    for a in rows[:2]:
+        c=db.get(ArticleBodyCheck,a.id);c.data={**c.data,'lead':'Unique publisher lead proof'}
+    db.commit()
+    r=client.get('/api/v1/articles?q=Unique&field=body').json()
+    assert r['total']==1 and r['items'][0]['id']==rows[0].id
+    assert client.get('/api/v1/articles?q=Unique&field=all').json()['total']==1
+    assert client.get('/api/v1/articles?q=Unique&field=title').json()['total']==0
+    assert client.get('/api/v1/articles?q=Budget&exclude=Unique').json()['total']==3

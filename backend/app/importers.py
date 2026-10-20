@@ -49,7 +49,7 @@ def parse_source(raw,kind='rss',endpoint=''):
 def parse_headlines(raw, endpoint):
     """Publisher's public headline links only; no article-body scraping."""
     from bs4 import BeautifulSoup
-    from urllib.parse import urljoin
+    from urllib.parse import urljoin,parse_qs
     import re
     soup=BeautifulSoup(raw,'html.parser')
     for tag in soup.select('script,style,nav,header,footer,form,aside,noscript'):tag.decompose()
@@ -60,13 +60,21 @@ def parse_headlines(raw, endpoint):
     # Some publishers (e.g. iKon) use plain anchors, with article IDs in the URL.
     for tag in soup.select('a[href]'):
         path=urlsplit(urljoin(endpoint,tag['href'])).path
-        if re.search(r'^/(?:n|r|lr|z|news|article|articles|post|posts)/[^/]+|^/\d{3,}/?$',path,re.I):
+        if re.search(r'^/(?:n|r|lr|z|a|p|news|newsDetail|news-detail|article|articles|post|posts)/[^/]+|^/\d{3,}/?$',path,re.I):
+            selected.append(tag)
+        elif path=='/index.php' and re.fullmatch(r'[1-9][0-9]{0,9}',parse_qs(urlsplit(urljoin(endpoint,tag['href'])).query).get('newsid',[''])[0]):
             selected.append(tag)
     for tag in selected:
         heading=tag.find(['h1','h2','h3'])
+        if heading is None and 'post-link' in tag.get('class',[]):
+            card=tag.find_parent(class_='post-item')
+            if card is not None:heading=card.select_one('.post-title')
         title=clean((heading or tag).get_text(' ',strip=True))
         if len(title)<24 or len(title)>500 or len(title.split())<3:continue
-        try:url=canonical(urljoin(endpoint,tag['href']))
+        target=urlsplit(urljoin(endpoint,tag['href']))
+        if target.scheme=='http' and target.hostname and target.hostname.removeprefix('www.')==host and target.port is None:
+            target=target._replace(scheme='https')
+        try:url=canonical(target.geturl())
         except ValueError:continue
         u=urlsplit(url)
         if u.scheme!='https' or (u.hostname or '').removeprefix('www.')!=host or u.path in ('','/'):continue

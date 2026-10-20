@@ -38,10 +38,13 @@ def ordered(stmt, sort='newest'):
 def advanced(stmt, db, q='', match='phrase', field='all', exclude='', analysis='', body='', publication=''):
     """Bounded literal search and current-version processing filters; no raw SQL."""
     from .body_checks import VERSION
-    columns=[Article.title] if field=='title' else [Article.excerpt] if field=='excerpt' else [Article.title,Article.excerpt]
+    columns=[Article.title] if field=='title' else [Article.excerpt] if field=='excerpt' else [] if field=='body' else [Article.title,Article.excerpt]
+    body_scope=select(ArticleBodyCheck.article_id).join(ArticleVersion,ArticleVersion.id==ArticleBodyCheck.article_version_id).where(ArticleBodyCheck.article_id==Article.id,ArticleVersion.version==Article.version,ArticleBodyCheck.state=='ready',ArticleBodyCheck.data['adapter'].as_string()==VERSION).correlate(Article)
     def contains(term):
         escaped=term.replace('\\','\\\\').replace('%','\\%').replace('_','\\_')
-        return or_(*(column.ilike('%'+escaped+'%',escape='\\') for column in columns))
+        clauses=[column.ilike('%'+escaped+'%',escape='\\') for column in columns]
+        if field in ('all','body'):clauses.append(body_scope.where(ArticleBodyCheck.data['lead'].as_string().ilike('%'+escaped+'%',escape='\\')).exists())
+        return or_(*clauses)
     words=list(dict.fromkeys(q.split()))
     omitted=list(dict.fromkeys(exclude.split()))
     if (match!='phrase' and len(words)>20) or len(omitted)>20:

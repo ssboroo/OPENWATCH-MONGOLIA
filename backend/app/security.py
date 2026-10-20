@@ -56,17 +56,30 @@ async def _download(url, redirects=3, check_robots=False, crawl_delay=0):
                     raise ValueError('Response exceeds size limit')
             return bytes(data)
 
+_robots_cache = {}
+_policy_locks = {}
+ROBOTS_TTL = 300
+
+async def robots_policy(host):
+    cached=_robots_cache.get(host)
+    if cached and cached[0]>time.monotonic():return cached[1]
+    lock=_policy_locks.setdefault(host,asyncio.Lock())
+    async with lock:
+        cached=_robots_cache.get(host)
+        if cached and cached[0]>time.monotonic():return cached[1]
+        try:raw=await download(f'https://{host}/robots.txt')
+        except httpx.HTTPStatusError as exc:
+            if exc.response.status_code!=404:raise ValueError('Unable to verify robots policy') from exc
+            raw=b''
+        policy=RobotFileParser()
+        policy.parse(raw.decode('utf-8',errors='replace').splitlines())
+        if len(_robots_cache)>=512:_robots_cache.pop(next(iter(_robots_cache)))
+        _robots_cache[host]=(time.monotonic()+ROBOTS_TTL,policy)
+        return policy
+
 async def fetch_feed(url, redirects=3):
     u, _ = await resolve_public(url)
-    robots_url = f'https://{u.hostname}/robots.txt'
-    try:
-        raw = await download(robots_url)
-    except httpx.HTTPStatusError as exc:
-        if exc.response.status_code != 404:
-            raise ValueError('Unable to verify robots policy') from exc
-        raw = b''
-    policy = RobotFileParser()
-    policy.parse(raw.decode('utf-8', errors='replace').splitlines())
+    policy = await robots_policy(u.hostname)
     if not policy.can_fetch('OpenWatch', url):
         raise ValueError('robots.txt disallows collection')
     if (policy.crawl_delay('OpenWatch') or 0) > settings.collection_interval:

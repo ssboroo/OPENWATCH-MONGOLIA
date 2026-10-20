@@ -18,7 +18,7 @@ from .importers import parse_source
 from .collector import ingest
 
 PREFIX='discovery:'
-ADAPTER_VERSION=2
+ADAPTER_VERSION=3
 def key(domain):return PREFIX+hashlib.sha256(domain.encode()).hexdigest()[:24]
 def save_status(domain,value):
     with Session() as db:
@@ -94,7 +94,7 @@ async def commission():
         try:
             probes=probe_results();cutoff=now()-timedelta(hours=24)
             with Session() as db:
-                done={s.value.get('domain') for s in db.scalars(select(SystemState).where(SystemState.name.like(PREFIX+'%'))) if utc(s.updated_at)>cutoff and (s.value.get('status')!='no_public_stream' or s.value.get('adapter_version',1)>=ADAPTER_VERSION)}
+                done={s.value.get('domain') for s in db.scalars(select(SystemState).where(SystemState.name.like(PREFIX+'%'))) if utc(s.updated_at)>cutoff and (s.value.get('status')=='active' or s.value.get('adapter_version',1)>=ADAPTER_VERSION)}
             sem=asyncio.Semaphore(max(1,min(settings.catalog_concurrency,12)))
             processed=len(done)
             def progress(status):
@@ -110,7 +110,8 @@ async def commission():
                     except Exception as exc:result={'status':'unavailable','reason':type(exc).__name__}
                     save_status(site['domain'],result);processed+=1;progress('running')
             progress('running')
-            await asyncio.gather(*(one(site) for site in SITES))
+            ordered=sorted(SITES,key=lambda site:site['domain'] not in {'sonin.mn','lemonpress.mn','ublife.mn'})
+            await asyncio.gather(*(one(site) for site in ordered))
             progress('completed')
         finally:
             if lockdb.bind.dialect.name=='postgresql':lockdb.execute(text('SELECT pg_advisory_unlock(20471023)'))

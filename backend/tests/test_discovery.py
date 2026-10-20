@@ -57,3 +57,10 @@ def test_plain_article_id_links_without_headings():
     html=b'<main><a href="/n/abcd">Plain publisher headline with an article identifier</a><a href="/n/efgh">Another public headline with no heading markup</a><a href="/n/ijkl">Third real article link from a publisher homepage</a><a href="/category/politics">Navigation category must never enter the archive</a></main>'
     rows=parse_source(html,'html','https://ikon.mn/')
     assert len(rows)==3 and all('/n/' in r['url'] for r in rows)
+
+
+def test_modern_news_urls_overlay_cards_and_same_host_https_upgrade():
+    rows=parse_source('''<main><a href="/newsDetail/1">First original public headline from the publisher</a><a href="/news-detail/2">Second original public headline from the publisher</a><div class="post-item"><a class="post-link" href="/post/3"></a><h3 class="post-title">Third original public headline from the publisher</h3></div><a href="http://ikon.mn/index.php?newsid=4">Fourth original public headline from the publisher</a><a href="http://evil.example/index.php?newsid=5">Never accept a cross domain public article</a><a href="/index.php?newsid=bad">Never accept malformed article identifiers from navigation</a></main>'''.encode(),'html','https://ikon.mn/')
+    assert len(rows)==4 and all(r['url'].startswith('https://ikon.mn/') for r in rows)
+    assert any(r['url']=='https://ikon.mn/index.php?newsid=4' for r in rows)
+    assert any(r['title'].startswith('Third original') for r in rows)

@@ -179,3 +179,14 @@ Release verification for this change: 105 backend tests passed, 2 dedicated Post
 - Saved search links restore query and filter controls. Semantic matching clearly distinguishes unavailable literal controls; semantic fallback preserves scope and explicit exclusions.
 - Filter changes request the archive once, rather than refetching statistics, source metadata and collector status each time.
 - 108 backend tests passed, 2 PostgreSQL-only local tests skipped. Added coverage for word matching, literal percent/underscore, exclusions, combined processing/date conditions, obsolete body adapters/versions, and AI-offline fallback. Production frontend build passed. HTTP end-to-end checks cover advanced search through the Next rewrite, avatar removal, protected admin/donations, SSR reports and worker heartbeat.
+
+
+## 2026-10-20 publisher reader recovery
+
+- Production baseline: 3892 articles, 3082 checked bodies, 2210 ready; failures included 815 no-body, 43 timeout and 14 unavailable. Counts are a snapshot, not a fixed service claim.
+- Diagnosed public HTML from GoGo, Politic, Assa and Medee.mn. Added isolated publisher layouts and bounded JSON-only decoding for GoGo's public Next Flight text records; no script execution, private endpoints, authentication or paywall bypass. Title, news identifier and complete text references are checked before accepting GoGo blocks.
+- Real downloaded article samples now extract 453, 113, 96 and 435 words respectively. Retain only existing fingerprints and at most 600 lead characters.
+- New body reader revision retries old no-body failures without invalidating successful body-fingerprint-v2 caches. Transient timeout/unavailable bodies retry after one hour. Robots rules cache for at most five minutes with shared concurrent reads; expiration refresh, redirect checks, TLS/DNS pinning and per-host delay remain enforced.
+- Headline adapters recognize newsDetail/news-detail, safe same-host HTTPS upgrades for legacy newsid links and overlay post cards. Real homepage samples yielded 43 Sonin, 19 LemonPress and 50 Ublife distinct public metadata entries; discovery prioritizes those recoveries and retries outdated failures.
+- Literal search can include the version-matched stored body lead (at most 600 characters), with a separate body field. Full-text search is not claimed. PostgreSQL indexed/semantic search limitations remain explicit.
+- 114 backend tests passed; 2 PostgreSQL-only tests skipped locally. Frontend production build passed.

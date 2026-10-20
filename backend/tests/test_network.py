@@ -72,3 +72,25 @@ def test_redirect_rechecks_robots_and_pins_host_sni(monkeypatch):
     with pytest.raises(ValueError,match='robots'):
         asyncio.run(security.fetch_feed('https://ikon.mn/feed'))
     assert ('gogo.mn','/robots.txt') in calls and ('gogo.mn','/feed') not in calls
+
+
+def test_robots_cache_shares_fetch_and_expires_without_bypassing_denial(monkeypatch):
+    from urllib.parse import urlsplit
+    clock=[0];calls=[]
+    monkeypatch.setattr(security,'_robots_cache',{})
+    monkeypatch.setattr(security,'_policy_locks',{})
+    monkeypatch.setattr(security.time,'monotonic',lambda:clock[0])
+    async def resolve(url):return urlsplit(url),'93.184.216.34'
+    async def download(url,*args,**kwargs):
+        calls.append(url)
+        if url.endswith('/robots.txt'):
+            await asyncio.sleep(0)
+            return b'User-agent: *\nAllow: /\n' if clock[0]<300 else b'User-agent: *\nDisallow: /\n'
+        return b'public content'
+    monkeypatch.setattr(security,'resolve_public',resolve);monkeypatch.setattr(security,'download',download)
+    async def first():return await asyncio.gather(security.fetch_feed('https://cache.example/one'),security.fetch_feed('https://cache.example/two'))
+    assert asyncio.run(first())==[b'public content',b'public content']
+    assert calls.count('https://cache.example/robots.txt')==1
+    clock[0]=301
+    with pytest.raises(ValueError,match='robots'):asyncio.run(security.fetch_feed('https://cache.example/three'))
+    assert 'https://cache.example/three' not in calls

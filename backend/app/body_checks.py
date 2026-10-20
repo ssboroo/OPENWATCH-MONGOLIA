@@ -12,12 +12,12 @@ from .evidence import redact
 from .catalog import domain_of
 from .clustering import utc
 
-VERSION='body-fingerprint-v1'
+VERSION='body-fingerprint-v2'
 LIMIT=80000
 K=256
 LABELS={'сурталчилгаа','төлбөртэй мэдээ','төлбөртэй нийтлэл','хамтран бэлтгэв','sponsored','advertorial','paid content','paid partnership'}
 JOBS=set()
-SELECTORS=['[itemprop="articleBody"]','.entry-content','.post-content','.article-content','.article-body','.news-body','.news_content','.news-content','.news_text','.post_text','.content-text','#news-body','article']
+SELECTORS=['[itemprop="articleBody"]','#mvp-content-main','.entry-content','.post-content','.article-content','.article-body','.news-body','.news_content','.news-content','.news_text','.post_text','.content-text','#news-body','article']
 
 def normalized(s):return ' '.join(unicodedata.normalize('NFKC',s).casefold().split())
 def words(s):return re.findall(r'\w+',normalized(s))
@@ -70,15 +70,21 @@ def extract_body(raw,expected_title=''):
         if label not in {'сурталчилгаа','хамтран бэлтгэв'} and (prefix.startswith(label+':') or prefix.startswith(label+' /')):
             disclosures.append({'quote':redact(body[:min(160,len(label)+60)]),'method':'explicit_body_prefix'})
     truncated=len(body)>LIMIT;body=body[:LIMIT]
+    promotion=[]
+    for phrase in ('худалдан аваарай','захиалаарай','онцгой хямдрал','утсаар захиалах','buy now','order now'):
+        at=body.casefold().find(phrase)
+        if at>=0:promotion.append({'phrase':phrase,'quote':redact(body[max(0,at-35):at+105]),'method':'commercial_phrase_observed'})
+    credits=[]
+    for m in re.finditer(r'(?:Эх\s*сурвалж|Source)\s*[:：]\s*.{5,120}',body,re.I):credits.append(redact(m.group()))
     tokens=words(body)
     shingles={hash_text(' '.join(tokens[i:i+5]))[:16] for i in range(max(0,len(tokens)-4))}
-    return {'adapter':VERSION,'body_hash':hash_text(normalized(body)),'characters':len(body),'word_count':len(tokens),'shingle_count':len(shingles),'signature':sorted(shingles)[:K],'lead':redact(body[:600]),'truncated':truncated,'disclosures':disclosures[:3],'scope':'truncated_body' if truncated else 'extracted_article_body','retention':'Full body was read transiently; only derived fingerprints and a short lead are retained.'}
+    return {'adapter':VERSION,'body_hash':hash_text(normalized(body)),'characters':len(body),'word_count':len(tokens),'shingle_count':len(shingles),'signature':sorted(shingles)[:K],'lead':redact(body[:600]),'truncated':truncated,'disclosures':disclosures[:3],'promotion_signals':promotion[:3],'source_credits':credits[:2],'scope':'truncated_body' if truncated else 'extracted_article_body','retention':'Full body was read transiently; only derived fingerprints and a short lead are retained.'}
 
 def current_check(db,a):
     c=db.get(ArticleBodyCheck,a.id)
     if c:
         v=db.get(ArticleVersion,c.article_version_id)
-        if v and v.version==a.version:return c
+        if v and v.version==a.version and c.data.get('adapter')==VERSION:return c
     return None
 
 async def check_article(article_id,fetcher=fetch_feed,force=False):
@@ -106,7 +112,7 @@ async def check_article(article_id,fetcher=fetch_feed,force=False):
         if a is None or a.text_hash!=expected or a.version!=v.version:return {'state':'superseded'}
         row=db.get(ArticleBodyCheck,article_id)
         if row is None:row=ArticleBodyCheck(article_id=article_id);db.add(row)
-        row.article_version_id=vid;row.state=state;row.data=data;row.body_hash=data.get('body_hash');row.checked_at=now()
+        row.article_version_id=vid;row.state=state;row.data={**data,'adapter':VERSION};row.body_hash=data.get('body_hash');row.checked_at=now()
         try:db.commit()
         except IntegrityError:
             db.rollback()
@@ -126,7 +132,7 @@ def body_overlap(a,b):
 def public_check(c):
     if c is None:return {'state':'not_checked','disclosure':'unknown'}
     d=c.data
-    return {'state':c.state,'checked_at':c.checked_at,'body_hash':c.body_hash,'scope':d.get('scope'),'word_count':d.get('word_count'),'characters':d.get('characters'),'truncated':d.get('truncated',False),'lead':d.get('lead',''),'disclosure':'explicit_label_found' if d.get('disclosures') else 'not_observed' if c.state=='ready' else 'unknown','disclosures':d.get('disclosures',[]),'reason':d.get('reason'),'version_id':c.article_version_id}
+    return {'state':c.state,'checked_at':c.checked_at,'body_hash':c.body_hash,'scope':d.get('scope'),'word_count':d.get('word_count'),'characters':d.get('characters'),'truncated':d.get('truncated',False),'lead':d.get('lead',''),'disclosure':'explicit_label_found' if d.get('disclosures') else 'not_observed' if c.state=='ready' else 'unknown','disclosures':d.get('disclosures',[]),'promotion_signals':d.get('promotion_signals',[]),'source_credits':d.get('source_credits',[]),'reason':d.get('reason'),'version_id':c.article_version_id}
 
 def compare_archive(db,a):
     own=current_check(db,a);own_data=own.data if own and own.state=='ready' else None
@@ -138,21 +144,32 @@ def compare_archive(db,a):
     result=[];ready=0
     for other,source,c,body_version in rows:
         # Old body snapshots never compare against a changed metadata version.
-        if c and body_version!=other.version:c=None
+        if c and (body_version!=other.version or c.data.get('adapter')!=VERSION):c=None
         data=c.data if c and c.state=='ready' else None
         ready+=int(data is not None)
         score=SequenceMatcher(None,title,words(other.title),autojunk=False).ratio()
         overlap=body_overlap(own_data,data)
+        left_coverage=right_coverage=None
+        if overlap is not None and own_data and data:
+            n=own_data.get('shingle_count',0);m=data.get('shingle_count',0)
+            intersection=overlap*(n+m)/(1+overlap)
+            left_coverage=min(1.,intersection/n) if n else 0.
+            right_coverage=min(1.,intersection/m) if m else 0.
         same=bool(own_data and data and own_data['body_hash']==data['body_hash'])
-        if not same and not (overlap is not None and overlap>=.45) and not (len(title)>=4 and score>=.70):continue
+        potential_containment=left_coverage is not None and max(left_coverage,right_coverage)>=.75
+        if not same and not (overlap is not None and overlap>=.45) and not potential_containment and not (len(title)>=4 and score>=.70):continue
         excerpts=[]
         if own_data and data:
             left=own_data.get('lead','');right=data.get('lead','');match=SequenceMatcher(None,left,right,autojunk=False).find_longest_match()
             if match.size>=40:excerpts=[{'quote':left[match.a:match.a+min(match.size,160)],'left_url':a.url,'right_url':other.url,'method':'exact_shared_lead_passage'}]
-        kind='observed_body_equal' if same and (own_data.get('truncated') or data.get('truncated')) else 'normalized_body_equal' if same else 'body_overlap_candidate' if overlap is not None and overlap>=.45 else 'title_only_candidate'
-        result.append({'id':other.id,'title':redact(other.title),'url':other.url,'source':source.name,'domain':domain_of(other.url),'version':other.version,'published_at':other.published_at,'discovered_at':other.first_seen_at,'title_similarity':round(score,4),'body_similarity':round(overlap,4) if overlap is not None else None,'comparison':kind,'same_site':domain_of(a.url)==domain_of(other.url),'shared_passages':excerpts,'body':public_check(c)})
+        contained=bool(left_coverage is not None and max(left_coverage,right_coverage)>=.75 and excerpts and len(excerpts[0]['quote'])>=80)
+        if not same and not contained and not (overlap is not None and overlap>=.45) and not (len(title)>=4 and score>=.70):continue
+        kind='observed_body_equal' if same and (own_data.get('truncated') or data.get('truncated')) else 'normalized_body_equal' if same else 'body_overlap_candidate' if overlap is not None and overlap>=.45 else 'body_containment_candidate' if contained else 'title_only_candidate'
+        result.append({'id':other.id,'title':redact(other.title),'url':other.url,'source':source.name,'domain':domain_of(other.url),'version':other.version,'published_at':other.published_at,'discovered_at':other.first_seen_at,'title_similarity':round(score,4),'body_similarity':round(overlap,4) if overlap is not None else None,'comparison':kind,'left_body_coverage':round(left_coverage,4) if left_coverage is not None else None,'right_body_coverage':round(right_coverage,4) if right_coverage is not None else None,'same_site':domain_of(a.url)==domain_of(other.url),'shared_passages':excerpts,'body':public_check(c)})
     result.sort(key=lambda r:(r['comparison']=='normalized_body_equal',r['body_similarity'] or 0,r['title_similarity']),reverse=True)
-    return {'article_id':a.id,'title':redact(a.title),'url':a.url,'published_at':a.published_at,'discovered_at':a.first_seen_at,'body':public_check(own),'items':result[:20],'candidate_count':len(rows),'body_candidates_checked':ready,'candidate_limit':5000,'limitation':'Энэ нь эхийн ижил/төстэй байдлын шалгалт. Ижил эх нь хуулбар, хамтын хэвлэлийн мэдээ эсвэл зөвшөөрөлтэй дахин нийтлэл байж болно; хэн хэнээс хуулсныг тогтоохгүй. Төлбөртэй тэмдэглэгээ олдоогүй нь захиалгат бишийн баталгаа биш. Бүтэн эх уншигдаагүй тохиолдолд гарчгаар бүтэн агуулгыг дүгнэхгүй. 5 үгийн хэсгийн bottom-k Jaccard нь ойролцоо хэмжилт, ижил эхийн SHA-256 нь нормчилсон татсан эхэд хамаарна.'}
+    exact=[x for x in result if x['comparison']=='normalized_body_equal']
+    family={'matching_articles':len(exact)+int(own_data is not None),'domains':sorted({domain_of(a.url)}|{x['domain'] for x in exact}) if own_data else []}
+    return {'content_family':family,'article_id':a.id,'title':redact(a.title),'url':a.url,'published_at':a.published_at,'discovered_at':a.first_seen_at,'body':public_check(own),'items':result[:20],'candidate_count':len(rows),'body_candidates_checked':ready,'candidate_limit':5000,'limitation':'Энэ нь эхийн ижил/төстэй байдлын шалгалт. Ижил эх нь хуулбар, хамтын хэвлэлийн мэдээ эсвэл зөвшөөрөлтэй дахин нийтлэл байж болно; хэн хэнээс хуулсныг тогтоохгүй. Төлбөртэй тэмдэглэгээ олдоогүй нь захиалгат бишийн баталгаа биш. Бүтэн эх уншигдаагүй тохиолдолд гарчгаар бүтэн агуулгыг дүгнэхгүй. 5 үгийн хэсгийн bottom-k Jaccard нь ойролцоо хэмжилт, ижил эхийн SHA-256 нь нормчилсон татсан эхэд хамаарна.'}
 
 async def body_batch():
     with Session() as lock:
@@ -160,7 +177,7 @@ async def body_batch():
         if pg and not lock.scalar(text('SELECT pg_try_advisory_lock(20471025)')):return {'status':'already_running'}
         try:
             with Session() as db:
-                q=select(Article.id).join(Source,Source.id==Article.source_id).join(ArticleVersion,and_(ArticleVersion.article_id==Article.id,ArticleVersion.version==Article.version)).outerjoin(ArticleBodyCheck,ArticleBodyCheck.article_id==Article.id).where(Source.active.is_(True),or_(ArticleBodyCheck.article_id.is_(None),ArticleBodyCheck.article_version_id!=ArticleVersion.id,ArticleBodyCheck.checked_at<now()-timedelta(hours=24)))
+                q=select(Article.id).join(Source,Source.id==Article.source_id).join(ArticleVersion,and_(ArticleVersion.article_id==Article.id,ArticleVersion.version==Article.version)).outerjoin(ArticleBodyCheck,ArticleBodyCheck.article_id==Article.id).where(Source.active.is_(True),or_(ArticleBodyCheck.article_id.is_(None),ArticleBodyCheck.article_version_id!=ArticleVersion.id,ArticleBodyCheck.checked_at<now()-timedelta(hours=24),ArticleBodyCheck.data['adapter'].as_string().is_(None),ArticleBodyCheck.data['adapter'].as_string()!=VERSION))
                 ids=list(db.scalars(q.order_by(Article.id.desc()).limit(3)))
                 ids+=list(db.scalars(q.where(Article.id.not_in(ids)).order_by(Article.id).limit(3)))
             sem=asyncio.Semaphore(3)
@@ -184,6 +201,6 @@ async def check_with_neighbors(article_id,fetcher=fetch_feed):
 
 def coverage(db):
     total=db.scalar(select(func.count()).select_from(Article))
-    valid=select(ArticleBodyCheck.state).join(Article,Article.id==ArticleBodyCheck.article_id).join(ArticleVersion,ArticleVersion.id==ArticleBodyCheck.article_version_id).where(ArticleVersion.version==Article.version).subquery()
+    valid=select(ArticleBodyCheck.state).join(Article,Article.id==ArticleBodyCheck.article_id).join(ArticleVersion,ArticleVersion.id==ArticleBodyCheck.article_version_id).where(ArticleVersion.version==Article.version,ArticleBodyCheck.data['adapter'].as_string()==VERSION).subquery()
     counts=dict(db.execute(select(valid.c.state,func.count()).group_by(valid.c.state)).all())
     return {'articles':total,'checked':sum(counts.values()),'ready':counts.get('ready',0),'states':counts}

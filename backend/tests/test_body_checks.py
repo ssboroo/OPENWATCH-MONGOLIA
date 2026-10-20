@@ -104,3 +104,14 @@ def test_fixed_id_content_job_limits(client,db,monkeypatch):
     monkeypatch.setattr(bc,'check_with_neighbors',no_network)
     for id in [1,2,1]:assert client.post(f'/api/v1/articles/{id}/content-check').status_code==202
     assert client.post('/api/v1/articles/2/content-check').status_code==429
+
+def test_wordpress_infinite_next_article_not_part_of_main_body():
+    raw=f'<article><div id="mvp-content-main"><p>{BODY}</p></div><div class="mvp-post-add-main"><p>{OTHER}</p></div></article>'.encode()
+    data=bc.extract_body(raw)
+    assert data['body_hash']==bc.extract_body(html())['body_hash']
+
+def test_commercial_language_is_not_a_paid_verdict():
+    data=bc.extract_body(html(BODY+' Та одоо худалдан аваарай. Эх сурвалж: Нийтлэгчийн хэвлэлийн алба.'))
+    assert data['promotion_signals'][0]['phrase']=='худалдан аваарай'
+    assert not data['disclosures']
+    assert data['source_credits'] and 'Нийтлэгчийн' in data['source_credits'][0]

@@ -115,3 +115,37 @@ def test_commercial_language_is_not_a_paid_verdict():
     assert data['promotion_signals'][0]['phrase']=='худалдан аваарай'
     assert not data['disclosures']
     assert data['source_credits'] and 'Нийтлэгчийн' in data['source_credits'][0]
+
+def test_comparison_groups_equal_body_changed_headline_filters_and_paging(db,client,monkeypatch):
+    rows=seed(db);monkeypatch.setattr(bc,'Session',sessionmaker(db.bind,expire_on_commit=False))
+    async def fetch(url):return html()
+    for a in rows:asyncio.run(bc.check_article(a.id,fetch))
+    d=client.get('/api/v1/comparison/groups?kind=exact&domain=ikon.mn&limit=1').json()
+    assert d['total']==1 and len(d['items'])==1
+    g=d['items'][0]
+    assert g['article_count']==2 and g['exact_families']==[[2,1]]
+    assert g['domains']==['gogo.mn','ikon.mn'] and g['ready_count']==2
+    assert client.get('/api/v1/comparison/groups?offset=1&limit=1').json()['items']==[]
+    assert client.get('/api/v1/comparison/groups?q=not-present').json()['total']==0
+    c=db.get(ArticleBodyCheck,rows[1].id);c.data={**c.data,'adapter':'old-adapter'};db.commit()
+    assert client.get('/api/v1/comparison/groups?kind=exact').json()['total']==0
+
+def test_explicit_pair_shows_unrelated_and_unread_instead_of_omitting(db,client,monkeypatch):
+    rows=seed(db)
+    d=client.get('/api/v1/articles/1/comparison?other_id=2').json()
+    assert len(d['items'])==1 and d['items'][0]['comparison']=='insufficient_body'
+    monkeypatch.setattr(bc,'Session',sessionmaker(db.bind,expire_on_commit=False))
+    async def fetch(url):return html(BODY if 'ikon' in url else OTHER)
+    for a in rows:asyncio.run(bc.check_article(a.id,fetch))
+    d=client.get('/api/v1/articles/1/comparison?other_id=2').json()
+    assert len(d['items'])==1 and d['items'][0]['comparison']=='no_strong_match'
+    assert client.get('/api/v1/articles/1/comparison?other_id=1').status_code==422
+    assert client.get('/api/v1/articles/1/comparison?other_id=99999').status_code==422
+
+def test_groups_titles_are_not_full_body_verdicts(db,client):
+    rows=seed(db);rows[1].title=rows[0].title;db.commit()
+    d=client.get('/api/v1/comparison/groups?kind=cross_site').json()
+    assert d['total']==1
+    assert d['items'][0]['exact_families']==[] and d['items'][0]['ready_count']==0
+    assert 'title_equal' in d['items'][0]['methods']
+    assert client.get('/api/v1/comparison/groups?kind=exact').json()['total']==0

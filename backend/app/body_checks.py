@@ -134,11 +134,13 @@ def public_check(c):
     d=c.data
     return {'state':c.state,'checked_at':c.checked_at,'body_hash':c.body_hash,'scope':d.get('scope'),'word_count':d.get('word_count'),'characters':d.get('characters'),'truncated':d.get('truncated',False),'lead':d.get('lead',''),'disclosure':'explicit_label_found' if d.get('disclosures') else 'not_observed' if c.state=='ready' else 'unknown','disclosures':d.get('disclosures',[]),'promotion_signals':d.get('promotion_signals',[]),'source_credits':d.get('source_credits',[]),'reason':d.get('reason'),'version_id':c.article_version_id}
 
-def compare_archive(db,a):
+def compare_archive(db,a,other_id=None):
     own=current_check(db,a);own_data=own.data if own and own.state=='ready' else None
     title=words(a.title)
-    rows=list(db.execute(select(Article,Source,ArticleBodyCheck,ArticleVersion.version).join(Source,Article.source_id==Source.id).outerjoin(ArticleBodyCheck,ArticleBodyCheck.article_id==Article.id).outerjoin(ArticleVersion,ArticleVersion.id==ArticleBodyCheck.article_version_id).where(Article.id!=a.id).order_by(Article.id.desc()).limit(5000)))
-    if own and own.body_hash:
+    query=select(Article,Source,ArticleBodyCheck,ArticleVersion.version).join(Source,Article.source_id==Source.id).outerjoin(ArticleBodyCheck,ArticleBodyCheck.article_id==Article.id).outerjoin(ArticleVersion,ArticleVersion.id==ArticleBodyCheck.article_version_id).where(Article.id!=a.id)
+    if other_id is not None:query=query.where(Article.id==other_id)
+    rows=list(db.execute(query.order_by(Article.id.desc()).limit(5000)))
+    if other_id is None and own and own.body_hash:
         extra=db.execute(select(Article,Source,ArticleBodyCheck,ArticleVersion.version).join(Source,Article.source_id==Source.id).join(ArticleBodyCheck,ArticleBodyCheck.article_id==Article.id).join(ArticleVersion,ArticleVersion.id==ArticleBodyCheck.article_version_id).where(Article.id!=a.id,ArticleBodyCheck.body_hash==own.body_hash).limit(50))
         seen={x[0].id for x in rows};rows.extend(x for x in extra if x[0].id not in seen)
     result=[];ready=0
@@ -157,14 +159,14 @@ def compare_archive(db,a):
             right_coverage=min(1.,intersection/m) if m else 0.
         same=bool(own_data and data and own_data['body_hash']==data['body_hash'])
         potential_containment=left_coverage is not None and max(left_coverage,right_coverage)>=.75
-        if not same and not (overlap is not None and overlap>=.45) and not potential_containment and not (len(title)>=4 and score>=.70):continue
+        if other_id is None and not same and not (overlap is not None and overlap>=.45) and not potential_containment and not (len(title)>=4 and score>=.70):continue
         excerpts=[]
         if own_data and data:
             left=own_data.get('lead','');right=data.get('lead','');match=SequenceMatcher(None,left,right,autojunk=False).find_longest_match()
             if match.size>=40:excerpts=[{'quote':left[match.a:match.a+min(match.size,160)],'left_url':a.url,'right_url':other.url,'method':'exact_shared_lead_passage'}]
         contained=bool(left_coverage is not None and max(left_coverage,right_coverage)>=.75 and excerpts and len(excerpts[0]['quote'])>=80)
-        if not same and not contained and not (overlap is not None and overlap>=.45) and not (len(title)>=4 and score>=.70):continue
-        kind='observed_body_equal' if same and (own_data.get('truncated') or data.get('truncated')) else 'normalized_body_equal' if same else 'body_overlap_candidate' if overlap is not None and overlap>=.45 else 'body_containment_candidate' if contained else 'title_only_candidate'
+        if other_id is None and not same and not contained and not (overlap is not None and overlap>=.45) and not (len(title)>=4 and score>=.70):continue
+        kind='observed_body_equal' if same and (own_data.get('truncated') or data.get('truncated')) else 'normalized_body_equal' if same else 'body_overlap_candidate' if overlap is not None and overlap>=.45 else 'body_containment_candidate' if contained else 'title_only_candidate' if len(title)>=4 and score>=.70 else 'no_strong_match' if overlap is not None else 'insufficient_body'
         result.append({'id':other.id,'title':redact(other.title),'url':other.url,'source':source.name,'domain':domain_of(other.url),'version':other.version,'published_at':other.published_at,'discovered_at':other.first_seen_at,'title_similarity':round(score,4),'body_similarity':round(overlap,4) if overlap is not None else None,'comparison':kind,'left_body_coverage':round(left_coverage,4) if left_coverage is not None else None,'right_body_coverage':round(right_coverage,4) if right_coverage is not None else None,'same_site':domain_of(a.url)==domain_of(other.url),'shared_passages':excerpts,'body':public_check(c)})
     result.sort(key=lambda r:(r['comparison']=='normalized_body_equal',r['body_similarity'] or 0,r['title_similarity']),reverse=True)
     exact=[x for x in result if x['comparison']=='normalized_body_equal']

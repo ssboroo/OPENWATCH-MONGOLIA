@@ -18,7 +18,7 @@ while :; do
       fi
     fi
     printf '{"service":"backup","status":"completed"}\n'
-    find /backups -maxdepth 1 -type f -name 'openwatch-*.dump*' -mtime +14 -delete
+    find /backups/openwatch-*.dump* -type f -mtime +14 -delete || printf '{\"service\":\"backup_retention\",\"status\":\"failed\"}\n' >&2
   else
     rm -f "$file.tmp"
     if [ "${RECORD_BACKUP_EVIDENCE:-false}" = true ]; then

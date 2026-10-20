@@ -162,3 +162,11 @@ Donation configuration uses the existing durable SystemState table, with authent
 Added a code-native OpenWatch vector mark/favicon, stronger contrast and larger explanatory text, separate status colors, context help and a complete Mongolian user guide with links to each workspace. Guide copy explains archive coverage, publication vs discovery time, visible-text highlighting, AI limitations and manual bank transfers. Donation tests cover unauthorized access, draft privacy, validation, explicit confirmation, persistence, stale revisions and disable/unpublish behavior.
 
 Release verification for this change: 105 backend tests passed, 2 dedicated PostgreSQL tests skipped; production frontend build passed including `/admin` and `/icon.svg`. Extended isolated HTTP integration verified the separate noindex admin login, absent public admin navigation, unauthorized settings denial, private donation draft persistence, explicit publication and subsequent hiding through the Next.js API proxy. All integration bank details are DEMO fixtures in a disposable local database; no account details were written to production.
+
+
+## 2026-10-20 reliability audit
+
+- Production: 14 read-only endpoint probes returned HTTP 200 (health, statistics, system/collector status, comparison coverage/groups, articles/search, reports, 500-domain directory, sources, article analysis/connections and explicit pair comparison). The directory count does not imply all publishers currently provide readable feeds.
+- Fixed workspace refresh propagation while retaining filters and selected articles. Comparison and status views clear recovered fetch errors; report pagination cancels obsolete requests. Research polling pauses in hidden tabs and preserves existing results during transient errors.
+- Added Mongolian analysis status descriptions and explicit Ulaanbaatar formatting for article analysis timestamps.
+- Backend regression suite: 105 passed, 2 PostgreSQL-only tests skipped in local SQLite environment. Frontend production build passed.

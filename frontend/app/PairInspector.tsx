@@ -1,5 +1,6 @@
 'use client';
 import {apiFetch} from './apiClient';
+import {useWorkspaceRefresh} from './workspaceRefresh';
 import {useEffect,useState,useMemo} from 'react';
 import {ArrowUpRight,Check,Columns2,FileSearch,RefreshCw,ShieldCheck} from 'lucide-react';
 import {PairChronology} from './PublicationTimeline';
@@ -34,9 +35,10 @@ export function PairEvidence({data,match,onRun,busy,error}:{data:Row,match:Row,o
  <p className="cx-caveat">Ижил эх нь хэвлэлийн мэдээ, зөвшөөрөлтэй дахин нийтлэл эсвэл хуулбар байж болно. Энэ шалгалт хэн хэнээс хуулсан, захиалагч болон төлбөр төлөгчийг тогтоохгүй. Бүтэн эхийг дахин нийтлэхгүй; харагдах богино хэсэг бүх эхийн ялгааг харуулахгүй.</p></div>
 }
 export default function PairInspector({left,right}:{left:number,right:number}){
+ const revision=useWorkspaceRefresh();
  const [data,setData]=useState<Row|null>(null),[busy,setBusy]=useState(false),[error,setError]=useState(''),[tick,setTick]=useState(0);
  useEffect(()=>{setData(null);setError('')},[left,right]);
- useEffect(()=>{const c=new AbortController();const load=()=>apiFetch(`/api/v1/articles/${left}/comparison?other_id=${right}`,{signal:c.signal,cache:'no-store'}).then(async r=>{if(!r.ok)throw Error('Хосын харьцуулалт ачаалж чадсангүй.');return r.json()}).then(d=>{setData(d);setBusy(!!d.running)}).catch(e=>{if(e.name!=='AbortError')setError(e.message)});load();const t=setInterval(()=>{if(document.visibilityState==='visible')load()},10000);return()=>{c.abort();clearInterval(t)}},[left,right,tick]);
+ useEffect(()=>{const c=new AbortController();const load=()=>apiFetch(`/api/v1/articles/${left}/comparison?other_id=${right}`,{signal:c.signal,cache:'no-store'}).then(async r=>{if(!r.ok)throw Error('Хосын харьцуулалт ачаалж чадсангүй.');return r.json()}).then(d=>{setData(d);setBusy(!!d.running);setError('')}).catch(e=>{if(e.name!=='AbortError')setError(e.message)});load();const t=setInterval(()=>{if(document.visibilityState==='visible')load()},10000);return()=>{c.abort();clearInterval(t)}},[left,right,tick,revision]);
  const run=async()=>{setBusy(true);setError('');try{for(const id of [left,right]){const r=await apiFetch(`/api/v1/articles/${id}/content-check`,{method:'POST'});if(!r.ok)throw Error(r.status===429?'Ачаалалтай байна. Эхэлсэн шалгалт үргэлжилнэ; нэг минутын дараа дахин шинэчилнэ үү.':'Эхийн шалгалт эхлүүлэхэд алдаа гарлаа.')}setTick(t=>t+1)}catch(e){setError((e as Error).message);setTick(t=>t+1)}};
  if(!data)return <p className="cx-loading" role="status">Хоёр мэдээг харьцуулж байна…{error}</p>;
  return data.items[0]?<PairEvidence data={data} match={data.items[0]} onRun={run} busy={busy} error={error}/>:<p className="cx-error">Харьцуулах мэдээ олдсонгүй.</p>

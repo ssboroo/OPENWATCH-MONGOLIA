@@ -1,11 +1,13 @@
 'use client';
 import {apiFetch} from './apiClient';
+import {useWorkspaceRefresh} from './workspaceRefresh';
 import {useEffect,useState} from 'react';
 import {PairEvidence,SourceIcon,host,verdicts,Row} from './PairInspector';
 export default function CopyComparison({id}:{id:number}){
+ const revision=useWorkspaceRefresh();
  const [data,setData]=useState<Row|null>(null),[chosen,setChosen]=useState<number|null>(null),[busy,setBusy]=useState(false),[error,setError]=useState(''),[tick,setTick]=useState(0);
  useEffect(()=>{setData(null);setChosen(null);setError('')},[id]);
- useEffect(()=>{const c=new AbortController();const load=()=>apiFetch(`/api/v1/articles/${id}/comparison`,{signal:c.signal,cache:'no-store'}).then(async r=>{if(!r.ok)throw Error('Харьцуулалт ачаалж чадсангүй.');return r.json()}).then(d=>{setData(d);setBusy(!!d.running)}).catch(e=>{if(e.name!=='AbortError')setError(e.message)});load();const t=setInterval(()=>{if(document.visibilityState==='visible')load()},10000);return()=>{c.abort();clearInterval(t)}},[id,tick]);
+ useEffect(()=>{const c=new AbortController();const load=()=>apiFetch(`/api/v1/articles/${id}/comparison`,{signal:c.signal,cache:'no-store'}).then(async r=>{if(!r.ok)throw Error('Харьцуулалт ачаалж чадсангүй.');return r.json()}).then(d=>{setData(d);setBusy(!!d.running);setError('')}).catch(e=>{if(e.name!=='AbortError')setError(e.message)});load();const t=setInterval(()=>{if(document.visibilityState==='visible')load()},10000);return()=>{c.abort();clearInterval(t)}},[id,tick,revision]);
  const run=async()=>{setBusy(true);setError('');try{const target=data?.items.find((r:Row)=>r.id===chosen)||data?.items[0];for(const targetId of target?[id,target.id]:[id]){const r=await apiFetch(`/api/v1/articles/${targetId}/content-check`,{method:'POST'});if(!r.ok)throw Error(r.status===429?'Ачаалалтай байна. Эхэлсэн шалгалт үргэлжилнэ; нэг минутын дараа шинэчилнэ үү.':'Эхийн шалгалт эхлүүлэхэд алдаа гарлаа.')}setTick(x=>x+1)}catch(e){setError((e as Error).message);setBusy(false)}};
  if(!data)return <p className="cx-loading" role="status">Харьцуулалт ачаалж байна…{error}</p>;
  const match=data.items.find((r:Row)=>r.id===chosen)||data.items[0];

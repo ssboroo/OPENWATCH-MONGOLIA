@@ -24,6 +24,8 @@ def test_headline_ai_backfill_fairness_and_source_cited_connections(db,client,mo
     seed(db,5)
     monkeypatch.setattr(pipeline,'Session',sessionmaker(db.bind,expire_on_commit=False))
     monkeypatch.setattr(settings,'ai_enabled',True);monkeypatch.setattr(settings,'ai_batch_size',100)
+    pending=client.get('/api/v1/articles/1/analysis').json()
+    assert pending['ai_enabled'] and pending['ai_pending'] and pending['status']=='awaiting_ai'
     result=asyncio.run(pipeline.process_batch(Contract()))
     assert [x['article_id'] for x in result['items']]==[5,4,1,2]
     assert all(x['status']=='ai_complete' for x in result['items'])

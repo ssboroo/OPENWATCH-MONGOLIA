@@ -12,11 +12,11 @@ from .db import get_db
 from .config import settings
 from .models import *
 from .clustering import canonical_event, utc, publication_lock
-from .ai import Ollama, InferenceFailure, cosine
+from .ai import Ollama, InferenceFailure, cosine, PROMPT_VERSION
 from .evidence import redact
 from .reports import build_report, public_report, FINDINGS, content_hash
 from .graph import evidence_graph
-from .pipeline import process_batch
+from .pipeline import process_batch, model_hash
 from .catalog import BY_DOMAIN, domain_of
 
 router=APIRouter(prefix='/api/v1')
@@ -133,7 +133,10 @@ def install_routes(app, admin, tasks):
         runs=list(db.scalars(select(AnalysisRun).where(AnalysisRun.article_id==id,AnalysisRun.article_version_id==version.id).order_by(AnalysisRun.id.desc()).limit(20))) if version else []
         from .connections import connections
         linked=connections(db,article)
-        return {'article_id':id,'status':article.analysis_status,'connections':linked,'items':[{'model':r.model,'prompt_version':r.prompt_version,'status':r.status,'source_article_ids':[id],'evidence_urls':r.evidence_urls,'confidence':r.confidence,'limitation':r.limitation,'created_at':r.created_at,'scope':r.result.get('scope'),'summary_quotes':[redact(q) for q in r.result.get('summary_quotes',[])]} for r in runs]}
+        pending=settings.ai_enabled and article.ai_hash!=model_hash(article)
+        if settings.ai_enabled:runs=[r for r in runs if r.model==settings.ollama_model and r.prompt_version==PROMPT_VERSION]
+        status='awaiting_ai' if pending and article.analysis_status in ('metadata_only','lexical_only','pending') else article.analysis_status
+        return {'article_id':id,'ai_enabled':settings.ai_enabled,'ai_pending':pending,'status':status,'connections':linked,'items':[{'model':r.model,'prompt_version':r.prompt_version,'status':r.status,'source_article_ids':[id],'evidence_urls':r.evidence_urls,'confidence':r.confidence,'limitation':r.limitation,'created_at':r.created_at,'scope':r.result.get('scope'),'summary_quotes':[redact(q) for q in r.result.get('summary_quotes',[])]} for r in runs]}
 
     @router.get('/articles/{id}/connections')
     def related_articles(id:int,db:DB=Depends(get_db)):

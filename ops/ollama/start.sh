@@ -5,6 +5,9 @@ if [ "$(id -u)" = 0 ]; then
   chown -R 10001:10001 /models
   exec gosu 10001:10001 /bin/sh "$0"
 fi
+# Numeric UID has no passwd entry; gosu otherwise sets HOME to /.
+export HOME=/tmp/openwatch-ollama
+mkdir -p "$HOME"
 mkdir -p "${OLLAMA_MODELS:-/models/models}"
 ollama serve &
 server_pid=$!

@@ -19,6 +19,7 @@ def test_grounded_schema_and_untrusted_payload():
     def handler(request):
         payload=json.loads(request.content)
         assert payload['format']['type']=='object'
+        assert 1<=payload['options']['num_thread']<=8
         assert 'UNTRUSTED' in payload['messages'][0]['content']
         assert json.loads(payload['messages'][1]['content'])['source_text'].startswith('Монгол')
         assert 'tools' not in payload

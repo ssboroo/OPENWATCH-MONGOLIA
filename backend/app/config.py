@@ -23,6 +23,7 @@ class Settings(BaseSettings):
     embedding_model: str = 'bge-m3'
     ai_timeout: float = 90
     ai_retries: int = 1
+    ai_threads: int = 8
     ai_batch_size: int = 10
     ai_retry_seconds: int = 1800
     semantic_threshold: float = 0.88

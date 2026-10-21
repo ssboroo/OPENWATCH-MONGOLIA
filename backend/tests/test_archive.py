@@ -83,10 +83,10 @@ def test_empty_api_and_auth(client):
 def test_pagination_and_links(client,db):
     s=Source(name='Test',endpoint='https://news.example/rss');db.add(s);db.flush()
     ingest(db,s,parse_feed(RSS));db.commit()
-    r=client.get('/api/v1/articles?limit=1').json()
+    r=client.get('/api/v1/articles?limit=1&freshness=all').json()
     assert r['total']==1 and r['items'][0]['url']=='https://news.example/one'
     assert client.get('/api/v1/articles?offset=1').json()['items']==[]
-    assert client.get('/api/v1/search?q=Budget').json()['total']==1
+    assert client.get('/api/v1/search?q=Budget&freshness=all').json()['total']==1
     assert client.get('/api/v1/search?q=%25').json()['total']==0
 
 def test_rate_limit(client):

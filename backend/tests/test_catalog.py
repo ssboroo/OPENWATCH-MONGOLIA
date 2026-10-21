@@ -50,7 +50,7 @@ def test_archive_domain_filter(client,db):
     ingest(db,s,rows)
     rows[0]['url']='https://gogo.mn/second'
     ingest(db,other,rows);db.commit()
-    r=client.get('/api/v1/articles?domain=ikon.mn').json()
+    r=client.get('/api/v1/articles?domain=ikon.mn&freshness=all').json()
     assert r['total']==1 and r['items'][0]['source_id']==s.id
     assert client.get('/api/v1/articles?domain=montsame.mn').json()['items']==[]
     row=client.get('/api/v1/media?q=ikon.mn').json()['items'][0]

@@ -209,3 +209,12 @@ Release verification for this change: 105 backend tests passed, 2 dedicated Post
 - Backup service: dedicated volume, daily custom-format dump, SHA-256, 14-day retention, isolated restore database test and durable status rows. No public backup download endpoint. Same-project volume is not an independent off-provider disaster recovery copy.
 - Backend suite: 118 passed, 2 PostgreSQL environment-dependent tests skipped. Frontend production build and Mongolian sentence alignment assertions passed. Production deployment/restore must additionally be verified from Railway logs.
 - Donation editor already supports bank, beneficiary, IBAN/account and preview; do not publish invented bank details.
+
+## Readiness follow-up — 2026-10-21
+- Added a GitHub Actions CI workflow with an isolated pgvector PostgreSQL service, repository checks, and Chromium browser checks. The repository CI script now runs the three existing frontend assertion suites.
+- Added browser coverage for followed-topic persistence after reload and mobile research navigation/overflow.
+- Local frontend assertion suites passed; Chromium E2E passed (2 tests); Next.js production build passed; `npm audit --omit=dev` and `pip-audit -r backend/requirements-dev.txt` found no known vulnerabilities.
+- Backend suite passed 119 tests with 3 skips: two PostgreSQL-only tests require CI's isolated pgvector service, and one Unix file-permission check is skipped on Windows. Isolated HTTP E2E passed.
+- The first GitHub Actions run exposed CRLF line endings in `ops/ci.sh` (`set: Illegal option -`); the script has been normalized to LF and the workflow is being rerun.
+- Operations requiring external inputs remain uncommissioned: an independent off-provider backup target and credentials, source-by-source permission/licensing review, and an independently human-labelled Mongolian quality corpus. No credentials, licensing claims, or labels were invented.
+- Operations requiring external inputs remain uncommissioned: an independent off-provider backup target and credentials, source-by-source permission/licensing review, and an independently human-labelled Mongolian quality corpus. No credentials, licensing claims, or labels were invented. PostgreSQL-only integration checks require the isolated CI service.

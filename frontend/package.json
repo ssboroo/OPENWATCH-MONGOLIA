@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "test": "node -r ./tests/register-ts.cjs tests/analysisBrief.test.cjs ../app/analysisBrief.ts && node -r ./tests/register-ts.cjs tests/apiClient.test.cjs ../app/apiClient.ts && node -r ./tests/register-ts.cjs tests/researchStore.test.cjs ../app/researchStore.ts",
+    "test:e2e": "playwright test",
     "build": "next build && node -e \"require('fs').cpSync('.next/static','.next/standalone/.next/static',{recursive:true})\" && node -e \"require('fs').cpSync('assets','.next/standalone/assets',{recursive:true})\"",
     "start": "node .next/standalone/server.js"
   },
@@ -14,6 +16,7 @@
     "react-dom": "19.1.2"
   },
   "devDependencies": {
+    "@playwright/test": "1.64.1",
     "@types/node": "22.15.3",
     "@types/react": "19.1.2",
     "@types/react-dom": "19.1.2",

@@ -8,7 +8,7 @@ sys.path.insert(0,str(root/'backend'))
 from alembic.config import Config
 from alembic import command
 os.chdir(root/'backend');command.upgrade(Config('alembic.ini'),'head')
-from app.db import Session
+from app.db import Session,engine
 from app.models import Source
 from app.collector import ingest
 from app.pipeline import process_batch
@@ -40,7 +40,7 @@ try:
  assert call('/health',port=3765)['status']=='ok'
  assert 'Админ хяналт' not in call('/',port=3765)
  assert 'class="avatar"' not in call('/',port=3765)
- scoped=call('/api/v1/articles?q=400&field=excerpt&match=all&publication=unknown',port=3765)
+ scoped=call('/api/v1/articles?q=400&field=excerpt&match=all&publication=unknown&freshness=all',port=3765)
  assert scoped['total']==1 and '400' in scoped['items'][0]['excerpt']
  assert call('/api/v1/articles?q=400&exclude=400',port=3765)['total']==0
  assert call('/api/v1/articles?body=ready',port=3765)['total']==0
@@ -71,8 +71,8 @@ try:
    assert raw[:8]==b'\x89PNG\r\n\x1a\n'
    assert struct.unpack('>II',raw[16:24])==(width,height)
    return raw
- Path('/tmp/ow-share-landscape.png').write_bytes(png('/analysis/1/card?other=2',1200,630))
- Path('/tmp/ow-share-portrait.png').write_bytes(png('/analysis/1/card?other=2&format=portrait',1080,1350))
+ Path(temp.name,'ow-share-landscape.png').write_bytes(png('/analysis/1/card?other=2',1200,630))
+ Path(temp.name,'ow-share-portrait.png').write_bytes(png('/analysis/1/card?other=2&format=portrait',1080,1350))
  for route in ['/analysis/invalid','/analysis/1?other=1','/analysis/999999','/reports/999999/card']:
   try:call(route,port=3765);raise AssertionError('Invalid/private share route must not be public: '+route)
   except urllib.error.HTTPError as exc:assert exc.code==404
@@ -92,7 +92,7 @@ try:
  assert call(f"/api/v1/reports/{r['id']}")['corrections']==[]
  call(f"/api/v1/admin/corrections/{correction['id']}/review",{'decision':'accepted','privacy_checked':True,'response':'[DEMO] Reviewed isolated test annotation.'},True)
  assert len(call(f"/api/v1/reports/{r['id']}")['corrections'])==1
- rsearch=call('/api/v1/research?q=DEMO',port=3765)
+ rsearch=call('/api/v1/research?q=DEMO&freshness=all',port=3765)
  assert rsearch['total']==2 and all(r['claims'] and r['version_id'] for r in rsearch['items'])
  assert call('/api/v1/semantic-search?q=DEMO')['mode']=='lexical_fallback'
  assert call('/api/v1/system/status')['worker_stale'] is False
@@ -107,4 +107,4 @@ finally:
   p.terminate()
   try:p.wait(timeout=10)
   except subprocess.TimeoutExpired:p.kill();p.wait()
- logs.close();temp.cleanup()
+ engine.dispose();logs.close();temp.cleanup()

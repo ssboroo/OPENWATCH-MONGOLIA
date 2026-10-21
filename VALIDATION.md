@@ -209,3 +209,11 @@ Release verification for this change: 105 backend tests passed, 2 dedicated Post
 - Backup service: dedicated volume, daily custom-format dump, SHA-256, 14-day retention, isolated restore database test and durable status rows. No public backup download endpoint. Same-project volume is not an independent off-provider disaster recovery copy.
 - Backend suite: 118 passed, 2 PostgreSQL environment-dependent tests skipped. Frontend production build and Mongolian sentence alignment assertions passed. Production deployment/restore must additionally be verified from Railway logs.
 - Donation editor already supports bank, beneficiary, IBAN/account and preview; do not publish invented bank details.
+
+## Readiness follow-up — 2026-10-21
+- Added a GitHub Actions CI workflow with an isolated pgvector PostgreSQL service, repository checks, and Chromium browser checks. The repository CI script now runs the three existing frontend assertion suites.
+- Added browser coverage for followed-topic persistence after reload and mobile research navigation/overflow.
+- Local frontend assertion suites passed; Next.js production build passed; production dependency audit previously reported 0 vulnerabilities after `npm ci`.
+- Browser E2E could not be executed on this Windows host because Playwright's Chromium download hostname (`cdn.playwright.dev`) did not resolve. The E2E tests are configured to run in GitHub Actions after installing Chromium.
+- Full `ops/ci.sh` and backend pytest could not be run on this host: `sh` is unavailable in the Windows shell and the bundled Python runtime has no pytest installed. The workflow uses Ubuntu and installs the development requirements first.
+- Operations requiring external inputs remain uncommissioned: an independent off-provider backup target and credentials, source-by-source permission/licensing review, and an independently human-labelled Mongolian quality corpus. No credentials, licensing claims, or labels were invented. PostgreSQL-only integration checks require the isolated CI service.

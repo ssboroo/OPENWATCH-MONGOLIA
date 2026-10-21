@@ -26,6 +26,8 @@ jobs:
           --health-retries 20
     env:
       OPENWATCH_TEST_POSTGRES_URL: postgresql+psycopg://postgres:postgres@127.0.0.1:5432/openwatch_test
+      POSTGRES_PASSWORD: ci-only-postgres-password
+      ADMIN_TOKEN: ci-only-admin-token-not-for-deploy
       CI: true
     steps:
       - uses: actions/checkout@v4
